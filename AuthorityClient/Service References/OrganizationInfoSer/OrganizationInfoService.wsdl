@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrganizationInfoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AuthorityEntity" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Sharp.Common" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:3381/OrganizationInfoService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System.Text" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOrganizationInfoService_GetAllList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllList" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetAllList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetDataTableWithSelect_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTableWithSelect" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetDataTableWithSelect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTableWithSelectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetDataTableWithSelectTree_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTableWithSelectTree" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetDataTableWithSelectTree_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTableWithSelectTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_Exit_InputMessage">
+    <wsdl:part name="parameters" element="tns:Exit" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_Exit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetFzr_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFzr" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetFzr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFzrResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetSjBmFzr_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSjBmFzr" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetSjBmFzr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSjBmFzrResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetUserList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserList" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetUserList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetUserListByUserIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserListByUserIds" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetUserListByUserIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserListByUserIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetOrgnizationByUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrgnizationByUserID" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetOrgnizationByUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrgnizationByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_SaveOrgList_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrgList" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_SaveOrgList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrgListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_RemoveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUser" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_RemoveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="IOrganizationInfoService_GetUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IOrganizationInfoService">
+    <wsdl:operation name="GetAllList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetAllList" message="tns:IOrganizationInfoService_GetAllList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetAllListResponse" message="tns:IOrganizationInfoService_GetAllList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableWithSelect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetDataTableWithSelect" message="tns:IOrganizationInfoService_GetDataTableWithSelect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetDataTableWithSelectResponse" message="tns:IOrganizationInfoService_GetDataTableWithSelect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableWithSelectTree">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetDataTableWithSelectTree" message="tns:IOrganizationInfoService_GetDataTableWithSelectTree_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetDataTableWithSelectTreeResponse" message="tns:IOrganizationInfoService_GetDataTableWithSelectTree_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/Save" message="tns:IOrganizationInfoService_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/SaveResponse" message="tns:IOrganizationInfoService_Save_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/Delete" message="tns:IOrganizationInfoService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/DeleteResponse" message="tns:IOrganizationInfoService_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Exit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/Exit" message="tns:IOrganizationInfoService_Exit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/ExitResponse" message="tns:IOrganizationInfoService_Exit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFzr">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetFzr" message="tns:IOrganizationInfoService_GetFzr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetFzrResponse" message="tns:IOrganizationInfoService_GetFzr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSjBmFzr">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetSjBmFzr" message="tns:IOrganizationInfoService_GetSjBmFzr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetSjBmFzrResponse" message="tns:IOrganizationInfoService_GetSjBmFzr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetUserList" message="tns:IOrganizationInfoService_GetUserList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetUserListResponse" message="tns:IOrganizationInfoService_GetUserList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserListByUserIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetUserListByUserIds" message="tns:IOrganizationInfoService_GetUserListByUserIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetUserListByUserIdsResponse" message="tns:IOrganizationInfoService_GetUserListByUserIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrgnizationByUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetOrgnizationByUserID" message="tns:IOrganizationInfoService_GetOrgnizationByUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetOrgnizationByUserIDResponse" message="tns:IOrganizationInfoService_GetOrgnizationByUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrgList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/SaveOrgList" message="tns:IOrganizationInfoService_SaveOrgList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/SaveOrgListResponse" message="tns:IOrganizationInfoService_SaveOrgList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/RemoveUser" message="tns:IOrganizationInfoService_RemoveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/RemoveUserResponse" message="tns:IOrganizationInfoService_RemoveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetUserInfo" message="tns:IOrganizationInfoService_GetUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrganizationInfoService/GetUserInfoResponse" message="tns:IOrganizationInfoService_GetUserInfo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOrganizationInfoService" type="tns:IOrganizationInfoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllList">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetAllList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableWithSelect">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetDataTableWithSelect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableWithSelectTree">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetDataTableWithSelectTree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/Save" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exit">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/Exit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFzr">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetFzr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSjBmFzr">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetSjBmFzr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserListByUserIds">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetUserListByUserIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrgnizationByUserID">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetOrgnizationByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrgList">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/SaveOrgList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/RemoveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/IOrganizationInfoService/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrganizationInfoService">
+    <wsdl:port name="BasicHttpBinding_IOrganizationInfoService" binding="tns:BasicHttpBinding_IOrganizationInfoService">
+      <soap:address location="http://localhost:3381/OrganizationInfoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

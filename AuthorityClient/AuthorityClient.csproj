@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{198D91F9-4DCE-43BF-8103-AF499D7A88DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AuthorityClient</RootNamespace>
+    <AssemblyName>AuthorityClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\GoldStart\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FrameBaseClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refdll\FrameBaseClient.dll</HintPath>
+    </Reference>
+    <Reference Include="FrameCommonEntity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refdll\FrameCommonEntity.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refdll\Sharp.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FunctionInfoClient.cs" />
+    <Compile Include="LoginClient.cs" />
+    <Compile Include="MenuInfoClient.cs" />
+    <Compile Include="OrganizationInfoClient.cs" />
+    <Compile Include="OrgPositionsClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleClient.cs" />
+    <Compile Include="Service References\FunctionInfoSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LoginSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MenuInfoSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrganizationInfoSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrgPositionsSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RoleSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserInfoSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoClient.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AuthorityEntity\AuthorityEntity.csproj">
+      <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
+      <Name>AuthorityEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuthorityService\AuthorityService.csproj">
+      <Project>{640C8EB2-84EF-43C4-A00E-628E6A8C2707}</Project>
+      <Name>AuthorityService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\AuthorityEntity.FunctionInfo.datasource" />
+    <None Include="Properties\DataSources\AuthorityEntity.MenuInfo.datasource" />
+    <None Include="Properties\DataSources\AuthorityEntity.OrganizationInfo.datasource" />
+    <None Include="Properties\DataSources\AuthorityEntity.PersonInfo.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService.wsdl" />
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService.wsdl" />
+    <None Include="Service References\LoginSer\LoginService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoginSer\LoginService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService.wsdl" />
+    <None Include="Service References\MenuInfoSer\MenuInfoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuInfoSer\MenuInfoService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService.wsdl" />
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService.wsdl" />
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService.wsdl" />
+    <None Include="Service References\RoleSer\RoleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleSer\RoleService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService.wsdl" />
+    <None Include="Service References\UserInfoSer\UserInfoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoSer\UserInfoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoleSer\RoleService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FunctionInfoSer\" />
+    <WCFMetadataStorage Include="Service References\LoginSer\" />
+    <WCFMetadataStorage Include="Service References\MenuInfoSer\" />
+    <WCFMetadataStorage Include="Service References\OrganizationInfoSer\" />
+    <WCFMetadataStorage Include="Service References\OrgPositionsSer\" />
+    <WCFMetadataStorage Include="Service References\RoleSer\" />
+    <WCFMetadataStorage Include="Service References\UserInfoSer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrganizationInfoSer\OrganizationInfoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrganizationInfoSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrganizationInfoSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrganizationInfoSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoleSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoleSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoleSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoSer\FunctionInfoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuInfoSer\MenuInfoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuInfoSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuInfoSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuInfoSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginSer\LoginService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LoginSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrgPositionsSer\OrgPositionsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrgPositionsSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrgPositionsSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrgPositionsSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserInfoSer\UserInfoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserInfoSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserInfoSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserInfoSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MenuInfoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AuthorityEntity" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Sharp.Common" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System.Text" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMenuInfoService_GetAllList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllList" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetAllList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetMenuListByFuncID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListByFuncID" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetMenuListByFuncID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListByFuncIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_SaveList_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveList" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_SaveList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_Exit_InputMessage">
+    <wsdl:part name="parameters" element="tns:Exit" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_Exit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetMenuListByRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListByRole" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetMenuListByRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuListByRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenu" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetMenu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMenuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetRootMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRootMenu" />
+  </wsdl:message>
+  <wsdl:message name="IMenuInfoService_GetRootMenu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRootMenuResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMenuInfoService">
+    <wsdl:operation name="GetAllList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/GetAllList" message="tns:IMenuInfoService_GetAllList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/GetAllListResponse" message="tns:IMenuInfoService_GetAllList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListByFuncID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/GetMenuListByFuncID" message="tns:IMenuInfoService_GetMenuListByFuncID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/GetMenuListByFuncIDResponse" message="tns:IMenuInfoService_GetMenuListByFuncID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/SaveList" message="tns:IMenuInfoService_SaveList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/SaveListResponse" message="tns:IMenuInfoService_SaveList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/Delete" message="tns:IMenuInfoService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/DeleteResponse" message="tns:IMenuInfoService_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Exit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/Exit" message="tns:IMenuInfoService_Exit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/ExitResponse" message="tns:IMenuInfoService_Exit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListByRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/GetMenuListByRole" message="tns:IMenuInfoService_GetMenuListByRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/GetMenuListByRoleResponse" message="tns:IMenuInfoService_GetMenuListByRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/GetMenu" message="tns:IMenuInfoService_GetMenu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/GetMenuResponse" message="tns:IMenuInfoService_GetMenu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRootMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuInfoService/GetRootMenu" message="tns:IMenuInfoService_GetRootMenu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuInfoService/GetRootMenuResponse" message="tns:IMenuInfoService_GetRootMenu_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMenuInfoService" type="tns:IMenuInfoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllList">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/GetAllList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListByFuncID">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/GetMenuListByFuncID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveList">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/SaveList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exit">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/Exit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuListByRole">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/GetMenuListByRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenu">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/GetMenu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRootMenu">
+      <soap:operation soapAction="http://tempuri.org/IMenuInfoService/GetRootMenu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MenuInfoService">
+    <wsdl:port name="BasicHttpBinding_IMenuInfoService" binding="tns:BasicHttpBinding_IMenuInfoService">
+      <soap:address location="http://localhost:3381/MenuInfoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

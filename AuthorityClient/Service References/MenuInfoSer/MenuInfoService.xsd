@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AuthorityEntity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AuthorityEntity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3381/MenuInfoService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Sharp.Common" />
+  <xs:complexType name="ArrayOfMenuInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MenuInfo" nillable="true" type="tns:MenuInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMenuInfo" nillable="true" type="tns:ArrayOfMenuInfo" />
+  <xs:complexType name="MenuInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Sharp.Common" base="q1:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CallAssembly" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CallClass" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CallMethod" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CallerCtrolId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DockPaneKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FuntionID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAlt" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsCtrl" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsDefaultCheck" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsEnable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsMust" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsMustNot" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsRecord" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsShift" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsShowGroup" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsVisble" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsWindow" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MenuType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MethodParas" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderNo" type="xs:int" />
+          <xs:element minOccurs="0" name="ParentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Shortcuts" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShowType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Version" type="xs:int" />
+          <xs:element minOccurs="0" name="WebMethod" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MenuInfo" nillable="true" type="tns:MenuInfo" />
+</xs:schema>

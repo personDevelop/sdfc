@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LoginService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AuthorityEntity" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Sharp.Common" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Text" />
+      <xsd:import schemaLocation="http://localhost:3381/LoginService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILoginService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_GetRoleInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleInfo" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_GetRoleInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_GetDateTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateTime" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_GetDateTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILoginService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/Login" message="tns:ILoginService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/LoginResponse" message="tns:ILoginService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetRoleInfo" message="tns:ILoginService_GetRoleInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/GetRoleInfoResponse" message="tns:ILoginService_GetRoleInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/Save" message="tns:ILoginService_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/SaveResponse" message="tns:ILoginService_Save_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetDateTime" message="tns:ILoginService_GetDateTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/GetDateTimeResponse" message="tns:ILoginService_GetDateTime_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILoginService" type="tns:ILoginService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleInfo">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/GetRoleInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/Save" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateTime">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/GetDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoginService">
+    <wsdl:port name="BasicHttpBinding_ILoginService" binding="tns:BasicHttpBinding_ILoginService">
+      <soap:address location="http://localhost:3381/LoginService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
