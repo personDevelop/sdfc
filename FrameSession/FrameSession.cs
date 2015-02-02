@@ -231,7 +231,7 @@ namespace FrameSession
         }
 
 
-        #region IGoldSession 成员
+        #region ISession 成员
         /// <summary>
         /// 根据关键字获取session值
         /// </summary>
