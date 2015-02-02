@@ -62,7 +62,7 @@
     <Compile Include="UserInfoDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Sharp.Data\Sharp.Data.csproj">
+    <ProjectReference Include="..\..\..\Sharp.Data\Sharp.Data.csproj">
       <Project>{EE66C4FF-659F-4C29-A6B7-68D014F7755E}</Project>
       <Name>Sharp.Data</Name>
     </ProjectReference>
