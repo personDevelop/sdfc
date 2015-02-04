@@ -57,6 +57,7 @@ namespace AuthorityEntity
         private string _Note;
         private string _Email;
         private string _QQ;
+        private bool _IsWebPerson;
 
         #endregion
 
@@ -651,6 +652,25 @@ namespace AuthorityEntity
             }
         }
 
+        /// <summary>
+        ///  是网服,
+        /// </summary>
+        [DbProperty(MapingColumnName = "IsWebPerson", DbTypeString = "bit", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public bool IsWebPerson
+        {
+            get
+            {
+                return this._IsWebPerson;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("IsWebPerson", this._IsWebPerson, value);
+                this._IsWebPerson = value;
+            }
+        }
+
 
         #endregion
 
@@ -721,6 +741,8 @@ namespace AuthorityEntity
                 Email = new PropertyItem("Email", tableName);
 
                 QQ = new PropertyItem("QQ", tableName);
+
+                IsWebPerson = new PropertyItem("IsWebPerson", tableName);
 
 
             }
@@ -848,10 +870,12 @@ namespace AuthorityEntity
             /// QQ,
             /// </summary> 
             public PropertyItem QQ = null;
+            /// <summary>
+            /// 是网服,
+            /// </summary> 
+            public PropertyItem IsWebPerson = null;
         }
         #endregion
-
-      
     }
 
     public partial class UserInfo
