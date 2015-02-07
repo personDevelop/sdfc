@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Sharp.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refdll\Sharp.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,10 +66,6 @@
     <Compile Include="UserInfoDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Sharp.Data\Sharp.Data.csproj">
-      <Project>{EE66C4FF-659F-4C29-A6B7-68D014F7755E}</Project>
-      <Name>Sharp.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AuthorityEntity\AuthorityEntity.csproj">
       <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
       <Name>AuthorityEntity</Name>

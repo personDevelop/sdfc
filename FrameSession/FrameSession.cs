@@ -4,7 +4,7 @@ using System.Linq;
 using AuthorityEntity;
 using AuthorityClient;
 using Sharp.Common;
-using Sharp.Common.Common;
+ 
 
 namespace FrameSession
 {
