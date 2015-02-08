@@ -57,6 +57,7 @@
     <Compile Include="FunctionInfoClient.cs" />
     <Compile Include="LoginClient.cs" />
     <Compile Include="MenuInfoClient.cs" />
+    <Compile Include="MsgSendOrderClient.cs" />
     <Compile Include="OrganizationInfoClient.cs" />
     <Compile Include="OrgPositionsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +73,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\MenuInfoSer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MsgSendOrderSer\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -193,6 +199,19 @@
     <None Include="Service References\MenuInfoSer\MenuInfoService7.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MsgSendOrderSer\MsgSendOrderService.wsdl" />
+    <None Include="Service References\MsgSendOrderSer\MsgSendOrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MsgSendOrderSer\MsgSendOrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MsgSendOrderSer\MsgSendOrderService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MsgSendOrderSer\MsgSendOrderService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\OrganizationInfoSer\OrganizationInfoService.wsdl" />
     <None Include="Service References\OrganizationInfoSer\OrganizationInfoService.xsd">
       <SubType>Designer</SubType>
@@ -301,6 +320,7 @@
     <WCFMetadataStorage Include="Service References\FunctionInfoSer\" />
     <WCFMetadataStorage Include="Service References\LoginSer\" />
     <WCFMetadataStorage Include="Service References\MenuInfoSer\" />
+    <WCFMetadataStorage Include="Service References\MsgSendOrderSer\" />
     <WCFMetadataStorage Include="Service References\OrganizationInfoSer\" />
     <WCFMetadataStorage Include="Service References\OrgPositionsSer\" />
     <WCFMetadataStorage Include="Service References\RoleSer\" />
@@ -404,6 +424,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserInfoSer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MsgSendOrderSer\MsgSendOrderService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MsgSendOrderSer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MsgSendOrderSer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MsgSendOrderSer\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

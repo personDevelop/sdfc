@@ -257,5 +257,28 @@ namespace AuthorityDataAccess
                 }
 
         }
+
+        public int SaveContacts(ref string error, Contacts contact)
+        {
+            //将之前的登录状态清空掉 
+
+            if (Dal.Exists<Contacts>(Contacts._.TelNo == contact.TelNo))
+            {
+                error = "已存在相同电话号码";
+                return -1;
+            }
+
+            return Dal.Submit(contact);
+        }
+
+        public DataTable GetContacts()
+        {
+            return Dal.From<Contacts>().ToDataTable();
+        }
+
+        public DataTable GetContactsWithNameOrTel(string nameOrTel)
+        {
+            return Dal.From<Contacts>().Where(Contacts._.Name.Contains(nameOrTel) || Contacts._.TelNo.Contains(nameOrTel)).ToDataTable();
+        }
     }
 }

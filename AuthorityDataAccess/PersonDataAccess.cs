@@ -47,6 +47,7 @@ namespace AuthorityDataAccess
             return result;
         }
 
+       
         public DateTime GetDateTime()
         {
             return Dal.SystemDateTime;

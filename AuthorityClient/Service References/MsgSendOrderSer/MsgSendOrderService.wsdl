@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MsgSendOrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3381/MsgSendOrderService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3381/MsgSendOrderService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3381/MsgSendOrderService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:3381/MsgSendOrderService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMsgSendOrderService_GetAllMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMsg" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetAllMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetAllMsgByStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMsgByStatus" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetAllMsgByStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMsgByStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetMySenderMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMySenderMsg" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetMySenderMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMySenderMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetMyReciveMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyReciveMsg" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_GetMyReciveMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyReciveMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_AddMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMsg" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_AddMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_AddOneMsgToMutilsPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOneMsgToMutilsPerson" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_AddOneMsgToMutilsPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOneMsgToMutilsPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_UpdateStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStatus" />
+  </wsdl:message>
+  <wsdl:message name="IMsgSendOrderService_UpdateStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMsgSendOrderService">
+    <wsdl:operation name="GetAllMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetAllMsg" message="tns:IMsgSendOrderService_GetAllMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetAllMsgResponse" message="tns:IMsgSendOrderService_GetAllMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMsgByStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetAllMsgByStatus" message="tns:IMsgSendOrderService_GetAllMsgByStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetAllMsgByStatusResponse" message="tns:IMsgSendOrderService_GetAllMsgByStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMySenderMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetMySenderMsg" message="tns:IMsgSendOrderService_GetMySenderMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetMySenderMsgResponse" message="tns:IMsgSendOrderService_GetMySenderMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyReciveMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetMyReciveMsg" message="tns:IMsgSendOrderService_GetMyReciveMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/GetMyReciveMsgResponse" message="tns:IMsgSendOrderService_GetMyReciveMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/AddMsg" message="tns:IMsgSendOrderService_AddMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/AddMsgResponse" message="tns:IMsgSendOrderService_AddMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOneMsgToMutilsPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/AddOneMsgToMutilsPerson" message="tns:IMsgSendOrderService_AddOneMsgToMutilsPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/AddOneMsgToMutilsPersonResponse" message="tns:IMsgSendOrderService_AddOneMsgToMutilsPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMsgSendOrderService/UpdateStatus" message="tns:IMsgSendOrderService_UpdateStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMsgSendOrderService/UpdateStatusResponse" message="tns:IMsgSendOrderService_UpdateStatus_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMsgSendOrderService" type="tns:IMsgSendOrderService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllMsg">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/GetAllMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMsgByStatus">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/GetAllMsgByStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMySenderMsg">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/GetMySenderMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyReciveMsg">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/GetMyReciveMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMsg">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/AddMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOneMsgToMutilsPerson">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/AddOneMsgToMutilsPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatus">
+      <soap:operation soapAction="http://tempuri.org/IMsgSendOrderService/UpdateStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MsgSendOrderService">
+    <wsdl:port name="BasicHttpBinding_IMsgSendOrderService" binding="tns:BasicHttpBinding_IMsgSendOrderService">
+      <soap:address location="http://localhost:3381/MsgSendOrderService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

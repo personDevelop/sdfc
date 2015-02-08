@@ -68,6 +68,7 @@
     <Content Include="FunctionInfoService.svc" />
     <Content Include="LoginService.svc" />
     <Content Include="MenuInfoService.svc" />
+    <Content Include="MsgSendOrderService.svc" />
     <Content Include="OrganizationInfoService.svc" />
     <Content Include="OrgPositionsService.svc" />
     <Content Include="RoleService.svc" />
@@ -87,6 +88,7 @@
     <Compile Include="IFunctionInfoService.cs" />
     <Compile Include="ILoginService.cs" />
     <Compile Include="IMenuInfoService.cs" />
+    <Compile Include="IMsgSendOrderService.cs" />
     <Compile Include="IOrganizationInfoService.cs" />
     <Compile Include="IOrgPositionsService.cs" />
     <Compile Include="IRoleService.cs" />
@@ -96,6 +98,9 @@
     </Compile>
     <Compile Include="MenuInfoService.svc.cs">
       <DependentUpon>MenuInfoService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="MsgSendOrderService.svc.cs">
+      <DependentUpon>MsgSendOrderService.svc</DependentUpon>
     </Compile>
     <Compile Include="OrganizationInfoService.svc.cs">
       <DependentUpon>OrganizationInfoService.svc</DependentUpon>

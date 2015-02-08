@@ -45,9 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacts.cs" />
     <Compile Include="ControlEntiy.cs" />
     <Compile Include="FunctionInfo.cs" />
     <Compile Include="MenuInfo.cs" />
+    <Compile Include="MsgSendOrder.cs" />
     <Compile Include="OrganizationInfo.cs" />
     <Compile Include="OrgPositions.cs" />
     <Compile Include="OrgUserRalation.cs" />

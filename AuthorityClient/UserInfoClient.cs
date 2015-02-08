@@ -5,6 +5,7 @@ using System.Text;
 using AuthorityService;
 using AuthorityClient.UserInfoSer;
 using AuthorityEntity;
+using System.Data;
 
 namespace AuthorityClient
 {
@@ -101,7 +102,7 @@ namespace AuthorityClient
 
         }
 
-         
+
 
         public OrganizationInfo GetDepartInfo(string userID)
         {
@@ -111,6 +112,41 @@ namespace AuthorityClient
             }
             else
                 return (Client as UserInfoServiceClient).GetDepartInfo(userID);
+        }
+
+        public int SaveContacts(ref string error, Contacts contact)
+        {
+            if (IsLocation)
+            {
+                return (Client as UserInfoService).SaveContacts(ref   error, contact);
+            }
+            else
+                return (Client as UserInfoServiceClient).SaveContacts(ref   error, contact);
+        }
+
+        public DataTable GetContacts()
+        {
+            if (IsLocation)
+            {
+                return (Client as UserInfoService).GetContacts();
+            }
+            else
+                return (Client as UserInfoServiceClient).GetContacts();
+        }
+
+        public object GetContactsWithNameOrTel(string nameOrTel)
+        {
+            if (IsLocation)
+            {
+                return (Client as UserInfoService).GetContactsWithNameOrTel(nameOrTel);
+            }
+            else
+                return (Client as UserInfoServiceClient).GetContactsWithNameOrTel(nameOrTel);
+        }
+
+        public string[] GetContactGroup()
+        {
+            throw new NotImplementedException();
         }
     }
 }

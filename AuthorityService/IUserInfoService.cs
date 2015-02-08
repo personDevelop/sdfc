@@ -21,13 +21,19 @@ namespace AuthorityService
         bool Exists(string code, string email, string iD, ref string error);
         [OperationContract]
         int ResetPwd(string userid, string newpwd);
-            [OperationContract]
+        [OperationContract]
         int DeleteUser(string userid);
-            [OperationContract]
-            int BatchSetOrg(string[] ids, string[] orgIds, string[] companyIDS, string positionID);
-          [OperationContract]
-            int BatchSetRole(string[] ids, string[] roleids);
-           [OperationContract]
-          OrganizationInfo GetDepartInfo(string userID);
+        [OperationContract]
+        int BatchSetOrg(string[] ids, string[] orgIds, string[] companyIDS, string positionID);
+        [OperationContract]
+        int BatchSetRole(string[] ids, string[] roleids);
+        [OperationContract]
+        OrganizationInfo GetDepartInfo(string userID);
+        [OperationContract]
+        int SaveContacts(ref string error, Contacts contact);
+        [OperationContract]
+        DataTable GetContacts();
+        [OperationContract]
+        DataTable GetContactsWithNameOrTel(string nameOrTel);
     }
 }

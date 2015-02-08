@@ -48,18 +48,34 @@ namespace AuthorityService
         public int BatchSetOrg(string[] ids, string[] orgIds, string[] companyIDS, string positionID)
         {
             return da.BatchSetOrg(ids, orgIds, companyIDS, positionID);
-            
+
         }
 
         public int BatchSetRole(string[] ids, string[] roleids)
         {
             return da.BatchSetRole(ids, roleids);
-            
+
         }
 
         public OrganizationInfo GetDepartInfo(string userID)
         {
             return da.GetDepartInfo(userID);
+        }
+
+
+        public int SaveContacts(ref string error, Contacts contact)
+        {
+            return da.SaveContacts(ref error, contact);
+        }
+
+        public DataTable GetContacts()
+        {
+            return da.GetContacts();
+        }
+
+        public DataTable GetContactsWithNameOrTel(string nameOrTel)
+        {
+            return da.GetContactsWithNameOrTel(nameOrTel);
         }
     }
 }

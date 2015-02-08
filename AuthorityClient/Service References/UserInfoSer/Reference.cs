@@ -38,6 +38,15 @@ namespace AuthorityClient.UserInfoSer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserInfoService/GetDepartInfo", ReplyAction="http://tempuri.org/IUserInfoService/GetDepartInfoResponse")]
         AuthorityEntity.OrganizationInfo GetDepartInfo(string userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserInfoService/SaveContacts", ReplyAction="http://tempuri.org/IUserInfoService/SaveContactsResponse")]
+        int SaveContacts(ref string error, AuthorityEntity.Contacts contact);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserInfoService/GetContacts", ReplyAction="http://tempuri.org/IUserInfoService/GetContactsResponse")]
+        System.Data.DataTable GetContacts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTel", ReplyAction="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTelResponse")]
+        System.Data.DataTable GetContactsWithNameOrTel(string nameOrTel);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +106,18 @@ namespace AuthorityClient.UserInfoSer {
         
         public AuthorityEntity.OrganizationInfo GetDepartInfo(string userID) {
             return base.Channel.GetDepartInfo(userID);
+        }
+        
+        public int SaveContacts(ref string error, AuthorityEntity.Contacts contact) {
+            return base.Channel.SaveContacts(ref error, contact);
+        }
+        
+        public System.Data.DataTable GetContacts() {
+            return base.Channel.GetContacts();
+        }
+        
+        public System.Data.DataTable GetContactsWithNameOrTel(string nameOrTel) {
+            return base.Channel.GetContactsWithNameOrTel(nameOrTel);
         }
     }
 }

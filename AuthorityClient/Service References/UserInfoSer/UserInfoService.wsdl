@@ -60,6 +60,24 @@
   <wsdl:message name="IUserInfoService_GetDepartInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDepartInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserInfoService_SaveContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveContacts" />
+  </wsdl:message>
+  <wsdl:message name="IUserInfoService_SaveContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserInfoService_GetContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContacts" />
+  </wsdl:message>
+  <wsdl:message name="IUserInfoService_GetContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserInfoService_GetContactsWithNameOrTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactsWithNameOrTel" />
+  </wsdl:message>
+  <wsdl:message name="IUserInfoService_GetContactsWithNameOrTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactsWithNameOrTelResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserInfoService">
     <wsdl:operation name="GetAllUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetAllUser" message="tns:IUserInfoService_GetAllUser_InputMessage" />
@@ -92,6 +110,18 @@
     <wsdl:operation name="GetDepartInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetDepartInfo" message="tns:IUserInfoService_GetDepartInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserInfoService/GetDepartInfoResponse" message="tns:IUserInfoService_GetDepartInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/SaveContacts" message="tns:IUserInfoService_SaveContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserInfoService/SaveContactsResponse" message="tns:IUserInfoService_SaveContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetContacts" message="tns:IUserInfoService_GetContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserInfoService/GetContactsResponse" message="tns:IUserInfoService_GetContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactsWithNameOrTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTel" message="tns:IUserInfoService_GetContactsWithNameOrTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTelResponse" message="tns:IUserInfoService_GetContactsWithNameOrTel_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserInfoService" type="tns:IUserInfoService">
@@ -161,6 +191,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetDepartInfo">
       <soap:operation soapAction="http://tempuri.org/IUserInfoService/GetDepartInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveContacts">
+      <soap:operation soapAction="http://tempuri.org/IUserInfoService/SaveContacts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContacts">
+      <soap:operation soapAction="http://tempuri.org/IUserInfoService/GetContacts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactsWithNameOrTel">
+      <soap:operation soapAction="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTel" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
