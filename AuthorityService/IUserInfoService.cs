@@ -35,5 +35,7 @@ namespace AuthorityService
         DataTable GetContacts();
         [OperationContract]
         DataTable GetContactsWithNameOrTel(string nameOrTel);
+          [OperationContract]
+        string[] GetContactGroup();
     }
 }

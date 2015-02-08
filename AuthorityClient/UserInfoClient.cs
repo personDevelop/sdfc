@@ -146,7 +146,12 @@ namespace AuthorityClient
 
         public string[] GetContactGroup()
         {
-            throw new NotImplementedException();
+            if (IsLocation)
+            {
+                return (Client as UserInfoService).GetContactGroup( );
+            }
+            else
+                return (Client as UserInfoServiceClient).GetContactGroup( );
         }
     }
 }

@@ -78,6 +78,12 @@
   <wsdl:message name="IUserInfoService_GetContactsWithNameOrTel_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetContactsWithNameOrTelResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserInfoService_GetContactGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactGroup" />
+  </wsdl:message>
+  <wsdl:message name="IUserInfoService_GetContactGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactGroupResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserInfoService">
     <wsdl:operation name="GetAllUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetAllUser" message="tns:IUserInfoService_GetAllUser_InputMessage" />
@@ -122,6 +128,10 @@
     <wsdl:operation name="GetContactsWithNameOrTel">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTel" message="tns:IUserInfoService_GetContactsWithNameOrTel_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTelResponse" message="tns:IUserInfoService_GetContactsWithNameOrTel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserInfoService/GetContactGroup" message="tns:IUserInfoService_GetContactGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserInfoService/GetContactGroupResponse" message="tns:IUserInfoService_GetContactGroup_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserInfoService" type="tns:IUserInfoService">
@@ -218,6 +228,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetContactsWithNameOrTel">
       <soap:operation soapAction="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactGroup">
+      <soap:operation soapAction="http://tempuri.org/IUserInfoService/GetContactGroup" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -47,6 +47,9 @@ namespace AuthorityClient.UserInfoSer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTel", ReplyAction="http://tempuri.org/IUserInfoService/GetContactsWithNameOrTelResponse")]
         System.Data.DataTable GetContactsWithNameOrTel(string nameOrTel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserInfoService/GetContactGroup", ReplyAction="http://tempuri.org/IUserInfoService/GetContactGroupResponse")]
+        string[] GetContactGroup();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,6 +121,10 @@ namespace AuthorityClient.UserInfoSer {
         
         public System.Data.DataTable GetContactsWithNameOrTel(string nameOrTel) {
             return base.Channel.GetContactsWithNameOrTel(nameOrTel);
+        }
+        
+        public string[] GetContactGroup() {
+            return base.Channel.GetContactGroup();
         }
     }
 }

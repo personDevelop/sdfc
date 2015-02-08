@@ -273,12 +273,26 @@ namespace AuthorityDataAccess
 
         public DataTable GetContacts()
         {
-            return Dal.From<Contacts>().ToDataTable();
+            DataTable dt = Dal.From<Contacts>().ToDataTable();
+            DataColumn dc = new DataColumn("IsSelected", typeof(bool));
+            dc.DefaultValue = false;
+            dt.Columns.Add(dc);
+            return dt;
         }
 
         public DataTable GetContactsWithNameOrTel(string nameOrTel)
         {
-            return Dal.From<Contacts>().Where(Contacts._.Name.Contains(nameOrTel) || Contacts._.TelNo.Contains(nameOrTel)).ToDataTable();
+            DataTable dt = Dal.From<Contacts>().Where(Contacts._.Name.Contains(nameOrTel) || Contacts._.TelNo.Contains(nameOrTel)).ToDataTable();
+            DataColumn dc = new DataColumn("IsSelected", typeof(bool));
+            dc.DefaultValue = false;
+            dt.Columns.Add(dc);
+            return dt;
+            
+        }
+
+        public string[] GetContactGroup()
+        {
+            return Dal.From<Contacts>().Select(Contacts._.GroupName).Distinct().ToSinglePropertyArray();
         }
     }
 }

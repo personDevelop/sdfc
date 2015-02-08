@@ -77,5 +77,10 @@ namespace AuthorityService
         {
             return da.GetContactsWithNameOrTel(nameOrTel);
         }
+
+        public string[] GetContactGroup()
+        {
+            return da.GetContactGroup( );
+        }
     }
 }
