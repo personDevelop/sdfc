@@ -51,6 +51,7 @@ namespace AuthorityEntity
         private int? _WorkDays;
         private string _Status;
         private string _AgentID;
+        private string _ICallPwd;
         private string _AgentGroup;
         private bool _BJDH;
         private string _SignaturePhot;
@@ -539,6 +540,25 @@ namespace AuthorityEntity
         }
 
         /// <summary>
+        ///  话务中心密码,
+        /// </summary>
+        [DbProperty(MapingColumnName = "ICallPwd", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public string ICallPwd
+        {
+            get
+            {
+                return this._ICallPwd;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("ICallPwd", this._ICallPwd, value);
+                this._ICallPwd = value;
+            }
+        }
+
+        /// <summary>
         ///  坐席组,
         /// </summary>
         [DbProperty(MapingColumnName = "AgentGroup", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
@@ -730,6 +750,8 @@ namespace AuthorityEntity
 
                 AgentID = new PropertyItem("AgentID", tableName);
 
+                ICallPwd = new PropertyItem("ICallPwd", tableName);
+
                 AgentGroup = new PropertyItem("AgentGroup", tableName);
 
                 BJDH = new PropertyItem("BJDH", tableName);
@@ -847,6 +869,10 @@ namespace AuthorityEntity
             /// </summary> 
             public PropertyItem AgentID = null;
             /// <summary>
+            /// 话务中心密码,
+            /// </summary> 
+            public PropertyItem ICallPwd = null;
+            /// <summary>
             /// 坐席组,
             /// </summary> 
             public PropertyItem AgentGroup = null;
@@ -877,6 +903,7 @@ namespace AuthorityEntity
         }
         #endregion
     }
+
 
     public partial class UserInfo
     {

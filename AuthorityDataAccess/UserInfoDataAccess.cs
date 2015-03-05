@@ -262,7 +262,7 @@ namespace AuthorityDataAccess
         {
             //将之前的登录状态清空掉 
 
-            if (Dal.Exists<Contacts>(Contacts._.TelNo == contact.TelNo))
+            if (Dal.Exists<Contacts>(Contacts._.TelNo == contact.TelNo && Contacts._.ID != contact.ID))
             {
                 error = "已存在相同电话号码";
                 return -1;
@@ -287,12 +287,17 @@ namespace AuthorityDataAccess
             dc.DefaultValue = false;
             dt.Columns.Add(dc);
             return dt;
-            
+
         }
 
         public string[] GetContactGroup()
         {
-            return Dal.From<Contacts>().Select(Contacts._.GroupName).Distinct().ToSinglePropertyArray();
+            return Dal.From<Contacts>().Where(Contacts._.GroupName != null && Contacts._.GroupName != string.Empty).Select(Contacts._.GroupName).Distinct().ToSinglePropertyArray();
+        }
+
+        public int DeleteUserTxl(string txlid)
+        {
+            return Dal.Delete<Contacts>(txlid);
         }
     }
 }

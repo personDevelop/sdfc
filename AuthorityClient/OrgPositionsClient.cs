@@ -1,81 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AuthorityEntity;
+﻿using AuthorityEntity;
 using System.Data;
 using AuthorityService;
-using AuthorityClient.OrgPositionsSer;
+using FrameBaseClient;
+using IAuthorityService;
 
 namespace AuthorityClient
 {
-   
-     public class OrgPositionsClient : FrameBaseClient.BaseClient
+
+    public class OrgPositionsClient : FrameBaseClient.BaseClient
     {
-         public OrgPositionsClient()
+        IOrgPositionsService currentClient;
+        IOrgPositionsService CurrentClient
         {
-
-            if (IsLocation)
+            get
             {
-                Client = new OrgPositionsService();
+                if (currentClient == null)
+                {
+                    if (IsLocation)
+                    {
+                        currentClient = new OrgPositionsService();
+                    }
+                    else
+                    {
+                        currentClient = WcfInvokeContext.CreateWCFService<IOrgPositionsService>("OrgPositionsService");
+                    }
+                }
+                return currentClient;
             }
-            else
-            {
-                Client = new  OrganizationInfoClient();
-            }
-
         }
+       
+        
 
 
-        public bool Exit(string id,   string code, string name, ref string errorMsg)
+        public bool Exit(string id, string code, string name, ref string errorMsg)
         {
-            if (IsLocation)
-            {
-                return (Client as OrgPositionsService).Exit(id,   code, name, ref errorMsg);
-            }
-            else
-                return (Client as  OrgPositionsServiceClient).Exit(id, code, name, ref errorMsg);
-
-
+            
+                 return CurrentClient.Exit(id, code, name, ref errorMsg);
+            
         }
 
         public int Save(OrgPositions item)
-        {
-            if (IsLocation)
-            {
-                return (Client as OrgPositionsService).Save(item);
-            }
-            else
-                return (Client as OrgPositionsServiceClient).Save(item);
-
-
+        {     return CurrentClient.Save(item);
+            
         }
 
-        
-        public int Delete(string classcode, ref string  error)
+
+        public int Delete(string classcode, ref string error)
         {
-            if (IsLocation)
-            {
-                return (Client as OrgPositionsService).Delete(classcode, ref error);
-            }
-            else
-                return (Client as OrgPositionsServiceClient).Delete(classcode, ref error);
-
-
+           
+                 return CurrentClient.Delete(classcode, ref error);
+            
         }
 
         public DataTable GetAllDataTable()
         {
-            if (IsLocation)
-            {
-                return (Client as OrgPositionsService).GetAllList();
-            }
-            else
-                return (Client as OrgPositionsServiceClient).GetAllList();
-
-
+           
+                 return CurrentClient.GetAllList();
+            
         }
 
-        
+
     }
 }

@@ -1,104 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AuthorityEntity;
-using AuthorityClient.RoleSer;
+﻿using AuthorityEntity;
 using AuthorityService;
 using FrameBaseClient;
 using System.Data;
+using IAuthorityService;
 
 namespace AuthorityClient
 {
     public class RoleClient : BaseClient
     {
-
-        public RoleClient()
+        IRoleService currentClient;
+        IRoleService CurrentClient
         {
-           
-
-            if (IsLocation)
+            get
             {
-                Client = new RoleService();
+                if (currentClient == null)
+                {
+                    if (IsLocation)
+                    {
+                        currentClient = new RoleService();
+                    }
+                    else
+                    {
+                        currentClient = WcfInvokeContext.CreateWCFService<IRoleService>("RoleService");
+                    }
+                }
+                return currentClient;
             }
-            else
-            {
-                Client = new RoleServiceClient();
-            }
-
-
         }
+
 
 
         public System.Data.DataTable GetAllList()
         {
-            if (IsLocation)
-            {
-                return (Client as RoleService).GetAllList();
-            }
-            else
-                return (Client as RoleServiceClient).GetAllList();
-
+            return CurrentClient.GetAllList();
 
         }
 
         public int Save(Role p)
         {
-            if (IsLocation)
-            {
-                return (Client as RoleService).Save(p);
-            }
-            else
-                return (Client as RoleServiceClient).Save(p);
+
+            return CurrentClient.Save(p);
 
         }
 
         public int Delete(string id, ref string error)
         {
-            if (IsLocation)
-            {
-                return (Client as RoleService).Delete(id, ref error);
-            }
-            else
-                return (Client as RoleServiceClient).Delete(id, ref error);
-
+            return CurrentClient.Delete(id, ref error);
 
         }
 
         public bool Exit(string id, string code, string name, ref string errorMsg)
         {
-            if (IsLocation)
-            {
-                return (Client as RoleService).Exit(id, code, name, ref errorMsg);
-            }
-            else
-                return (Client as RoleServiceClient).Exit(id, code, name, ref errorMsg);
 
+            return CurrentClient.Exit(id, code, name, ref errorMsg);
 
         }
 
         public string[] GetRoleClass()
         {
-            if (IsLocation)
-            {
-                return (Client as RoleService).GetRoleClass();
-            }
-            else
-                return (Client as RoleServiceClient).GetRoleClass();
-
+            return CurrentClient.GetRoleClass();
 
         }
 
         public DataTable GetUserList(string[] roleIDs)
         {
-            if (IsLocation)
-            {
-                return (Client as RoleService).GetUserList(roleIDs);
-            }
-            else
-                return (Client as RoleServiceClient).GetUserList(roleIDs);
+            return CurrentClient.GetUserList(roleIDs);
+
         }
 
-        
+
     }
 }

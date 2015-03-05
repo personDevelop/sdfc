@@ -85,14 +85,6 @@
     <Compile Include="FunctionInfoService.svc.cs">
       <DependentUpon>FunctionInfoService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IFunctionInfoService.cs" />
-    <Compile Include="ILoginService.cs" />
-    <Compile Include="IMenuInfoService.cs" />
-    <Compile Include="IMsgSendOrderService.cs" />
-    <Compile Include="IOrganizationInfoService.cs" />
-    <Compile Include="IOrgPositionsService.cs" />
-    <Compile Include="IRoleService.cs" />
-    <Compile Include="IUserInfoService.cs" />
     <Compile Include="LoginService.svc.cs">
       <DependentUpon>LoginService.svc</DependentUpon>
     </Compile>
@@ -127,6 +119,10 @@
     <ProjectReference Include="..\AuthorityEntity\AuthorityEntity.csproj">
       <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
       <Name>AuthorityEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAuthorityService\IAuthorityService.csproj">
+      <Project>{4C08540F-6A03-4AE2-B275-CCFE76410FA4}</Project>
+      <Name>IAuthorityService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

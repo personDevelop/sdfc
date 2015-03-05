@@ -1,32 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AuthorityEntity;
-using AuthorityClient.LoginSer;
 using AuthorityService;
+using FrameBaseClient;
+using IAuthorityService;
 
 namespace AuthorityClient
 {
     public class LoginClient : FrameBaseClient.BaseClient
     {
-
-        public LoginClient()
+        ILoginService currentClient;
+        ILoginService CurrentClient
         {
-
-            if (IsLocation)
+            get
             {
-                Client = new LoginService();
+                if (currentClient == null)
+                {
+                    if (IsLocation)
+                    {
+                        currentClient = new LoginService();
+                    }
+                    else
+                    {
+                        currentClient = WcfInvokeContext.CreateWCFService<ILoginService>("LoginService");
+                    }
+                }
+                return currentClient;
             }
-            else
-            {
-                Client = new LoginServiceClient();
-            }
-
-
         }
-
-
+      
         public UserInfo Login(string userno)
         {
 
@@ -36,15 +37,9 @@ namespace AuthorityClient
         }
         public UserInfo Login(string appcode, string userno)
         {
-            if (IsLocation)
-            {
-                return (Client as LoginService).Login(appcode, userno);
-            }
-            else
-                return (Client as LoginServiceClient).Login(appcode, userno);
-
-
-
+           
+                 return CurrentClient.Login(appcode, userno);
+            
         }
 
         public void SetConfigInfo(string appcode, string userno, out string msg)
@@ -55,42 +50,22 @@ namespace AuthorityClient
 
 
         public System.Data.DataTable GetRoleInfo(string userID)
-        {
-            if (IsLocation)
-            {
-                return (Client as LoginService).GetRoleInfo(userID);
-            }
-            else
-                return (Client as LoginServiceClient).GetRoleInfo(userID);
-
-
-
+        { 
+                 return CurrentClient.GetRoleInfo(userID);
+             
         }
 
         public int Save(SystemSessionLog log)
-        {
-            if (IsLocation)
-            {
-                return (Client as LoginService).Save(log);
-            }
-            else
-                return (Client as LoginServiceClient).Save(log);
-
-
+        {    return CurrentClient.Save(log);
+            
 
         }
 
         public DateTime GetDateTime()
         {
-            if (IsLocation)
-            {
-                return (Client as LoginService).GetDateTime();
-            }
-            else
-                return (Client as LoginServiceClient).GetDateTime();
-
-
-
+            
+                 return CurrentClient.GetDateTime();
+             
         }
     }
 }

@@ -1,89 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sharp.Common;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.Data;
 using AuthorityEntity;
 using AuthorityService;
-using AuthorityClient.OrganizationInfoSer;
+using FrameBaseClient;
+using IAuthorityService;
 
 namespace AuthorityClient
 {
     public class OrganizationInfoClient : FrameBaseClient.BaseClient
     {
-        public OrganizationInfoClient()
+        IOrganizationInfoService currentClient;
+        IOrganizationInfoService CurrentClient
         {
-
-            if (IsLocation)
+            get
             {
-                Client = new OrganizationInfoService();
+                if (currentClient == null)
+                {
+                    if (IsLocation)
+                    {
+                        currentClient = new OrganizationInfoService();
+                    }
+                    else
+                    {
+                        currentClient = WcfInvokeContext.CreateWCFService<IOrganizationInfoService>("OrganizationInfoService");
+                    }
+                }
+                return currentClient;
             }
-            else
-            {
-                Client = new OrganizationInfoServiceClient();
-            }
-
         }
+
 
 
         public bool Exit(string id, string parentID, string code, string name, ref string errorMsg)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).Exit(id, parentID, code, name, ref errorMsg);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).Exit(id, parentID, code, name, ref errorMsg);
 
+            return CurrentClient.Exit(id, parentID, code, name, ref errorMsg);
 
         }
 
         public int Save(OrganizationInfo item)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).Save(item);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).Save(item);
 
+            return CurrentClient.Save(item);
 
         }
 
         public int Delete(string classcode, ref string error)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).Delete(classcode, ref error);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).Delete(classcode, ref error);
+
+            return CurrentClient.Delete(classcode, ref error);
 
 
         }
 
         public DataTable GetAllDataTable()
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetAllList();
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetAllList();
+
+            return CurrentClient.GetAllList();
 
 
         }
         public DataTable GetDataTableWithSelect()
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetDataTableWithSelect();
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetDataTableWithSelect();
 
+            return CurrentClient.GetDataTableWithSelect();
 
         }
         /// <summary>
@@ -93,23 +73,15 @@ namespace AuthorityClient
         /// <returns></returns>
         public UserInfo GetFzr(string UserID)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetFzr(UserID);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetFzr(UserID);
+
+            return CurrentClient.GetFzr(UserID);
 
         }
         public UserInfo GetUserInfo(string UserID)
         {
 
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetUserInfo(UserID);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetUserInfo(UserID);
+
+            return CurrentClient.GetUserInfo(UserID);
 
         }
         /// <summary>
@@ -119,33 +91,24 @@ namespace AuthorityClient
         /// <returns></returns>
         public UserInfo GetSjBmFzr(string UserID)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetSjBmFzr(UserID);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetSjBmFzr(UserID);
+
+            return CurrentClient.GetSjBmFzr(UserID);
 
         }
 
         public DataTable GetUserList(string[] departIDs)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetUserList(departIDs);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetUserList(departIDs);
+
+            return CurrentClient.GetUserList(departIDs);
+
+
         }
 
         public DataTable GetUserListByUserIds(string[] userIDs)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetUserListByUserIds(userIDs);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetUserListByUserIds(userIDs);
+
+            return CurrentClient.GetUserListByUserIds(userIDs);
+
         }
 
         /// <summary>
@@ -155,44 +118,27 @@ namespace AuthorityClient
         /// <returns></returns>
         public DataTable GetOrgnizationByUserID(string userID)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetOrgnizationByUserID(userID);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetOrgnizationByUserID(userID);
+
+            return CurrentClient.GetOrgnizationByUserID(userID);
         }
 
         public DataTable GetDataTableWithSelectTree()
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).GetDataTableWithSelectTree();
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).GetDataTableWithSelectTree();
+
+            return CurrentClient.GetDataTableWithSelectTree();
         }
 
         public int SaveOrgList(List<OrgUserRalation> orgList)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).SaveOrgList(orgList);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).SaveOrgList(orgList.ToArray());
+            return CurrentClient.SaveOrgList(orgList);
         }
 
         public int RemoveUser(string departID, string[] userids)
         {
-            if (IsLocation)
-            {
-                return (Client as OrganizationInfoService).RemoveUser(departID, userids);
-            }
-            else
-                return (Client as OrganizationInfoServiceClient).RemoveUser(departID, userids);
+
+            return CurrentClient.RemoveUser(departID, userids);
         }
 
-        
+
     }
 }

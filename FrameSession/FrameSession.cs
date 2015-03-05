@@ -4,7 +4,7 @@ using System.Linq;
 using AuthorityEntity;
 using AuthorityClient;
 using Sharp.Common;
- 
+
 
 namespace FrameSession
 {
@@ -39,7 +39,7 @@ namespace FrameSession
 
         }
 
-        protected static SystemSessionLog log = null;
+        public static SystemSessionLog log = null;
         private static Session session;
         /// <summary>
         /// 当前会话实例
@@ -131,7 +131,7 @@ namespace FrameSession
         }
         public bool Login(string appcode, string loginUser, string password, out string errorMsg)
         {
-            errorMsg = string.Empty; 
+            errorMsg = string.Empty;
             if (loginUser.ToLower().Equals("root"))
             {
                 return RootLogin(loginUser, password);
@@ -180,7 +180,7 @@ namespace FrameSession
                         HasLogin = true;
                         LoginDateTime = ServerDateTime;
                         EntryIP = Utils.GetMachineIP();
-                        EntryStats = "在线"; 
+                        EntryStats = "在线";
                         CreateLoginLog();
                         client.Save(log);
                     }
@@ -224,6 +224,21 @@ namespace FrameSession
             log.UserName = CurrenterUser.Name;
             log.RoleID = CurrentRole.ID;
             log.RoleName = CurrentRole.Name;
+            if (ComanyInfo != null)
+            {
+                log.CompID = ComanyInfo.ID;
+                log.CompName = ComanyInfo.Name;
+            }
+            if (DepartInfo != null)
+            {
+                log.DepartID = DepartInfo.ID;
+                log.DepartName = DepartInfo.Name;
+            }
+            if (GroupInfo != null)
+            {
+                log.GroupID = GroupInfo.ID;
+                log.GroupName = GroupInfo.Name;
+            }
             log.EntryDate = ServerDateTime;
             log.EntryIP = Utils.GetMachineIP();
             log.EntryStats = "在线";

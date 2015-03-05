@@ -9,6 +9,7 @@ using AuthorityDataAccess;
 using System.ServiceModel.Activation;
 using FrameCommonEntity;
 using System.Data;
+using IAuthorityService;
 
 namespace AuthorityService
 {
