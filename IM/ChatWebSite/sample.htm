@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>客服端登录页面</title>
+    <!-- link href="css/core.css" rel="stylesheet" type="text/css"/ -->
+    <link href="css/TabPanel.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.6.4.min.js"></script>
+    <%--引用 SignalR 的參考--%>
+    <script src="/Scripts/jquery.signalR-1.1.1.min.js"></script>
+    <%--這邊滿重要的，這個參考是動態產生的，當我們build之後才會動態建立這個資料夾，且需引用在jQuery和signalR之後--%>
+    <script src="/signalr/hubs"></script>
+    <script type="text/javascript" src="src/Plugins/Fader.js"></script>
+    <script type="text/javascript" src="src/Plugins/TabPanel.js"></script>
+    <script type="text/javascript" src="src/Plugins/Math.uuid.js"></script>
+    <script type="text/javascript">
+        var tabpanel;
+        var jcTabs = "<div class='chat_wrap'><div class='chat_content' id='content_id'></div><div class='chat_seperator'></div><div class='chat_input'><textarea class='content'></textarea><input class='btn' type='button' refid='content_id' value='发送' onclick='send_message(this);'></input></div></div>";
+
+        $(document).ready(function () {
+            tabpanel = new TabPanel({
+                renderTo: 'tab',
+                width: 800,
+                height: 500,
+                //border:'none',  
+                active: 0,
+                //maxLength : 10,  
+                items: [
+            { id: 'main', title: '首页', html: jcTabs, closable: false }
+        ]
+            });
+            $(".chat_content").append("<div class='reply'><p>来自用户的请求,是否应答？</p><a href='javascript:void(0)' class='ok'>接收</a><a href='javascript:void(0)' class='reject'>拒绝</a></div><div class='item'><div class='title'>我：2014-09-04 12:00:00</div><div class='info'>您好！</div></div>");
+            //$(".chat_content").append("<div class='item'><div class='title'>客户：2014-09-04 12:00:00</div><div class='info'>您好！</div></div>");
+            //InitChat(1);
+            //append_message("您好","1","我:2014-09-04 11:12:00")
+        });
+
+        function InitChat(id) {
+            var html = jcTabs;
+            html = html.replace('content_id', id);
+            html = html.replace('content_id', id);
+            tabpanel.addTab({
+                id: id + "li",
+                title: "网页客户",
+                html: html,
+                closable: true,
+                disabled: false,
+                icon: "image/new.gif"
+            });
+
+            $("#"+id).append("<div class='reply'><p>来自网页用户的请求,是否应答？</p><a href='javascript:void(0)' class='ok'>接收</a><a href='javascript:void(0)' class='reject'>拒绝</a></div> ");
+        }
+
+        function append_message(mes, id, time) {
+            $("#" + id).append("<div class='item'><div class='title'>" + time + "</div><div class='info'>" + mes + "</div></div>");
+        }
+
+        function send_message(that) {
+            //alert($(that).attr("refid"));
+            var textarea = $(that).parent().find("textarea");
+            append_message(textarea.val(), $(that).attr("refid"), "我:2014-09-04 11:12:00");
+
+            chat.server.sendMessage($(that).attr("refid"), textarea.val());
+            textarea.val("");
+        }
+    </script>
+    <script type="text/javascript">
+        var userID = "";
+        var chat = $.connection.codingChatHub;
+        $(function () {
+            while (userID.length == 0) {
+                userID = window.prompt("請輸入使用者名稱");
+                if (!userID)
+                    userID = "";
+            }
+            //密語聊天
+            chat.client.sendMessage = function (message, uid,time) {
+                //alert(uid);
+                //alert(message);
+                //alert(uid);
+                append_message(message, uid, time);
+            }
+            chat.client.Connect = function (message, fromid) {
+                //alert(fromid);
+                InitChat(fromid);
+                //chat.server.sendMessage(to, $("#message").val());
+
+            }
+            //將連線打開
+            $.connection.hub.start().done(function () {
+                //當連線完成後，呼叫Server端的userConnected方法，並傳送使用者姓名給Server
+                chat.server.userConnected(userID);
+            });
+        })();
+    </script>
+</head>
+<body>
+    <div id="tab">
+    </div>
+</body>
+</html>
