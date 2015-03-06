@@ -50,9 +50,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PaintFramework">
-      <HintPath>..\dll\PaintFramework.dll</HintPath>
-    </Reference>
     <Reference Include="SkinForm">
       <HintPath>..\dll\SkinForm.dll</HintPath>
     </Reference>

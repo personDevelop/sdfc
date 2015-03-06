@@ -16,7 +16,7 @@ namespace IMInterface
 
         public MsgType MsgType { get; set; }
 
-        public DateTime SenderTime { get; set; }
+        public DateTime SendTime { get; set; }
         /// <summary>
         /// 消息标题，可以为空
         /// </summary>
@@ -42,6 +42,8 @@ namespace IMInterface
         /// 消息主体
         /// </summary>
         public string MsgBody { get; set; }
+
+        
     }
 
     public enum MsgSendType

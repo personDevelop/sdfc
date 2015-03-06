@@ -72,7 +72,7 @@ namespace IMInterface
                 msg.SenderID = Session.Instance.CurrenterUser.ID;
 
             }
-            msg.SenderTime = Session.Instance.ServerDateTime;
+            msg.SendTime = Session.Instance.ServerDateTime;
 
 
             #region 真正发送消息的代码

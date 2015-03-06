@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A6B4684-FE9E-4DD5-8A3D-9D6ECE990A35}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleIM.Business</RootNamespace>
+    <AssemblyName>SimpleIM.Business</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MarcF-networkcomms.net-dde59c425133\DLL\Net20\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChatContract.cs" />
+    <Compile Include="Do\DoOffLineMessage.cs" />
+    <Compile Include="Do\DoRcUsers.cs" />
+    <Compile Include="Do\DoRoleGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Do\DoUserGroup.cs" />
+    <Compile Include="Entity\OffLineMessage.cs" />
+    <Compile Include="Entity\RcUsers.cs" />
+    <Compile Include="Entity\RoleGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\UserGroup.cs" />
+    <Compile Include="ImageListContract.cs" />
+    <Compile Include="ImageWrapper.cs" />
+    <Compile Include="NewChatContract.cs" />
+    <Compile Include="P2P\SetUpP2PContract.cs" />
+    <Compile Include="P2P\UserIDEndPoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResMessage.cs" />
+    <Compile Include="UserContract.cs" />
+    <Compile Include="UserGroupIDContract.cs" />
+    <Compile Include="UserIDContract.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserListContract.cs" />
+    <Compile Include="UserLoginContract.cs" />
+    <Compile Include="UserPswContract.cs" />
+    <Compile Include="UserStateContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleIM.Data\SimpleIM.Data.csproj">
+      <Project>{DAE27D10-3C47-4152-AF6B-02E9A6C0402A}</Project>
+      <Name>SimpleIM.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

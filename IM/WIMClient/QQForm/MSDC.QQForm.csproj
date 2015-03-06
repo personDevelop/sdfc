@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9AEDB3C-574D-4C92-9129-0E98C40C2897}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleIMClient</RootNamespace>
+    <AssemblyName>SimpleIMClient</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Group.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HeadBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMForm.designer.cs">
+      <DependentUpon>IMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NameBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QueryCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Recently.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SeachResultPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SlidingBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SlidingBarContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserMessage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IMForm.resx">
+      <DependentUpon>IMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\GroupCollapse.png" />
+    <Content Include="Resources\GroupExpand.png" />
+    <Content Include="Resources\IM_Chat.png" />
+    <Content Include="Resources\IM_Email.png" />
+    <Content Include="Resources\IM_Message.png" />
+    <Content Include="Resources\IM_Speech.png" />
+    <Content Include="Resources\Min.png" />
+    <Content Include="Resources\Other.png" />
+    <None Include="Resources\QueryCtrl.png" />
+    <Content Include="Resources\Sound_Call.wav" />
+    <Content Include="Resources\Sound_Folder.wav" />
+    <Content Include="Resources\Sound_Global.wav" />
+    <Content Include="Resources\Sound_Msg.wav" />
+    <Content Include="Resources\Sound_System.wav" />
+    <Content Include="Resources\State_Away.png" />
+    <Content Include="Resources\State_Busy.png" />
+    <Content Include="Resources\State_Hide.png" />
+    <Content Include="Resources\State_Offline.png" />
+    <Content Include="Resources\State_Online.png" />
+    <Content Include="Resources\State_Quiet.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
