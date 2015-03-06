@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1231AF1D-3ED1-4389-AC38-CCE698358FC4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>chat</RootNamespace>
+    <AssemblyName>chat</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PaintFramework">
+      <HintPath>..\dll\PaintFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="SkinForm">
+      <HintPath>..\dll\SkinForm.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="chat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chat.Designer.cs">
+      <DependentUpon>chat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chatMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chatMain.Designer.cs">
+      <DependentUpon>chatMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassDept.cs" />
+    <Compile Include="ClassFormMain.cs" />
+    <Compile Include="ClassForms.cs" />
+    <Compile Include="ClassResponse.cs" />
+    <Compile Include="ClassRtfMsg.cs" />
+    <Compile Include="ClassSerializers.cs" />
+    <Compile Include="ClassTextMsg.cs" />
+    <Compile Include="ClassUserInfo.cs" />
+    <Compile Include="ClassUsers.cs" />
+    <Compile Include="EmotionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmotionForm.Designer.cs">
+      <DependentUpon>EmotionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="main.Designer.cs">
+      <DependentUpon>main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MsgType.cs" />
+    <Compile Include="MyGifPicture.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RichTextBoxPlus\RichEditOle.cs" />
+    <Compile Include="RichTextBoxPlus\RichTextBoxPlus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RichTextBoxPlus\WindowsMessages.cs" />
+    <Compile Include="SockUDP.cs" />
+    <Compile Include="TwinkleNotifyIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TwinkleNotifyIcon.Designer.cs">
+      <DependentUpon>TwinkleNotifyIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInformationForm.Designer.cs">
+      <DependentUpon>UserInformationForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="chat.resx">
+      <DependentUpon>chat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chatMain.resx">
+      <DependentUpon>chatMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmotionForm.resx">
+      <DependentUpon>EmotionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main.resx">
+      <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyGifPicture.resx">
+      <DependentUpon>MyGifPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RichTextBox.resx">
+      <DependentUpon>RichTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RichTextBoxPlus\RichTextBoxPlus.resx">
+      <DependentUpon>RichTextBoxPlus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TwinkleNotifyIcon.resx">
+      <DependentUpon>TwinkleNotifyIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInformationForm.resx">
+      <DependentUpon>UserInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1_100.gif" />
+    <None Include="Resources\234963-13122FZ23478.jpg" />
+    <Content Include="Resources\4.png" />
+    <Content Include="Resources\5.ico" />
+    <Content Include="Resources\AddBtn_down.png" />
+    <Content Include="Resources\afternoon.jpg" />
+    <Content Include="Resources\aio_head_normal.png" />
+    <Content Include="Resources\aio_quickbar_cut.png" />
+    <Content Include="Resources\aio_quickbar_face.png" />
+    <Content Include="Resources\aio_quickbar_flirtationface.png" />
+    <Content Include="Resources\aio_quickbar_font.png" />
+    <Content Include="Resources\aio_quickbar_inputassist.png" />
+    <Content Include="Resources\aio_quickbar_more.png" />
+    <Content Include="Resources\aio_quickbar_register.png" />
+    <Content Include="Resources\aio_quickbar_richface.png" />
+    <Content Include="Resources\aio_quickbar_screen1.png" />
+    <Content Include="Resources\aio_quickbar_screen2.png" />
+    <Content Include="Resources\aio_quickbar_sendpic.png" />
+    <Content Include="Resources\aio_quickbar_twitter.png" />
+    <Content Include="Resources\AIO_SetBtn_down.png" />
+    <Content Include="Resources\AIO_SetBtn_highlight.png" />
+    <Content Include="Resources\AIO_SetBtn_highlight_normal.png" />
+    <Content Include="Resources\AIO_SetBtn_normal.png" />
+    <Content Include="Resources\allbtn_down.png" />
+    <Content Include="Resources\allbtn_highlight.png" />
+    <Content Include="Resources\all_inside_bkg.png" />
+    <Content Include="Resources\All_logo32-xp.ico" />
+    <Content Include="Resources\AM_MenuICON.png" />
+    <Content Include="Resources\app_icon_16.png" />
+    <Content Include="Resources\AV_Accept.png" />
+    <Content Include="Resources\AV_New_Mic_Style3.png" />
+    <Content Include="Resources\AV_Refuse.png" />
+    <Content Include="Resources\AV_VDC_Bkg.png" />
+    <Content Include="Resources\away %282%29.png" />
+    <Content Include="Resources\b9m0_0.png" />
+    <Content Include="Resources\back.PNG" />
+    <Content Include="Resources\back2.PNG" />
+    <Content Include="Resources\BackPalace.png" />
+    <Content Include="Resources\BCF_Title32.ico" />
+    <Content Include="Resources\blue.jpg" />
+    <Content Include="Resources\Boot.png" />
+    <Content Include="Resources\Boot1.png" />
+    <Content Include="Resources\btn_close_disable.png" />
+    <Content Include="Resources\btn_close_down.png" />
+    <Content Include="Resources\btn_close_highlight.png" />
+    <Content Include="Resources\btn_max_down.png" />
+    <Content Include="Resources\btn_max_highlight.png" />
+    <Content Include="Resources\btn_max_normal.png" />
+    <Content Include="Resources\btn_mini_down.png" />
+    <Content Include="Resources\btn_mini_highlight.png" />
+    <Content Include="Resources\btn_mini_normal.png" />
+    <Content Include="Resources\btn_restore_down.png" />
+    <Content Include="Resources\btn_restore_highlight.png" />
+    <Content Include="Resources\btn_restore_normal.png" />
+    <Content Include="Resources\btn_set_hover.png" />
+    <Content Include="Resources\btn_set_normal.png" />
+    <Content Include="Resources\btn_set_press.png" />
+    <Content Include="Resources\btn_Skin_down.png" />
+    <Content Include="Resources\btn_Skin_highlight.png" />
+    <Content Include="Resources\btn_Skin_normal.png" />
+    <Content Include="Resources\busy %282%29.png" />
+    <Content Include="Resources\button_login_down.png" />
+    <Content Include="Resources\button_login_hover.png" />
+    <Content Include="Resources\button_login_normal.png" />
+    <Content Include="Resources\checkbox_hightlight.png" />
+    <Content Include="Resources\checkbox_normal.png" />
+    <Content Include="Resources\checkbox_pushed.png" />
+    <Content Include="Resources\checkbox_tick_highlight.png" />
+    <Content Include="Resources\checkbox_tick_normal.png" />
+    <Content Include="Resources\checkbox_tick_pushed.png" />
+    <Content Include="Resources\compic1335794816668_1653769.jpg" />
+    <Content Include="Resources\ContactTipsVASFlagExt_Camera.png" />
+    <Content Include="Resources\corner_back.png" />
+    <Content Include="Resources\corner_back_hover.png" />
+    <Content Include="Resources\corner_back_press.png" />
+    <Content Include="Resources\corner_left.png" />
+    <Content Include="Resources\corner_left_hover.png" />
+    <Content Include="Resources\corner_left_press.png" />
+    <Content Include="Resources\corner_right.png" />
+    <Content Include="Resources\corner_right_hover.png" />
+    <Content Include="Resources\corner_right_press.png" />
+    <Content Include="Resources\disk.png" />
+    <Content Include="Resources\duozhanghao1.png" />
+    <Content Include="Resources\duozhanghao2.png" />
+    <Content Include="Resources\duozhanghao3.png" />
+    <Content Include="Resources\duozhanghao4.png" />
+    <Content Include="Resources\duozhanghao5.png" />
+    <Content Include="Resources\duozhanghao6.png" />
+    <Content Include="Resources\frameBorderEffect_mouseDownDraw.png" />
+    <Content Include="Resources\frameBorderEffect_normalDraw.png" />
+    <Content Include="Resources\girl.png" />
+    <Content Include="Resources\group.ico" />
+    <Content Include="Resources\GVideoTurnOffVideo.png" />
+    <Content Include="Resources\GVideoTurnOnVideo.png" />
+    <Content Include="Resources\GVideo_Icon_48.png" />
+    <Content Include="Resources\GVShareVideoCloseSpk_MouseOver.png" />
+    <Content Include="Resources\GVShareVideoCloseSpk_Normal.png" />
+    <Content Include="Resources\HDVideoHangs.png" />
+    <Content Include="Resources\HDVideoPiP.png" />
+    <None Include="Resources\hello.jpg" />
+    <Content Include="Resources\icon_weibo.png" />
+    <Content Include="Resources\image.jpg" />
+    <Content Include="Resources\imgRjp.BackgroundImage.png" />
+    <Content Include="Resources\imoffline %282%29.png" />
+    <Content Include="Resources\imonline %282%29.png" />
+    <Content Include="Resources\inputbox.png" />
+    <Content Include="Resources\inputbox_hover.png" />
+    <Content Include="Resources\invisible %282%29.png" />
+    <Content Include="Resources\log.png" />
+    <Content Include="Resources\login_inputbtn_down.png" />
+    <Content Include="Resources\login_inputbtn_highlight.png" />
+    <Content Include="Resources\login_inputbtn_normal.png" />
+    <Content Include="Resources\menu_btn_highlight.png" />
+    <Content Include="Resources\menu_btn_normal.png" />
+    <Content Include="Resources\menu_check.png" />
+    <Content Include="Resources\micro.png" />
+    <Content Include="Resources\mima.png" />
+    <Content Include="Resources\mima_hover.png" />
+    <Content Include="Resources\mima_press.png" />
+    <Content Include="Resources\morning.jpg" />
+    <Content Include="Resources\mute %282%29.png" />
+    <Content Include="Resources\NetState_Point4.png" />
+    <Content Include="Resources\night.jpg" />
+    <None Include="Resources\None64.ico" />
+    <Content Include="Resources\noon.jpg" />
+    <Content Include="Resources\normal_group_40.png" />
+    <Content Include="Resources\Norml.png" />
+    <Content Include="Resources\pictureBox1.Image.png" />
+    <Content Include="Resources\Qme %282%29.png" />
+    <Content Include="Resources\QQAddBuddyNormal.png" />
+    <Content Include="Resources\remind_highlight.png" />
+    <Content Include="Resources\RemoteHelp.png" />
+    <Content Include="Resources\spin_normal_down.png" />
+    <Content Include="Resources\texture.png" />
+    <Content Include="Resources\texture2.png" />
+    <Content Include="Resources\ToolbarBtnDown.png" />
+    <Content Include="Resources\ToolbarBtnNormal.png" />
+    <Content Include="Resources\trad_group.png" />
+    <Content Include="Resources\VASFlagEnable.png" />
+    <Content Include="Resources\VideoWaitToAnswer.png" />
+    <Content Include="Resources\win_icon_16.ico" />
+    <Content Include="Resources\zhuce.png" />
+    <Content Include="Resources\zhuce_hover.png" />
+    <Content Include="Resources\zhuce_press.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\chatclient\chatclient.csproj">
+      <Project>{C3BB3437-BC5C-478F-BFBB-891EEBCD0E8A}</Project>
+      <Name>chatclient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
