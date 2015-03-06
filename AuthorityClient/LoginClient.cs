@@ -35,13 +35,7 @@ namespace AuthorityClient
 
 
         }
-        public UserInfo Login(string userno, string pwd, string ip, string portName, out string error)
-        {
-
-            return CurrentClient.LoginIM(userno, pwd, ip, portName, out error);
-
-
-        }
+      
         public UserInfo Login(string appcode, string userno)
         {
 
@@ -76,9 +70,9 @@ namespace AuthorityClient
 
         }
 
-        public UserInfo Login(string username, string userpwd, string Ip, string p, out string groupname, out string error)
+        public UserInfo Login(string username, string userpwd, string Ip, string port, out string groupname, out string error)
         {
-            throw new NotImplementedException();
+            return CurrentClient.LoginIM(username, userpwd, Ip, port, out   groupname, out   error);
         }
     }
 }

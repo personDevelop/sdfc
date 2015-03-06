@@ -308,7 +308,6 @@ namespace AuthorityDataAccess
                 UserInfo._.IsWebPerson == true
                 && SystemSessionLog._.PortName != null
                 && SystemSessionLog._.OutDate == null)
-
                 .ToDataTable();
         }
     }

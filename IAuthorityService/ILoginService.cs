@@ -13,14 +13,14 @@ namespace IAuthorityService
     public interface ILoginService
     {
         [OperationContract]
-        UserInfo Login(string appcode, string userno );
-         [OperationContract]
+        UserInfo Login(string appcode, string userno);
+        [OperationContract]
         System.Data.DataTable GetRoleInfo(string userID);
-         [OperationContract]
+        [OperationContract]
         int Save(SystemSessionLog log);
-         [OperationContract]
+        [OperationContract]
         DateTime GetDateTime();
         [OperationContract]
-         UserInfo LoginIM(string userno, string pwd, string ip, string portName, out string error);
+        UserInfo LoginIM(string username, string userpwd, string Ip, string port, out string groupname, out string error);
     }
 }
