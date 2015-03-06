@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FrameBaseClient">
+      <HintPath>..\..\refdll\FrameBaseClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharp.Common">
+      <HintPath>..\..\refdll\Sharp.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

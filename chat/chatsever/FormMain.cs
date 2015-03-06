@@ -7,84 +7,84 @@ using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace chat 
+namespace chat
 {
-	/// <summary>
-	/// Form1 的摘要说明。
-	/// </summary>
-	public class FormMain : System.Windows.Forms.Form
-	{
+    /// <summary>
+    /// Form1 的摘要说明。
+    /// </summary>
+    public class FormMain : System.Windows.Forms.Form
+    {
         private SockUDP sockUDP1;
-		private System.Windows.Forms.MainMenu mainMenu1;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.ToolBar toolBar1;
-		private System.Windows.Forms.ImageList imageList1;
-		private System.Windows.Forms.ToolBarButton toolBarButton1;
-		private System.Windows.Forms.MenuItem menuItemControl;
-		private System.Windows.Forms.MenuItem menuItemControlServer;
-		private System.Windows.Forms.MenuItem menuItemControlExit;
-		private System.Windows.Forms.StatusBar statusBar1;
-		internal System.Windows.Forms.TreeView TreeView1;
-		internal System.Windows.Forms.Splitter Splitter1;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		internal System.Windows.Forms.Timer TimerCheckOnlineSta;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
-		internal System.Windows.Forms.ListView LV_OnlineUser;
-		internal System.Windows.Forms.ColumnHeader ID;
-		internal System.Windows.Forms.ColumnHeader IP地址;
-		internal System.Windows.Forms.ColumnHeader 端口;
-		internal System.Windows.Forms.ColumnHeader 状态;
-		internal System.Windows.Forms.ColumnHeader 部门;
-		internal System.Windows.Forms.ColumnHeader 姓名;
-		private System.Windows.Forms.ColumnHeader Version;
-		internal System.Windows.Forms.ListView LV_SysUser;
-		internal System.Windows.Forms.ColumnHeader ColumnHeader1;
-		internal System.Windows.Forms.ColumnHeader ColumnHeader2;
-		internal System.Windows.Forms.ColumnHeader ColumnHeader3;
-		internal System.Windows.Forms.ColumnHeader ColumnHeader4;
-		internal System.Windows.Forms.ColumnHeader ColumnHeader5;
-		internal System.Windows.Forms.ColumnHeader ColumnHeader6;
-		private System.Windows.Forms.ColumnHeader columnHeader7;
-		private System.Windows.Forms.NotifyIcon notifyIcon1;
-		private System.ComponentModel.IContainer components;
+        private System.Windows.Forms.MainMenu mainMenu1;
+        private System.Windows.Forms.MenuItem menuItem3;
+        private System.Windows.Forms.ToolBar toolBar1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolBarButton toolBarButton1;
+        private System.Windows.Forms.MenuItem menuItemControl;
+        private System.Windows.Forms.MenuItem menuItemControlServer;
+        private System.Windows.Forms.MenuItem menuItemControlExit;
+        private System.Windows.Forms.StatusBar statusBar1;
+        internal System.Windows.Forms.TreeView TreeView1;
+        internal System.Windows.Forms.Splitter Splitter1;
+        private System.Windows.Forms.MenuItem menuItem1;
+        private System.Windows.Forms.MenuItem menuItem2;
+        internal System.Windows.Forms.Timer TimerCheckOnlineSta;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        internal System.Windows.Forms.ListView LV_OnlineUser;
+        internal System.Windows.Forms.ColumnHeader ID;
+        internal System.Windows.Forms.ColumnHeader IP地址;
+        internal System.Windows.Forms.ColumnHeader 端口;
+        internal System.Windows.Forms.ColumnHeader 状态;
+        internal System.Windows.Forms.ColumnHeader 部门;
+        internal System.Windows.Forms.ColumnHeader 姓名;
+        private System.Windows.Forms.ColumnHeader Version;
+        internal System.Windows.Forms.ListView LV_SysUser;
+        internal System.Windows.Forms.ColumnHeader ColumnHeader1;
+        internal System.Windows.Forms.ColumnHeader ColumnHeader2;
+        internal System.Windows.Forms.ColumnHeader ColumnHeader3;
+        internal System.Windows.Forms.ColumnHeader ColumnHeader4;
+        internal System.Windows.Forms.ColumnHeader ColumnHeader5;
+        internal System.Windows.Forms.ColumnHeader ColumnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.ComponentModel.IContainer components;
 
-		public FormMain()
-		{
-			//
-			// Windows 窗体设计器支持所必需的
-			//
-			InitializeComponent();
-			//
-			// TODO: 在 InitializeComponent 调用后添加任何构造函数代码
-			//
-		}
+        public FormMain()
+        {
+            //
+            // Windows 窗体设计器支持所必需的
+            //
+            InitializeComponent();
+            //
+            // TODO: 在 InitializeComponent 调用后添加任何构造函数代码
+            //
+        }
 
-		/// <summary>
-		/// 清理所有正在使用的资源。
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if (components != null) 
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows 窗体设计器生成的代码
-		/// <summary>
-		/// 设计器支持所需的方法 - 不要使用代码编辑器修改
-		/// 此方法的内容。
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows 窗体设计器生成的代码
+        /// <summary>
+        /// 设计器支持所需的方法 - 不要使用代码编辑器修改
+        /// 此方法的内容。
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
@@ -415,43 +415,44 @@ namespace chat
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		/// <summary>
-		/// 应用程序的主入口点。
-		/// </summary>
-		[STAThread]
-		static void Main() 
-		{
-			Application.Run(new FormMain());
-		}
+        /// <summary>
+        /// 应用程序的主入口点。
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Sharp.Common.CacheContainer.AddCache("IsLocation", true);
+            Application.Run(new FormMain());
+        }
 
-		private void Form1_Load(object sender, System.EventArgs e)
-		{
-// 	          GetAllUserInfo();
-		}
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+            // 	          GetAllUserInfo();
+        }
 
-		private void Server(bool IsServer)//开始或停止服务
-		{
-			if(IsServer)
-				this.sockUDP1.Listen(3211);
-			else
-				this.sockUDP1.CloseSock();
-		}
+        private void Server(bool IsServer)//开始或停止服务
+        {
+            if (IsServer)
+                this.sockUDP1.Listen(3211);
+            else
+                this.sockUDP1.CloseSock();
+        }
 
-		private void sockUDP1_DataArrival(byte[] Data, System.Net.IPAddress Ip, int Port)//当有数据到达后调用新的处理进程
-		{
-			DataArrivaldelegate outdelegate = new DataArrivaldelegate( DataArrival); 
-			this.BeginInvoke (outdelegate, new object[]{ Data,Ip,Port}); 
-		}
+        private void sockUDP1_DataArrival(byte[] Data, System.Net.IPAddress Ip, int Port)//当有数据到达后调用新的处理进程
+        {
+            DataArrivaldelegate outdelegate = new DataArrivaldelegate(DataArrival);
+            this.BeginInvoke(outdelegate, new object[] { Data, Ip, Port });
+        }
 
-		private delegate void DataArrivaldelegate(byte[] Data, System.Net.IPAddress Ip, int Port); 
+        private delegate void DataArrivaldelegate(byte[] Data, System.Net.IPAddress Ip, int Port);
 
-        private void  verifyUser(ClassMsg msg,System.Net.IPAddress Ip, int Port)
+        private void verifyUser(ClassMsg msg, System.Net.IPAddress Ip, int Port)
         {
             ClassResponse user = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(msg.MsgContent))) as ClassResponse;
-            user = UserVerify.verifyUser(user.username, user.userpwd, Ip.ToString()  ,Port);
+            user = UserVerify.verifyUser(user.username, user.userpwd, Ip.ToString(), Port);
             List<ClassDept> depts = new List<ClassDept>();
             depts = UserVerify.getUserDept();
             if (user.userstate == 1)
@@ -459,387 +460,387 @@ namespace chat
                 this.SendMsgToOne(Ip, Port, new ClassMsg(1, "", new ClassSerializers().SerializeBinary(depts).ToArray()));//告诉用户在线
             }
             this.SendMsgToOne(Ip, Port, new ClassMsg(2, "", new ClassSerializers().SerializeBinary(user).ToArray()));//告诉用户在线
- 
-          
 
-          
+
+
+
         }
-        
-		private void DataArrival(byte[] Data, System.Net.IPAddress Ip, int Port) //当有数据到达后的处理进程
-		{ 
-			try
-			{
-               // MessageBox.Show("1");
 
-                chat.ClassMsg msg =  new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(Data))) as chat.ClassMsg;
-				switch(msg.MsgInfoClass)
-				{
+        private void DataArrival(byte[] Data, System.Net.IPAddress Ip, int Port) //当有数据到达后的处理进程
+        {
+            try
+            {
+                // MessageBox.Show("1");
+
+                chat.ClassMsg msg = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(Data))) as chat.ClassMsg;
+                switch (msg.MsgInfoClass)
+                {
 
                     case 0://身份验证
                         verifyUser(msg, Ip, Port);
                         break;
-					case 1://处理用户登录过程
-						NewUserLogin(msg,Ip,Port);
-						break;
-					case 2://用户询问自己是否在线,并更改其在线状态
-						updateUserState(msg,Ip,  Port);//更新用户状态信息
-						break;
-				}
-			}
-			catch(Exception e)
-			{}
+                    case 1://处理用户登录过程
+                        NewUserLogin(msg, Ip, Port);
+                        break;
+                    case 2://用户询问自己是否在线,并更改其在线状态
+                        updateUserState(msg, Ip, Port);//更新用户状态信息
+                        break;
+                }
+            }
+            catch (Exception e)
+            { }
 
-		}
+        }
 
-		private void updateUserState(chat.ClassMsg msg, System.Net.IPAddress Ip, int Port)//更新用户状态信息
-		{
-			try
-			{
-				//this.textBox1.AppendText ("用户"+ msg.ID +"状态更新\n");
+        private void updateUserState(chat.ClassMsg msg, System.Net.IPAddress Ip, int Port)//更新用户状态信息
+        {
+            try
+            {
+                //this.textBox1.AppendText ("用户"+ msg.ID +"状态更新\n");
 
-				string state=System.Text.Encoding.Unicode.GetString((msg.MsgContent ));
+                string state = System.Text.Encoding.Unicode.GetString((msg.MsgContent));
 
-				System.Windows.Forms.ListViewItem item=FindUser(msg.ID ,this.LV_OnlineUser );
-				if(item!=null)
-				{
-					item.SubItems[3].Text =state;
-                    if (state == "0") 
+                System.Windows.Forms.ListViewItem item = FindUser(msg.ID, this.LV_OnlineUser);
+                if (item != null)
+                {
+                    item.SubItems[3].Text = state;
+                    if (state == "0")
                     {
                         //item
                     }
-						//this.LV_OnlineUser.Items.Remove(item);
-				}
+                    //this.LV_OnlineUser.Items.Remove(item);
+                }
 
-				item=FindUser(msg.ID ,this.LV_SysUser  );
-				if(item!=null)
-				{
-					item.SubItems[3].Text =state;
-					if(state=="0" && item.SubItems[4].Text =="10") 
-						this.LV_SysUser.Items.Remove(item);
-				}
+                item = FindUser(msg.ID, this.LV_SysUser);
+                if (item != null)
+                {
+                    item.SubItems[3].Text = state;
+                    if (state == "0" && item.SubItems[4].Text == "10")
+                        this.LV_SysUser.Items.Remove(item);
+                }
 
-				this.SendMsgToOne(Ip,Port,new chat.ClassMsg( 2,"",null));//告诉用户在线
-			}
-			catch(Exception e){}
-		}
+                this.SendMsgToOne(Ip, Port, new chat.ClassMsg(2, "", null));//告诉用户在线
+            }
+            catch (Exception e) { }
+        }
 
-		private void NewUserLogin(chat.ClassMsg msg, System.Net.IPAddress Ip, int Port)//处理用户登录过程
-		{
-			try
-			{
-				//			this.textBox1.AppendText ("用户"+ msg.ID +"登录\n");
+        private void NewUserLogin(chat.ClassMsg msg, System.Net.IPAddress Ip, int Port)//处理用户登录过程
+        {
+            try
+            {
+                //			this.textBox1.AppendText ("用户"+ msg.ID +"登录\n");
 
-				ClassUserInfo selfInfo=new ClassUserInfo();//准备添加新用户的资料
-				selfInfo.ID=msg.ID;
-				selfInfo.UserName =msg.ID;
-				selfInfo.IP=Ip;
-				selfInfo.Port=Port;
-				selfInfo.State =1;
-				selfInfo.Dep =10;
-				selfInfo.AssemblyVersion=System.Text.Encoding.Unicode.GetString(msg.MsgContent);
+                ClassUserInfo selfInfo = new ClassUserInfo();//准备添加新用户的资料
+                selfInfo.ID = msg.ID;
+                selfInfo.UserName = msg.ID;
+                selfInfo.IP = Ip;
+                selfInfo.Port = Port;
+                selfInfo.State = 1;
+                selfInfo.Dep = 10;
+                selfInfo.AssemblyVersion = System.Text.Encoding.Unicode.GetString(msg.MsgContent);
 
-				System.Windows.Forms.ListViewItem item=FindUser(msg.ID ,this.LV_SysUser);
-				if(item!=null)//如果此用户是sysuser，那么更改其上线信息，并把他的所有联系人的信息发送给它
-				{
-					item.SubItems[1].Text=Ip.ToString();
-					item.SubItems[2].Text=Port.ToString();
-					item.SubItems[3].Text="1";//1表示用户在线状态为联机
-					item.SubItems[6].Text =selfInfo.AssemblyVersion;//更新其版本号
-					selfInfo.UserName =item.SubItems[5].Text;
-					selfInfo.Dep =Convert.ToInt32(item.SubItems[4].Text);
-					//在在线用户表中查找此用户是否存在，如果不存在则添加，如果存在就不做任何操作
-					System.Windows.Forms.ListViewItem items=FindUser(msg.ID ,this.LV_OnlineUser );
-					if(items!=null)//如果用户不在在线用户列表里面，则添加
-					{
-						items.SubItems[1].Text=Ip.ToString();
-						items.SubItems[2].Text=Port.ToString();
-						items.SubItems[3].Text="1";//1表示用户在线状态为联机
-						items.SubItems[6].Text =selfInfo.AssemblyVersion;//更新其版本号
-					}
-					else//如果是用户不在在线列表中，则添加
-					{
-						System.Windows.Forms.ListViewItem NewItem=new ListViewItem();
-						NewItem=item.Clone() as ListViewItem;
-						this.LV_OnlineUser.Items.Add(NewItem);
-					}
+                System.Windows.Forms.ListViewItem item = FindUser(msg.ID, this.LV_SysUser);
+                if (item != null)//如果此用户是sysuser，那么更改其上线信息，并把他的所有联系人的信息发送给它
+                {
+                    item.SubItems[1].Text = Ip.ToString();
+                    item.SubItems[2].Text = Port.ToString();
+                    item.SubItems[3].Text = "1";//1表示用户在线状态为联机
+                    item.SubItems[6].Text = selfInfo.AssemblyVersion;//更新其版本号
+                    selfInfo.UserName = item.SubItems[5].Text;
+                    selfInfo.Dep = Convert.ToInt32(item.SubItems[4].Text);
+                    //在在线用户表中查找此用户是否存在，如果不存在则添加，如果存在就不做任何操作
+                    System.Windows.Forms.ListViewItem items = FindUser(msg.ID, this.LV_OnlineUser);
+                    if (items != null)//如果用户不在在线用户列表里面，则添加
+                    {
+                        items.SubItems[1].Text = Ip.ToString();
+                        items.SubItems[2].Text = Port.ToString();
+                        items.SubItems[3].Text = "1";//1表示用户在线状态为联机
+                        items.SubItems[6].Text = selfInfo.AssemblyVersion;//更新其版本号
+                    }
+                    else//如果是用户不在在线列表中，则添加
+                    {
+                        System.Windows.Forms.ListViewItem NewItem = new ListViewItem();
+                        NewItem = item.Clone() as ListViewItem;
+                        this.LV_OnlineUser.Items.Add(NewItem);
+                    }
 
-				}
-				else//如果此用户不是sysuser，那么将其添加入系统用户列表与在线用户列表并更改其上线信息，并把他的所有联系人的信息发送给它
-				{
-					System.Windows.Forms.ListViewItem NewItem=new ListViewItem();
-					NewItem.Text=msg.ID;
-					NewItem.SubItems.Add(Ip.ToString());
-					NewItem.SubItems.Add(Port.ToString());
-					NewItem.SubItems.Add("1");//1表示用户在线状态为联机
-					NewItem.SubItems.Add("10");//10表示用户为未知组用户
-					NewItem.SubItems.Add(msg.ID);// 未知组用户的姓名均为ID
-					NewItem.SubItems.Add(selfInfo.AssemblyVersion);//表示用户软件版本号
-					this.LV_SysUser.Items.Add (NewItem);				  
-					this.LV_OnlineUser.Items.Add(NewItem.Clone() as ListViewItem);
-				}
-            
-				//发送消息告诉用户已经登录到服务器,并将其服务器上的个人资料发回
+                }
+                else//如果此用户不是sysuser，那么将其添加入系统用户列表与在线用户列表并更改其上线信息，并把他的所有联系人的信息发送给它
+                {
+                    System.Windows.Forms.ListViewItem NewItem = new ListViewItem();
+                    NewItem.Text = msg.ID;
+                    NewItem.SubItems.Add(Ip.ToString());
+                    NewItem.SubItems.Add(Port.ToString());
+                    NewItem.SubItems.Add("1");//1表示用户在线状态为联机
+                    NewItem.SubItems.Add("10");//10表示用户为未知组用户
+                    NewItem.SubItems.Add(msg.ID);// 未知组用户的姓名均为ID
+                    NewItem.SubItems.Add(selfInfo.AssemblyVersion);//表示用户软件版本号
+                    this.LV_SysUser.Items.Add(NewItem);
+                    this.LV_OnlineUser.Items.Add(NewItem.Clone() as ListViewItem);
+                }
+
+                //发送消息告诉用户已经登录到服务器,并将其服务器上的个人资料发回
                 chat.ClassMsg ToOneMsg = new chat.ClassMsg(1, "", new ClassSerializers().SerializeBinary(selfInfo).ToArray());
-				this.SendMsgToOne(Ip,Port,ToOneMsg);
-				//			this.textBox1.AppendText ("将其服务器上的个人资料发回"+ Ip.ToString() + Port.ToString() +msg.ID +"\n");
-            
-				System.Threading.Thread.Sleep(100);
-			
-				//发回此用户所有联系人的资料
-				ClassUsers allUsers=Users();//返回所有用户联系人的资料
-				System.Threading.Thread.Sleep(100);
+                this.SendMsgToOne(Ip, Port, ToOneMsg);
+                //			this.textBox1.AppendText ("将其服务器上的个人资料发回"+ Ip.ToString() + Port.ToString() +msg.ID +"\n");
+
+                System.Threading.Thread.Sleep(100);
+
+                //发回此用户所有联系人的资料
+                ClassUsers allUsers = Users();//返回所有用户联系人的资料
+                System.Threading.Thread.Sleep(100);
                 ToOneMsg = new chat.ClassMsg(4, "", new ClassSerializers().SerializeBinary(allUsers).ToArray());
-				this.SendMsgToOne(Ip,Port,ToOneMsg);
-				//			this.textBox1.AppendText ("返回所有用户联系人的资料"+ msg.ID +"\n");
-             
-				//将登录用户资料发送给其全部联系人，告之用户登录
-				System.Threading.Thread.Sleep(100);
+                this.SendMsgToOne(Ip, Port, ToOneMsg);
+                //			this.textBox1.AppendText ("返回所有用户联系人的资料"+ msg.ID +"\n");
+
+                //将登录用户资料发送给其全部联系人，告之用户登录
+                System.Threading.Thread.Sleep(100);
                 ToOneMsg = new chat.ClassMsg(3, "", new ClassSerializers().SerializeBinary(selfInfo).ToArray());
-				this.SendMsgToAll( ToOneMsg);
-				//			this.textBox1.AppendText ("告之用户登录"+ msg.ID +"\n");
-			}
-			catch(Exception e){}
+                this.SendMsgToAll(ToOneMsg);
+                //			this.textBox1.AppendText ("告之用户登录"+ msg.ID +"\n");
+            }
+            catch (Exception e) { }
 
-		}
+        }
 
-		private ClassUsers Users()//返回所有用户联系人的资料
-		{
-			try
-			{
-				ClassUsers  allUsers=new ClassUsers();
-				foreach(System.Windows.Forms.ListViewItem item in this.LV_SysUser.Items )
-				{
-					ClassUserInfo userInfo=new ClassUserInfo();
-					userInfo.ID=item.SubItems[0].Text;
-					userInfo.IP=System.Net.IPAddress.Parse(item.SubItems[1].Text);
-					userInfo.Port =Convert.ToInt32(item.SubItems[2].Text) ;
-					userInfo.State  =Convert.ToInt32(item.SubItems[3].Text) ;
-					userInfo.Dep  =Convert.ToInt32(item.SubItems[4].Text) ;
-					userInfo.UserName = item.SubItems[5].Text;
-					userInfo.AssemblyVersion= item.SubItems[6].Text;
-					allUsers.add(userInfo);
-				}
-				return allUsers;
-			}
-			catch(Exception e){return null;}
-		}
-		
-		private System.Windows.Forms.ListViewItem FindUser(string UserID,System.Windows.Forms.ListView LV)//在相应的ListView里查找用户
-		{
-			try
-			{
-				foreach(System.Windows.Forms.ListViewItem item in  LV.Items)
-					if(item.Text.ToLower()==UserID.ToLower())//找到用户，说明是系统用户,返回它的值
-						return item;
-				return null;
-			}
-			catch(Exception e){return null;}
-		}
+        private ClassUsers Users()//返回所有用户联系人的资料
+        {
+            try
+            {
+                ClassUsers allUsers = new ClassUsers();
+                foreach (System.Windows.Forms.ListViewItem item in this.LV_SysUser.Items)
+                {
+                    ClassUserInfo userInfo = new ClassUserInfo();
+                    userInfo.ID = item.SubItems[0].Text;
+                    userInfo.IP = System.Net.IPAddress.Parse(item.SubItems[1].Text);
+                    userInfo.Port = Convert.ToInt32(item.SubItems[2].Text);
+                    userInfo.State = Convert.ToInt32(item.SubItems[3].Text);
+                    userInfo.Dep = Convert.ToInt32(item.SubItems[4].Text);
+                    userInfo.UserName = item.SubItems[5].Text;
+                    userInfo.AssemblyVersion = item.SubItems[6].Text;
+                    allUsers.add(userInfo);
+                }
+                return allUsers;
+            }
+            catch (Exception e) { return null; }
+        }
 
-		private void menuItemControlExit_Click(object sender, System.EventArgs e)
-		{
-			FormMain_Closing(sender,null);
-		}
+        private System.Windows.Forms.ListViewItem FindUser(string UserID, System.Windows.Forms.ListView LV)//在相应的ListView里查找用户
+        {
+            try
+            {
+                foreach (System.Windows.Forms.ListViewItem item in LV.Items)
+                    if (item.Text.ToLower() == UserID.ToLower())//找到用户，说明是系统用户,返回它的值
+                        return item;
+                return null;
+            }
+            catch (Exception e) { return null; }
+        }
 
-		private void FormMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			if(menuItemControlServer.Text=="停止服务(&S)")
-			if(MessageBox.Show("确定要关闭服务并退出程序吗？","提示",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question) ==System.Windows.Forms.DialogResult.Yes)
-			{
-				this.sockUDP1.CloseSock();
-				Application.Exit();
-			}
-		}
+        private void menuItemControlExit_Click(object sender, System.EventArgs e)
+        {
+            FormMain_Closing(sender, null);
+        }
 
-		private void menuItemControlServer_Click(object sender, System.EventArgs e)
-		{
-			if (menuItemControlServer.Text=="开始服务(&B)")
-			{
-				menuItemControlServer.Text="停止服务(&S)";
-				Server(true);//开始服务
-				this.statusBar1.Text="服务已经启动";
-			}
-			else
-			{
-				menuItemControlServer.Text="开始服务(&B)";
-				Server(false);//停止服务
-				this.statusBar1.Text="服务已经关闭";
-			}
+        private void FormMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (menuItemControlServer.Text == "停止服务(&S)")
+                if (MessageBox.Show("确定要关闭服务并退出程序吗？", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.sockUDP1.CloseSock();
+                    Application.Exit();
+                }
+        }
 
-		}
+        private void menuItemControlServer_Click(object sender, System.EventArgs e)
+        {
+            if (menuItemControlServer.Text == "开始服务(&B)")
+            {
+                menuItemControlServer.Text = "停止服务(&S)";
+                Server(true);//开始服务
+                this.statusBar1.Text = "服务已经启动";
+            }
+            else
+            {
+                menuItemControlServer.Text = "开始服务(&B)";
+                Server(false);//停止服务
+                this.statusBar1.Text = "服务已经关闭";
+            }
 
-		private void TimerCheckOnlineSta_Tick(object sender, System.EventArgs e)
-		{
-			CheckOnlineSta();//系统每隔一分钟检查一次用户在线状态，不在线的则删除并通知其联系人
-		}
+        }
 
-		private void  CheckOnlineSta()//系统每隔一分钟检查一次用户在线状态，不在线的则删除并通知其联系人
-		{
-			try
-			{
-				foreach(System.Windows.Forms.ListViewItem item in this.LV_OnlineUser.Items)
-				{
-					if(item.SubItems[3].Text=="0")//如果用户已经脱机，则删除并通知其全部联系人
-					{
-						System.Windows.Forms.ListViewItem TempItem=FindUser(item.Text,this.LV_SysUser);//在系统用户表中查找此用户的信息
-						if(TempItem!=null)
-						{
-							if(item.SubItems[4].Text=="10")//如果部门为未知，则在系统用户表中删除此用户
-								this.LV_SysUser.Items.Remove(TempItem);
-							else//如果是本系统用户则更新状态
-								TempItem.SubItems[3].Text="0";//更新系统用户的在线状态
-						}
+        private void TimerCheckOnlineSta_Tick(object sender, System.EventArgs e)
+        {
+            CheckOnlineSta();//系统每隔一分钟检查一次用户在线状态，不在线的则删除并通知其联系人
+        }
+
+        private void CheckOnlineSta()//系统每隔一分钟检查一次用户在线状态，不在线的则删除并通知其联系人
+        {
+            try
+            {
+                foreach (System.Windows.Forms.ListViewItem item in this.LV_OnlineUser.Items)
+                {
+                    if (item.SubItems[3].Text == "0")//如果用户已经脱机，则删除并通知其全部联系人
+                    {
+                        System.Windows.Forms.ListViewItem TempItem = FindUser(item.Text, this.LV_SysUser);//在系统用户表中查找此用户的信息
+                        if (TempItem != null)
+                        {
+                            if (item.SubItems[4].Text == "10")//如果部门为未知，则在系统用户表中删除此用户
+                                this.LV_SysUser.Items.Remove(TempItem);
+                            else//如果是本系统用户则更新状态
+                                TempItem.SubItems[3].Text = "0";//更新系统用户的在线状态
+                        }
                         chat.ClassMsg msg = new chat.ClassMsg(0, item.Text, null);
-                       // MessageBox.Show(item.Text);
-						SendMsgToAll(msg);//发送消息给所有此用户的联系人,告之用户掉线
-						this.LV_OnlineUser.Items.Remove(item);//在在线用户列表中删除此用户信息
-					} 
-					else
-					{
-						//item.SubItems[3].Text ="0";//假设此用户已经掉线
-					}
-				}
-			}
-			catch(Exception e){}
+                        // MessageBox.Show(item.Text);
+                        SendMsgToAll(msg);//发送消息给所有此用户的联系人,告之用户掉线
+                        this.LV_OnlineUser.Items.Remove(item);//在在线用户列表中删除此用户信息
+                    }
+                    else
+                    {
+                        //item.SubItems[3].Text ="0";//假设此用户已经掉线
+                    }
+                }
+            }
+            catch (Exception e) { }
 
-		}
+        }
 
-		private void SendMsgToOne(System.Net.IPAddress ip,int port,chat.ClassMsg msg)//发送消息给一个用户
-		{
-			try
-			{
-				System.IO.MemoryStream stream= new ClassSerializers().SerializeBinary(msg);
-				SockUDP udp=new SockUDP();
-				udp.Send(ip,port,stream.ToArray());
-			}
-			catch(Exception e){}
+        private void SendMsgToOne(System.Net.IPAddress ip, int port, chat.ClassMsg msg)//发送消息给一个用户
+        {
+            try
+            {
+                System.IO.MemoryStream stream = new ClassSerializers().SerializeBinary(msg);
+                SockUDP udp = new SockUDP();
+                udp.Send(ip, port, stream.ToArray());
+            }
+            catch (Exception e) { }
 
-		}
+        }
 
         private void SendMsgToAll(chat.ClassMsg msg)//发送消息给所有用户
-		{
-			try
-			{
-				foreach(System.Windows.Forms.ListViewItem item in this.LV_OnlineUser.Items)
-				{
-					System.Net.IPAddress ip=System.Net.IPAddress.Parse(item.SubItems[1].Text);
-					int port=Convert.ToInt32 (item.SubItems[2].Text);
-					System.IO.MemoryStream stream= new ClassSerializers().SerializeBinary(msg);
-					SockUDP udp=new SockUDP();
-					udp.Send(ip,port,stream.ToArray());
-				}
-			}
-			catch(Exception e){}
+        {
+            try
+            {
+                foreach (System.Windows.Forms.ListViewItem item in this.LV_OnlineUser.Items)
+                {
+                    System.Net.IPAddress ip = System.Net.IPAddress.Parse(item.SubItems[1].Text);
+                    int port = Convert.ToInt32(item.SubItems[2].Text);
+                    System.IO.MemoryStream stream = new ClassSerializers().SerializeBinary(msg);
+                    SockUDP udp = new SockUDP();
+                    udp.Send(ip, port, stream.ToArray());
+                }
+            }
+            catch (Exception e) { }
 
-		}
+        }
 
-		private void GetAllUserInfo() //读取数据库中所有用户数据到列表中
-		{ 
-			try
-			{
-				System.Data.OleDb.OleDbDataReader dr;
-				string  SQLstr= "select Sys_Users.UserName as computer,Mp_EmpLoyee.DepID as Dept,Mp_EmpLoyee.EmpName as UserName from Sys_Users,Mp_EmpLoyee where Mp_EmpLoyee.EmpID=Sys_Users.EmpID and (Sys_Users.IsWork is null or Sys_Users.IsWork>0)";
-				dr=new ClassOptionData().ExSQLReDr(SQLstr);
-				while(dr.Read())
-				{
-					AllOneUserInfoToLV(LV_SysUser, Convert.ToString(dr["computer"]), "127.0.0.1", "0", "0",Convert.ToString(dr["dept"]), Convert.ToString(dr["UserName"]));
-				}
-				dr.Close();
+        private void GetAllUserInfo() //读取数据库中所有用户数据到列表中
+        {
+            try
+            {
+                System.Data.OleDb.OleDbDataReader dr;
+                string SQLstr = "select Sys_Users.UserName as computer,Mp_EmpLoyee.DepID as Dept,Mp_EmpLoyee.EmpName as UserName from Sys_Users,Mp_EmpLoyee where Mp_EmpLoyee.EmpID=Sys_Users.EmpID and (Sys_Users.IsWork is null or Sys_Users.IsWork>0)";
+                dr = new ClassOptionData().ExSQLReDr(SQLstr);
+                while (dr.Read())
+                {
+                    AllOneUserInfoToLV(LV_SysUser, Convert.ToString(dr["computer"]), "127.0.0.1", "0", "0", Convert.ToString(dr["dept"]), Convert.ToString(dr["UserName"]));
+                }
+                dr.Close();
 
-			}
-			catch(Exception e){}
+            }
+            catch (Exception e) { }
 
-		}
+        }
 
-		private void AllOneUserInfoToLV( System.Windows.Forms.ListView LV, string  Computer, string  IpAddress,string  port, string  OnlineSta, string  Dept, string  UserName )//'处理新登录用户的信息数据)
-		{
-			try
-			{
-				System.Windows.Forms.ListViewItem   NewItem =new  ListViewItem();
-				NewItem.Text  = Computer.Trim().ToLower(); //      '添加用户计算机名与端口号信息
-				NewItem.SubItems.Add(IpAddress); //'添加用户IP地址信息
-				NewItem.SubItems.Add(port); //  '添加用户端口信息
-				NewItem.SubItems.Add(OnlineSta);// '在线状态
-				NewItem.SubItems.Add(getDept(Dept));//'设置用户部门为未知
-				NewItem.SubItems.Add(UserName.Trim());//'添加用户姓名信息
-				NewItem.SubItems.Add("");//'添加用户姓名信息
-				LV.Items.Add(NewItem);// '添加此登录用户的所有信息到系统列表中 
-			}
-			catch(Exception e){}
+        private void AllOneUserInfoToLV(System.Windows.Forms.ListView LV, string Computer, string IpAddress, string port, string OnlineSta, string Dept, string UserName)//'处理新登录用户的信息数据)
+        {
+            try
+            {
+                System.Windows.Forms.ListViewItem NewItem = new ListViewItem();
+                NewItem.Text = Computer.Trim().ToLower(); //      '添加用户计算机名与端口号信息
+                NewItem.SubItems.Add(IpAddress); //'添加用户IP地址信息
+                NewItem.SubItems.Add(port); //  '添加用户端口信息
+                NewItem.SubItems.Add(OnlineSta);// '在线状态
+                NewItem.SubItems.Add(getDept(Dept));//'设置用户部门为未知
+                NewItem.SubItems.Add(UserName.Trim());//'添加用户姓名信息
+                NewItem.SubItems.Add("");//'添加用户姓名信息
+                LV.Items.Add(NewItem);// '添加此登录用户的所有信息到系统列表中 
+            }
+            catch (Exception e) { }
 
-		}
+        }
 
-		private string getDept(string Dept)
-	{
-			switch(Dept)
-			{
-				case  "12":
-					return "0";//院领导 
+        private string getDept(string Dept)
+        {
+            switch (Dept)
+            {
+                case "12":
+                    return "0";//院领导 
                     break;
-				case  "8":
-				    return "1";//院领导					   
+                case "8":
+                    return "1";//院领导					   
                     break;
-				case  "13":
-					return "1";//院领导 
+                case "13":
+                    return "1";//院领导 
                     break;
-				case  "14":
-					return "1";//院领导 
+                case "14":
+                    return "1";//院领导 
                     break;
-				case  "15":
-					return "1";//综合部 
+                case "15":
+                    return "1";//综合部 
                     break;
-				case  "3":
-					return "2";//财务部 
+                case "3":
+                    return "2";//财务部 
                     break;
-				case  "5":
-					return "3";//市场部 
+                case "5":
+                    return "3";//市场部 
                     break;
-				case  "2":
-					return "3";//市场部 
+                case "2":
+                    return "3";//市场部 
                     break;
-				case  "11":
-					return "4";//设备所
+                case "11":
+                    return "4";//设备所
                     break;
-				case  "9":
-					return "5";//传输所
+                case "9":
+                    return "5";//传输所
                     break;
-				case  "10":
-					return "6";//计算机所 
+                case "10":
+                    return "6";//计算机所 
                     break;
-				case  "4":
-					return "7";//规划所
+                case "4":
+                    return "7";//规划所
                     break;
-				case  "16":
-					return "8";//无线所
+                case "16":
+                    return "8";//无线所
                     break;
-                case "6": 
-				    return "9";//建筑分院 
-					break;
-			}
-			return "10";
-		}
+                case "6":
+                    return "9";//建筑分院 
+                    break;
+            }
+            return "10";
+        }
 
-		private void menuItemControl_Click(object sender, System.EventArgs e)
-		{
-		
-		}
+        private void menuItemControl_Click(object sender, System.EventArgs e)
+        {
 
-		private void notifyIcon1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-		
-		}
+        }
 
-		private void notifyIcon1_DoubleClick(object sender, System.EventArgs e)
-		{
-			this.WindowState=System.Windows.Forms.FormWindowState.Maximized ;
-			this.Show();
-			this.Activate();
-		}
+        private void notifyIcon1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
 
-		private void FormMain_Resize(object sender, System.EventArgs e)
-		{
-			if(this.WindowState==System.Windows.Forms.FormWindowState.Minimized)
-				this.Hide();
-		}
-	}
-}	
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, System.EventArgs e)
+        {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Show();
+            this.Activate();
+        }
+
+        private void FormMain_Resize(object sender, System.EventArgs e)
+        {
+            if (this.WindowState == System.Windows.Forms.FormWindowState.Minimized)
+                this.Hide();
+        }
+    }
+}
