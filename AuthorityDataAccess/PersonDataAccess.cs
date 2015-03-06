@@ -47,10 +47,27 @@ namespace AuthorityDataAccess
             return result;
         }
 
-       
+
         public DateTime GetDateTime()
         {
             return Dal.SystemDateTime;
+        }
+
+        public UserInfo LoginIM(string userno, string pwd, string ip, string portName, out string error)
+        {
+            error = string.Empty;
+            UserInfo user = Dal.Find<UserInfo>(UserInfo._.Code == userno);
+            if (user.Pwd != pwd)
+            {
+                error = "密码不正确";
+                user = null;
+            }
+            else
+            { 
+            SystemSessionLog 
+            
+            }
+            return user;
         }
     }
 }

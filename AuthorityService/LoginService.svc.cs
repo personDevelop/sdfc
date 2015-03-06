@@ -36,5 +36,11 @@ namespace AuthorityService
         {
             return da.GetDateTime();
         }
+
+
+        public UserInfo LoginIM(string userno, string pwd, string ip, string portName, out string error)
+        {
+            return da.LoginIM(userno, pwd, ip, portName, out error);
+        }
     }
 }

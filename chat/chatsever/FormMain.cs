@@ -451,7 +451,7 @@ namespace chat
         private void  verifyUser(ClassMsg msg,System.Net.IPAddress Ip, int Port)
         {
             ClassResponse user = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(msg.MsgContent))) as ClassResponse;
-            user=UserVerify.verifyUser(user.username, user.userpwd);
+            user = UserVerify.verifyUser(user.username, user.userpwd, Ip.ToString()  ,Port);
             List<ClassDept> depts = new List<ClassDept>();
             depts = UserVerify.getUserDept();
             if (user.userstate == 1)

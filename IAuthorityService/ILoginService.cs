@@ -20,5 +20,7 @@ namespace IAuthorityService
         int Save(SystemSessionLog log);
          [OperationContract]
         DateTime GetDateTime();
+        [OperationContract]
+         UserInfo LoginIM(string userno, string pwd, string ip, string portName, out string error);
     }
 }

@@ -87,5 +87,11 @@ namespace AuthorityService
         {
             return da.DeleteUserTxl(txlid);
         }
+
+
+        public DataTable GetWf()
+        {
+            return da.GetWf( );
+        }
     }
 }

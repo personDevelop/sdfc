@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Sharp.Common">
+      <HintPath>..\..\refdll\Sharp.Common.dll</HintPath>
+    </Reference>
     <Reference Include="SkinForm">
       <HintPath>..\dll\SkinForm.dll</HintPath>
     </Reference>
@@ -360,6 +363,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AuthorityClient\AuthorityClient.csproj">
+      <Project>{198D91F9-4DCE-43BF-8103-AF499D7A88DA}</Project>
+      <Name>AuthorityClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameSession\FrameSession.csproj">
+      <Project>{D0593939-2F47-4E43-89BD-22F178E86450}</Project>
+      <Name>FrameSession</Name>
+    </ProjectReference>
     <ProjectReference Include="..\chatclient\chatclient.csproj">
       <Project>{C3BB3437-BC5C-478F-BFBB-891EEBCD0E8A}</Project>
       <Name>chatclient</Name>

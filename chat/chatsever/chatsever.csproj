@@ -107,6 +107,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AuthorityClient\AuthorityClient.csproj">
+      <Project>{198D91F9-4DCE-43BF-8103-AF499D7A88DA}</Project>
+      <Name>AuthorityClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AuthorityEntity\AuthorityEntity.csproj">
+      <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
+      <Name>AuthorityEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

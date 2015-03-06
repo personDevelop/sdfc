@@ -27,7 +27,7 @@ namespace AuthorityClient
                 return currentClient;
             }
         }
-      
+
         public UserInfo Login(string userno)
         {
 
@@ -35,11 +35,18 @@ namespace AuthorityClient
 
 
         }
+        public UserInfo Login(string userno, string pwd, string ip, string portName, out string error)
+        {
+
+            return CurrentClient.LoginIM(userno, pwd, ip, portName, out error);
+
+
+        }
         public UserInfo Login(string appcode, string userno)
         {
-           
-                 return CurrentClient.Login(appcode, userno);
-            
+
+            return CurrentClient.Login(appcode, userno);
+
         }
 
         public void SetConfigInfo(string appcode, string userno, out string msg)
@@ -50,22 +57,28 @@ namespace AuthorityClient
 
 
         public System.Data.DataTable GetRoleInfo(string userID)
-        { 
-                 return CurrentClient.GetRoleInfo(userID);
-             
+        {
+            return CurrentClient.GetRoleInfo(userID);
+
         }
 
         public int Save(SystemSessionLog log)
-        {    return CurrentClient.Save(log);
-            
+        {
+            return CurrentClient.Save(log);
+
 
         }
 
         public DateTime GetDateTime()
         {
-            
-                 return CurrentClient.GetDateTime();
-             
+
+            return CurrentClient.GetDateTime();
+
+        }
+
+        public UserInfo Login(string username, string userpwd, string Ip, string p, out string groupname, out string error)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,10 +9,11 @@ using System.ComponentModel;
 namespace AuthorityEntity
 {
     /// <summary>
-    /// 系统session实体
+    /// <summary>
+    /// 登录日志
     /// </summary> 
     [DataContract]
-    public class SystemSessionLog : BaseEntity
+    public partial class SystemSessionLog : BaseEntity
     {
         public static Column _ = new Column("SystemSessionLog");
 
@@ -21,7 +22,7 @@ namespace AuthorityEntity
             this.TableName = "SystemSessionLog";
         }
         [OnDeserialized]
-        public new  void OnDeserializing(System.Runtime.Serialization.StreamingContext context)
+        public new void OnDeserializing(StreamingContext context)
         {
             this.TableName = "SystemSessionLog";
         }
@@ -40,7 +41,8 @@ namespace AuthorityEntity
         private string _RoleID;
         private string _RoleName;
         private string _EntryIP;
-        private DateTime _EntryDate;
+        private string _PortName;
+        private DateTime? _EntryDate;
         private DateTime? _OutDate;
         private string _EntryStats;
         private string _Note;
@@ -49,14 +51,11 @@ namespace AuthorityEntity
 
         #region 属性
         /// <summary>
-        /// 主键,
+        ///  主键,
         /// </summary>
         [PrimaryKey]
-
-        [DbProperty(MapingColumnName = "ID", DbTypeString = "char", ColumnIsNull = false, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "ID", DbTypeString = "char", ColumnIsNull = false, IsUnique = true, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("主键")]
-
         public string ID
         {
             get
@@ -70,15 +69,12 @@ namespace AuthorityEntity
                 this._ID = value;
             }
         }
+
         /// <summary>
-        /// 员工ID,
+        ///  员工ID,
         /// </summary>
-
-
         [DbProperty(MapingColumnName = "UserID", DbTypeString = "char", ColumnIsNull = false, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("员工ID")]
-
         public string UserID
         {
             get
@@ -92,15 +88,12 @@ namespace AuthorityEntity
                 this._UserID = value;
             }
         }
+
         /// <summary>
-        /// 员工工号,
+        ///  员工工号,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "UserCode", DbTypeString = "varchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "UserCode", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("员工工号")]
-
         public string UserCode
         {
             get
@@ -114,15 +107,12 @@ namespace AuthorityEntity
                 this._UserCode = value;
             }
         }
+
         /// <summary>
-        /// 员工名称,
+        ///  员工名称,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "UserName", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "UserName", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 200, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("员工名称")]
-
         public string UserName
         {
             get
@@ -136,15 +126,12 @@ namespace AuthorityEntity
                 this._UserName = value;
             }
         }
+
         /// <summary>
-        /// 公司ID,
+        ///  公司ID,
         /// </summary>
-
-
         [DbProperty(MapingColumnName = "CompID", DbTypeString = "char", ColumnIsNull = true, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("公司ID")]
-
         public string CompID
         {
             get
@@ -158,15 +145,12 @@ namespace AuthorityEntity
                 this._CompID = value;
             }
         }
+
         /// <summary>
-        /// 公司名称,
+        ///  公司名称,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "CompName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "CompName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("公司名称")]
-
         public string CompName
         {
             get
@@ -180,15 +164,12 @@ namespace AuthorityEntity
                 this._CompName = value;
             }
         }
+
         /// <summary>
-        /// 部门ID,
+        ///  部门ID,
         /// </summary>
-
-
         [DbProperty(MapingColumnName = "DepartID", DbTypeString = "char", ColumnIsNull = true, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("部门ID")]
-
         public string DepartID
         {
             get
@@ -202,15 +183,12 @@ namespace AuthorityEntity
                 this._DepartID = value;
             }
         }
+
         /// <summary>
-        /// 部门名称,
+        ///  部门名称,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "DepartName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "DepartName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("部门名称")]
-
         public string DepartName
         {
             get
@@ -224,15 +202,12 @@ namespace AuthorityEntity
                 this._DepartName = value;
             }
         }
+
         /// <summary>
-        /// 组ID,
+        ///  组ID,
         /// </summary>
-
-
         [DbProperty(MapingColumnName = "GroupID", DbTypeString = "char", ColumnIsNull = true, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("组ID")]
-
         public string GroupID
         {
             get
@@ -246,15 +221,12 @@ namespace AuthorityEntity
                 this._GroupID = value;
             }
         }
+
         /// <summary>
-        /// 组名称,
+        ///  组名称,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "GroupName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "GroupName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("组名称")]
-
         public string GroupName
         {
             get
@@ -268,15 +240,12 @@ namespace AuthorityEntity
                 this._GroupName = value;
             }
         }
+
         /// <summary>
-        /// 角色ID,
+        ///  角色ID,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "RoleID", DbTypeString = "char", ColumnIsNull = false, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "RoleID", DbTypeString = "char", ColumnIsNull = true, IsUnique = false, ColumnLength = 36, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("角色ID")]
-
         public string RoleID
         {
             get
@@ -290,15 +259,12 @@ namespace AuthorityEntity
                 this._RoleID = value;
             }
         }
+
         /// <summary>
-        /// 角色名称,
+        ///  角色名称,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "RoleName", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "RoleName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("角色名称")]
-
         public string RoleName
         {
             get
@@ -312,15 +278,12 @@ namespace AuthorityEntity
                 this._RoleName = value;
             }
         }
+
         /// <summary>
-        /// 登入IP,
+        ///  登入IP,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "EntryIP", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "EntryIP", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("登入IP")]
-
         public string EntryIP
         {
             get
@@ -334,16 +297,32 @@ namespace AuthorityEntity
                 this._EntryIP = value;
             }
         }
+
         /// <summary>
-        /// 登入日期,
+        ///  端口,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "EntryDate", DbTypeString = "datetime", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "PortName", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("登入日期")]
+        public string PortName
+        {
+            get
+            {
+                return this._PortName;
+            }
+            set
+            {
 
-        public DateTime EntryDate
+                this.OnPropertyChanged("PortName", this._PortName, value);
+                this._PortName = value;
+            }
+        }
+
+        /// <summary>
+        ///  登入日期,
+        /// </summary>
+        [DbProperty(MapingColumnName = "EntryDate", DbTypeString = "datetime", ColumnIsNull = true, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public DateTime? EntryDate
         {
             get
             {
@@ -356,15 +335,12 @@ namespace AuthorityEntity
                 this._EntryDate = value;
             }
         }
+
         /// <summary>
-        /// 登出日期,
+        ///  登出日期,
         /// </summary>
-
-
         [DbProperty(MapingColumnName = "OutDate", DbTypeString = "datetime", ColumnIsNull = true, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("登出日期")]
-
         public DateTime? OutDate
         {
             get
@@ -378,15 +354,12 @@ namespace AuthorityEntity
                 this._OutDate = value;
             }
         }
+
         /// <summary>
-        /// 登入状态,
+        ///  登入状态,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "EntryStats", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "EntryStats", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("登入状态")]
-
         public string EntryStats
         {
             get
@@ -400,15 +373,12 @@ namespace AuthorityEntity
                 this._EntryStats = value;
             }
         }
+
         /// <summary>
-        /// 备注,
+        ///  备注,
         /// </summary>
-
-
-        [DbProperty(MapingColumnName = "Note", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 500, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "Note", DbTypeString = "nvarchar", ColumnIsNull = true, IsUnique = false, ColumnLength = 100, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        [Description("备注")]
-
         public string Note
         {
             get
@@ -427,28 +397,47 @@ namespace AuthorityEntity
         #endregion
 
         #region 列定义
-
         public class Column
         {
             public Column(string tableName)
             {
+
                 ID = new PropertyItem("ID", tableName);
+
                 UserID = new PropertyItem("UserID", tableName);
+
                 UserCode = new PropertyItem("UserCode", tableName);
+
                 UserName = new PropertyItem("UserName", tableName);
+
                 CompID = new PropertyItem("CompID", tableName);
+
                 CompName = new PropertyItem("CompName", tableName);
+
                 DepartID = new PropertyItem("DepartID", tableName);
+
                 DepartName = new PropertyItem("DepartName", tableName);
+
                 GroupID = new PropertyItem("GroupID", tableName);
+
                 GroupName = new PropertyItem("GroupName", tableName);
+
                 RoleID = new PropertyItem("RoleID", tableName);
+
                 RoleName = new PropertyItem("RoleName", tableName);
+
                 EntryIP = new PropertyItem("EntryIP", tableName);
+
+                PortName = new PropertyItem("PortName", tableName);
+
                 EntryDate = new PropertyItem("EntryDate", tableName);
+
                 OutDate = new PropertyItem("OutDate", tableName);
+
                 EntryStats = new PropertyItem("EntryStats", tableName);
+
                 Note = new PropertyItem("Note", tableName);
+
 
             }
             /// <summary>
@@ -504,6 +493,10 @@ namespace AuthorityEntity
             /// </summary> 
             public PropertyItem EntryIP = null;
             /// <summary>
+            /// 端口,
+            /// </summary> 
+            public PropertyItem PortName = null;
+            /// <summary>
             /// 登入日期,
             /// </summary> 
             public PropertyItem EntryDate = null;
@@ -519,10 +512,9 @@ namespace AuthorityEntity
             /// 备注,
             /// </summary> 
             public PropertyItem Note = null;
-
-
         }
         #endregion
-    } 
+    }
+
 
 }

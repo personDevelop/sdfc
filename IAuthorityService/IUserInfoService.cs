@@ -39,5 +39,7 @@ namespace IAuthorityService
         string[] GetContactGroup();
                [OperationContract]
           int DeleteUserTxl(string txlid);
+              [OperationContract]
+               DataTable GetWf();
     }
 }

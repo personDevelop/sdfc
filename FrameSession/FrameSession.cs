@@ -114,7 +114,7 @@ namespace FrameSession
         public string EntryStats { get; set; }
         string[] roleArray;
         /// <summary>
-        /// 在线状态
+        /// 角色
         /// </summary>
         public string[] RoleArray
         {

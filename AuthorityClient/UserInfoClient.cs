@@ -99,5 +99,16 @@ namespace AuthorityClient
         {
             return CurrentClient.DeleteUserTxl(txlid);
         }
+
+        /// <summary>
+        /// 获取所有网服，包括不在线的
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetWf()
+        {
+            return CurrentClient.GetWf();
+        }
+
+         
     }
 }

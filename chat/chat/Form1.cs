@@ -12,6 +12,8 @@ using CCWin.Win32;
 using CCWin.Win32.Const;
 using CCWin.SkinControl;
 using System.Threading;
+using FrameSession;
+using Sharp.Common;
 
 namespace chat
 {
@@ -24,7 +26,13 @@ namespace chat
 
         public bool getUserDept = false;//是否获取用户部门信息
         public bool getUserInfo = false;
-        public Form1()
+
+        #region 卢永列  自动登录
+        private string userNo;
+        private string Pwd;
+        private bool IsAutoLoin = false;
+        #endregion
+        public Form1(string[] args)
         {
             InitializeComponent();
             this.sockUDP1 = new SockUDP();//启动socket信息
@@ -34,6 +42,12 @@ namespace chat
             this.sockUDP1.Listen(j);//UDP开始侦听来自外部的消息.
             this.sockUDP1.Server = ((System.Net.IPEndPoint)(resources.GetObject("sockUDP1.Server")));//启动服务器
             this.sockUDP1.DataArrival += new SockUDP.DataArrivalEventHandler(this.sockUDP1_DataArrival);//绑定socket数据到达的方法
+            if (args != null && args.Length == 2)
+            {
+                userNo = args[0];
+                Pwd = args[1];
+                IsAutoLoin = true;
+            }
         }
 
         private void sockUDP1_DataArrival(byte[] Data, System.Net.IPAddress Ip, int Port)
@@ -49,7 +63,7 @@ namespace chat
             if (user.userstate == 1)
             {
                 getUserInfo = true;
-                if (depts!=null)//
+                if (depts != null)//
                 {
                     MessageBox.Show(user.reponse);
                     main f = new main();
@@ -61,15 +75,16 @@ namespace chat
                     this.Hide();
                 }
             }
-            else if (user.userstate == -1) {
+            else if (user.userstate == -1)
+            {
                 MessageBox.Show(user.reponse);
             }
         }
-        public  List<ClassDept> depts = new List<ClassDept>();
+        public List<ClassDept> depts = new List<ClassDept>();
         public void CacheUserDept(ClassMsg msg)
         {
             depts = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(msg.MsgContent))) as List<ClassDept>;
- 
+
         }
 
         private void DataArrival(byte[] Data, System.Net.IPAddress Ip, int Port)
@@ -96,7 +111,12 @@ namespace chat
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            #region 自动登录
+            if (IsAutoLoin)
+            {
+                buttonLogin_Click(sender, e);
+            }
+            #endregion
         }
 
         private void textBoxId_SkinTxt_TextChanged(object sender, EventArgs e)
@@ -106,20 +126,27 @@ namespace chat
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            if (!IsAutoLoin)
+            {
+                userNo = this.textBoxId.SkinTxt.Text;
+                Pwd = this.textBoxPwd.SkinTxt.Text;
+            }
             imgLoadding.Visible = true;
-            string id = this.textBoxId.SkinTxt.Text;
-            if (id == "")
+
+            if (string.IsNullOrWhiteSpace(userNo))
             {
                 MessageBox.Show("请输入用户");
+                return;
             }
-            string pwd = this.textBoxPwd.SkinTxt.Text;
-            if (pwd == "")
+            if (string.IsNullOrWhiteSpace(Pwd))
             {
                 MessageBox.Show("请输入密码");
+                return;
             }
+         
             ClassResponse user = new ClassResponse();
-            user.userpwd = pwd;
-            user.username = id;
+            user.userpwd = userNo;
+            user.username = Pwd; 
             ClassMsg msg = new ClassMsg(0, "", new ClassSerializers().SerializeBinary(user).ToArray());
             sendMsgToServer(msg);
             //main f = new main();
