@@ -6,6 +6,7 @@ using System.Text;
 namespace chat
 {
     [Serializable]
+    [Obsolete("用View_IMUser代替")]
     public class ClassResponse
     {
         public string userid {get;set;}//用户id

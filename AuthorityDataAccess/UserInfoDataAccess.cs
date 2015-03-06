@@ -310,5 +310,11 @@ namespace AuthorityDataAccess
                 && SystemSessionLog._.OutDate == null)
                 .ToDataTable();
         }
+
+        public DataTable GetIMUserList()
+        {
+            return Dal.From<View_IMUser>()
+                .ToDataTable();
+        }
     }
 }

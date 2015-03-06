@@ -35,11 +35,13 @@ namespace IAuthorityService
         DataTable GetContacts();
         [OperationContract]
         DataTable GetContactsWithNameOrTel(string nameOrTel);
-          [OperationContract]
+        [OperationContract]
         string[] GetContactGroup();
-               [OperationContract]
-          int DeleteUserTxl(string txlid);
-              [OperationContract]
-               DataTable GetOnLineWf();
+        [OperationContract]
+        int DeleteUserTxl(string txlid);
+        [OperationContract]
+        DataTable GetOnLineWf();
+        [OperationContract]
+        DataTable GetIMUserList();
     }
 }

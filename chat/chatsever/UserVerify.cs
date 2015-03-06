@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using AuthorityEntity;
+using AuthorityClient;
 
 namespace chat
 {
@@ -78,40 +79,39 @@ namespace chat
         static string[] deptid = { "0001", "0002", "0003", "0004" };
         public static List<ClassDept> getUserDept()
         {
-            List<ClassDept> deptsinfo = new List<ClassDept>();
+            string cachKey = "UserInfoDataAccess_GetIMUserList";
+            List<View_IMUser> list = null;
+            object o = Sharp.Common.CacheContainer.GetCache(cachKey);
+            if (o == null)
+            {
+                list = new UserInfoClient().GetIMUserList();
+                Sharp.Common.CacheContainer.AddCache(cachKey, list, 60 * 60);//缓存1小时
+            }
+            else
+            {
+
+                list = o as List<View_IMUser>;
+            }
             DataIO dt = new DataIO();
-            var list = dt.getFriend();
-            for (int i = 0; i < deptid.Length; i++)
+            List<ClassDept> deptsinfo = new List<ClassDept>();
+            IEnumerable<IGrouping<string, View_IMUser>> groupUserList = list.GroupBy(p => p.IMGroupName);
+
+            foreach (var group in groupUserList)
             {
                 ClassDept model = new ClassDept();
-                model.depid = deptid[i];
-                model.depmc = depts[i];
-                List<ClassResponse> userlst = new List<ClassResponse>();
-                foreach (XmlElement e in list)
+
+                model.depmc = group.Key;
+                List<View_IMUser> userlst = new List<View_IMUser>();
+                // 输出组内成员 
+                foreach (var user in group)
                 {
-                    if (e.GetAttribute("udept") == model.depid)
-                    {
-                        ClassResponse user = new ClassResponse();
-                        user.userid = e.GetAttribute("uid");
-                        user.username = e.GetAttribute("uname");
-                        userlst.Add(user);
-                    }
-                    //e.Name
+                    model.depid = user.DepartID;
+                    userlst.Add(user);
                 }
-                //for (int k = 0; k < userids.Length; k++)
-                //{
-                //    ClassResponse user = new ClassResponse();
-                //    user.userid = userids[k];
-                //    user.username = userinames[k];
-                //    userlst.Add(user);
-                //}
 
                 model.userlist = userlst;
                 deptsinfo.Add(model);
-            }
-
-
-
+            } 
             return deptsinfo;
         }
 

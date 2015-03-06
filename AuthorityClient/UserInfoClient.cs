@@ -4,7 +4,7 @@ using AuthorityEntity;
 using System.Data;
 using FrameBaseClient;
 using IAuthorityService;
-
+using Sharp.Common;
 namespace AuthorityClient
 {
 
@@ -109,6 +109,15 @@ namespace AuthorityClient
             return CurrentClient.GetOnLineWf();
         }
 
-         
+        /// <summary>
+        /// 获取即时通讯用户列表，不包括自己
+        /// </summary>
+        /// <param name="myUserid"></param>
+        /// <returns></returns>
+        public List<View_IMUser> GetIMUserList()
+        {
+            return CurrentClient.GetIMUserList().ToList<View_IMUser>();
+        }
+
     }
 }

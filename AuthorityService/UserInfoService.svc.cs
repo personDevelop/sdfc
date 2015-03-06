@@ -93,5 +93,11 @@ namespace AuthorityService
         {
             return da.GetOnLineWf( );
         }
+
+
+        public DataTable GetIMUserList()
+        {
+            return da.GetIMUserList();
+        }
     }
 }
