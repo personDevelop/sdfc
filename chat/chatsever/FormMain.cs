@@ -454,7 +454,7 @@ namespace chat
             ClassResponse user = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(msg.MsgContent))) as ClassResponse;
             user = UserVerify.verifyUser(user.username, user.userpwd, Ip.ToString(), Port);
             List<ClassDept> depts = new List<ClassDept>();
-            depts = UserVerify.getUserDept();
+            depts = UserVerify.getUserDept(user.userid);
             if (user.userstate == 1)
             {
                 this.SendMsgToOne(Ip, Port, new ClassMsg(1, "", new ClassSerializers().SerializeBinary(depts).ToArray()));//告诉用户在线

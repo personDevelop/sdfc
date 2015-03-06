@@ -77,7 +77,7 @@ namespace chat
 
         static string[] depts = { "经理办公室", "IT部门", "开发部", "网服部" };
         static string[] deptid = { "0001", "0002", "0003", "0004" };
-        public static List<ClassDept> getUserDept()
+        public static List<ClassDept> getUserDept(string myid)
         {
             string cachKey = "UserInfoDataAccess_GetIMUserList";
             List<View_IMUser> list = null;
@@ -89,7 +89,6 @@ namespace chat
             }
             else
             {
-
                 list = o as List<View_IMUser>;
             }
             DataIO dt = new DataIO();
@@ -99,21 +98,26 @@ namespace chat
             foreach (var group in groupUserList)
             {
                 ClassDept model = new ClassDept();
-
                 model.depmc = group.Key;
                 List<View_IMUser> userlst = new List<View_IMUser>();
                 // 输出组内成员 
                 foreach (var user in group)
                 {
+                    if (user.ID == myid)
+                    {
+                        continue;
+                    }
                     model.depid = user.DepartID;
                     userlst.Add(user);
                 }
 
                 model.userlist = userlst;
                 deptsinfo.Add(model);
-            } 
+            }
             return deptsinfo;
         }
+
+
 
 
 
