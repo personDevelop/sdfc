@@ -23,7 +23,7 @@ namespace chat
         private UserInformationForm userInformationForm;//悬浮至头像时
         private SockUDP sockUDP1;//socket进程
         public ClassUserInfo selfInfo = new ClassUserInfo();
-        private IPAddress ServerIP = IPAddress.Parse("127.0.0.1");//服务器IP
+        private IPAddress ServerIP = IPAddress.Parse("39.78.69.94");//服务器IP
         public string userNickName;
         private int ServerPort = 3211;//服务器端口
         public bool IsWindowsExit = false;
