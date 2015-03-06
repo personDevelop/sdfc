@@ -300,7 +300,7 @@ namespace AuthorityDataAccess
             return Dal.Delete<Contacts>(txlid);
         }
 
-        public DataTable GetWf()
+        public DataTable GetOnLineWf()
         {
             return Dal.From<SystemSessionLog>()
                 .Join<UserInfo>(SystemSessionLog._.UserID == UserInfo._.ID)

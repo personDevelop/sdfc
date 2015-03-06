@@ -40,6 +40,6 @@ namespace IAuthorityService
                [OperationContract]
           int DeleteUserTxl(string txlid);
               [OperationContract]
-               DataTable GetWf();
+               DataTable GetOnLineWf();
     }
 }

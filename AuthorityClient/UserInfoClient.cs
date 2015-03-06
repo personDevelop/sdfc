@@ -101,12 +101,12 @@ namespace AuthorityClient
         }
 
         /// <summary>
-        /// 获取所有网服，包括不在线的
+        /// 获取所有在线网服 
         /// </summary>
         /// <returns></returns>
-        public DataTable GetWf()
+        public DataTable GetOnLineWf()
         {
-            return CurrentClient.GetWf();
+            return CurrentClient.GetOnLineWf();
         }
 
          

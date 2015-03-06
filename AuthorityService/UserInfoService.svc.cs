@@ -89,9 +89,9 @@ namespace AuthorityService
         }
 
 
-        public DataTable GetWf()
+        public DataTable GetOnLineWf()
         {
-            return da.GetWf( );
+            return da.GetOnLineWf( );
         }
     }
 }
