@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <title>网页样式</title>
+    <style type="text/css">
+        body, ul, li, div, span, p, h1, h2, table, textarea
+        {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        body
+        {
+            background: #eeeeee;
+        }
+        li
+        {
+            list-style: none;
+        }
+        #dyhead
+        {
+            background: #bf0000;
+            height: 54px;
+            z-index: 100;
+            border: 1px solid #d1d1d1;
+        }
+        #dyhead ul
+        {
+            color: #fff;
+            margin-left: 55px;
+            margin-top: 5px;
+        }
+        #dyhead li
+        {
+            line-height: 20px;
+        }
+        #right
+        {
+            float: right;
+            width: 200px;
+            background: #fff;
+            border: 1px solid #d1d1d1;
+            border-top: 0;
+            height: 100%;
+            overflow: hidden;
+            display: inline;
+            margin-top: 0px;
+            height: 515px;
+        }
+        #mjr_suo
+        {
+            float: right;
+            width: 10px;
+            overflow: hidden;
+            height: 100%;
+            padding-top: 2000px;
+            margin-right: -1px;
+            _margin-left: -2px;
+        }
+        #left
+        {
+            margin-right: 209px !important;
+            margin-right: 208px;
+            height: 100%;
+        }
+        
+        .inputobx
+        {
+            height: 135px;
+            border: 1px solid #d1d1d1;
+            border-top: 0;
+            background: #fff;
+            position: relative;
+        }
+        .menubar
+        {
+            height: 7px;
+            line-height: 10px;
+            position: relative;
+            z-index: 66667;
+            border: 1px solid #d1d1d1;
+            border-top: 0;
+        }
+        #toolsbar
+        {
+            position: relative;
+            height: 20px;
+            top: 7px;
+            z-index: 66668;
+            margin-left: 20px;
+            _margin-left: 10px;
+        }
+        #toolsbar li
+        {
+            height: 20px;
+            width: 21px;
+            background-image: url(http://test.live800.com/test1/chatClient/version5/style/theme/userColor/images/tools1.png);
+            float: left;
+            background-repeat: no-repeat;
+            list-style: none;
+            margin-right: 20px;
+            cursor: pointer;
+            text-align: left;
+        }
+        #activex
+        {
+            background-position: 0 -20px;
+        }
+        #file
+        {
+            background-position: 0 -148px;
+        }
+        #emotion
+        {
+            background-position: 0 -41px;
+        }
+        #callback
+        {
+            background-position: 0 -63px;
+        }
+        #switch
+        {
+            background-position: 0 -83px;
+        }
+        #evaluation
+        {
+            background-position: 0 -105px;
+        }
+        #msn
+        {
+            background-position: 0px -212px;
+        }
+        .mjr_menu_content
+        {
+            color: #FF6600;
+            line-height: 14px;
+        }
+        #firstchannel li
+        {
+            background: url(../images/r_ico1.gif) 0 3px no-repeat transparent;
+            margin-left: 10px;
+            padding-left: 10px;
+            margin-top: 10px;
+            line-height: 16px;
+        }
+        .mjr_menu
+        {
+            color: #006e9c;
+            background: url(../images/menu_bg.gif) repeat-x;
+            line-height: 28px;
+            font-weight: bold;
+            background: #eee;
+            height: 28px;
+            cursor: pointer;
+            z-index: 200;
+            text-indent: 80px;
+        }
+        #input-field
+        {
+            margin: 0 7px 7px 7px;
+            padding-top: 7px;
+            display: block;
+            position: relative;
+        }
+        
+        #input-field textarea
+        {
+            width: 100%;
+            height: 86px;
+            border: none;
+            background: transparent url(https://i.alipayobjects.com/e/201401/1tz1LI4vUL.gif);
+            resize: none;
+            padding: 0;
+            outline: none;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .tips
+        {
+            position: absolute;
+            left: 6px;
+            right: 150px;
+            bottom: 6px;
+            padding: 5px 0;
+            margin: 0;
+        }
+        
+        input.submit
+        {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            width: 130px;
+            height: 30px;
+            background-color: #F93A3A;
+            border: none;
+            font-family: "Microsoft Yahei" , simsun, sans-serif;
+            font-size: 14px;
+            color: #fff;
+            border-radius: 3px;
+            cursor: not-allowed;
+        }
+        .server, #dycontent .client
+        {
+            position: relative;
+            padding-bottom: 12px;
+        }
+        #dycontent h2
+        {
+            height: 23px;
+            position: relative;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+        }
+        #dycontent .server h2 span.header
+        {
+            position: absolute;
+            left: 90px;
+            top: 0;
+            color: #999;
+        }
+        #dycontent .server h2 a.avatar
+        {
+            position: absolute;
+            left: 7px;
+            top: 0;
+        }
+        #dycontent a.avatar img
+        {
+            width: 40px;
+            height: 40px;
+            border-radius: 2px;
+        }
+        #dycontent .server .content
+        {
+            margin: 0 78px;
+            background: #c2e3ee;
+            border-radius: 9px;
+            padding: 7px 12px;
+            border-top-left-radius: 0;
+            position: relative;
+            word-break: break-all;
+        }
+        
+        #dycontent .server .content:after
+        {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            width: 15px;
+            height: 20px;
+            background-position: 0 -32px;
+        }
+        #artificial-service p s, #output-content .server a.more s, #dycontent .server .content:after, #dycontent .client .content:after, #commend-wrapper p span.value s, #commend-wrapper input.smt, #output-content .notify a.close, #toolbar .upload-image label.upload-image s
+        {
+            background-image: url(https://i.alipayobjects.com/e/201401/1rg2Mi382X.png);
+            background-repeat: no-repeat;
+        }
+        #dycontent .client .content
+        {
+            margin: 0 78px;
+            background: #d7d7d7;
+            border-radius: 9px;
+            border-top-right-radius: 0;
+            padding: 7px 12px;
+            display: inline-block;
+            text-align: left;
+            position: relative;
+            word-break: break-all;
+            max-width: 62%;
+        }
+        #dycontent .client .content:after
+        {
+            content: '';
+            position: absolute;
+            right: -11px;
+            top: 0;
+            width: 11px;
+            height: 15px;
+            background-position: -22px -69px;
+        }
+        #dycontent .client
+        {
+            text-align: right;
+        }
+        
+        #dycontent .client h2 span.header
+        {
+            position: absolute;
+            right: 90px;
+            top: 0;
+            color: #999;
+        }
+        #dycontent .client h2 a.avatar
+        {
+            position: absolute;
+            right: 7px;
+            top: 0;
+        }
+        #dycontent h2
+        {
+            height: 23px;
+            position: relative;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+        }
+		.wrap a{
+			padding-top:8px;
+		}
+		
+		.sign{
+			font-size: 14px;
+			font-weight: bold;
+			color: red;
+		}
+		.bold{
+		font-weight: bold;
+ 
+		}
+    </style>
+</head>
+<body>
+    <div id="dyhead">
+        <span id="robotLogo" style="float: left; margin-left: 10px; margin-top: 5px; display: inline;">
+            <img src="./智能客服_files/3109.jpg" width="35" height="35" alt="智能客服">
+        </span>
+        <ul>
+            <li>福彩在线</li>
+            <li>在线客服，您全天候的好伙伴^_^</li>
+        </ul>
+        
+    </div>
+    <div id="right">
+        <!-- menu_1 -->
+        <div id="mjr_menu_1" class="mjr_menu" style="right: 1px; font-family: 微软雅黑; font-size: 14px;
+            border-bottom: 1px solid #ddd;">
+            对方名片</div>
+        <div id="mjr_menu_1_content" class="mjr_menu_content" opened="true" style="display: block;">
+            <!-- 展示渠道 -->
+            <ul id="firstchannel">
+				<li class='sign'>
+					<dl >
+					 客服：青岛客服一号-小王
+					</dl>
+					 
+				</li>
+                <li>
+                    <div class='wrap'>
+					<span class='bold'>客服热线：96677</span>
+                        <br>
+                        <a style="display: block; line-height: 20px;color:black;" >自动查询：7×24小时声讯服务</a> 
+						<a style="display: block;line-height: 20px;color:black;" >人工服务时间：8:30——11:30</a> 
+						<a style="display: block; line-height: 20px;color:black;" >13:00——17:00</a> 
+						<a style="display: block; line-height: 20px;color:black;">网址：www.sdcp.cn</a>
+                    </div>
+                </li>
+                <li>
+                    <div class='wrap'>
+                        <span class='bold'>常见问题：</span><br>
+                        <a style="display: block; line-height: 20px; " href="http://www.net.cn/service/faq/huiyuan/hyzc/201409/6495.html?spm=0.0.0.0.FymXuA"
+                            target="_blank">如何购买产品</a> <a style="display: block; line-height: 20px;" href="http://www.net.cn/service/faq/huiyuan/passwd/201211/5720.html?spm=0.0.0.0.fip5MH"
+                                target="_blank">如何找回帐号密码</a> <a style="display: block; line-height: 20px;" href="http://www.net.cn/service/faq/huiyuan/cpgl/201409/6497.html?spm=0.0.0.0.9j4THB">
+                                    通过代理商购买的产品如何转到自己帐号下</a></div>
+                </li>
+                <img src='image/chat_logo2.png' style='position: absolute; top: 5px; right: 5px; height: 45px;width:100px;' />
+            </ul>
+        </div>
+        <div class="inform">
+        </div>
+    </div>
+    <div id="left">
+        <div id="dycontent" style="padding-top: 15px; background: #f4f4f4; overflow-x: hidden;
+            overflow-y: auto; border-width: 0px 1px 1px; border-right-style: solid; border-bottom-style: solid;
+            border-left-style: solid; border-right-color: #d1d1d1; border-bottom-color: #d1d1d1;
+            border-left-color: #d1d1d1; height: 356px;">
+            <div class="server">
+                <h2>
+                    <span class="header"><b class="nick">在线助手</b> <b class="time">00:56</b></span><a
+                        class="avatar"><img src="https://i.alipayobjects.com/e/201401/1vtePUqyi7.png"></a></h2>
+                <div class="content">
+                    <div class="J-welcome">
+                        <div>
+                            您好！请问有什么可以帮您？</div>
+                        <br>
+                        很抱歉，人工客服服务时间：9:00--24:00，您可以通过在线助手或拨打我们的24小时服务热线95188进行咨询。</div>
+                    <div class="J-login-trigger-container">
+                        为了更好地解决您的问题，建议您<a href="javascript:void(0)" class="J-login-trigger" seed="PCportal_self_login">登录</a></div>
+                </div>
+            </div>
+            <div class="server">
+                <h2>
+                    <span class="header"><b class="nick">在线助手</b> <b class="time">00:56</b></span><a
+                        class="avatar"><img src="https://i.alipayobjects.com/e/201401/1vtePUqyi7.png"></a></h2>
+                <div class="content">
+                    <div class="J-welcome">
+                        <div>
+                            您好！请问有什么可以帮您？</div>
+                        <br>
+                        很抱歉，人工客服服务时间：9:00--24:00，您可以通过在线助手或拨打我们的24小时服务热线95188进行咨询。</div>
+                    <div class="J-login-trigger-container">
+                        为了更好地解决您的问题，建议您<a href="javascript:void(0)" class="J-login-trigger" seed="PCportal_self_login">登录</a></div>
+                </div>
+            </div>
+            <div class="client J-client-chat" style="padding-bottom: 12px">
+                <h2>
+                    <span class="header">01:18 我</span><a class="avatar"><img src="http://tfsimg.alipay.com/images/partner/T1IVXXXb0bXXXXXXXX"></a></h2>
+                <div class="content J-chat-content">
+                    124124</div>
+            </div>
+        </div>
+        <div class="menubar">
+        </div>
+        <div class='inputobx'>
+            <div id='input-field'>
+                <textarea></textarea></div>
+            <p class="tips">
+                [发送快捷键:Enter]:您还可以输入 <span class="J-left">200</span>个字</p>
+            <input type="submit" class="submit" id="main-submit-btn" value="发送信息" seed="inputContent-mainSubmitBtn"
+                smartracker="on">
+        </div>
+        <div>
+        </div>
+    </div>
+</body>
+</html>

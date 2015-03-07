@@ -92,7 +92,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\chatsever\chatsever.csproj">
+    <ProjectReference Include="..\..\chat\chatsever\chatsever.csproj">
       <Project>{B7236F07-CE76-49B6-9D19-3571FBD4A778}</Project>
       <Name>chatsever</Name>
     </ProjectReference>
