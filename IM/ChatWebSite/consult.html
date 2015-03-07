@@ -2,6 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <script src="/Scripts/jquery-1.6.4.min.js"></script>
+    <script src="/Scripts/jquery.signalR-1.1.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script type="text/javascript">
+        function send_message() {
+            //alert($(that).attr("refid"));
+            var textarea = $("#textarea");
+            append_message(textarea.val(), "我:2014-09-04 11:12:00");
+            var to = $("#target").val();
+            chat.server.sendMessageSever(to, textarea.val());
+            textarea.val("");
+        }
+
+        function append_message(mes, time) {
+            $("#dycontent").append("<div class='item'><div class='title'>" + time + "</div><div class='info'>" + mes + "</div></div>");
+        }
+        var userID = "";
+        var chat = $.connection.codingChatHub;
+        $(function () {
+            while (userID.length == 0) {
+
+                userID = $("#uid").val();
+            }
+            // $("#userName").append(userID).show();
+            chat.client.sendMessage = function (message, time) {
+                time = $("#target").val() + time;
+                $("#dycontent").append("<div class='item'><div class='title'>" + time + "</div><div class='info'>" + message + "</div></div>");
+            }
+            //建立與Server端的Hub的物件，注意Hub的開頭字母一定要為小寫
+            //chat = $.connection.codingChatHub;
+            //將連線打開
+            $.connection.hub.start().done(function () {
+                //當連線完成後，呼叫Server端的userConnected方法，並傳送使用者姓名給Server
+                chat.server.userConnected(userID);
+                chat.server.sendMessageConnect($("#target").val(), "您好 有人要有请求是否应答？");
+            });
+        });
+    </script>
     <title>网页样式</title>
     <style type="text/css">
         body, ul, li, div, span, p, h1, h2, table, textarea
@@ -312,31 +350,33 @@
             padding: 0;
             font-weight: normal;
         }
-		.wrap a{
-			padding-top:8px;
-		}
-		
-		.sign{
-			font-size: 14px;
-			font-weight: bold;
-			color: red;
-		}
-		.bold{
-		font-weight: bold;
- 
-		}
+        .wrap a
+        {
+            padding-top: 8px;
+        }
+        
+        .sign
+        {
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        .bold
+        {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div id="dyhead">
-        <span id="robotLogo" style="float: left; margin-left: 10px; margin-top: 5px; display: inline;">
-            <img src="./智能客服_files/3109.jpg" width="35" height="35" alt="智能客服">
+        <span id="robotLogo" style="float: left; margin-right: 10px; margin-left: 10px; margin-top: 5px;
+            display: inline;">
+            <img src="logo.png" width="50" height="45" alt="智能客服">
         </span>
-        <ul>
+        <ul style='margin-left: 10px;'>
             <li>福彩在线</li>
             <li>在线客服，您全天候的好伙伴^_^</li>
         </ul>
-        
     </div>
     <div id="right">
         <!-- menu_1 -->
@@ -346,31 +386,29 @@
         <div id="mjr_menu_1_content" class="mjr_menu_content" opened="true" style="display: block;">
             <!-- 展示渠道 -->
             <ul id="firstchannel">
-				<li class='sign'>
-					<dl >
-					 客服：青岛客服一号-小王
-					</dl>
-					 
-				</li>
+                <li class='sign'>
+                    <dl>
+                        客服：青岛客服一号-小王
+                    </dl>
+                </li>
                 <li>
                     <div class='wrap'>
-					<span class='bold'>客服热线：96677</span>
+                        <span class='bold'>客服热线：96677</span>
                         <br>
-                        <a style="display: block; line-height: 20px;color:black;" >自动查询：7×24小时声讯服务</a> 
-						<a style="display: block;line-height: 20px;color:black;" >人工服务时间：8:30——11:30</a> 
-						<a style="display: block; line-height: 20px;color:black;" >13:00——17:00</a> 
-						<a style="display: block; line-height: 20px;color:black;">网址：www.sdcp.cn</a>
+                        <a style="display: block; line-height: 20px; color: black;">自动查询：7×24小时声讯服务</a>
+                        <a style="display: block; line-height: 20px; color: black;">人工服务时间：8:30——11:30</a>
+                        <a style="display: block; line-height: 20px; color: black;">13:00——17:00</a> <a style="display: block;
+                            line-height: 20px; color: black;">网址：www.sdcp.cn</a>
                     </div>
                 </li>
                 <li>
                     <div class='wrap'>
                         <span class='bold'>常见问题：</span><br>
-                        <a style="display: block; line-height: 20px; " href="http://www.net.cn/service/faq/huiyuan/hyzc/201409/6495.html?spm=0.0.0.0.FymXuA"
-                            target="_blank">如何购买产品</a> <a style="display: block; line-height: 20px;" href="http://www.net.cn/service/faq/huiyuan/passwd/201211/5720.html?spm=0.0.0.0.fip5MH"
-                                target="_blank">如何找回帐号密码</a> <a style="display: block; line-height: 20px;" href="http://www.net.cn/service/faq/huiyuan/cpgl/201409/6497.html?spm=0.0.0.0.9j4THB">
-                                    通过代理商购买的产品如何转到自己帐号下</a></div>
+                        <a style="display: block; line-height: 20px;" href="#" target="_blank">如何购买产品</a>
+                    </div>
                 </li>
-                <img src='image/chat_logo2.png' style='position: absolute; top: 5px; right: 5px; height: 45px;width:100px;' />
+                <img src='image/chat_logo2.png' style='position: absolute; top: 5px; right: 5px;
+                    height: 45px; width: 100px;' />
             </ul>
         </div>
         <div class="inform">
@@ -381,20 +419,6 @@
             overflow-y: auto; border-width: 0px 1px 1px; border-right-style: solid; border-bottom-style: solid;
             border-left-style: solid; border-right-color: #d1d1d1; border-bottom-color: #d1d1d1;
             border-left-color: #d1d1d1; height: 356px;">
-            <div class="server">
-                <h2>
-                    <span class="header"><b class="nick">在线助手</b> <b class="time">00:56</b></span><a
-                        class="avatar"><img src="https://i.alipayobjects.com/e/201401/1vtePUqyi7.png"></a></h2>
-                <div class="content">
-                    <div class="J-welcome">
-                        <div>
-                            您好！请问有什么可以帮您？</div>
-                        <br>
-                        很抱歉，人工客服服务时间：9:00--24:00，您可以通过在线助手或拨打我们的24小时服务热线95188进行咨询。</div>
-                    <div class="J-login-trigger-container">
-                        为了更好地解决您的问题，建议您<a href="javascript:void(0)" class="J-login-trigger" seed="PCportal_self_login">登录</a></div>
-                </div>
-            </div>
             <div class="server">
                 <h2>
                     <span class="header"><b class="nick">在线助手</b> <b class="time">00:56</b></span><a

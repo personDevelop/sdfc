@@ -20,7 +20,7 @@ namespace SignalR
                if(data.ContainsKey(str))
                 {
 
-                    result += "<a href='clientnew.aspx?sid=" + data[str].ToString() + "&code="+str+"' target='_blank'  style='color:red;'>在线" + str + "</a>";
+                    result += "<a href='consult.aspx?sid=" + data[str].ToString() + "&code=" + str + "' target='_blank'  style='color:red;'>在线" + str + "</a>";
                 }
                 else {
                     result += "<a href='#' target='_blank' style='color:blue;'>离线" + str + "</a>";

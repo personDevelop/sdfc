@@ -87,8 +87,10 @@
   <ItemGroup>
     <Content Include="client.aspx" />
     <Content Include="clientnew.aspx" />
+    <Content Include="consult.aspx" />
     <Content Include="consult.html" />
     <Content Include="css\chat.css" />
+    <Content Include="css\main.css" />
     <Content Include="css\TabPanel.css" />
     <Content Include="Global.asax" />
     <Content Include="image\all.gif" />
@@ -197,6 +199,7 @@
     <Content Include="logo.gif" />
     <Content Include="packages.config" />
     <Content Include="sample.htm" />
+    <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="severPage.aspx" />
     <Content Include="src\jquery.js" />
     <Content Include="src\Plugins\Fader.js" />
@@ -228,6 +231,13 @@
       <DependentUpon>clientnew.aspx</DependentUpon>
     </Compile>
     <Compile Include="codingChatHub.cs" />
+    <Compile Include="consult.aspx.cs">
+      <DependentUpon>consult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="consult.aspx.designer.cs">
+      <DependentUpon>consult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

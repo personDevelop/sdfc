@@ -1,0 +1,344 @@
+﻿body, ul, li, div, span, p, h1, h2, table, textarea
+{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+body
+{
+    background: #eeeeee;
+}
+li
+{
+    list-style: none;
+}
+#dyhead
+{
+    background: #bf0000;
+    height: 54px;
+    z-index: 100;
+    border: 1px solid #d1d1d1;
+}
+#dyhead ul
+{
+    color: #fff;
+    margin-left: 55px;
+    margin-top: 5px;
+}
+#dyhead li
+{
+    line-height: 20px;
+}
+#right
+{
+    float: right;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    border-top: 0;
+    height: 100%;
+    overflow: hidden;
+    display: inline;
+    margin-top: 0px;
+    height: 515px;
+}
+#mjr_suo
+{
+    float: right;
+    width: 10px;
+    overflow: hidden;
+    height: 100%;
+    padding-top: 2000px;
+    margin-right: -1px;
+    _margin-left: -2px;
+}
+#left
+{
+    margin-right: 209px !important;
+    margin-right: 208px;
+    height: 100%;
+}
+
+.inputobx
+{
+    height: 135px;
+    border: 1px solid #d1d1d1;
+    border-top: 0;
+    background: #fff;
+    position: relative;
+}
+.menubar
+{
+    height: 7px;
+    line-height: 10px;
+    position: relative;
+    z-index: 66667;
+    border: 1px solid #d1d1d1;
+    border-top: 0;
+}
+#toolsbar
+{
+    position: relative;
+    height: 20px;
+    top: 7px;
+    z-index: 66668;
+    margin-left: 20px;
+    _margin-left: 10px;
+}
+#toolsbar li
+{
+    height: 20px;
+    width: 21px;
+    background-image: url(http://test.live800.com/test1/chatClient/version5/style/theme/userColor/images/tools1.png);
+    float: left;
+    background-repeat: no-repeat;
+    list-style: none;
+    margin-right: 20px;
+    cursor: pointer;
+    text-align: left;
+}
+#activex
+{
+    background-position: 0 -20px;
+}
+#file
+{
+    background-position: 0 -148px;
+}
+#emotion
+{
+    background-position: 0 -41px;
+}
+#callback
+{
+    background-position: 0 -63px;
+}
+#switch
+{
+    background-position: 0 -83px;
+}
+#evaluation
+{
+    background-position: 0 -105px;
+}
+#msn
+{
+    background-position: 0px -212px;
+}
+.mjr_menu_content
+{
+    color: #FF6600;
+    line-height: 14px;
+}
+#firstchannel li
+{
+    background: url(../images/r_ico1.gif) 0 3px no-repeat transparent;
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    line-height: 16px;
+}
+.mjr_menu
+{
+    color: #006e9c;
+    background: url(../images/menu_bg.gif) repeat-x;
+    line-height: 28px;
+    font-weight: bold;
+    background: #eee;
+    height: 28px;
+    cursor: pointer;
+    z-index: 200;
+    text-indent: 80px;
+}
+#input-field
+{
+    margin: 0 7px 7px 7px;
+    padding-top: 7px;
+    display: block;
+    position: relative;
+}
+
+#input-field textarea
+{
+    width: 100%;
+    height: 86px;
+    border: none;
+    background: transparent url(https://i.alipayobjects.com/e/201401/1tz1LI4vUL.gif);
+    resize: none;
+    padding: 0;
+    outline: none;
+    position: relative;
+    z-index: 3;
+}
+
+.tips
+{
+    position: absolute;
+    left: 6px;
+    right: 150px;
+    bottom: 6px;
+    padding: 5px 0;
+    margin: 0;
+}
+
+input.submit
+{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 130px;
+    height: 30px;
+    background-color: #F93A3A;
+    border: none;
+    font-family: "Microsoft Yahei" , simsun, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: not-allowed;
+}
+.server, #dycontent .client
+{
+    position: relative;
+    padding-bottom: 12px;
+}
+#dycontent h2
+{
+    height: 23px;
+    position: relative;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+#dycontent .server h2 span.header
+{
+    position: absolute;
+    left: 90px;
+    top: 0;
+    color: #999;
+}
+#dycontent .server h2 a.avatar
+{
+    position: absolute;
+    left: 7px;
+    top: 0;
+}
+#dycontent a.avatar img
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+}
+#dycontent .server .content
+{
+    margin: 0 78px;
+    background: #c2e3ee;
+    border-radius: 9px;
+    padding: 7px 12px;
+    border-top-left-radius: 0;
+    position: relative;
+    word-break: break-all;
+   
+}
+
+#dycontent .server .content:after
+{
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 15px;
+    height: 20px;
+    background-position: 0 -32px;
+}
+#artificial-service p s, #output-content .server a.more s, #dycontent .server .content:after, #dycontent .client .content:after, #commend-wrapper p span.value s, #commend-wrapper input.smt, #output-content .notify a.close, #toolbar .upload-image label.upload-image s
+{
+    background-image: url(https://i.alipayobjects.com/e/201401/1rg2Mi382X.png);
+    background-repeat: no-repeat;
+}
+#dycontent .client .content
+{
+    margin: 0 78px;
+    background: #d7d7d7;
+    border-radius: 9px;
+    border-top-right-radius: 0;
+    padding: 7px 12px;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    word-break: break-all;
+    max-width: 62%;
+}
+#dycontent .client .content:after
+{
+    content: '';
+    position: absolute;
+    right: -11px;
+    top: 0;
+    width: 11px;
+    height: 15px;
+    background-position: -22px -69px;
+}
+#dycontent .client
+{
+    text-align: right;
+}
+
+#dycontent .client h2 span.header
+{
+    position: absolute;
+    right: 90px;
+    top: 0;
+    color: #999;
+}
+#dycontent .client h2 a.avatar
+{
+    position: absolute;
+    right: 7px;
+    top: 0;
+}
+#dycontent h2
+{
+    height: 23px;
+    position: relative;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    
+}
+.wrap a
+{
+    padding-top: 8px;
+}
+
+.sign
+{
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+.bold
+{
+    font-weight: bold;
+}
+#dycontent
+{
+    padding-top: 15px;
+    background: #f4f4f4;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-width: 0px 1px 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-color: #d1d1d1;
+    border-bottom-color: #d1d1d1;
+    border-left-color: #d1d1d1;
+    height: 356px;
+}
+b
+{
+    font-weight:normal;
+}
