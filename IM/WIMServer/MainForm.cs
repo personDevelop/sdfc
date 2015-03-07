@@ -11,10 +11,10 @@ using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using NetworkCommsDotNet;
 using IMInterface;
-using AuthorityEntity;
 using AuthorityClient;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
+using AuthorityEntity; 
 
 namespace WIMServer
 {
@@ -117,29 +117,31 @@ namespace WIMServer
             try
             {
                 string cachKey = "UserInfoDataAccess_GetIMUserList";
-                List<View_IMUser> list = null;
+                List<IMUserInfo> list = null;
                 object o = Sharp.Common.CacheContainer.GetCache(cachKey);
                 if (o == null)
                 {
-                    list = new UserInfoClient().GetIMUserList();
+                    list = new UserInfoClient().GetIMUserList().List();
                     Sharp.Common.CacheContainer.AddCache(cachKey, list, 60 * 60);//缓存1小时
                 }
                 else
                 {
-                    list = o as List<View_IMUser>;
+                    list = o as List<IMUserInfo>;
                 }
-                List<View_IMUser> myfriends = new List<View_IMUser>();
+                List<IMUserInfo> myfriends = new List<IMUserInfo>();
                 lock (syncLocker)
                 {
 
-                    foreach (View_IMUser theuser in list)
+                    foreach (IMUserInfo theuser in list)
                     {
                         //判断其他好友是否在线 
-                        View_IMUser myfriend = theuser.Clone();
+                        IMUserInfo myfriend = theuser.Clone();
                         myfriend.IsOnline = userManager.ContainsKey(theuser.ID);
+                        myfriends.Add(myfriend);
                     }
                 }
-                Connection.SendObject("ResGetFriends", myfriends);
+                UserListContract ulc = new UserListContract(myfriends);
+                Connection.SendObject("ResGetFriends", ulc);
             }
             catch (Exception ex)
             {
@@ -173,7 +175,7 @@ namespace WIMServer
         }
 
         //处理用户登录 
-        private void IncomingLoginHandler(PacketHeader header, Connection Connection, View_IMUser userInfo)
+        private void IncomingLoginHandler(PacketHeader header, Connection Connection, IMUserInfo userInfo)
         {
 
             try
@@ -183,7 +185,7 @@ namespace WIMServer
                 string port = Connection.ConnectionInfo.LocalEndPoint.Port.ToString();
                 string error;
                 View_IMUser userinfo = new AuthorityClient.LoginClient().Login(userInfo.Code, userInfo.Pwd, ip, port, out error);
-                UserLoginContract resContract = new UserLoginContract(error, userinfo);
+                UserLoginContract resContract = new UserLoginContract(error, userinfo.Clone());
                 Connection.SendObject("ResUserLogin", resContract);
                 if (string.IsNullOrWhiteSpace(error))
                 {
@@ -210,7 +212,7 @@ namespace WIMServer
                     }
 
                     //用户上线后，通知其他用户
-                    UserStateNotify(userInfo.ID, UserState.在线);
+                    UserStateNotify(userInfo.ID, OnlineState.Online);
 
                 }
             }
@@ -244,7 +246,7 @@ namespace WIMServer
             }
         }
         // 某客户端用户的状态改变后，通知其他用户
-        private void UserStateNotify(string userID, UserState ustate)
+        private void UserStateNotify(string userID, OnlineState ustate)
         {
             try
             {
@@ -327,7 +329,7 @@ namespace WIMServer
 
         // 获取离线消息,稍后实现
 
-        private void IncomingMyOffLineMsg(PacketHeader header, Connection Connection, UserInfo userInfo)
+        private void IncomingMyOffLineMsg(PacketHeader header, Connection Connection, IMUserInfo userInfo)
         {
             try
             {
@@ -610,7 +612,7 @@ namespace WIMServer
             NetworkComms.AppendGlobalIncomingPacketHandler<string>("GetOnlineUser", IncomingGetOnlineUser);
 
             //用户登录 
-            NetworkComms.AppendGlobalIncomingPacketHandler<View_IMUser>("UserLogin", IncomingLoginHandler);
+            NetworkComms.AppendGlobalIncomingPacketHandler<IMUserInfo>("UserLogin", IncomingLoginHandler);
             //更改密码 
             NetworkComms.AppendGlobalIncomingPacketHandler<UserPswEntity>("ChangePsw", IncomingChangePsw);
 
@@ -627,7 +629,7 @@ namespace WIMServer
 
 
             // 获取离线消息
-            NetworkComms.AppendGlobalIncomingPacketHandler<UserInfo>("GetMyOffLineMsg", IncomingMyOffLineMsg);
+            NetworkComms.AppendGlobalIncomingPacketHandler<IMUserInfo>("GetMyOffLineMsg", IncomingMyOffLineMsg);
 
             //获取所有在线用户的P2P信息
             NetworkComms.AppendGlobalIncomingPacketHandler<string>("GetP2PInfo", IncomingP2PInfo);
@@ -675,7 +677,7 @@ namespace WIMServer
                 if (tempUserID != "")
                 {
 
-                    UserStateNotify(tempUserID, UserState.离线);
+                    UserStateNotify(tempUserID, OnlineState.Offline);
                 }
                 //应该发送一个消息给所有在线的其他用户
             }
@@ -732,7 +734,7 @@ namespace WIMServer
                     flag = true;
                     break;
                 }
-            } 
+            }
             return flag;
         }
 

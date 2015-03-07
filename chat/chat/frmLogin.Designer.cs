@@ -188,6 +188,7 @@
             this.textBoxPwd.SkinTxt.PasswordChar = '●';
             this.textBoxPwd.SkinTxt.Size = new System.Drawing.Size(60, 18);
             this.textBoxPwd.SkinTxt.TabIndex = 0;
+            this.textBoxPwd.SkinTxt.Text = "810";
             this.textBoxPwd.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.textBoxPwd.SkinTxt.WaterText = "密码";
             this.textBoxPwd.TabIndex = 38;
@@ -217,9 +218,9 @@
             this.textBoxId.SkinTxt.Name = "BaseText";
             this.textBoxId.SkinTxt.Size = new System.Drawing.Size(152, 18);
             this.textBoxId.SkinTxt.TabIndex = 0;
+            this.textBoxId.SkinTxt.Text = "810";
             this.textBoxId.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.textBoxId.SkinTxt.WaterText = "登录用户";
-          
             this.textBoxId.TabIndex = 39;
             // 
             // buttonId
@@ -280,7 +281,6 @@
             this.SysBottomNorml = global::ChatClient.Properties.Resources.btn_set_normal;
             this.SysBottomToolTip = "设置";
             this.SysBottomVisibale = true;
-         
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelHeadImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLoadding)).EndInit();

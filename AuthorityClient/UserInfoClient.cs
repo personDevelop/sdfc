@@ -48,7 +48,7 @@ namespace AuthorityClient
             return CurrentClient.GetAllUser();
         }
 
-        public int ResetPwd(string userid, string newpwd,string oldPwd=null)
+        public int ResetPwd(string userid, string newpwd, string oldPwd = null)
         {
             return CurrentClient.ResetPwd(userid, newpwd, oldPwd);
         }
@@ -110,13 +110,13 @@ namespace AuthorityClient
         }
 
         /// <summary>
-        /// 获取即时通讯用户列表，不包括自己
+        /// 获取即时通讯用户列表 
         /// </summary>
         /// <param name="myUserid"></param>
         /// <returns></returns>
-        public List<View_IMUser> GetIMUserList()
+        public DataTable GetIMUserList()
         {
-            return CurrentClient.GetIMUserList().ToList<View_IMUser>();
+            return CurrentClient.GetIMUserList();
         }
 
     }

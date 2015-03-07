@@ -10,22 +10,29 @@ using CCWin;
 using System.Net;
 using CCWin.Win32;
 using CCWin.Win32.Const;
+using IMInterface;
 namespace ChatClient
 {
     public partial class frmchatMain : CCSkinMain, IManagedForm
     {
 
+        private string friendID;
+        private string currentUserID;
 
-
-        //private ClassFormMain FormMain = new ClassFormMain();
-         
-        //private ClassTextMsg SendTextMsg = new ClassTextMsg();
         private ClassGifs SendGifs = new ClassGifs();
         public frmchatMain()
         {
             InitializeComponent();
             panelFriendHeadImage.BackgroundImage = Image.FromFile("head/image.jpg");
 
+        }
+
+        public frmchatMain(string friendID, string currentUserID)
+            : this()
+        {
+            // TODO: Complete member initialization
+            this.friendID = friendID;
+            this.currentUserID = currentUserID;
         }
 
         public void setUserName(string name)
@@ -42,9 +49,9 @@ namespace ChatClient
         #region 设置字体
         private void toolFont_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.FontDialog fd = new FontDialog();
-            if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                this.RTBSend.Font = fd.Font;
+            //System.Windows.Forms.FontDialog fd = new FontDialog();
+            //if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //    this.RTBSend.Font = fd.Font;
         }
         #endregion
 
@@ -170,25 +177,25 @@ namespace ChatClient
 
         private void getALLImage()
         {
-            for (int i = 0; i < RTBSend.TextLength; i++)
-            {
-                RTBSend.Select(i, 1);
-                RichTextBoxSelectionTypes rt = RTBSend.SelectionType;
+            //for (int i = 0; i < RTBSend.TextLength; i++)
+            //{
+            //    RTBSend.Select(i, 1);
+            //    RichTextBoxSelectionTypes rt = RTBSend.SelectionType;
 
-                if (rt == RichTextBoxSelectionTypes.Object)
-                {
-                    //当然也可能是其它的类型
+            //    if (rt == RichTextBoxSelectionTypes.Object)
+            //    {
+            //        //当然也可能是其它的类型
 
-                    RTBSend.Copy();
-                    Image img = Clipboard.GetImage();
-                    if (img != null)
-                    {
-                        MessageBox.Show("这是一个图片");
-                        img.Save("e:\\" + i.ToString() + ".bmp");
-                        img.Dispose();
-                    }
-                }
-            }
+            //        RTBSend.Copy();
+            //        Image img = Clipboard.GetImage();
+            //        if (img != null)
+            //        {
+            //            MessageBox.Show("这是一个图片");
+            //            img.Save("e:\\" + i.ToString() + ".bmp");
+            //            img.Dispose();
+            //        }
+            //    }
+            //}
         }
 
         //public void newTextMsg(string title, Font titleFont, Color titleColor)//将发送的消息加入历史rich
@@ -264,7 +271,7 @@ namespace ChatClient
 
         private void RTBRecordOnFrameChanged(object sender, EventArgs e)
         {
-            this.rtfRichTextBox_history.Invalidate();
+            //this.rtfRichTextBox_history.Invalidate();
         }
 
         //public void newTextMsg(byte[] content, string title, Font titleFont, Color titleColor)//收到对方发送过来文本消息
@@ -309,13 +316,14 @@ namespace ChatClient
         //}
         private void EnBut(bool t)//启用或禁用发送功能
         {
-            this.btnSend.Enabled = t;
-            this.RTBSend.ReadOnly = !t;
-            OutTime = 0;
-            this.timerCheckSendIsSuccess.Enabled = !t;//开始检测消息是否发送成功
+            //this.btnSend.Enabled = t;
+            //this.RTBSend.ReadOnly = !t;
+            //OutTime = 0;
+            //this.timerCheckSendIsSuccess.Enabled = !t;//开始检测消息是否发送成功
         }
 
         private int OutTime = 0;
+
         private void timerCheckSendIsSuccess_Tick(object sender, System.EventArgs e)
         {
             //if (currUserInfo != null)
@@ -343,7 +351,45 @@ namespace ChatClient
 
         public string FormID
         {
-            get { throw new NotImplementedException(); }
+            get { return friendID; }
         }
+
+
+        public Form CurrentForm
+        {
+            get
+            {
+                return this;
+            }
+            set
+            {
+
+            }
+        }
+
+        public void ShowOtherTextChat(string userID, List< MsgEntity> msgList)
+        {
+            if (msgList.Count > 0)
+            {
+
+                foreach (MsgEntity msg in msgList)
+                {
+                    //chatControl1.ShowMessage(msg.UserName, msg.SendTime, msg.Content, false);
+
+
+                    //IList<ImageWrapper> theImageList = msg.ImageList;
+
+                    //foreach (ImageWrapper imageWrapper in theImageList)
+                    //{
+                    //    //显示图片
+                    //    chatControl1.ShowImage(imageWrapper.ImageName, imageWrapper.Image);
+
+                    //}
+
+
+                }
+
+            }
+        } 
     }
 }

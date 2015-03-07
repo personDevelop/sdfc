@@ -23,11 +23,11 @@ namespace IMInterface
         /// 根据用户ID获取用户的具体信息
         /// </summary>
         [ProtoMember(2)]
-        public AuthorityEntity.View_IMUser UserContract { get; set; }
+        public  IMUserInfo UserContract { get; set; }
 
         public UserLoginContract() { }
 
-        public UserLoginContract(string message, View_IMUser userContract)
+        public UserLoginContract(string message, IMUserInfo userContract)
         {
             this.Message = message;
             this.UserContract = userContract;

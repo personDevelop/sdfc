@@ -35,12 +35,29 @@ namespace ChatClient
         public frmLogin(string[] args)
         {
             InitializeComponent();
-            connInfo = new ConnectionInfo(Common.ServerIP, Common.Port);
-            newTcpConnection = TCPConnection.GetConnection(connInfo);
-            Common.TcpConn = newTcpConnection;
+            if (args != null && args.Length == 2)
+            {
+                userNo = args[0];
+                Pwd = args[1];
+                IsAutoLoin = true;
+            }
+            try
+            {
+                connInfo = new ConnectionInfo(Common.ServerIP, Common.Port);
+                newTcpConnection = TCPConnection.GetConnection(connInfo);
+                Common.TcpConn = newTcpConnection;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
             #region 自动登录
             if (IsAutoLoin)
             {
@@ -53,6 +70,7 @@ namespace ChatClient
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+
             if (!IsAutoLoin)
             {
                 userNo = this.textBoxId.SkinTxt.Text;
@@ -75,7 +93,7 @@ namespace ChatClient
             bool isPass = false;
 
             //在契约类中保存用户名和密码
-            View_IMUser userinfo = new View_IMUser();
+            IMUserInfo userinfo = new IMUserInfo();
             userinfo.Code = userNo;
             userinfo.Pwd = Pwd;
 
@@ -87,23 +105,23 @@ namespace ChatClient
             {
 
                 //为简便，在此处使用了静态类保存用户相关信息  
-                Common.ClientUser = loginContract.UserContract; 
-                Common.ConnInfo = connInfo; 
+                Common.ClientUser = loginContract.UserContract;
+                Common.ConnInfo = connInfo;
                 isPass = true;
                 this.Hide();
-                frmchatMain f = new frmchatMain();
-                f.Show(); 
+                frmMain f = new frmMain();
+                f.Show();
             }
 
 
             // 如果未通过验证
             if (!isPass)
             {
-                
+
                 MessageBox.Show(loginContract.Message);
             }
 
         }
- 
+
     }
 }

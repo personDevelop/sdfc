@@ -88,7 +88,7 @@ namespace ChatClient
        
 
         //当前用户
-        public static View_IMUser ClientUser { get; set; }
+        public static IMUserInfo ClientUser { get; set; }
 
        
 
@@ -256,7 +256,7 @@ namespace ChatClient
             set { allUsers = value; }
         }
 
-        public static FormManager<frmchatMain> ChatFormManager = new FormManager<frmchatMain>();
+        
 
         public static NetworkCommsDotNet.Connection TcpConn = null;
 

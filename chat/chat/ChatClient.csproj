@@ -14,6 +14,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -79,18 +79,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\EventHelper.cs" />
+    <Compile Include="Core\FormManager.cs" />
+    <Compile Include="RichTextBoxPlus\ChatControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RichTextBoxPlus\ChatControl.designer.cs">
+      <DependentUpon>ChatControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextBoxPlus\MyGif.cs" />
+    <Compile Include="RichTextBoxPlus\RichTextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\Common.cs" />
     <Compile Include="frmchatMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmchatMain.Designer.cs">
       <DependentUpon>frmchatMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="chatMainOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="chatMainOld.Designer.cs">
-      <DependentUpon>chatMainOld.cs</DependentUpon>
     </Compile>
     <Compile Include="EmotionForm.cs">
       <SubType>Form</SubType>
@@ -103,12 +108,6 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmChatOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmChatOld.Designer.cs">
-      <DependentUpon>frmChatOld.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -141,21 +140,14 @@
     <Compile Include="UserInformationForm.Designer.cs">
       <DependentUpon>UserInformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\FormManager.cs" />
     <EmbeddedResource Include="frmchatMain.resx">
       <DependentUpon>frmchatMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="chatMainOld.resx">
-      <DependentUpon>chatMainOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmotionForm.resx">
       <DependentUpon>EmotionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmChatOld.resx">
-      <DependentUpon>frmChatOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -176,6 +168,9 @@
     <EmbeddedResource Include="RichTextBox.resx">
       <DependentUpon>RichTextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RichTextBoxPlus\ChatControl.resx">
+      <DependentUpon>ChatControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RichTextBoxPlus\RichTextBoxPlus.resx">
       <DependentUpon>RichTextBoxPlus.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,7 +180,9 @@
     <EmbeddedResource Include="UserInformationForm.resx">
       <DependentUpon>UserInformationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -348,7 +345,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

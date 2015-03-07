@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             CCWin.SkinControl.ChatListItem chatListItem1 = new CCWin.SkinControl.ChatListItem();
+            CCWin.SkinControl.ChatListItem chatListItem2 = new CCWin.SkinControl.ChatListItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.chatListBox = new CCWin.SkinControl.ChatListBox();
             this.skinPanel_HeadImage = new CCWin.SkinControl.SkinPanel();
@@ -59,7 +60,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem40 = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new TwinkleNotifyIcon(this.components);
+            this.notifyIcon1 = new ChatClient.TwinkleNotifyIcon(this.components);
             this.skinToolStrip3.SuspendLayout();
             this.skinToolStrip1.SuspendLayout();
             this.skinContextMenuStrip_State.SuspendLayout();
@@ -71,15 +72,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chatListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.chatListBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chatListBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.chatListBox.ForeColor = System.Drawing.Color.Black;
             chatListItem1.Bounds = new System.Drawing.Rectangle(0, 1, 278, 25);
             chatListItem1.IsTwinkleHide = false;
             chatListItem1.OwnerChatListBox = this.chatListBox;
-            chatListItem1.Text = "临时会话";
+            chatListItem1.Text = "网服在线";
             chatListItem1.TwinkleSubItemNumber = 0;
+            chatListItem2.Bounds = new System.Drawing.Rectangle(0, 27, 278, 25);
+            chatListItem2.IsTwinkleHide = false;
+            chatListItem2.OwnerChatListBox = this.chatListBox;
+            chatListItem2.Text = "Item";
+            chatListItem2.TwinkleSubItemNumber = 0;
             this.chatListBox.Items.AddRange(new CCWin.SkinControl.ChatListItem[] {
-            chatListItem1});
+            chatListItem1,
+            chatListItem2});
             this.chatListBox.ListHadOpenGroup = null;
             this.chatListBox.ListSubItemMenu = null;
             this.chatListBox.Location = new System.Drawing.Point(1, 136);
@@ -89,9 +96,9 @@
             this.chatListBox.Size = new System.Drawing.Size(278, 477);
             this.chatListBox.SubItemMenu = null;
             this.chatListBox.TabIndex = 135;
-            this.chatListBox.DoubleClickSubItem += new CCWin.SkinControl.ChatListBox.ChatListEventHandler(this.chatListBox_DoubleClickSubItem);
-            this.chatListBox.MouseEnterHead += new CCWin.SkinControl.ChatListBox.ChatListEventHandler(this.chatListBox_MouseEnterHead);
-            this.chatListBox.MouseLeave += new System.EventHandler(this.chatListBox_MouseLeave);
+            //this.chatListBox.DoubleClickSubItem += new CCWin.SkinControl.ChatListBox.ChatListEventHandler(this.chatListBox_DoubleClickSubItem);
+            //this.chatListBox.MouseEnterHead += new CCWin.SkinControl.ChatListBox.ChatListEventHandler(this.chatListBox_MouseEnterHead);
+            //this.chatListBox.MouseLeave += new System.EventHandler(this.chatListBox_MouseLeave);
             // 
             // skinPanel_HeadImage
             // 
@@ -116,7 +123,7 @@
             this.labelSignature.BackColor = System.Drawing.Color.Transparent;
             this.labelSignature.BorderColor = System.Drawing.Color.White;
             this.labelSignature.BorderSize = 4;
-            this.labelSignature.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.labelSignature.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelSignature.ForeColor = System.Drawing.Color.Black;
             this.labelSignature.Location = new System.Drawing.Point(96, 54);
             this.labelSignature.Name = "labelSignature";
@@ -145,7 +152,7 @@
             this.skinButton_State.TabIndex = 133;
             this.skinButton_State.Tag = "1";
             this.skinButton_State.UseVisualStyleBackColor = false;
-            this.skinButton_State.Click += new System.EventHandler(this.skinButton_State_Click);
+            //this.skinButton_State.Click += new System.EventHandler(this.skinButton_State_Click);
             // 
             // labelName
             // 
@@ -156,7 +163,7 @@
             this.labelName.BorderColor = System.Drawing.Color.White;
             this.labelName.BorderSize = 4;
             this.labelName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.labelName.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold);
+            this.labelName.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
             this.labelName.ForeColor = System.Drawing.Color.Black;
             this.labelName.Location = new System.Drawing.Point(119, 31);
             this.labelName.Name = "labelName";
@@ -447,7 +454,7 @@
             this.toolStripMenuItem20.Tag = "2";
             this.toolStripMenuItem20.Text = "我在线上";
             this.toolStripMenuItem20.ToolTipText = "表示希望好友看到您在线。\r\n声音：开启\r\n消息提醒框：开启\r\n会话消息：任务栏头像闪动\r\n";
-            this.toolStripMenuItem20.Click += new System.EventHandler(this.toolStripMenuItem20_Click);
+            //this.toolStripMenuItem20.Click += new System.EventHandler(this.toolStripMenuItem20_Click);
             // 
             // toolStripMenuItem30
             // 
@@ -458,7 +465,7 @@
             this.toolStripMenuItem30.Tag = "3";
             this.toolStripMenuItem30.Text = "离开";
             this.toolStripMenuItem30.ToolTipText = "表示离开，暂无法处理消息。\r\n声音：开启\r\n消息提醒框：开启\r\n会话消息：任务栏头像闪动\r\n";
-            this.toolStripMenuItem30.Click += new System.EventHandler(this.toolStripMenuItem30_Click);
+            //this.toolStripMenuItem30.Click += new System.EventHandler(this.toolStripMenuItem30_Click);
             // 
             // toolStripMenuItem31
             // 
@@ -469,7 +476,7 @@
             this.toolStripMenuItem31.Tag = "4";
             this.toolStripMenuItem31.Text = "忙碌";
             this.toolStripMenuItem31.ToolTipText = "表示忙碌，不会及时处理消息。\r\n声音：开启\r\n消息提醒框：开启\r\n会话消息：任务栏显示气泡\r\n";
-            this.toolStripMenuItem31.Click += new System.EventHandler(this.toolStripMenuItem31_Click);
+            //this.toolStripMenuItem31.Click += new System.EventHandler(this.toolStripMenuItem31_Click);
             // 
             // toolStripMenuItem32
             // 
@@ -480,7 +487,7 @@
             this.toolStripMenuItem32.Tag = "5";
             this.toolStripMenuItem32.Text = "请勿打扰";
             this.toolStripMenuItem32.ToolTipText = "表示不想被打扰。\r\n声音：关闭\r\n消息提醒框：关闭\r\n会话消息：任务栏显示气泡\r\n\r\n";
-            this.toolStripMenuItem32.Click += new System.EventHandler(this.toolStripMenuItem32_Click);
+            //this.toolStripMenuItem32.Click += new System.EventHandler(this.toolStripMenuItem32_Click);
             // 
             // toolStripMenuItem33
             // 
@@ -491,7 +498,7 @@
             this.toolStripMenuItem33.Tag = "6";
             this.toolStripMenuItem33.Text = "隐身";
             this.toolStripMenuItem33.ToolTipText = "表示好友看到您是离线的。\r\n声音：开启\r\n消息提醒框：开启\r\n会话消息：任务栏头像闪动\r\n";
-            this.toolStripMenuItem33.Click += new System.EventHandler(this.toolStripMenuItem33_Click);
+            //this.toolStripMenuItem33.Click += new System.EventHandler(this.toolStripMenuItem33_Click);
             // 
             // toolStripSeparator6
             // 
@@ -512,9 +519,9 @@
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            //this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // main
+            // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Back = global::ChatClient.Properties.Resources.blue;
@@ -544,7 +551,7 @@
             this.MiniMouseBack = global::ChatClient.Properties.Resources.btn_mini_highlight;
             this.MiniNormlBack = global::ChatClient.Properties.Resources.btn_mini_normal;
             this.MiniSize = new System.Drawing.Size(28, 20);
-            this.Name = "main";
+            this.Name = "frmMain";
             this.RestoreDownBack = global::ChatClient.Properties.Resources.btn_restore_down;
             this.RestoreMouseBack = global::ChatClient.Properties.Resources.btn_restore_highlight;
             this.RestoreNormlBack = global::ChatClient.Properties.Resources.btn_restore_normal;
@@ -559,7 +566,7 @@
             this.SysBottomToolTip = "更改外观";
             this.SysBottomVisibale = true;
             this.Text = "GG 2013";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.main_FormClosed);
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.main_FormClosed);
             this.Load += new System.EventHandler(this.main_Load);
             this.skinToolStrip3.ResumeLayout(false);
             this.skinToolStrip3.PerformLayout();

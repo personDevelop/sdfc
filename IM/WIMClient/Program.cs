@@ -25,7 +25,8 @@ namespace WIMClient
             Application.EnableVisualStyles();   //这行实现 XP 可视风格 
             Application.SetCompatibleTextRenderingDefault(false);
             Application.DoEvents();
-         
+            Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+            NetworkComms.DisableLogging();
             //NetworkComms.DefaultSendReceiveOptions = new SendReceiveOptions<ProtobufSerializer>();
             //上面的写法由于在.net Framework V4中出错，更如下写法
             SendReceiveOptions nullCompressionSRO = null;// new SendReceiveOptions(DPSManager.GetDataSerializer<ProtobufSerializer>(), null, null);
@@ -68,6 +69,11 @@ namespace WIMClient
             }
 
  
+        }
+
+        static void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            NetworkComms.Shutdown();
         }
  
     }

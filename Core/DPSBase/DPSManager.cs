@@ -364,7 +364,7 @@ namespace DPSBase
             {
                 //Create a new domain with the same settings as the current domain
                 AppDomainSetup setup = AppDomain.CurrentDomain.SetupInformation;
-                tempDomain = AppDomain.CreateDomain("Temp_" + Guid.NewGuid().ToString(), AppDomain.CurrentDomain.Evidence, setup);
+                tempDomain = AppDomain.CurrentDomain;// AppDomain.CreateDomain("Temp_" + Guid.NewGuid().ToString(), AppDomain.CurrentDomain.Evidence, setup);
 
                 try
                 {

@@ -644,9 +644,6 @@ namespace AuthorityEntity
         public bool IsOnline { get; set; }
 
 
-        public View_IMUser Clone()
-        {
-            return Clone<View_IMUser>() as View_IMUser;
-        }
+         
     }
 }

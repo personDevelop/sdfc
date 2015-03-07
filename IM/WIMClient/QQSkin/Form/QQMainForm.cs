@@ -14,7 +14,7 @@ using System.IO;
 using System.Threading;
 using WIMClient;
 
- 
+
 using NetworkCommsDotNet;
 
 using System.Threading;
@@ -1014,7 +1014,7 @@ namespace WIMClient.Skin
                 UserListContract userListContract = Common.TcpConn.SendReceiveObject<UserListContract>("GetFriends", "ResGetFriends", 5000, Common.UserID);
 
                 //遍历加载好友
-                foreach (UserInfo user in userListContract.UserList)
+                foreach (IMUserInfo user in userListContract.UserList)
                 {
                     //把用户添加到字典中
                     //根据性别 分别使用不同的图标
@@ -1314,7 +1314,7 @@ namespace WIMClient.Skin
             NetworkComms.DisableLogging();
 
             //用户状态改变通知<5>
-            //NetworkComms.AppendGlobalIncomingPacketHandler<UserStateContract>("UserStateNotify", IncomingUserStateNotify);
+            NetworkComms.AppendGlobalIncomingPacketHandler<UserStateContract>("UserStateNotify", IncomingUserStateNotify);
 
 
             //服务器通知客户断开 一般是由于有新连接进入<6>
@@ -1326,7 +1326,7 @@ namespace WIMClient.Skin
 
             NetworkComms.AppendGlobalIncomingPacketHandler<MsgEntity>("ClientChatMessage", IncomingClientChatMessage);
 
-            //NetworkComms.AppendGlobalIncomingPacketHandler<SetUpP2PContract>("SetupP2PMessage", IncomingSetupP2PMessage);
+            NetworkComms.AppendGlobalIncomingPacketHandler<SetUpP2PContract>("SetupP2PMessage", IncomingSetupP2PMessage);
             GetMyOfflineMessage();
         }
 
@@ -1335,22 +1335,22 @@ namespace WIMClient.Skin
         //用户状态改变通知<5>
         private void IncomingUserStateNotify(PacketHeader header, Connection connection, UserStateContract userStateContract)
         {
-            //if (userStateContract.OnLine)
-            //{
-            //    lock (syncLocker)
-            //    {
-            //        //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Online;
-            //    }
-            //}
-            //else
-            //{
-            //    lock (syncLocker)
-            //    {
-            //        //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Offline;
-            //        ////当某用户下线后，删除此用户相关的p2p 通道
-            //        //Common.RemoveUserConn(userStatecontract.SenderID);
-            //    }
-            //}
+            if (userStateContract.OnLine == IMInterface.OnlineState.Online)
+            {
+                lock (syncLocker)
+                {
+                    Common.GetDicUser(userStateContract.UserID).State = OnlineState.Online;
+                }
+            }
+            else
+            {
+                lock (syncLocker)
+                {
+                    //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Offline;
+                    ////当某用户下线后，删除此用户相关的p2p 通道
+                    //Common.RemoveUserConn(userStatecontract.SenderID);
+                }
+            }
         }
 
         //服务器通知连接断开 <6>

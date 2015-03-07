@@ -69,7 +69,7 @@ namespace WIMClient
                 UserListContract userListContract = Common.TcpConn.SendReceiveObject<UserListContract>("GetFriends", "ResGetFriends", 5000, Common.UserID);
 
                 //遍历加载好友
-                foreach (UserInfo user in userListContract.UserList)
+                foreach (IMUserInfo user in userListContract.UserList)
                 {
                     //把用户添加到字典中
                     //根据性别 分别使用不同的图标
