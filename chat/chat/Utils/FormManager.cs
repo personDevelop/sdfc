@@ -14,15 +14,15 @@ namespace ChatClient
 
        
 
-        public event EventHandler<FormIDEventArgs> FormClosed;
+        //public event EventHandler<FormIDEventArgs> FormClosed;
 
         public FormManager()
         {
             this.formDictionary = new Dictionary<string, TForm>();
             this.locker = new object();
-            this.FormClosed += delegate
-            {
-            };
+            //this.FormClosed += delegate
+            //{
+            //};
         }
 
         public void Add(TForm form)
@@ -54,7 +54,7 @@ namespace ChatClient
                 {
                     this.formDictionary.Remove(local.FormID);
                    
-                    this.FormClosed.Raise(this, new FormIDEventArgs(local.FormID));
+                    //this.FormClosed.Raise(this, new FormIDEventArgs(local.FormID));
                 }
             }
         }

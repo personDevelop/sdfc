@@ -219,7 +219,7 @@
             this.textBoxId.SkinTxt.TabIndex = 0;
             this.textBoxId.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.textBoxId.SkinTxt.WaterText = "登录用户";
-            this.textBoxId.SkinTxt.TextChanged += new System.EventHandler(this.textBoxId_SkinTxt_TextChanged);
+          
             this.textBoxId.TabIndex = 39;
             // 
             // buttonId
@@ -280,7 +280,7 @@
             this.SysBottomNorml = global::ChatClient.Properties.Resources.btn_set_normal;
             this.SysBottomToolTip = "设置";
             this.SysBottomVisibale = true;
-            this.SysBottomClick += new CCWin.CCSkinMain.SysBottomEventHandler(this.Form1_SysBottomClick);
+         
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelHeadImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLoadding)).EndInit();

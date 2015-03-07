@@ -13,7 +13,7 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            FormMain.formMain.forms.Romove(this);
+            //FormMain.formMain.forms.Romove(this);
             if (disposing && (components != null))
             {
                 components.Dispose();

@@ -16,7 +16,7 @@ namespace ChatClient
         public static string ServerIP;
         public static int Port;
 
-        public void SetServerIpAndPort()
+        public static void SetServerIpAndPort()
         {
             string[] ipAndPort = new FrameCommonClient.ParameterInfoClient().GetTwoValue("ecda7fbe-cf9d-4d89-b478-d31da5d0a7f8");
             if (ipAndPort != null && ipAndPort.Length == 2)
@@ -241,13 +241,13 @@ namespace ChatClient
         #endregion
 
         //拖动换组
-        public delegate void DragDropUserHandler(User user, Group newGroup);
-        public static event DragDropUserHandler DragDropUser;
-        public static void ToDragDropUser(User User, Group NewGroup)
-        {
-            if (DragDropUser != null)
-                DragDropUser(User, NewGroup);
-        }
+        //public delegate void DragDropUserHandler(User user, Group newGroup);
+        //public static event DragDropUserHandler DragDropUser;
+        //public static void ToDragDropUser(User User, Group NewGroup)
+        //{
+        //    if (DragDropUser != null)
+        //        DragDropUser(User, NewGroup);
+        //}
 
         static AllUsers allUsers = new AllUsers();
         public static AllUsers AllUsers
@@ -256,7 +256,7 @@ namespace ChatClient
             set { allUsers = value; }
         }
 
-        public static FormManager<ChatForm> ChatFormManager = new FormManager<ChatForm>();
+        public static FormManager<frmchatMain> ChatFormManager = new FormManager<frmchatMain>();
 
         public static NetworkCommsDotNet.Connection TcpConn = null;
 
