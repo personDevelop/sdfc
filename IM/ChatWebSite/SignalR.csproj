@@ -201,7 +201,9 @@
     <Content Include="packages.config" />
     <Content Include="sample.htm" />
     <Content Include="Scripts\jquery.nicescroll.js" />
+    <Content Include="sendMes.asmx" />
     <Content Include="severPage.aspx" />
+    <Content Include="showAllClientConnected.aspx" />
     <Content Include="src\jquery.js" />
     <Content Include="src\Plugins\Fader.js" />
     <Content Include="src\Plugins\Math.uuid.js" />
@@ -243,12 +245,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sendMes.asmx.cs">
+      <DependentUpon>sendMes.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="severPage.aspx.cs">
       <DependentUpon>severPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="severPage.aspx.designer.cs">
       <DependentUpon>severPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="showAllClientConnected.aspx.cs">
+      <DependentUpon>showAllClientConnected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showAllClientConnected.aspx.designer.cs">
+      <DependentUpon>showAllClientConnected.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserAvailable.aspx.cs">
       <DependentUpon>UserAvailable.aspx</DependentUpon>
