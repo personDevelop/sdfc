@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using CCWin;
 
-namespace chat
+namespace ChatClient
 {
     public partial class EmotionForm : CCSkinMain
     {      

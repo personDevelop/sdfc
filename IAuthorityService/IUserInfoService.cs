@@ -20,7 +20,7 @@ namespace IAuthorityService
         [OperationContract]
         bool Exists(string code, string email, string iD, ref string error);
         [OperationContract]
-        int ResetPwd(string userid, string newpwd);
+        int ResetPwd(string userid, string newpwd, string oldPwd);
         [OperationContract]
         int DeleteUser(string userid);
         [OperationContract]
@@ -43,5 +43,7 @@ namespace IAuthorityService
         DataTable GetOnLineWf();
         [OperationContract]
         DataTable GetIMUserList();
+
+       
     }
 }

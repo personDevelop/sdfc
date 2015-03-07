@@ -35,9 +35,9 @@ namespace AuthorityService
             return da.GetAllUser();
         }
 
-        public int ResetPwd(string userid, string newpwd)
+        public int ResetPwd(string userid, string newpwd,string oldPwd=null)
         {
-            return da.ResetPwd(userid, newpwd);
+            return da.ResetPwd(userid, newpwd,  oldPwd  );
         }
 
         public int DeleteUser(string userid)

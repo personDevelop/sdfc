@@ -34,8 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NetworkCommsDotNet">
-      <HintPath>..\..\refdll\NetworkCommsDotNet.dll</HintPath>
+    <Reference Include="FrameBaseClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\refdll\FrameBaseClient.dll</HintPath>
+    </Reference>
+    <Reference Include="FrameCommonClient">
+      <HintPath>..\..\refdll\FrameCommonClient.dll</HintPath>
+    </Reference>
+    <Reference Include="FrameCommonService">
+      <HintPath>..\..\refdll\FrameCommonService.dll</HintPath>
     </Reference>
     <Reference Include="Sharp.Common">
       <HintPath>..\..\refdll\Sharp.Common.dll</HintPath>
@@ -88,14 +95,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AuthorityClient\AuthorityClient.csproj">
+      <Project>{198D91F9-4DCE-43BF-8103-AF499D7A88DA}</Project>
+      <Name>AuthorityClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\AuthorityEntity\AuthorityEntity.csproj">
       <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
       <Name>AuthorityEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\NetworkCommsDotNet\NetworkCommsDotNet.csproj">
+      <Project>{B0FD9F50-A375-44DD-AAAE-CCC2F94A99D1}</Project>
+      <Name>NetworkCommsDotNet</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\IMInterface\IMInterface.csproj">
       <Project>{8874AD54-19CE-47A8-B0C9-F880EA01D677}</Project>
       <Name>IMInterface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\System\DataBaseConnect.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

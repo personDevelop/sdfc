@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
+using AuthorityEntity;
 
 namespace chat
 {
@@ -202,7 +203,7 @@ namespace chat
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 204);
+            this.statusBar1.Location = new System.Drawing.Point(0, 162);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Size = new System.Drawing.Size(632, 22);
             this.statusBar1.TabIndex = 1;
@@ -213,7 +214,7 @@ namespace chat
             this.TreeView1.ItemHeight = 14;
             this.TreeView1.Location = new System.Drawing.Point(0, 28);
             this.TreeView1.Name = "TreeView1";
-            this.TreeView1.Size = new System.Drawing.Size(121, 176);
+            this.TreeView1.Size = new System.Drawing.Size(121, 134);
             this.TreeView1.TabIndex = 6;
             this.TreeView1.Visible = false;
             // 
@@ -221,7 +222,7 @@ namespace chat
             // 
             this.Splitter1.Location = new System.Drawing.Point(121, 28);
             this.Splitter1.Name = "Splitter1";
-            this.Splitter1.Size = new System.Drawing.Size(4, 176);
+            this.Splitter1.Size = new System.Drawing.Size(4, 134);
             this.Splitter1.TabIndex = 7;
             this.Splitter1.TabStop = false;
             this.Splitter1.Visible = false;
@@ -239,7 +240,7 @@ namespace chat
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(125, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 176);
+            this.panel1.Size = new System.Drawing.Size(507, 134);
             this.panel1.TabIndex = 8;
             // 
             // tabControl1
@@ -250,7 +251,7 @@ namespace chat
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(503, 172);
+            this.tabControl1.Size = new System.Drawing.Size(503, 130);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -258,7 +259,7 @@ namespace chat
             this.tabPage1.Controls.Add(this.LV_SysUser);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(495, 146);
+            this.tabPage1.Size = new System.Drawing.Size(495, 125);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "系统用户";
             // 
@@ -277,7 +278,7 @@ namespace chat
             this.LV_SysUser.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.LV_SysUser.Location = new System.Drawing.Point(0, 0);
             this.LV_SysUser.Name = "LV_SysUser";
-            this.LV_SysUser.Size = new System.Drawing.Size(495, 146);
+            this.LV_SysUser.Size = new System.Drawing.Size(495, 125);
             this.LV_SysUser.TabIndex = 14;
             this.LV_SysUser.UseCompatibleStateImageBehavior = false;
             this.LV_SysUser.View = System.Windows.Forms.View.Details;
@@ -321,7 +322,7 @@ namespace chat
             this.tabPage2.Controls.Add(this.LV_OnlineUser);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(495, 167);
+            this.tabPage2.Size = new System.Drawing.Size(495, 104);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "在线用户";
             // 
@@ -340,7 +341,7 @@ namespace chat
             this.LV_OnlineUser.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.LV_OnlineUser.Location = new System.Drawing.Point(0, 0);
             this.LV_OnlineUser.Name = "LV_OnlineUser";
-            this.LV_OnlineUser.Size = new System.Drawing.Size(495, 167);
+            this.LV_OnlineUser.Size = new System.Drawing.Size(495, 104);
             this.LV_OnlineUser.TabIndex = 13;
             this.LV_OnlineUser.UseCompatibleStateImageBehavior = false;
             this.LV_OnlineUser.View = System.Windows.Forms.View.Details;
@@ -395,7 +396,7 @@ namespace chat
             // FormMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.ClientSize = new System.Drawing.Size(632, 226);
+            this.ClientSize = new System.Drawing.Size(632, 184);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Splitter1);
             this.Controls.Add(this.TreeView1);
@@ -451,11 +452,11 @@ namespace chat
 
         private void verifyUser(ClassMsg msg, System.Net.IPAddress Ip, int Port)
         {
-            ClassResponse user = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(msg.MsgContent))) as ClassResponse;
-            user = UserVerify.verifyUser(user.username, user.userpwd, Ip.ToString(), Port);
+            View_IMUser user = new ClassSerializers().DeSerializeBinary((new System.IO.MemoryStream(msg.MsgContent))) as View_IMUser;
+            user = UserVerify.verifyUser(user.Code, user.Pwd, Ip.ToString(), Port);
             List<ClassDept> depts = new List<ClassDept>();
-            depts = UserVerify.getUserDept(user.userid);
-            if (user.userstate == 1)
+            depts = UserVerify.getUserDept(user.ID);
+            if (user.UserState == 1)
             {
                 this.SendMsgToOne(Ip, Port, new ClassMsg(1, "", new ClassSerializers().SerializeBinary(depts).ToArray()));//告诉用户在线
             }
@@ -734,24 +735,7 @@ namespace chat
 
         }
 
-        private void GetAllUserInfo() //读取数据库中所有用户数据到列表中
-        {
-            try
-            {
-                System.Data.OleDb.OleDbDataReader dr;
-                string SQLstr = "select Sys_Users.UserName as computer,Mp_EmpLoyee.DepID as Dept,Mp_EmpLoyee.EmpName as UserName from Sys_Users,Mp_EmpLoyee where Mp_EmpLoyee.EmpID=Sys_Users.EmpID and (Sys_Users.IsWork is null or Sys_Users.IsWork>0)";
-                dr = new ClassOptionData().ExSQLReDr(SQLstr);
-                while (dr.Read())
-                {
-                    AllOneUserInfoToLV(LV_SysUser, Convert.ToString(dr["computer"]), "127.0.0.1", "0", "0", Convert.ToString(dr["dept"]), Convert.ToString(dr["UserName"]));
-                }
-                dr.Close();
-
-            }
-            catch (Exception e) { }
-
-        }
-
+      
         private void AllOneUserInfoToLV(System.Windows.Forms.ListView LV, string Computer, string IpAddress, string port, string OnlineSta, string Dept, string UserName)//'处理新登录用户的信息数据)
         {
             try

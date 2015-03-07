@@ -1,4 +1,4 @@
-﻿namespace chat
+﻿namespace ChatClient
 {
     partial class TwinkleNotifyIcon
     {

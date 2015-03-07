@@ -70,9 +70,9 @@ namespace AuthorityClient
 
         }
 
-        public UserInfo Login(string username, string userpwd, string Ip, string port, out string groupname, out string error)
+        public View_IMUser Login(string username, string userpwd, string Ip, string port,   out string error)
         {
-            return CurrentClient.LoginIM(username, userpwd, Ip, port, out   groupname, out   error);
+            return CurrentClient.LoginIM(username, userpwd, Ip, port, out   error);
         }
     }
 }

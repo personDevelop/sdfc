@@ -96,7 +96,7 @@ namespace AuthorityDataAccess
             return dt;
         }
 
-        public int ResetPwd(string userid, string newpwd)
+        public int ResetPwd(string userid, string newpwd, string oldPwd = null)
         {
             UserInfo u = new UserInfo();
             u.ID = userid;

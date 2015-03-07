@@ -53,10 +53,11 @@ namespace AuthorityDataAccess
             return Dal.SystemDateTime;
         }
 
-        public UserInfo LoginIM(string username, string userpwd, string Ip, string port, out string groupname, out string error)
+        public View_IMUser LoginIM(string username, string userpwd, string Ip, string port,   out string error)
         {
-            groupname = error = string.Empty;
-            UserInfo user = Dal.Find<UserInfo>(UserInfo._.Code == username);
+             error = string.Empty;
+            View_IMUser user = Dal.Find<View_IMUser>(View_IMUser._.Code == username);
+           
             if (user.Pwd != userpwd)
             {
                 error = "密码不正确";
@@ -64,9 +65,7 @@ namespace AuthorityDataAccess
             }
             else
             {
-                //获取其部门
-                OrganizationInfo org = new UserInfoDataAccess().GetDepartInfo(user.ID);
-                groupname = org.Name;
+                
                 //更新sessionlog
                 List<SystemSessionLog> logList = Dal.From<SystemSessionLog>().Where(SystemSessionLog._.UserID == user.ID
                         && SystemSessionLog._.OutDate == null).OrderBy(SystemSessionLog._.EntryDate.Desc).List<SystemSessionLog>();
@@ -78,12 +77,12 @@ namespace AuthorityDataAccess
                     log.UserID = user.ID;
                     log.UserCode = user.Code;
                     log.UserName = user.Name;
-                    log.CompID = org.ID;
-                    log.CompName = org.Name;
-                    log.DepartID = org.ID;
-                    log.DepartName = org.Name;
-                    log.GroupID = org.ID;
-                    log.GroupName = org.Name;
+                    log.CompID = user.DepartID;
+                    log.CompName = user.IMGroupName;
+                    log.DepartID = user.DepartID;
+                    log.DepartName = user.IMGroupName;
+                    log.GroupID = user.DepartID;
+                    log.GroupName = user.IMGroupName;
                     log.EntryDate = DateTime.Now;
                     log.EntryIP = Ip;
                     log.PortName = port;

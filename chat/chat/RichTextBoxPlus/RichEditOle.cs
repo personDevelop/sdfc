@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace chat.Windows.Forms
+namespace ChatClient.Windows.Forms
 {
 	[ComImport]
 	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

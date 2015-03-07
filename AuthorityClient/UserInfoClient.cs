@@ -48,9 +48,9 @@ namespace AuthorityClient
             return CurrentClient.GetAllUser();
         }
 
-        public int ResetPwd(string userid, string newpwd)
+        public int ResetPwd(string userid, string newpwd,string oldPwd=null)
         {
-            return CurrentClient.ResetPwd(userid, newpwd);
+            return CurrentClient.ResetPwd(userid, newpwd, oldPwd);
         }
 
         public int DeleteUser(string userid)

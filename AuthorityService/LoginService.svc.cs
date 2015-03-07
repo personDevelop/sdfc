@@ -38,12 +38,12 @@ namespace AuthorityService
         }
 
 
-      
 
 
-        public UserInfo LoginIM(string username, string userpwd, string Ip, string port, out string groupname, out string error)
+
+        public View_IMUser LoginIM(string username, string userpwd, string Ip, string port,   out string error)
         {
-            return da.LoginIM(username, userpwd, Ip, port, out   groupname, out   error);
+            return da.LoginIM(username, userpwd, Ip, port,   out   error);
         }
     }
 }

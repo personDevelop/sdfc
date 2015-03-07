@@ -215,6 +215,7 @@ namespace WIMClient.Skin
             this.btnLogin.Size = new System.Drawing.Size(76, 27);
             this.btnLogin.TabIndex = 33;
             this.btnLogin.Texts = "登录";
+            this.btnLogin.Load += new System.EventHandler(this.btnLogin_Load);
             this.btnLogin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.loginButton_MouseClick);
             // 
             // txtPassword

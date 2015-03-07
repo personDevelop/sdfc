@@ -1,4 +1,4 @@
-﻿namespace chat
+﻿namespace ChatClient
 {
     partial class EmotionForm
     {
@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Back = global::chat.Properties.Resources.allbtn_highlight;
+            this.Back = global::ChatClient.Properties.Resources.allbtn_highlight;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
             this.CanResize = false;
             this.ClientSize = new System.Drawing.Size(380, 280);

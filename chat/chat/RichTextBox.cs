@@ -9,9 +9,9 @@ using System.Text;
 using System.IO;
 using System.Collections.Specialized;
 using System.Drawing.Imaging;
-using chat.Windows.Forms;
+using ChatClient.Windows.Forms;
 
-namespace chat
+namespace ChatClient
 {
 	#region "OLE definitions"
 	// STGM

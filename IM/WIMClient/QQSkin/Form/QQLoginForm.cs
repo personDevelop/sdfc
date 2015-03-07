@@ -744,5 +744,10 @@ namespace WIMClient.Skin
             RegisterUser registerUser = new RegisterUser();
             registerUser.Show();
         }
+
+        private void btnLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

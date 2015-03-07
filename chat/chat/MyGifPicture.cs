@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 
-namespace chat 
+namespace ChatClient 
 {
 	/// <summary> 
 	/// MyPicture 的摘要说明。

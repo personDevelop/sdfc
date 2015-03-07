@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0FD9F50-A375-44DD-AAAE-CCC2F94A99D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetworkCommsDotNet</RootNamespace>
+    <AssemblyName>NetworkCommsDotNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NetworkCommsDotNet.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NLog">
+      <HintPath>..\..\refdll\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\refdll\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectionInfo.cs" />
+    <Compile Include="Connection\ConnectionCreate.cs" />
+    <Compile Include="Connection\ConnectionDelegatesHandlers.cs" />
+    <Compile Include="Connection\ConnectionIncomingData.cs" />
+    <Compile Include="Connection\ConnectionSendClose.cs" />
+    <Compile Include="Connection\ConnectionStatic.cs" />
+    <Compile Include="Connection\ConnectionType.cs" />
+    <Compile Include="Connection\SentPacket.cs" />
+    <Compile Include="Connection\TCP\TCPConnectionCreate.cs" />
+    <Compile Include="Connection\TCP\TCPConnectionInstance.cs" />
+    <Compile Include="Connection\TCP\TCPConnectionStatic.cs" />
+    <Compile Include="Connection\UDP\UDPClientThreadSafe.cs" />
+    <Compile Include="Connection\UDP\UDPConnection.cs" />
+    <Compile Include="Connection\UDP\UDPConnectionStatic.cs" />
+    <Compile Include="Connection\UDP\UDPOptions.cs" />
+    <Compile Include="NetworkComms.cs" />
+    <Compile Include="Packet.cs" />
+    <Compile Include="PacketHeader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservedPacketType.cs" />
+    <Compile Include="RuntimeEnvironment.cs" />
+    <Compile Include="SendReceiveOptions.cs" />
+    <Compile Include="Tools\Adler32.cs" />
+    <Compile Include="Tools\CommsMath.cs" />
+    <Compile Include="Tools\CommsThreadPool.cs" />
+    <Compile Include="Tools\IPExtAccess.cs" />
+    <Compile Include="Tools\IPTools.cs" />
+    <Compile Include="Tools\PacketBuilder.cs" />
+    <Compile Include="Tools\PacketUnwrappers.cs" />
+    <Compile Include="Tools\PriorityQueue.cs" />
+    <Compile Include="Tools\PriorityQueueItem.cs" />
+    <Compile Include="Tools\QueueItemPriority.cs" />
+    <Compile Include="Tools\ShortGUID.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DPSBase\DPSBase.csproj">
+      <Project>{9A8E342F-2EB6-44ED-A305-A6E0074540C0}</Project>
+      <Name>DPSBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SevenZipLZMACompressor\SevenZipLZMACompressor.csproj">
+      <Project>{A95D9802-2E43-41C4-AA68-C78AAAFECE10}</Project>
+      <Name>SevenZipLZMACompressor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

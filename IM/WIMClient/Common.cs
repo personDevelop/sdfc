@@ -15,6 +15,7 @@ namespace WIMClient
     /// </summary>
     public static class Common
     {
+       
         //
         public static Dictionary<string, Connection> UserConnList = new Dictionary<string, Connection>();
 

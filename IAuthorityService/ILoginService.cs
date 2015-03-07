@@ -21,6 +21,6 @@ namespace IAuthorityService
         [OperationContract]
         DateTime GetDateTime();
         [OperationContract]
-        UserInfo LoginIM(string username, string userpwd, string Ip, string port, out string groupname, out string error);
+        View_IMUser LoginIM(string username, string userpwd, string Ip, string port,   out string error);
     }
 }

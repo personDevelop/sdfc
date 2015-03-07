@@ -12,7 +12,7 @@ using CCWin.Win32;
 using CCWin.Win32.Const;
 using CCWin.SkinControl;
 
-namespace chat
+namespace ChatClient
 {
     public partial class UserInformationForm : CCSkinMain
     {

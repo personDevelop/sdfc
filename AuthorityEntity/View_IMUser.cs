@@ -10,7 +10,7 @@ namespace AuthorityEntity
     /// <summary>
     ///  即时通讯专用用户表
     /// </summary>  
-    
+
     [DataContract]
     public partial class View_IMUser : BaseEntity
     {
@@ -617,6 +617,7 @@ namespace AuthorityEntity
             public PropertyItem DepartID = null;
         }
         #endregion
+
     }
 
 
@@ -635,5 +636,17 @@ namespace AuthorityEntity
         [NotDbCol]
         public string Response { get; set; }
 
+
+        /// <summary>
+        /// 是否在线
+        /// </summary>
+        [NotDbCol]
+        public bool IsOnline { get; set; }
+
+
+        public View_IMUser Clone()
+        {
+            return Clone<View_IMUser>() as View_IMUser;
+        }
     }
 }

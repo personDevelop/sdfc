@@ -2,7 +2,7 @@
 using System.Runtime;
 using System.Runtime.InteropServices;
 
-namespace chat.Windows.Forms
+namespace ChatClient.Windows.Forms
 {
 	public class API
 	{

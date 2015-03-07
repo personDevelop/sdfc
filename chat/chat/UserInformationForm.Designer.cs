@@ -1,4 +1,4 @@
-﻿namespace chat
+﻿namespace ChatClient
 {
     partial class UserInformationForm
     {
@@ -94,7 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.BackLayout = false;
-            this.BorderPalace = global::chat.Properties.Resources.BackPalace;
+            this.BorderPalace = global::ChatClient.Properties.Resources.BackPalace;
             this.CanResize = false;
             this.ClientSize = new System.Drawing.Size(279, 181);
             this.CloseBoxSize = new System.Drawing.Size(39, 20);

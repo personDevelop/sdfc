@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 
-namespace chat
+namespace ChatClient
 {
 
     public interface ITwinkleNotifySupporter

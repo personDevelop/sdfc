@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using chat.Windows.Forms;
+using ChatClient.Windows.Forms;
 
-namespace chat 
+namespace ChatClient 
 {
 	public class RichTextBoxPlus : RichTextBox, IDisposable
 	{
