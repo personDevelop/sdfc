@@ -1335,22 +1335,22 @@ namespace WIMClient.Skin
         //用户状态改变通知<5>
         private void IncomingUserStateNotify(PacketHeader header, Connection connection, UserStateContract userStateContract)
         {
-            if (userStateContract.OnLine)
-            {
-                lock (syncLocker)
-                {
-                    //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Online;
-                }
-            }
-            else
-            {
-                lock (syncLocker)
-                {
-                    //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Offline;
-                    ////当某用户下线后，删除此用户相关的p2p 通道
-                    //Common.RemoveUserConn(userStatecontract.SenderID);
-                }
-            }
+            //if (userStateContract.OnLine)
+            //{
+            //    lock (syncLocker)
+            //    {
+            //        //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Online;
+            //    }
+            //}
+            //else
+            //{
+            //    lock (syncLocker)
+            //    {
+            //        //Common.GetDicUser(userStatecontract.SenderID).State = OnlineState.Offline;
+            //        ////当某用户下线后，删除此用户相关的p2p 通道
+            //        //Common.RemoveUserConn(userStatecontract.SenderID);
+            //    }
+            //}
         }
 
         //服务器通知连接断开 <6>
