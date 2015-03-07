@@ -6,10 +6,10 @@
     <title>在线客服</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
-    <script src="/Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery-1.6.4.min.js"></script>
     <script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="/Scripts/jquery.signalR-1.1.1.min.js"></script>
-    <script src="/signalr/hubs"></script>
+    <script src="Scripts/jquery.signalR-1.1.1.min.js"></script>
+    <script src="signalr/hubs"></script>
     <script type="text/javascript">
         function send_message() {
             //alert($(that).attr("refid"));
@@ -55,7 +55,7 @@
         $(function () {
 
             $("#textarea").keyup(function (event) {
-             
+
                 $("#leftvalue").html(200 - $("#textarea").val().length);
 
             });
@@ -64,7 +64,7 @@
                     document.getElementById("btnsend").click();
                     return false;
                 }
-                 
+
 
             });
             $("#dycontent").niceScroll({
