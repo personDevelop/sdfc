@@ -4,19 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.IO;
+using ProtoBuf;
 
 namespace IMInterface
 {
+    [ProtoContract]
     public class ImageWrapper
     {
         /// <summary>
         /// 把Image对象存储为私有的字节数组
         /// </summary> 
+        [ProtoMember(1)]
         private byte[] _imageData;
 
         /// <summary>
         /// 图片名称
         /// </summary> 
+        [ProtoMember(2)]
         public string ImageName { get; set; }
 
         /// <summary>
@@ -43,6 +47,7 @@ namespace IMInterface
         /// <summary>
         ///序列化之前，把图片转化为二进制数据
         /// </summary> 
+        [ProtoBeforeSerialization]
         private void Serialize()
         {
             if (Image != null)
@@ -66,6 +71,7 @@ namespace IMInterface
         /// <summary>
         /// 反序列化时，把二进制数据转化为图片对象
         /// </summary> 
+        [ProtoAfterDeserialization]
         private void Deserialize()
         {
             MemoryStream ms = new MemoryStream(_imageData);

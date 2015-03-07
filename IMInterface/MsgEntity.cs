@@ -2,48 +2,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProtoBuf;
 
 namespace IMInterface
 {
+    [ProtoContract]
     public class MsgEntity
     {
+        public MsgEntity()
+        { ImageList = new List<ImageWrapper>(); }
         /// <summary>
         /// 为空时，是系统消息
         /// </summary>
+        [ProtoMember(1)]
         public string SenderID { get; set; }
-
+        [ProtoMember(2)]
         public MsgSendType MsgSendType { get; set; }
-
+        [ProtoMember(3)]
         public MsgType MsgType { get; set; }
-
+        [ProtoMember(4)]
         public DateTime SendTime { get; set; }
         /// <summary>
         /// 消息标题，可以为空
         /// </summary>
+        [ProtoMember(5)]
         public string MsgTitle { get; set; }
 
         /// <summary>
         /// 可以为空，为空发送给所以人，一般是广播消息
         /// </summary>
+        [ProtoMember(6)]
         public string Reciver { get; set; }
 
         /// <summary>
         /// 是否发送成功，广播和提醒类的消息，不用管是否发送成功
         /// </summary>
+        [ProtoMember(7)]
         public bool IsSendScucess { get; set; }
 
 
         /// <summary>
         /// 是否已读，广播类消息不用关是否已读，只管发，而且只发一次
         /// </summary>
+        [ProtoMember(8)]
         public bool IsRead { get; set; }
 
         /// <summary>
         /// 消息主体
         /// </summary>
+        [ProtoMember(9)]
         public string MsgBody { get; set; }
 
-        
+
+        [ProtoMember(10)]
+        public IList<ImageWrapper> ImageList { get; set; }
     }
 
     public enum MsgSendType

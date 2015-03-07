@@ -11,34 +11,30 @@ using System.Net;
 using CCWin.Win32;
 using CCWin.Win32.Const;
 using IMInterface;
+using NetworkCommsDotNet;
 namespace ChatClient
 {
     public partial class frmchatMain : CCSkinMain, IManagedForm
     {
-
-        private string friendID;
-        private string currentUserID;
-
         private ClassGifs SendGifs = new ClassGifs();
+        private IMUserInfo friend;
         public frmchatMain()
         {
             InitializeComponent();
-            panelFriendHeadImage.BackgroundImage = Image.FromFile("head/image.jpg");
+            //panelFriendHeadImage.BackgroundImage = Image.FromFile("head/image.jpg");
 
         }
-
-        public frmchatMain(string friendID, string currentUserID)
+        public frmchatMain(IMUserInfo friend)
             : this()
         {
             // TODO: Complete member initialization
-            this.friendID = friendID;
-            this.currentUserID = currentUserID;
+            this.friend = friend;
+            labelFriendName.Text = friend.DisplayName;
+            labelFriendSignature.Text = friend.DisplaySignature;
+            this.Text = "正在和" + labelFriendName.Text + "对话";
         }
 
-        public void setUserName(string name)
-        {
-            labelFriendName.Text = name;
-        }
+
         #region 关闭按钮
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -57,18 +53,8 @@ namespace ChatClient
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //currUserInfo = this.FormMain.formMain.findUser(this.Tag.ToString());
-            //if (currUserInfo != null)
-            //{
-            //    currUserInfo.SendIsSuccess = false;//假设消息发送不成功
-            //    //.RTBSend.Rtf
-            //    ClassMsg msg = new ClassMsg(12, "", GetSendString());
-            //    FormMain.formMain.sendMsgToOneUser(msg, currUserInfo.IP, currUserInfo.Port);
-            //    string title = "我" + "(" + System.DateTime.Now.ToString() + ")";
-            //    this.newTextMsg(title, new System.Drawing.Font("宋体", 10), Color.Red);
-            //    this.RTBSend.Clear();
-            //    this.RTBSend.Focus();
-            //}
+            chatControl1.SendMessage();
+
         }
         private MyPicture findPic(string ID, ClassGifs gifs)
         {
@@ -324,6 +310,7 @@ namespace ChatClient
 
         private int OutTime = 0;
 
+
         private void timerCheckSendIsSuccess_Tick(object sender, System.EventArgs e)
         {
             //if (currUserInfo != null)
@@ -351,7 +338,7 @@ namespace ChatClient
 
         public string FormID
         {
-            get { return friendID; }
+            get { return friend.ID; }
         }
 
 
@@ -367,7 +354,7 @@ namespace ChatClient
             }
         }
 
-        public void ShowOtherTextChat(string userID, List< MsgEntity> msgList)
+        public void ShowOtherTextChat(string userID, List<MsgEntity> msgList)
         {
             if (msgList.Count > 0)
             {
@@ -390,6 +377,55 @@ namespace ChatClient
                 }
 
             }
-        } 
+        }
+
+        //控件中的图片字典
+        public Dictionary<string, Image> imageDict = null;
+        //图片包装类的列表
+        IList<ImageWrapper> imageWrapperList = new List<ImageWrapper>();
+
+        private void chatControl1_BeginToSend(string content)
+        {
+            this.chatControl1.ShowMessage(Common.ClientUser.DisplayName, DateTime.Now, content, true);
+
+            imageDict = this.chatControl1.imageDict;
+
+            //把控件中的图片字典，添加到图片包装类列表中
+            foreach (KeyValuePair<string, Image> kv in imageDict)
+            {
+                ImageWrapper newWrapper = new ImageWrapper(kv.Key, kv.Value);
+
+                imageWrapperList.Add(newWrapper);
+
+            }
+
+            //清除控件中图片字典的内容
+            this.chatControl1.ClearImageDic();
+
+            MsgEntity chatContract = new MsgEntity();
+            chatContract.SenderID = Common.ClientUser.ID;
+            chatContract.Reciver = friend.ID;
+            chatContract.MsgBody = content;
+            chatContract.SendTime = DateTime.Now;
+            chatContract.ImageList = imageWrapperList;
+
+
+            //从客户端 Common中获取相应连接
+            Connection p2pConnection = Common.GetUserConn(friend.ID);
+
+            if (p2pConnection != null)
+            {
+                p2pConnection.SendObject("ClientChatMessage", chatContract);
+            }
+            else
+            {
+
+                Common.TcpConn.SendObject("ChatMessage", chatContract);
+
+            }
+            this.chatControl1.Focus();
+            imageWrapperList.Clear();
+        }
+
     }
 }

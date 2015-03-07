@@ -42,6 +42,7 @@
             this.imgChatShow = new System.Windows.Forms.PictureBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.skinPanel_left = new CCWin.SkinControl.SkinPanel();
+            this.chatControl1 = new ChatClient.ChatControl();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.skinPanel1 = new CCWin.SkinControl.SkinPanel();
             this.liklblgg = new System.Windows.Forms.LinkLabel();
@@ -51,7 +52,6 @@
             this.pnlTx = new CCWin.SkinControl.SkinPanel();
             this.miniToolStrip = new CCWin.SkinControl.SkinToolStrip();
             this.timerCheckSendIsSuccess = new System.Windows.Forms.Timer(this.components);
-            this.chatControl1 = new ChatClient.ChatControl();
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).BeginInit();
             this.skinPanel_right.SuspendLayout();
             this.skinTabControl1.SuspendLayout();
@@ -219,6 +219,18 @@
             this.skinPanel_left.NormlBack = null;
             this.skinPanel_left.Size = new System.Drawing.Size(444, 434);
             this.skinPanel_left.TabIndex = 133;
+            // 
+            // chatControl1
+            // 
+            this.chatControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chatControl1.BackColor = System.Drawing.Color.SteelBlue;
+            this.chatControl1.Location = new System.Drawing.Point(0, -1);
+            this.chatControl1.Name = "chatControl1";
+            this.chatControl1.Size = new System.Drawing.Size(444, 400);
+            this.chatControl1.TabIndex = 137;
+            this.chatControl1.BeginToSend += new ChatClient.ChatControl.BeginToSendHandler(this.chatControl1_BeginToSend);
             // 
             // splitter2
             // 
@@ -396,17 +408,6 @@
             // timerCheckSendIsSuccess
             // 
             this.timerCheckSendIsSuccess.Tick += new System.EventHandler(this.timerCheckSendIsSuccess_Tick);
-            // 
-            // chatControl1
-            // 
-            this.chatControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chatControl1.BackColor = System.Drawing.Color.SteelBlue;
-            this.chatControl1.Location = new System.Drawing.Point(0, -1);
-            this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(444, 400);
-            this.chatControl1.TabIndex = 137;
             // 
             // frmchatMain
             // 

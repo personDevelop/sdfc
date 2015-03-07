@@ -61,8 +61,8 @@ namespace ChatClient
             #endregion
 
 
-            labelName.Text = Common.ClientUser.NickyName ?? Common.ClientUser.Name;
-            labelSignature.Text = Common.ClientUser.Signature ?? "开启高效沟通之旅";
+            labelName.Text = Common.ClientUser.DisplayName;
+            labelSignature.Text = Common.ClientUser.DisplaySignature;
 
             //this.notifyIcon1.Initialize(this, this);
             //this.notifyIcon1.ChangeMyStatus();
@@ -230,7 +230,7 @@ namespace ChatClient
                     chatListBox.Items.Add(chatListItem);
                     foreach (var user in group)
                     {
-                        ChatListSubItem subItem = new ChatListSubItem(user.NickyName ?? user.Name, user.Signature ?? "努力工作", user.Name, ChatListSubItem.UserStatus.Online);
+                        ChatListSubItem subItem = new ChatListSubItem(user.DisplayName, user.DisplaySignature, user.Name, ChatListSubItem.UserStatus.Online);
                         subItem.Tag = user;
                         //subItem.HeadImage = Image.FromFile("head/image.jpg");
                         chatListItem.SubItems.Add(subItem);
@@ -316,9 +316,9 @@ namespace ChatClient
                     if (form == null)
                     {
 
-                        form = new frmchatMain(Common.ClientUser.ID, msgUserID);
-                        FormManager.Instance.Add(form); 
-                        form.Show(); 
+                        //form = new frmchatMain(Common.ClientUser.ID, msgUserID);
+                        //FormManager.Instance.Add(form);
+                        //form.Show();
                     }
                     form.Focus();
                     //显示聊天信息
@@ -666,44 +666,17 @@ namespace ChatClient
 
         //#endregion
 
-        //#region 双击打开用户列表
-        //private void chatListBox_DoubleClickSubItem(object sender, ChatListEventArgs e)
-        //{
+        #region 双击打开用户列表
+        private void chatListBox_DoubleClickSubItem(object sender, ChatListEventArgs e)
+        {
 
-        //    ChatListSubItem item = e.SelectSubItem;
-        //    item.IsTwinkle = false;//不闪烁
+            ChatListSubItem item = e.SelectSubItem;
+            IMUserInfo chatuser = item.Tag as IMUserInfo;
+            item.IsTwinkle = false;//不闪烁
 
-        //    string friendID = item.NicName;
+            FormManager.Instance.ActivateOrCreateFormSend(chatuser);
 
-
-        //    ActivateOrCreateFormSend(friendID);
-        //    //chat form = new chat();
-        //    //form.Show();
-        //    //form.Focus();
-
-        //}
-        ////public ClassForms forms = new ClassForms();
-        //private void ActivateOrCreateFormSend(string uid)//激活或创建新的消息发送窗体
-        //{
-
-        //    //foreach (System.Windows.Forms.Form fo in forms)
-        //    //    if (fo.Tag == uid)
-        //    //    {
-        //    //        fo.Activate(); return;
-        //    //    }
-        //    //frmchatMain f = new frmchatMain();
-
-        //    //forms.add(f);
-
-        //    //ClassUserInfo userinfo = this.findUser(uid);
-        //    //if (userinfo != null)
-        //    //{
-        //    //    f.Text = "与 " + userinfo.UserName + "(" + userinfo.ID + ") 对话";
-        //    //    f.setUserName(userinfo.UserName);
-        //    //}
-        //    //f.Tag = uid;
-        //    //f.Show();
-        //}
+        }
 
         //#endregion
 
@@ -825,7 +798,7 @@ namespace ChatClient
 
 
 
-        //#endregion
+        #endregion
 
         public IChatForm GetChatForm(string friendID)
         {

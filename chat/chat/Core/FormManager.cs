@@ -9,7 +9,7 @@ namespace ChatClient
 {
     public class FormManager
     {
-        private object locker;
+        private object locker=new object();
         public static readonly FormManager Instance;
         public static frmMain MainForm;
         public event EventHandler<FormIDEventArgs> FormClosed;
@@ -18,7 +18,7 @@ namespace ChatClient
             Instance = new FormManager();
         }
         private FormManager() { }
-        private Dictionary<string, IManagedForm> formDictionary;
+        private Dictionary<string, IManagedForm> formDictionary=new Dictionary<string,IManagedForm>();
         public void Add(IManagedForm form)
         {
             lock (this.locker)
@@ -69,6 +69,32 @@ namespace ChatClient
                 return this.formDictionary[id];
             }
             return null;
+        }
+
+        internal void ActivateOrCreateFormSend(IMUserInfo chatuser)
+        {
+            lock (locker)
+            {
+                IManagedForm form = GetForm(chatuser.ID);
+
+                if (form == null)
+                {
+                    frmchatMain f = new frmchatMain(chatuser);
+                    form = f;
+                    Add(f);
+                    f.Show();
+
+                }
+                (form as frmchatMain).Activate();
+                if (Common.ContainsUserID(chatuser.ID))
+                {
+                    (form as frmchatMain).ShowOtherTextChat(chatuser.ID, Common.MsgContractList(chatuser.ID));
+                    Common.RemoveID(chatuser.ID);
+                    Common.RemoveMsg(chatuser.ID);
+                    //this.Messages.Clear();
+                }
+
+            }
         }
     }
 

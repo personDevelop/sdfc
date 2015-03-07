@@ -81,8 +81,31 @@ namespace IMInterface
         /// </summary>
         [ProtoMember(25)]
         public bool IsOnline { get; set; }
+        
+        public string DisplayName
+        {
 
+            get
+            {
+                string name = NickyName ?? Name;
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    name = "陌生人";
+                }
+                return name;
+            }
 
+        }
+
+        public string DisplaySignature
+        {
+
+            get
+            {
+                return Signature ?? "沟通从心开始";
+            }
+
+        }
 
     }
 
@@ -112,7 +135,7 @@ namespace IMInterface
             {
                 tem.Birthday = imuser.Birthday.Value.ToString();
             }
-           
+
 
             tem.ContactPhone = imuser.ContactPhone;
 
@@ -272,7 +295,7 @@ namespace IMInterface
                 //{
                 //    tem.UserState = Convert.ToInt32(item["UserState"]);
                 //}
-                
+
                 ///// <summary>
                 ///// 登录结果
                 ///// </summary>
