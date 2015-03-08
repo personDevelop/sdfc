@@ -176,7 +176,7 @@
             // 
             this.imgMeShow.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.imgMeShow.BackColor = System.Drawing.Color.Transparent;
-            this.imgMeShow.Image = global::ChatClient.Properties.Resources.log1;
+            this.imgMeShow.Image = global::ChatClient.Properties.Resources.log;
             this.imgMeShow.Location = new System.Drawing.Point(41, 282);
             this.imgMeShow.Name = "imgMeShow";
             this.imgMeShow.Size = new System.Drawing.Size(88, 78);
@@ -187,7 +187,7 @@
             // 
             this.imgChatShow.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.imgChatShow.BackColor = System.Drawing.Color.Transparent;
-            this.imgChatShow.Image = global::ChatClient.Properties.Resources.girl1;
+            this.imgChatShow.Image = global::ChatClient.Properties.Resources.girl;
             this.imgChatShow.Location = new System.Drawing.Point(14, 22);
             this.imgChatShow.Name = "imgChatShow";
             this.imgChatShow.Size = new System.Drawing.Size(140, 201);

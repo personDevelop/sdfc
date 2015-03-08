@@ -65,7 +65,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _1_100 {
             get {
-                object obj = ResourceManager.GetObject("1_100", resourceCulture);
+                object obj = ResourceManager.GetObject("_1_100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,17 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _234963_13122FZ23478 {
             get {
-                object obj = ResourceManager.GetObject("234963-13122FZ23478", resourceCulture);
+                object obj = ResourceManager.GetObject("_234963_13122FZ23478", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _234963_13122FZ23478_2345看图王 {
+            get {
+                object obj = ResourceManager.GetObject("_234963_13122FZ23478_2345看图王", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +95,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _4 {
             get {
-                object obj = ResourceManager.GetObject("4", resourceCulture);
+                object obj = ResourceManager.GetObject("_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -375,7 +385,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap away__2_ {
             get {
-                object obj = ResourceManager.GetObject("away (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("away__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -635,7 +645,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap busy__2_ {
             get {
-                object obj = ResourceManager.GetObject("busy (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("busy__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -943,16 +953,6 @@ namespace ChatClient.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap girl1 {
-            get {
-                object obj = ResourceManager.GetObject("girl1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap GVideo_Icon_48 {
             get {
                 object obj = ResourceManager.GetObject("GVideo_Icon_48", resourceCulture);
@@ -1033,6 +1033,16 @@ namespace ChatClient.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap hellp {
+            get {
+                object obj = ResourceManager.GetObject("hellp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_weibo {
             get {
                 object obj = ResourceManager.GetObject("icon_weibo", resourceCulture);
@@ -1055,7 +1065,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap imgRjp_BackgroundImage {
             get {
-                object obj = ResourceManager.GetObject("imgRjp.BackgroundImage", resourceCulture);
+                object obj = ResourceManager.GetObject("imgRjp_BackgroundImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1065,7 +1075,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap imoffline__2_ {
             get {
-                object obj = ResourceManager.GetObject("imoffline (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("imoffline__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1075,7 +1085,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap imonline__2_ {
             get {
-                object obj = ResourceManager.GetObject("imonline (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("imonline__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1105,7 +1115,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap invisible__2_ {
             get {
-                object obj = ResourceManager.GetObject("invisible (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("invisible__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1116,16 +1126,6 @@ namespace ChatClient.Properties {
         internal static System.Drawing.Bitmap log {
             get {
                 object obj = ResourceManager.GetObject("log", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap log1 {
-            get {
-                object obj = ResourceManager.GetObject("log1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1245,7 +1245,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap mute__2_ {
             get {
-                object obj = ResourceManager.GetObject("mute (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("mute__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1266,26 +1266,6 @@ namespace ChatClient.Properties {
         internal static System.Drawing.Bitmap night {
             get {
                 object obj = ResourceManager.GetObject("night", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap night1 {
-            get {
-                object obj = ResourceManager.GetObject("night1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap None64 {
-            get {
-                object obj = ResourceManager.GetObject("None64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1325,7 +1305,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap pictureBox1_Image {
             get {
-                object obj = ResourceManager.GetObject("pictureBox1.Image", resourceCulture);
+                object obj = ResourceManager.GetObject("pictureBox1_Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1335,7 +1315,7 @@ namespace ChatClient.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Qme__2_ {
             get {
-                object obj = ResourceManager.GetObject("Qme (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("Qme__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
