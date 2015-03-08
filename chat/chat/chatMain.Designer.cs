@@ -44,6 +44,7 @@
             this.toolStripButtonEmotion = new System.Windows.Forms.ToolStripButton();
             this.toolFont = new System.Windows.Forms.ToolStripButton();
             this.skToolMenu = new CCWin.SkinControl.SkinToolStrip();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.labelFriendName = new CCWin.SkinControl.SkinLabel();
             this.labelFriendSignature = new CCWin.SkinControl.SkinLabel();
             this.rtfRichTextBox_history = new CCWin.SkinControl.RtfRichTextBox();
@@ -58,7 +59,6 @@
             this.skinLabel_FriendID = new CCWin.SkinControl.SkinLabel();
             this.skinPanel_right = new CCWin.SkinControl.SkinPanel();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.skinToolStrip2.SuspendLayout();
             this.skToolMenu.SuspendLayout();
             this.pnlTx.SuspendLayout();
@@ -394,6 +394,15 @@
             this.skToolMenu.TitleRadius = 4;
             this.skToolMenu.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 24);
+            this.toolStripButton3.Text = "toolStripButton3";
+            // 
             // labelFriendName
             // 
             this.labelFriendName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -619,15 +628,6 @@
             this.skinButton1.TabIndex = 144;
             this.skinButton1.Text = "快捷回复";
             this.skinButton1.UseVisualStyleBackColor = false;
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 24);
-            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // chatMain
             // 

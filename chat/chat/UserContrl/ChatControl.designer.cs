@@ -102,7 +102,7 @@
             this.richTextBoxEx_send.Margin = new System.Windows.Forms.Padding(0);
             this.richTextBoxEx_send.MaxLength = 0;
             this.richTextBoxEx_send.Name = "richTextBoxEx_send";
-            this.richTextBoxEx_send.Size = new System.Drawing.Size(594, 178);
+            this.richTextBoxEx_send.Size = new System.Drawing.Size(594, 181);
             this.richTextBoxEx_send.TabIndex = 1;
             this.richTextBoxEx_send.Text = "";
             this.richTextBoxEx_send.TextChanged += new System.EventHandler(this.richTextBoxEx_send_TextChanged);
