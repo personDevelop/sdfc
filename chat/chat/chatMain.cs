@@ -141,6 +141,11 @@ namespace ChatClient
 
         }
 
+        private void toolFont_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
          
     }
 }

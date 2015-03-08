@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 
-namespace WIMClient
+namespace ChatClient
 {
     internal class FaceBox:Label
     {

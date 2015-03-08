@@ -58,6 +58,7 @@
             this.skinLabel_FriendID = new CCWin.SkinControl.SkinLabel();
             this.skinPanel_right = new CCWin.SkinControl.SkinPanel();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.skinToolStrip2.SuspendLayout();
             this.skToolMenu.SuspendLayout();
             this.pnlTx.SuspendLayout();
@@ -254,7 +255,7 @@
             this.skinButton_send.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.skinButton_send.DownBack = ((System.Drawing.Image)(resources.GetObject("skinButton_send.DownBack")));
             this.skinButton_send.DrawType = CCWin.SkinControl.DrawStyle.Img;
-            this.skinButton_send.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinButton_send.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton_send.Location = new System.Drawing.Point(342, 481);
             this.skinButton_send.MouseBack = ((System.Drawing.Image)(resources.GetObject("skinButton_send.MouseBack")));
             this.skinButton_send.Name = "skinButton_send";
@@ -273,7 +274,7 @@
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.DownBack = ((System.Drawing.Image)(resources.GetObject("btnClose.DownBack")));
             this.btnClose.DrawType = CCWin.SkinControl.DrawStyle.Img;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnClose.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnClose.Location = new System.Drawing.Point(267, 481);
             this.btnClose.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnClose.MouseBack")));
             this.btnClose.Name = "btnClose";
@@ -304,7 +305,7 @@
             this.skinLabel_inputing.AutoSize = true;
             this.skinLabel_inputing.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel_inputing.BorderColor = System.Drawing.Color.White;
-            this.skinLabel_inputing.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel_inputing.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel_inputing.ForeColor = System.Drawing.Color.Black;
             this.skinLabel_inputing.Location = new System.Drawing.Point(235, 17);
             this.skinLabel_inputing.Name = "skinLabel_inputing";
@@ -334,6 +335,7 @@
             this.toolFont.Size = new System.Drawing.Size(23, 24);
             this.toolFont.Text = "toolStripButton1";
             this.toolFont.ToolTipText = "字体";
+            this.toolFont.Click += new System.EventHandler(this.toolFont_Click_1);
             // 
             // skToolMenu
             // 
@@ -379,7 +381,8 @@
             this.toolStripButtonEmotion,
             this.toolStripButton2,
             this.toolStripButton1,
-            this.toolStripButton7});
+            this.toolStripButton7,
+            this.toolStripButton3});
             this.skToolMenu.Location = new System.Drawing.Point(3, 351);
             this.skToolMenu.Name = "skToolMenu";
             this.skToolMenu.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
@@ -401,7 +404,7 @@
             this.labelFriendName.BorderColor = System.Drawing.Color.White;
             this.labelFriendName.BorderSize = 4;
             this.labelFriendName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.labelFriendName.Font = new System.Drawing.Font("Microsoft YaHei", 14F);
+            this.labelFriendName.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.labelFriendName.ForeColor = System.Drawing.Color.Black;
             this.labelFriendName.Location = new System.Drawing.Point(57, 7);
             this.labelFriendName.Name = "labelFriendName";
@@ -418,7 +421,7 @@
             this.labelFriendSignature.BackColor = System.Drawing.Color.Transparent;
             this.labelFriendSignature.BorderColor = System.Drawing.Color.White;
             this.labelFriendSignature.BorderSize = 4;
-            this.labelFriendSignature.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.labelFriendSignature.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelFriendSignature.ForeColor = System.Drawing.Color.Black;
             this.labelFriendSignature.Location = new System.Drawing.Point(59, 36);
             this.labelFriendSignature.Name = "labelFriendSignature";
@@ -433,7 +436,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfRichTextBox_history.BackColor = System.Drawing.Color.White;
             this.rtfRichTextBox_history.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfRichTextBox_history.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.rtfRichTextBox_history.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.rtfRichTextBox_history.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
             this.rtfRichTextBox_history.Location = new System.Drawing.Point(1, 91);
             this.rtfRichTextBox_history.Margin = new System.Windows.Forms.Padding(0);
@@ -451,7 +454,7 @@
             this.textBoxSend.BackColor = System.Drawing.Color.White;
             this.textBoxSend.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSend.EnableAutoDragDrop = true;
-            this.textBoxSend.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.textBoxSend.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.textBoxSend.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
             this.textBoxSend.Location = new System.Drawing.Point(1, 379);
             this.textBoxSend.Margin = new System.Windows.Forms.Padding(0);
@@ -500,7 +503,7 @@
             this.skinLabel1.AutoSize = true;
             this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel1.BorderColor = System.Drawing.Color.White;
-            this.skinLabel1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel1.Location = new System.Drawing.Point(14, 202);
             this.skinLabel1.Name = "skinLabel1";
             this.skinLabel1.Size = new System.Drawing.Size(32, 17);
@@ -513,7 +516,7 @@
             this.skinLabel2.AutoSize = true;
             this.skinLabel2.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel2.BorderColor = System.Drawing.Color.White;
-            this.skinLabel2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel2.Location = new System.Drawing.Point(14, 223);
             this.skinLabel2.Name = "skinLabel2";
             this.skinLabel2.Size = new System.Drawing.Size(44, 17);
@@ -559,7 +562,7 @@
             this.skinLabel_FriendName.AutoSize = true;
             this.skinLabel_FriendName.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel_FriendName.BorderColor = System.Drawing.Color.White;
-            this.skinLabel_FriendName.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel_FriendName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel_FriendName.Location = new System.Drawing.Point(53, 223);
             this.skinLabel_FriendName.Name = "skinLabel_FriendName";
             this.skinLabel_FriendName.Size = new System.Drawing.Size(56, 17);
@@ -572,7 +575,7 @@
             this.skinLabel_FriendID.AutoSize = true;
             this.skinLabel_FriendID.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel_FriendID.BorderColor = System.Drawing.Color.White;
-            this.skinLabel_FriendID.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel_FriendID.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel_FriendID.Location = new System.Drawing.Point(53, 202);
             this.skinLabel_FriendID.Name = "skinLabel_FriendID";
             this.skinLabel_FriendID.Size = new System.Drawing.Size(73, 17);
@@ -607,7 +610,7 @@
             this.skinButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.skinButton1.DownBack = ((System.Drawing.Image)(resources.GetObject("skinButton1.DownBack")));
             this.skinButton1.DrawType = CCWin.SkinControl.DrawStyle.Img;
-            this.skinButton1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinButton1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton1.Location = new System.Drawing.Point(192, 481);
             this.skinButton1.MouseBack = ((System.Drawing.Image)(resources.GetObject("skinButton1.MouseBack")));
             this.skinButton1.Name = "skinButton1";
@@ -616,6 +619,15 @@
             this.skinButton1.TabIndex = 144;
             this.skinButton1.Text = "快捷回复";
             this.skinButton1.UseVisualStyleBackColor = false;
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 24);
+            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // chatMain
             // 
@@ -719,5 +731,6 @@
         private CCWin.SkinControl.SkinPanel skinPanel_right;
         private System.Windows.Forms.ImageList imageList1;
         private CCWin.SkinControl.SkinButton skinButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

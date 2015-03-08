@@ -29,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmchatMain));
             this.panelFriendHeadImage = new CCWin.SkinControl.SkinPanel();
             this.labelFriendName = new CCWin.SkinControl.SkinLabel();
@@ -51,7 +50,6 @@
             this.btnClose = new CCWin.SkinControl.SkinButton();
             this.pnlTx = new CCWin.SkinControl.SkinPanel();
             this.miniToolStrip = new CCWin.SkinControl.SkinToolStrip();
-            this.timerCheckSendIsSuccess = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).BeginInit();
             this.skinPanel_right.SuspendLayout();
             this.skinTabControl1.SuspendLayout();
@@ -274,10 +272,10 @@
             this.liklblgg.LinkColor = System.Drawing.Color.Black;
             this.liklblgg.Location = new System.Drawing.Point(3, 10);
             this.liklblgg.Name = "liklblgg";
-            this.liklblgg.Size = new System.Drawing.Size(56, 17);
+            this.liklblgg.Size = new System.Drawing.Size(92, 17);
             this.liklblgg.TabIndex = 130;
             this.liklblgg.TabStop = true;
-            this.liklblgg.Text = "聊天程序";
+            this.liklblgg.Text = "山东福彩即时通";
             this.liklblgg.VisitedLinkColor = System.Drawing.SystemColors.HotTrack;
             // 
             // btnSend
@@ -405,10 +403,6 @@
             this.miniToolStrip.TitleRadius = 4;
             this.miniToolStrip.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             // 
-            // timerCheckSendIsSuccess
-            // 
-            this.timerCheckSendIsSuccess.Tick += new System.EventHandler(this.timerCheckSendIsSuccess_Tick);
-            // 
             // frmchatMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -433,6 +427,7 @@
             this.EffectWidth = 4;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MaxDownBack = global::ChatClient.Properties.Resources.btn_max_down;
+            this.MaximizeBox = false;
             this.MaxMouseBack = global::ChatClient.Properties.Resources.btn_max_highlight;
             this.MaxNormlBack = global::ChatClient.Properties.Resources.btn_max_normal;
             this.MaxSize = new System.Drawing.Size(28, 20);
@@ -489,7 +484,6 @@
         private CCWin.SkinControl.SkinButton btnClose;
         private CCWin.SkinControl.SkinPanel pnlTx;
         private CCWin.SkinControl.SkinToolStrip miniToolStrip;
-        private System.Windows.Forms.Timer timerCheckSendIsSuccess;
         private ChatControl chatControl1;
 
 
