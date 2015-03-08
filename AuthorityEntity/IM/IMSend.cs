@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using FrameSession;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     public interface IMSend
     {
@@ -88,7 +88,7 @@ namespace IMInterface
 
         public bool Send(string Reciverd, string msg, MsgSendType type = MsgSendType.基本消息)
         {
-            MsgEntity msgEntiy = new MsgEntity() { Reciver = Reciverd, MsgBody = msg, MsgSendType = type };
+            MsgEntity msgEntiy = new MsgEntity() { Reciver = Reciverd, MsgContent = msg, MsgSendType = type };
 
             return Send(msgEntiy);
         }

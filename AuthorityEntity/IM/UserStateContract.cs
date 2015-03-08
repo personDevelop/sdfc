@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ProtoBuf;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     /// <summary>
     /// 契约类 获取用户是否在线

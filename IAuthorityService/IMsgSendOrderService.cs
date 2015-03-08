@@ -30,5 +30,11 @@ namespace IAuthorityService
 
         int UpdateStatus(string[] msgID, string Status);
 
+        [OperationContract]
+        int AddOfflineMsg(AuthorityEntity.MsgInfo msg);
+         [OperationContract]
+        int DeleteOffLineMsg(string msgid);
+         [OperationContract]
+         DataTable GetAllOffLineMsgByUserID(string reciveuserID);
     }
 }

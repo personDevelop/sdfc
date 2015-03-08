@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ProtoBuf;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     /// <summary>
     /// 此契约类存放聊天对话消息

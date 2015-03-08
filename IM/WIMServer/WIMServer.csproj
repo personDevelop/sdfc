@@ -107,10 +107,6 @@
       <Project>{B0FD9F50-A375-44DD-AAAE-CCC2F94A99D1}</Project>
       <Name>NetworkCommsDotNet</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\IMInterface\IMInterface.csproj">
-      <Project>{8874AD54-19CE-47A8-B0C9-F880EA01D677}</Project>
-      <Name>IMInterface</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\System\DataBaseConnect.xml">

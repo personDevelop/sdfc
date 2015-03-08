@@ -5,7 +5,7 @@ using System.Text;
 using ProtoBuf;
 using AuthorityEntity;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     /// <summary>
     /// 契约类  用于客户端发来用户名密码后，服务器进行判断，给Message赋值是否登录成功，如成功

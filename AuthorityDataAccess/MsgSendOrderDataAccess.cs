@@ -6,6 +6,7 @@ using System.Data;
 using AuthorityEntity;
 using Sharp.Common;
 using Sharp.Data;
+using AuthorityEntity.IM;
 
 namespace AuthorityDataAccess
 {
@@ -105,6 +106,23 @@ namespace AuthorityDataAccess
             order.MsgStatus = Status;
             order.SendTime = DateTime.Now;
             return Dal.Submit(order);
+        }
+
+        public int AddOfflineMsg(MsgInfo msg)
+        {
+            return Dal.Submit(msg);
+        }
+
+        public int DeleteOffLineMsg(string msgid)
+        {
+            return Dal.Delete<MsgInfo>(msgid);
+        }
+
+        public DataTable GetAllOffLineMsgByUserID(string reciveuserID)
+        {
+            DataTable dt = Dal.From<MsgInfo>().Where(MsgInfo._.Reciver.Contains(reciveuserID) || MsgInfo._.Reciver == null)
+                .ToDataTable();
+            return dt ;
         }
     }
 }

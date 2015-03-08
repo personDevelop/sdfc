@@ -50,5 +50,22 @@ namespace AuthorityService
 
             return da.UpdateStatus(msgID, Status);
         }
+
+
+        public int AddOfflineMsg(AuthorityEntity.MsgInfo msg)
+        {
+            return da.AddOfflineMsg(msg);
+        }
+
+
+        public int DeleteOffLineMsg(string msgid)
+        {
+            return da.DeleteOffLineMsg(msgid);
+        }
+
+        public DataTable GetAllOffLineMsgByUserID(string reciveuserID)
+        {
+            return da.GetAllOffLineMsgByUserID(reciveuserID);
+        }
     }
 }

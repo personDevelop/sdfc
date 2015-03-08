@@ -15,8 +15,9 @@ using System.Threading;
 using FrameSession;
 using Sharp.Common;
 using NetworkCommsDotNet;
-using IMInterface;
+
 using AuthorityEntity;
+using AuthorityEntity.IM;
 
 namespace ChatClient
 {
@@ -99,7 +100,7 @@ namespace ChatClient
 
             //发送契约类给服务器端，并获取返回的结果
             UserLoginContract loginContract = newTcpConnection.
-                SendReceiveObject<UserLoginContract>("UserLogin", "ResUserLogin", 8000, userinfo);
+                SendReceiveObject<UserLoginContract>("UserLogin", "ResUserLogin", 80000, userinfo);
             //如果登陆成功
             if (string.IsNullOrWhiteSpace(loginContract.Message))
             {

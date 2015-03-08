@@ -6,7 +6,7 @@ using ProtoBuf;
 using AuthorityEntity;
 using System.Data;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     /// <summary>
     ///  即时通讯专用用户表
@@ -81,13 +81,13 @@ namespace IMInterface
         /// </summary>
         [ProtoMember(25)]
         public bool IsOnline { get; set; }
-        
+
         public string DisplayName
         {
 
             get
             {
-                string name = NickyName ?? Name;
+                string name = string.IsNullOrWhiteSpace(NickyName) ? Name : NickyName;
                 if (string.IsNullOrWhiteSpace(name))
                 {
                     name = "陌生人";
@@ -102,7 +102,8 @@ namespace IMInterface
 
             get
             {
-                return Signature ?? "沟通从心开始";
+
+                return string.IsNullOrWhiteSpace(Signature) ? "沟通从心开始" : Signature;
             }
 
         }

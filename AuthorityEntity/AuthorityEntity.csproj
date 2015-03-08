@@ -31,12 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net">
+      <HintPath>..\refdll\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,7 +52,19 @@
     <Compile Include="Contacts.cs" />
     <Compile Include="ControlEntiy.cs" />
     <Compile Include="FunctionInfo.cs" />
+    <Compile Include="IM\ImageWrapper.cs" />
+    <Compile Include="IM\IMUserInfo.cs" />
+    <Compile Include="IM\MsgEntity.cs" />
+    <Compile Include="IM\MsgTypeContract.cs" />
+    <Compile Include="IM\SetUpP2PContract.cs" />
+    <Compile Include="IM\UserIDContract.cs" />
+    <Compile Include="IM\UserIDEndPoint.cs" />
+    <Compile Include="IM\UserListContract.cs" />
+    <Compile Include="IM\UserLoginContract.cs" />
+    <Compile Include="IM\UserPswEntity.cs" />
+    <Compile Include="IM\UserStateContract.cs" />
     <Compile Include="MenuInfo.cs" />
+    <Compile Include="MsgInfo.cs" />
     <Compile Include="MsgSendOrder.cs" />
     <Compile Include="OrganizationInfo.cs" />
     <Compile Include="OrgPositions.cs" />

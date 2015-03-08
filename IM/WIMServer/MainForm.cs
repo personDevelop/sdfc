@@ -10,11 +10,12 @@ using System.Net;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using NetworkCommsDotNet;
-using IMInterface;
+
 using AuthorityClient;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
-using AuthorityEntity; 
+using AuthorityEntity;
+using AuthorityEntity.IM;
 
 namespace WIMServer
 {
@@ -87,15 +88,8 @@ namespace WIMServer
                     //暂时不保存离线图片消息
                     else
                     {
-                        //OffLineMessage msg = new OffLineMessage();
-                        //msg.UserID = chatContract.UserID;
-                        //msg.UserName = chatContract.UserName;
-                        //msg.DestUserID = chatContract.DestUserID;
-                        //msg.DestUerName = chatContract.DestUserName;
-                        //msg.ChatContent = chatContract.Content;
-                        //msg.SendTime = chatContract.SendTime;
+                        new MsgSendOrderClient().AddOfflineMsg(chatContract);
 
-                        //DoOffLineMessage.Save(msg);
 
                     }
                 }
@@ -134,6 +128,10 @@ namespace WIMServer
 
                     foreach (IMUserInfo theuser in list)
                     {
+                        if (theuser.ID == userID)
+                        {
+                            continue;
+                        }
                         //判断其他好友是否在线 
                         IMUserInfo myfriend = theuser.Clone();
                         myfriend.IsOnline = userManager.ContainsKey(theuser.ID);
@@ -165,7 +163,7 @@ namespace WIMServer
 
                 }
 
-                UserIDContract usersID = new UserIDContract(onLineUser);
+                UserIDListContract usersID = new UserIDListContract(onLineUser);
                 Connection.SendObject("ResOnlineUser", usersID);
             }
             catch (Exception ex)
@@ -175,7 +173,7 @@ namespace WIMServer
         }
 
         //处理用户登录 
-        private void IncomingLoginHandler(PacketHeader header, Connection Connection, IMUserInfo userInfo)
+        private void IncomingLoginHandler(PacketHeader header, Connection Connection, IMUserInfo loginInfo)
         {
 
             try
@@ -184,7 +182,7 @@ namespace WIMServer
                 string ip = Connection.ConnectionInfo.LocalEndPoint.ToString();
                 string port = Connection.ConnectionInfo.LocalEndPoint.Port.ToString();
                 string error;
-                View_IMUser userinfo = new AuthorityClient.LoginClient().Login(userInfo.Code, userInfo.Pwd, ip, port, out error);
+                View_IMUser userinfo = new AuthorityClient.LoginClient().Login(loginInfo.Code, loginInfo.Pwd, ip, port, out error);
                 UserLoginContract resContract = new UserLoginContract(error, userinfo.Clone());
                 Connection.SendObject("ResUserLogin", resContract);
                 if (string.IsNullOrWhiteSpace(error))
@@ -193,26 +191,26 @@ namespace WIMServer
                     {
 
                         //同一账号登陆，先退出已经登陆的客户端
-                        if (userManager.ContainsKey(userInfo.ID))
+                        if (userManager.ContainsKey(userinfo.ID))
                         {
 
                             //通知相应的连接，关闭此连接
-                            foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[userInfo.ID], ConnectionType.TCP))
+                            foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[userinfo.ID], ConnectionType.TCP))
                             {
                                 conn.SendObject("CloseConnection", "msg");
                             }
 
-                            userManager.Remove(userInfo.ID);
+                            userManager.Remove(loginInfo.ID);
                         }
                         //注册新的用户
-                        if (!userManager.ContainsKey(userInfo.ID))
+                        if (!userManager.ContainsKey(userinfo.ID))
                         {
-                            userManager.Add(userInfo.ID, Connection.ConnectionInfo.NetworkIdentifier);
+                            userManager.Add(userinfo.ID, Connection.ConnectionInfo.NetworkIdentifier);
                         }
                     }
 
                     //用户上线后，通知其他用户
-                    UserStateNotify(userInfo.ID, OnlineState.Online);
+                    UserStateNotify(userinfo.ID, OnlineState.Online);
 
                 }
             }
@@ -329,26 +327,20 @@ namespace WIMServer
 
         // 获取离线消息,稍后实现
 
-        private void IncomingMyOffLineMsg(PacketHeader header, Connection Connection, IMUserInfo userInfo)
+        private void IncomingMyOffLineMsg(PacketHeader header, Connection Connection, UserIDContract userInfo)
         {
             try
             {
-                //IList<OffLineMessage> msgList = DoOffLineMessage.GetAllByUserID(userInfo.UserID);
+                MsgSendOrderClient bll = new MsgSendOrderClient();
+                IList<MsgEntity> msgList = bll.GetAllOffLineMsgByUserID(userInfo.UsersID);
 
-                //foreach (OffLineMessage message in msgList)
-                //{
-                //    ChatContract contract = new ChatContract();
-                //    contract.UserID = message.UserID;
-                //    contract.UserName = message.UserName;
-                //    contract.DestUserID = message.DestUserID;
-                //    contract.DestUserName = message.DestUerName;
-                //    contract.Content = message.ChatContent;
-                //    contract.SendTime = message.SendTime;
+                foreach (MsgEntity message in msgList)
+                {
 
-                //    Connection.SendObject("ServerChatMessage", contract);
+                    Connection.SendObject("ServerChatMessage", message);
 
-                //    DoOffLineMessage.Delete(message.Id);
-                //}
+                    bll.DeleteOffLineMsg(message.ID);
+                }
             }
             catch (Exception ex)
             {
@@ -629,7 +621,7 @@ namespace WIMServer
 
 
             // 获取离线消息
-            NetworkComms.AppendGlobalIncomingPacketHandler<IMUserInfo>("GetMyOffLineMsg", IncomingMyOffLineMsg);
+            NetworkComms.AppendGlobalIncomingPacketHandler<UserIDContract>("GetMyOffLineMsg", IncomingMyOffLineMsg);
 
             //获取所有在线用户的P2P信息
             NetworkComms.AppendGlobalIncomingPacketHandler<string>("GetP2PInfo", IncomingP2PInfo);

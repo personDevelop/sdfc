@@ -10,8 +10,9 @@ using CCWin;
 using System.Net;
 using CCWin.Win32;
 using CCWin.Win32.Const;
-using IMInterface;
+
 using NetworkCommsDotNet;
+using AuthorityEntity.IM;
 namespace ChatClient
 {
     public partial class frmchatMain : CCSkinMain, IManagedForm
@@ -361,17 +362,17 @@ namespace ChatClient
 
                 foreach (MsgEntity msg in msgList)
                 {
-                    //chatControl1.ShowMessage(msg.UserName, msg.SendTime, msg.Content, false);
+                    chatControl1.ShowMessage(msg.SenderName, msg.SendTime, msg.MsgContent, false);
 
 
-                    //IList<ImageWrapper> theImageList = msg.ImageList;
+                    IList<ImageWrapper> theImageList = msg.ImageList;
 
-                    //foreach (ImageWrapper imageWrapper in theImageList)
-                    //{
-                    //    //显示图片
-                    //    chatControl1.ShowImage(imageWrapper.ImageName, imageWrapper.Image);
+                    foreach (ImageWrapper imageWrapper in theImageList)
+                    {
+                        //显示图片
+                        chatControl1.ShowImage(imageWrapper.ImageName, imageWrapper.Image);
 
-                    //}
+                    }
 
 
                 }
@@ -404,8 +405,10 @@ namespace ChatClient
 
             MsgEntity chatContract = new MsgEntity();
             chatContract.SenderID = Common.ClientUser.ID;
+            chatContract.SenderName = Common.ClientUser.DisplayName;
             chatContract.Reciver = friend.ID;
-            chatContract.MsgBody = content;
+            chatContract.ReciverName = friend.DisplayName;
+            chatContract.MsgContent = content;
             chatContract.SendTime = DateTime.Now;
             chatContract.ImageList = imageWrapperList;
 

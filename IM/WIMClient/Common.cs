@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
  
 using NetworkCommsDotNet;
-using IMInterface;
+
  
 
 namespace WIMClient

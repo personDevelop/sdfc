@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using AuthorityEntity;
 using NetworkCommsDotNet;
-using IMInterface;
+using AuthorityEntity.IM;
+
 
 namespace ChatClient
 {

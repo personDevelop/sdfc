@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using ProtoBuf;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     [ProtoContract]
     public class ImageWrapper

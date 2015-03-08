@@ -20,7 +20,7 @@ using NetworkCommsDotNet;
 using System.Threading;
 using System.IO;
 using System.Xml;
-using IMInterface;
+
 using AuthorityEntity;
 
 namespace WIMClient.Skin

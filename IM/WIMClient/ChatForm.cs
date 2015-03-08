@@ -10,7 +10,8 @@ using System.Windows.Forms;
  
 using NetworkCommsDotNet;
 using System.Collections.Generic;
-using IMInterface;
+using AuthorityEntity.IM;
+
 
 
 namespace WIMClient
@@ -112,7 +113,7 @@ namespace WIMClient
                
                 chatContract.Reciver = this.friendID;
                 
-                chatContract.MsgBody = content;
+                chatContract.MsgContent = content;
                 chatContract.SendTime = DateTime.Now;
                 //chatContract.ImageList = imageWrapperList;
                 p2pConnection.SendObject("ClientChatMessage", chatContract);
@@ -131,7 +132,7 @@ namespace WIMClient
                 
                 chatContract.Reciver = this.friendID;
 
-                chatContract.MsgBody = content;
+                chatContract.MsgContent = content;
                 chatContract.SendTime = DateTime.Now;
                 //chatContract.ImageList = imageWrapperList;
                 Common.TcpConn.SendObject("ChatMessage", chatContract);

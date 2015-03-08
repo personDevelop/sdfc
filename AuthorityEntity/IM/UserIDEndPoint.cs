@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ProtoBuf;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     /// <summary>
     /// 

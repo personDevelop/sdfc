@@ -13,9 +13,10 @@ using CCWin.Win32;
 using CCWin.Win32.Const;
 using CCWin.SkinControl;
 using System.Threading;
-using IMInterface;
+
 using AuthorityEntity;
 using NetworkCommsDotNet;
+using AuthorityEntity.IM;
 
 namespace ChatClient
 {
@@ -124,9 +125,10 @@ namespace ChatClient
 
         private void GetMyOfflineMessage()
         {
-            //UserInfo info = new UserInfo(Common.UserID, "password");
 
-            //Common.TcpConn.SendObject("GetMyOffLineMsg", info);
+            UserIDContract info = new UserIDContract(Common.ClientUser.ID);
+
+            Common.TcpConn.SendObject("GetMyOffLineMsg", info);
         }
 
 
@@ -227,10 +229,12 @@ namespace ChatClient
                 foreach (var group in groupUserList)
                 {
                     ChatListItem chatListItem = new ChatListItem();
+                    chatListItem.Text = group.Key;
                     chatListBox.Items.Add(chatListItem);
                     foreach (var user in group)
                     {
-                        ChatListSubItem subItem = new ChatListSubItem(user.DisplayName, user.DisplaySignature, user.Name, ChatListSubItem.UserStatus.Online);
+
+                        ChatListSubItem subItem = new ChatListSubItem(user.DisplayName, user.Name, user.DisplaySignature, ChatListSubItem.UserStatus.Online);
                         subItem.Tag = user;
                         //subItem.HeadImage = Image.FromFile("head/image.jpg");
                         chatListItem.SubItems.Add(subItem);

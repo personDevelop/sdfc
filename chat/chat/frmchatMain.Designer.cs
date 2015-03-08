@@ -452,7 +452,6 @@
             this.SysBottomDown = global::ChatClient.Properties.Resources.AIO_SetBtn_down;
             this.SysBottomMouse = global::ChatClient.Properties.Resources.AIO_SetBtn_highlight;
             this.SysBottomNorml = global::ChatClient.Properties.Resources.AIO_SetBtn_normal;
-            this.SysBottomVisibale = true;
             this.Text = "chat";
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).EndInit();
             this.skinPanel_right.ResumeLayout(false);

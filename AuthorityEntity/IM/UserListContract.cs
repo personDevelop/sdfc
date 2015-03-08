@@ -5,7 +5,7 @@ using System.Text;
 using AuthorityEntity;
 using ProtoBuf;
 
-namespace IMInterface
+namespace AuthorityEntity.IM
 {
     /// <summary>
     /// 用户信息列表，比如可以传递我的所有好友信息

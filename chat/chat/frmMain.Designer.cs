@@ -538,7 +538,6 @@
             this.RestoreNormlBack = global::ChatClient.Properties.Resources.btn_restore_normal;
             this.ShowBorder = false;
             this.ShowDrawIcon = false;
-            this.ShowInTaskbar = false;
             this.SkinOpacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.SysBottomDown = global::ChatClient.Properties.Resources.btn_Skin_down;
