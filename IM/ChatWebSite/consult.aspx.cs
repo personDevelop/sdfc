@@ -20,8 +20,12 @@ namespace SignalR
             string html = "";
             foreach (ParameterInfo item in list)
             {
-                string type = item.V1Type;
+
+                html += " <a style='display: block; line-height: 20px;' onclick='requestData(this);' req='"+item.Value2+"' href='javascript:void(0);'>"+item.Value+"</a>";
+                
             }
+
+            commonQues.InnerHtml = html;
         }
     }
 }

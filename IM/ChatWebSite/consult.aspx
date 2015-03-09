@@ -94,6 +94,12 @@
                 chat.server.sendMessageConnect($("#target").val(), "您好 有人要有请求是否应答？");
             });
         });
+
+        function requestData(that) {
+            var res = $(that).attr("req");
+            append_serverMessage(res, getClientTime());
+
+        }
     </script>
 </head>
 <body>
@@ -135,7 +141,9 @@
                 <li>
                     <div class='wrap'>
                         <span class='bold'>常见问题：</span><br>
-                        <a style="display: block; line-height: 20px;" href="#" target="_blank">如何购买产品</a>
+
+                        <div id='commonQues' runat=server></div>
+                       
                     </div>
                 </li>
                 <img src='image/chat_logo2.png' style='position: absolute; top: 5px; right: 5px;
