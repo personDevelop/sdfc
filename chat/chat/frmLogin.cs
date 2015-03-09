@@ -89,38 +89,52 @@ namespace ChatClient
                 MessageBox.Show("请输入密码");
                 return;
             }
-            TCPConnection.StartListening(connInfo.LocalEndPoint);
-            // 保存登录身份是否合法验证结果
-            bool isPass = false;
-
-            //在契约类中保存用户名和密码
-            IMUserInfo userinfo = new IMUserInfo();
-            userinfo.Code = userNo;
-            userinfo.Pwd = Pwd;
-
-            //发送契约类给服务器端，并获取返回的结果
-            UserLoginContract loginContract = newTcpConnection.
-                SendReceiveObject<UserLoginContract>("UserLogin", "ResUserLogin", 80000, userinfo);
-            //如果登陆成功
-            if (string.IsNullOrWhiteSpace(loginContract.Message))
+            string result = AutoLogin.AutoLog(userNo, Pwd);
+            if (string.IsNullOrWhiteSpace(result))
             {
+                MessageBox.Show(result);
 
-                //为简便，在此处使用了静态类保存用户相关信息  
-                Common.ClientUser = loginContract.UserContract;
-                Common.ConnInfo = connInfo;
-                isPass = true;
+            }
+            else
+            { 
                 this.Hide();
                 frmMain f = new frmMain();
                 f.Show();
             }
+            #region 卢永列 废掉
+            //TCPConnection.StartListening(connInfo.LocalEndPoint);
+            //// 保存登录身份是否合法验证结果
+            //bool isPass = false;
+
+            ////在契约类中保存用户名和密码
+            //IMUserInfo userinfo = new IMUserInfo();
+            //userinfo.Code = userNo;
+            //userinfo.Pwd = Pwd;
+
+            ////发送契约类给服务器端，并获取返回的结果
+            //UserLoginContract loginContract = newTcpConnection.
+            //    SendReceiveObject<UserLoginContract>("UserLogin", "ResUserLogin", 80000, userinfo);
+            ////如果登陆成功
+            //if (string.IsNullOrWhiteSpace(loginContract.Message))
+            //{
+
+            //    //为简便，在此处使用了静态类保存用户相关信息  
+            //    Common.ClientUser = loginContract.UserContract;
+            //    Common.ConnInfo = connInfo;
+            //    isPass = true;
+            //    this.Hide();
+            //    frmMain f = new frmMain();
+            //    f.Show();
+            //}
 
 
-            // 如果未通过验证
-            if (!isPass)
-            {
+            //// 如果未通过验证
+            //if (!isPass)
+            //{
 
-                MessageBox.Show(loginContract.Message);
-            }
+            //    MessageBox.Show(loginContract.Message);
+            //} 
+            #endregion
 
         }
 

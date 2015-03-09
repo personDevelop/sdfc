@@ -14,7 +14,18 @@ namespace ChatClient
     /// </summary>
     public static class Common
     {
-        public static string ServerIP;
+        private static string serverIP;
+        public static string ServerIP
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(serverIP))
+                {
+                    SetServerIpAndPort();
+                }
+                return serverIP;
+            }
+        }
         public static int Port;
 
         public static void SetServerIpAndPort()
@@ -22,7 +33,7 @@ namespace ChatClient
             string[] ipAndPort = new FrameCommonClient.ParameterInfoClient().GetTwoValue("ecda7fbe-cf9d-4d89-b478-d31da5d0a7f8");
             if (ipAndPort != null && ipAndPort.Length == 2)
             {
-                ServerIP = ipAndPort[0];
+                serverIP = ipAndPort[0];
                 int.TryParse(ipAndPort[1], out Port);
             }
         }
@@ -86,12 +97,12 @@ namespace ChatClient
         }
 
         internal static object dictLocker = new object();
-       
+
 
         //当前用户
         public static IMUserInfo ClientUser { get; set; }
 
-       
+
 
         #region 所有好友
 
@@ -257,7 +268,7 @@ namespace ChatClient
             set { allUsers = value; }
         }
 
-        
+
 
         public static NetworkCommsDotNet.Connection TcpConn = null;
 

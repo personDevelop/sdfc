@@ -96,7 +96,7 @@ namespace AuthorityDataAccess
                     if (LastLog.EntryIP != Ip)
                     {
                         //检测是否同一天，如果是同一天，则提示已经再其他地方登录，
-                        if (LastLog.EntryDate.Value.Date == DateTime.Now.Date)
+                        if (LastLog.EntryDate.Date == DateTime.Now.Date)
                         {
                             error = "该账户已在其他机器登录，不能重复登录";
                             user = null;

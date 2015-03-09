@@ -849,5 +849,7 @@ namespace ChatClient
         {
             get { throw new NotImplementedException(); }
         }
+
+        
     }
 }

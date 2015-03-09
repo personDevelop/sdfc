@@ -42,7 +42,7 @@ namespace AuthorityEntity
         private string _RoleName;
         private string _EntryIP;
         private string _PortName;
-        private DateTime? _EntryDate;
+        private DateTime  _EntryDate;
         private DateTime? _OutDate;
         private string _EntryStats;
         private string _Note;
@@ -320,9 +320,9 @@ namespace AuthorityEntity
         /// <summary>
         ///  登入日期,
         /// </summary>
-        [DbProperty(MapingColumnName = "EntryDate", DbTypeString = "datetime", ColumnIsNull = true, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DbProperty(MapingColumnName = "EntryDate", DbTypeString = "datetime", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
         [DataMember]
-        public DateTime? EntryDate
+        public DateTime  EntryDate
         {
             get
             {
