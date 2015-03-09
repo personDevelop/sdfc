@@ -523,6 +523,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.skinPanel_HeadImage);
             this.EffectCaption = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaxDownBack = global::ChatClient.Properties.Resources.btn_max_down;
             this.MaximizeBox = false;
             this.MaxMouseBack = global::ChatClient.Properties.Resources.btn_max_highlight;
