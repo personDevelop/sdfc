@@ -23,7 +23,7 @@ namespace ChatClient
         Icon NoneIcon64 { get; }
     }
 
-    public interface IChatForm
+    public interface IChatForm : IManagedForm
     {
         void HandleReceivedMessage(List<byte[]> MessageList);
         void HandleReceivedMessage(int informationType, byte[] info, object tag);
@@ -82,7 +82,8 @@ namespace ChatClient
                 this.notifyIcon1.Icon = this.twinkleIcon;
                 isnone = false;
             }
-            else {
+            else
+            {
                 this.notifyIcon1.Icon = this.twinkleNotifySupporter.NoneIcon64;
                 isnone = true;
             }
@@ -135,10 +136,10 @@ namespace ChatClient
 
         }
 
-        public void Stop() 
+        public void Stop()
         {
             ControlTimer(false);
-        
+
         }
 
         /// <summary>

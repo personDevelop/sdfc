@@ -362,7 +362,7 @@ namespace ChatClient
 
                 foreach (MsgEntity msg in msgList)
                 {
-                    chatControl1.ShowMessage(msg.SenderName, msg.SendTime, msg.MsgContent, false);
+                    chatControl1.ReciveMessage(msg);
 
 
                     IList<ImageWrapper> theImageList = msg.ImageList;
@@ -370,7 +370,7 @@ namespace ChatClient
                     foreach (ImageWrapper imageWrapper in theImageList)
                     {
                         //显示图片
-                        chatControl1.ShowImage(imageWrapper.ImageName, imageWrapper.Image);
+                        //chatControl1.ShowImage(imageWrapper.ImageName, imageWrapper.Image);
 
                     }
 
@@ -385,23 +385,21 @@ namespace ChatClient
         //图片包装类的列表
         IList<ImageWrapper> imageWrapperList = new List<ImageWrapper>();
 
-        private void chatControl1_BeginToSend(string content)
+        private void chatControl1_BeginToSend(string content, MsgType msgType = MsgType.文字, MsgSendType sendType = MsgSendType.基本消息 )
         {
-            this.chatControl1.ShowMessage(Common.ClientUser.DisplayName, DateTime.Now, content, true);
 
-            imageDict = this.chatControl1.imageDict;
 
-            //把控件中的图片字典，添加到图片包装类列表中
-            foreach (KeyValuePair<string, Image> kv in imageDict)
-            {
-                ImageWrapper newWrapper = new ImageWrapper(kv.Key, kv.Value);
+            //imageDict = this.chatControl1.imageDict;
 
-                imageWrapperList.Add(newWrapper);
+            ////把控件中的图片字典，添加到图片包装类列表中
+            //foreach (KeyValuePair<string, Image> kv in imageDict)
+            //{
+            //    ImageWrapper newWrapper = new ImageWrapper(kv.Key, kv.Value);
 
-            }
+            //    imageWrapperList.Add(newWrapper);
 
-            //清除控件中图片字典的内容
-            this.chatControl1.ClearImageDic();
+            //}
+
 
             MsgEntity chatContract = new MsgEntity();
             chatContract.SenderID = Common.ClientUser.ID;
@@ -411,11 +409,11 @@ namespace ChatClient
             chatContract.MsgContent = content;
             chatContract.SendTime = DateTime.Now;
             chatContract.ImageList = imageWrapperList;
-
+            chatContract.MsgSendType = (int)sendType;
+            chatContract.MsgType = (int)msgType;
 
             //从客户端 Common中获取相应连接
             Connection p2pConnection = Common.GetUserConn(friend.ID);
-
             if (p2pConnection != null)
             {
                 p2pConnection.SendObject("ClientChatMessage", chatContract);

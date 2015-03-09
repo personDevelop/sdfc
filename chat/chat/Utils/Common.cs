@@ -95,9 +95,9 @@ namespace ChatClient
 
         #region 所有好友
 
-        public static Dictionary<String, View_IMUser> AllUserDic = new Dictionary<string, View_IMUser>();
+        public static Dictionary<String, IMUserInfo> AllUserDic = new Dictionary<string, IMUserInfo>();
 
-        public static void AddDicUser(string userID, View_IMUser theUser)
+        public static void AddDicUser(string userID, IMUserInfo theUser)
         {
             lock (dictLocker)
             {
@@ -109,7 +109,7 @@ namespace ChatClient
             }
         }
 
-        public static View_IMUser GetDicUser(string userID)
+        public static IMUserInfo GetDicUser(string userID)
         {
             lock (dictLocker)
             {

@@ -60,6 +60,9 @@
     <Reference Include="FrameCommonService">
       <HintPath>..\..\refdll\FrameCommonService.dll</HintPath>
     </Reference>
+    <Reference Include="Screen_Capture">
+      <HintPath>..\..\refdll\Screen_Capture.dll</HintPath>
+    </Reference>
     <Reference Include="Sharp.Common">
       <HintPath>..\..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
@@ -97,6 +100,7 @@
     <Compile Include="UserContrl\ChatControl.designer.cs">
       <DependentUpon>ChatControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserContrl\Data.cs" />
     <Compile Include="UserContrl\FaceBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,7 +141,6 @@
     <Compile Include="RichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserContrl\RichEditOle.cs" />
     <Compile Include="UserContrl\RichTextBoxPlus.cs">
       <SubType>Component</SubType>
     </Compile>

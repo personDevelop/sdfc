@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatControl));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.richTextBoxEx_read = new ChatClient.RichTextBoxEx();
-            this.richTextBoxEx_send = new ChatClient.RichTextBoxEx();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolFont = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,6 +43,9 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.txtSendMsg = new CCWin.SkinControl.RtfRichTextBox();
+            this.txtAllMsg = new CCWin.SkinControl.RtfRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,47 +66,17 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel1.Controls.Add(this.richTextBoxEx_read);
+            this.splitContainer1.Panel1.Controls.Add(this.txtAllMsg);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.Controls.Add(this.richTextBoxEx_send);
+            this.splitContainer1.Panel2.Controls.Add(this.txtSendMsg);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(594, 512);
             this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // richTextBoxEx_read
-            // 
-            this.richTextBoxEx_read.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxEx_read.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxEx_read.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxEx_read.Margin = new System.Windows.Forms.Padding(0);
-            this.richTextBoxEx_read.MaxLength = 0;
-            this.richTextBoxEx_read.Name = "richTextBoxEx_read";
-            this.richTextBoxEx_read.ReadOnly = true;
-            this.richTextBoxEx_read.Size = new System.Drawing.Size(594, 317);
-            this.richTextBoxEx_read.TabIndex = 0;
-            this.richTextBoxEx_read.Text = "";
-            // 
-            // richTextBoxEx_send
-            // 
-            this.richTextBoxEx_send.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxEx_send.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxEx_send.Location = new System.Drawing.Point(0, 25);
-            this.richTextBoxEx_send.Margin = new System.Windows.Forms.Padding(0);
-            this.richTextBoxEx_send.MaxLength = 0;
-            this.richTextBoxEx_send.Name = "richTextBoxEx_send";
-            this.richTextBoxEx_send.Size = new System.Drawing.Size(594, 181);
-            this.richTextBoxEx_send.TabIndex = 1;
-            this.richTextBoxEx_send.Text = "";
-            this.richTextBoxEx_send.TextChanged += new System.EventHandler(this.richTextBoxEx_send_TextChanged);
             // 
             // toolStrip1
             // 
@@ -350,6 +321,32 @@
             this.imageList1.Images.SetKeyName(133, "134.gif");
             this.imageList1.Images.SetKeyName(134, "135.gif");
             // 
+            // txtSendMsg
+            // 
+            this.txtSendMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSendMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSendMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
+            this.txtSendMsg.Location = new System.Drawing.Point(2, 27);
+            this.txtSendMsg.Name = "txtSendMsg";
+            this.txtSendMsg.Size = new System.Drawing.Size(589, 164);
+            this.txtSendMsg.TabIndex = 1;
+            this.txtSendMsg.Text = "";
+            this.txtSendMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
+            // 
+            // txtAllMsg
+            // 
+            this.txtAllMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAllMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAllMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
+            this.txtAllMsg.Location = new System.Drawing.Point(0, 0);
+            this.txtAllMsg.Name = "txtAllMsg";
+            this.txtAllMsg.Size = new System.Drawing.Size(594, 317);
+            this.txtAllMsg.TabIndex = 2;
+            this.txtAllMsg.Text = "";
+            this.txtAllMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
+            // 
             // ChatControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -377,13 +374,14 @@
         private System.Windows.Forms.ToolStripButton toolImage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolHisMsg;
-        private RichTextBoxEx richTextBoxEx_read;
-        private RichTextBoxEx richTextBoxEx_send;
         private System.Windows.Forms.ToolStripButton toolZD;
         private System.Windows.Forms.ToolStripButton toolBQ;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripButton toolCapture;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private CCWin.SkinControl.RtfRichTextBox txtAllMsg;
+        private CCWin.SkinControl.RtfRichTextBox txtSendMsg;
     }
 }

@@ -22,6 +22,7 @@ using System.IO;
 using System.Xml;
 
 using AuthorityEntity;
+using AuthorityEntity.IM;
 
 namespace WIMClient.Skin
 {
@@ -1335,7 +1336,7 @@ namespace WIMClient.Skin
         //用户状态改变通知<5>
         private void IncomingUserStateNotify(PacketHeader header, Connection connection, UserStateContract userStateContract)
         {
-            if (userStateContract.OnLine == IMInterface.OnlineState.Online)
+            if (userStateContract.OnLine == OnlineState.Online)
             {
                 lock (syncLocker)
                 {

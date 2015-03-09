@@ -183,35 +183,44 @@ namespace WIMServer
                 string port = Connection.ConnectionInfo.LocalEndPoint.Port.ToString();
                 string error;
                 View_IMUser userinfo = new AuthorityClient.LoginClient().Login(loginInfo.Code, loginInfo.Pwd, ip, port, out error);
-                UserLoginContract resContract = new UserLoginContract(error, userinfo.Clone());
-                Connection.SendObject("ResUserLogin", resContract);
-                if (string.IsNullOrWhiteSpace(error))
+                if (userinfo == null)
                 {
-                    lock (syncLocker)
+                    UserLoginContract resContract = new UserLoginContract(error, null);
+                    Connection.SendObject("ResUserLogin", resContract);
+
+                }
+                else
+                {
+                    UserLoginContract resContract = new UserLoginContract(error, userinfo.Clone());
+                    Connection.SendObject("ResUserLogin", resContract);
+                    if (string.IsNullOrWhiteSpace(error))
                     {
-
-                        //同一账号登陆，先退出已经登陆的客户端
-                        if (userManager.ContainsKey(userinfo.ID))
+                        lock (syncLocker)
                         {
 
-                            //通知相应的连接，关闭此连接
-                            foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[userinfo.ID], ConnectionType.TCP))
+                            //同一账号登陆，先退出已经登陆的客户端
+                            if (userManager.ContainsKey(userinfo.ID))
                             {
-                                conn.SendObject("CloseConnection", "msg");
+
+                                //通知相应的连接，关闭此连接
+                                foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[userinfo.ID], ConnectionType.TCP))
+                                {
+                                    conn.SendObject("CloseConnection", "msg");
+                                }
+
+                                userManager.Remove(loginInfo.ID);
                             }
+                            //注册新的用户
+                            if (!userManager.ContainsKey(userinfo.ID))
+                            {
+                                userManager.Add(userinfo.ID, Connection.ConnectionInfo.NetworkIdentifier);
+                            }
+                        }
 
-                            userManager.Remove(loginInfo.ID);
-                        }
-                        //注册新的用户
-                        if (!userManager.ContainsKey(userinfo.ID))
-                        {
-                            userManager.Add(userinfo.ID, Connection.ConnectionInfo.NetworkIdentifier);
-                        }
+                        //用户上线后，通知其他用户
+                        UserStateNotify(userinfo.ID, OnlineState.Online);
+
                     }
-
-                    //用户上线后，通知其他用户
-                    UserStateNotify(userinfo.ID, OnlineState.Online);
-
                 }
             }
             catch (Exception ex)

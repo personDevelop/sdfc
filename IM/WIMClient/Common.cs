@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
  
 using NetworkCommsDotNet;
+using AuthorityEntity.IM;
 
  
 

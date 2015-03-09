@@ -8,13 +8,5 @@ namespace WIMClient
         Female
     }
 
-    public enum OnlineState
-    {
-        Offline,
-        Online,
-        Busy,
-        Away,
-        Quiet,
-        Hide
-    }
+    
 }

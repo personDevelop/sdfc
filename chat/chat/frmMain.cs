@@ -49,19 +49,15 @@ namespace ChatClient
         private void main_Load(object sender, EventArgs e)
         {
             timerCheckOnlinState = new System.Windows.Forms.Timer();//打开一个计时器
-            this.timerCheckOnlinState.Interval = 10000;//间隔为60000毫秒一分钟
+            this.timerCheckOnlinState.Interval = 60000;//间隔为60000毫秒一分钟
             this.timerCheckOnlinState.Tick += new System.EventHandler(this.timerCheckOnlinState_Tick);//绑定监听事件
 
             #region 初始化端口信息
 
             GetAllMyFriend();
-
             NowGetP2PInfo();
-
             RegistEnvet();
             #endregion
-
-
             labelName.Text = Common.ClientUser.DisplayName;
             labelSignature.Text = Common.ClientUser.DisplaySignature;
 
@@ -76,9 +72,7 @@ namespace ChatClient
             //用户状态改变通知<5>
             NetworkComms.AppendGlobalIncomingPacketHandler<UserStateContract>("UserStateNotify", IncomingUserStateNotify);
 
-
-            //服务器通知客户断开 一般是由于有新连接进入<6>
-
+            //服务器通知客户断开 一般是由于有新连接进入<6> 
             NetworkComms.AppendGlobalIncomingPacketHandler<string>("CloseConnection", IncomingCloseConn);
 
             //收到服务器转发来的聊天消息
@@ -100,6 +94,7 @@ namespace ChatClient
                 lock (syncLocker)
                 {
                     Common.GetDicUser(userStateContract.UserID).UserState = (int)OnlineState.Online;
+                    userItem[userStateContract.UserID].Status = ChatListSubItem.UserStatus.Online;
                 }
             }
             else
@@ -107,6 +102,7 @@ namespace ChatClient
                 lock (syncLocker)
                 {
                     Common.GetDicUser(userStateContract.UserID).UserState = (int)OnlineState.Offline;
+                    userItem[userStateContract.UserID].Status = ChatListSubItem.UserStatus.OffLine;
                     //当某用户下线后，删除此用户相关的p2p 通道
                     Common.RemoveUserConn(userStateContract.UserID);
                 }
@@ -170,6 +166,7 @@ namespace ChatClient
             }
             else
             {
+                userItem[contract.SenderID].IsTwinkle = true; 
                 frmchatMain form = FormManager.Instance.GetForm(contract.SenderID) as frmchatMain;
                 if (form == null)
                 {
@@ -209,7 +206,7 @@ namespace ChatClient
 
 
         #endregion
-
+        Dictionary<string, ChatListSubItem> userItem = new Dictionary<string, ChatListSubItem>();
         /// <summary>
         /// 获取我的好友
         /// </summary>
@@ -236,7 +233,25 @@ namespace ChatClient
 
                         ChatListSubItem subItem = new ChatListSubItem(user.DisplayName, user.Name, user.DisplaySignature, ChatListSubItem.UserStatus.Online);
                         subItem.Tag = user;
-                        //subItem.HeadImage = Image.FromFile("head/image.jpg");
+                        if (user.IsOnline)
+                        {
+                            subItem.Status = ChatListSubItem.UserStatus.Online;
+                        }
+                        else
+                        {
+                            subItem.Status = ChatListSubItem.UserStatus.OffLine;
+                        }
+                        if (user.Sex == "女")
+                        {
+                            subItem.HeadImage = Resource1.big45;
+                        }
+                        else
+                        {
+                            subItem.HeadImage = Resource1.big28;
+                        }
+                        Common.AddDicUser(user.ID, user);
+                        // Image.FromFile("Resources/q1.jpg");
+                        userItem.Add(user.ID, subItem);
                         chatListItem.SubItems.Add(subItem);
                     }
                 }
@@ -367,12 +382,6 @@ namespace ChatClient
             }
         }
 
-        #region 向服务器发送消息
-        //public void sendMsgToServer(ClassMsg msg)//发送消息到服务器
-        //{
-        //    this.sockUDP1.Send(this.ServerIP, this.ServerPort, new ClassSerializers().SerializeBinary(msg).ToArray());
-        //}
-        #endregion
 
         //#region 向用户终端发送消息
         ////public void sendMsgToOneUser(ClassMsg msg, System.Net.IPAddress Ip, int Port)//发送消息到用户的一个联系人
@@ -448,9 +457,12 @@ namespace ChatClient
         ////        if (UserInfo == null)
         ////        {
         ////            this.MyUsers.add(userinfo);
-        ////            ChatListSubItem subItem = new ChatListSubItem(userinfo.ID, userinfo.UserName, userinfo.AssemblyVersion, ChatListSubItem.UserStatus.Online);
+        ////            ChatListSubItem subItem = new ChatListSubItem(userinfo.ID, userinfo.UserName, userinfo.AssemblyVersion, 
+        //ChatListSubItem.UserStatus.Online);
         ////            this.chatListBox.Items[1].SubItems.AddAccordingToStatus(subItem);
         ////            //updateGroupInfo(userinfo);
+
+
         ////        }
         ////        else
         ////        {
@@ -676,8 +688,7 @@ namespace ChatClient
 
             ChatListSubItem item = e.SelectSubItem;
             IMUserInfo chatuser = item.Tag as IMUserInfo;
-            item.IsTwinkle = false;//不闪烁
-
+            item.IsTwinkle = false;//不闪烁 
             FormManager.Instance.ActivateOrCreateFormSend(chatuser);
 
         }
@@ -806,22 +817,22 @@ namespace ChatClient
 
         public IChatForm GetChatForm(string friendID)
         {
-            throw new NotImplementedException();
+            return FormManager.Instance.GetForm(friendID) as IChatForm;
         }
 
         public IChatForm GetExistedChatForm(string friendID)
         {
-            throw new NotImplementedException();
+            return FormManager.Instance.GetForm(friendID) as IChatForm;
         }
 
         public string GetFriendName(string friendID)
         {
-            throw new NotImplementedException();
+            return Common.GetDicUser(friendID).DisplayName;
         }
 
         public Icon GetHeadIcon(string userID)
         {
-            throw new NotImplementedException();
+            return null;// Image.FromFile(Common.GetDicUser(userID).Photo) as Icon;
         }
 
         public Icon GetIcon()

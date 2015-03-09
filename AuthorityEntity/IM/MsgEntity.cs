@@ -68,6 +68,7 @@ namespace AuthorityEntity.IM
     public enum MsgType
     {
         文字,
+        震动,
         文件,
         语音,//保留
         视频//保留

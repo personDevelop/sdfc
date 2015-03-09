@@ -46,7 +46,7 @@ namespace ChatClient
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            e.Graphics.DrawImage((Image)Properties.Resources.ResourceManager.GetObject("Face_" + this.faceID), 3, 3, 24, 24);
+            //e.Graphics.DrawImage((Image) resourc.ResourceManager.GetObject("Face_" + this.faceID), 3, 3, 24, 24);
 
             if (this.mouseOn)
                 e.Graphics.DrawRectangle(Pens.SteelBlue, 0, 0, this.Width - 1, this.Height - 1);

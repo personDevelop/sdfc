@@ -16,6 +16,7 @@ using System.IO;
 using System.Xml;
 
 using AuthorityEntity;
+using AuthorityEntity.IM;
 
 namespace WIMClient
 {
