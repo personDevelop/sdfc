@@ -24,5 +24,11 @@ namespace SignalR
             code.sendMessageEx(clientid, mes);
             return "Hello World";
         }
+
+        [WebMethod]
+        public void sendClientMess(string clientid, string mes)
+        {
+            SendClientMes.SendMess();
+        }
     }
 }

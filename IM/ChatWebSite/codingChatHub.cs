@@ -110,6 +110,7 @@ namespace SignalR
             //message = fromName + "说：" + message;
             Clients.Client(ToId).sendMessage(message, Context.ConnectionId, "客户：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));//终端发给服务器端并告诉服务器端自己的clientID
 
+            SendClientMes.SendMess();
             //Clients.Client(Context.ConnectionId).sendMessage(message);//自己的消息发给自己
         }
         // 连接客服事件 第一次进来连接客服
