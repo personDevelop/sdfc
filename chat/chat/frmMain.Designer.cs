@@ -59,10 +59,15 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem40 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIcon1 = new ChatClient.TwinkleNotifyIcon(this.components);
             this.skinToolStrip3.SuspendLayout();
             this.skinToolStrip1.SuspendLayout();
             this.skinContextMenuStrip_State.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chatListBox
@@ -95,15 +100,15 @@
             // 
             this.skinPanel_HeadImage.BackColor = System.Drawing.Color.Transparent;
             this.skinPanel_HeadImage.BackgroundImage = global::ChatClient.Properties.Resources.compic1335794816668_1653769;
-            this.skinPanel_HeadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.skinPanel_HeadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.skinPanel_HeadImage.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel_HeadImage.DownBack = null;
-            this.skinPanel_HeadImage.Location = new System.Drawing.Point(21, 30);
+            this.skinPanel_HeadImage.Location = new System.Drawing.Point(21, 17);
             this.skinPanel_HeadImage.MouseBack = null;
             this.skinPanel_HeadImage.Name = "skinPanel_HeadImage";
             this.skinPanel_HeadImage.NormlBack = null;
             this.skinPanel_HeadImage.Radius = 4;
-            this.skinPanel_HeadImage.Size = new System.Drawing.Size(70, 64);
+            this.skinPanel_HeadImage.Size = new System.Drawing.Size(69, 69);
             this.skinPanel_HeadImage.TabIndex = 130;
             // 
             // labelSignature
@@ -502,6 +507,36 @@
             this.toolStripMenuItem40.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItem40.Text = "我的资料...";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem,
+            this.退出ToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
+            // 
+            // ToolStripMenuItem
+            // 
+            this.ToolStripMenuItem.Name = "ToolStripMenuItem";
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.ToolStripMenuItem.Text = "显示主面板";
+            this.ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // 退出ToolStripMenuItem1
+            // 
+            this.退出ToolStripMenuItem1.Name = "退出ToolStripMenuItem1";
+            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
+            this.退出ToolStripMenuItem1.Text = "退出";
+            this.退出ToolStripMenuItem1.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
+            // 
+            // notifyIcon2
+            // 
+            this.notifyIcon2.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon2.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon2.Icon")));
+            this.notifyIcon2.Text = "即时通";
+            this.notifyIcon2.Visible = true;
+            this.notifyIcon2.DoubleClick += new System.EventHandler(this.notifyIcon2_DoubleClick);
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -539,20 +574,24 @@
             this.RestoreNormlBack = global::ChatClient.Properties.Resources.btn_restore_normal;
             this.ShowBorder = false;
             this.ShowDrawIcon = false;
-            this.SkinOpacity = 0.95D;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ShowInTaskbar = false;
+            this.SkinOpacity = 100D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.SysBottomDown = global::ChatClient.Properties.Resources.btn_Skin_down;
             this.SysBottomMouse = global::ChatClient.Properties.Resources.btn_Skin_highlight;
             this.SysBottomNorml = global::ChatClient.Properties.Resources.btn_Skin_normal;
             this.SysBottomToolTip = "更改外观";
             this.SysBottomVisibale = true;
             this.Text = "GG 2013";
+            this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.main_Load);
             this.skinToolStrip3.ResumeLayout(false);
             this.skinToolStrip3.PerformLayout();
             this.skinToolStrip1.ResumeLayout(false);
             this.skinToolStrip1.PerformLayout();
             this.skinContextMenuStrip_State.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -588,5 +627,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem40;
         private CCWin.SkinControl.ChatListBox chatListBox;
         private TwinkleNotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon2;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem1;
     }
 }

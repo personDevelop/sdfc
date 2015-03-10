@@ -48,6 +48,8 @@ namespace ChatClient
         #region onload事件
         private void main_Load(object sender, EventArgs e)
         {
+          
+           this.Location = new Point(SystemInformation.PrimaryMonitorSize.Width - this.Width -50, 50);
             timerCheckOnlinState = new System.Windows.Forms.Timer();//打开一个计时器
             this.timerCheckOnlinState.Interval = 60000;//间隔为60000毫秒一分钟
             this.timerCheckOnlinState.Tick += new System.EventHandler(this.timerCheckOnlinState_Tick);//绑定监听事件
@@ -167,28 +169,28 @@ namespace ChatClient
             }
             else
             {
-              
+
                 frmchatMain form = FormManager.Instance.GetForm(contract.SenderID) as frmchatMain;
                 if (form == null)
                 {
 
                     if (Common.ContainsUserID(contract.SenderID))
                     {
-                        userItem[contract.SenderID].IsTwinkle = true; 
+                        userItem[contract.SenderID].IsTwinkle = true;
                         Common.AddUserMsg(contract);
                     }
                     //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
                     else
                     {
 
-                        ChatListSubItem subItem = new ChatListSubItem("网页用户","网页用户", "网页用户", ChatListSubItem.UserStatus.Online);
+                        ChatListSubItem subItem = new ChatListSubItem("网页用户", "网页用户", "网页用户", ChatListSubItem.UserStatus.Online);
                         subItem.Tag = contract.SenderID;
-                        
-                         
+
+
                         // Image.FromFile("Resources/q1.jpg");
                         userItem.Add(contract.SenderID, subItem);
                         chatListBox.Items[0].SubItems.Add(subItem);
-                        userItem[contract.SenderID].IsTwinkle = true; 
+                        userItem[contract.SenderID].IsTwinkle = true;
 
 
                         Common.AddUserID(contract.SenderID);
@@ -862,6 +864,33 @@ namespace ChatClient
             get { throw new NotImplementedException(); }
         }
 
-        
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
+
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void 退出ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要退出即时通和话务中心系统？","确定退出", MessageBoxButtons.YesNo)== System.Windows.Forms.DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+            
+        }
+
+        private void notifyIcon2_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+         
+
+
     }
 }
