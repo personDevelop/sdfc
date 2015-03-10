@@ -42,19 +42,19 @@ namespace ChatClient
                 Pwd = args[1];
                 IsAutoLoin = true;
             }
-            try
-            {
-                connInfo = new ConnectionInfo(Common.ServerIP, Common.Port);
-                newTcpConnection = TCPConnection.GetConnection(connInfo);
-                Common.TcpConn = newTcpConnection;
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    connInfo = new ConnectionInfo(Common.ServerIP, Common.Port);
+            //    newTcpConnection = TCPConnection.GetConnection(connInfo);
+            //    Common.TcpConn = newTcpConnection;
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message);
+            //    MessageBox.Show(ex.Message);
 
 
-            }
+            //}
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -92,14 +92,16 @@ namespace ChatClient
             string result = AutoLogin.AutoLog(userNo, Pwd);
             if (string.IsNullOrWhiteSpace(result))
             {
-                MessageBox.Show(result);
-
-            }
-            else
-            { 
                 this.Hide();
                 frmMain f = new frmMain();
                 f.Show();
+               
+            }
+            else
+            {
+                MessageBox.Show(result);
+
+              
             }
             #region 卢永列 废掉
             //TCPConnection.StartListening(connInfo.LocalEndPoint);
