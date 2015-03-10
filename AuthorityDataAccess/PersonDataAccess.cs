@@ -96,13 +96,13 @@ namespace AuthorityDataAccess
                     if (LastLog.EntryIP != Ip)
                     {
                         //检测是否同一天，如果是同一天，则提示已经再其他地方登录，
-                        if (LastLog.EntryDate.Date == DateTime.Now.Date)
-                        {
-                            error = "该账户已在其他机器登录，不能重复登录";
-                            user = null;
-                        }
-                        else
-                        {
+                        //if (LastLog.EntryDate.Date == DateTime.Now.Date)
+                        //{
+                        //    error = "该账户已在其他机器登录，不能重复登录";
+                        //    user = null;
+                        //}
+                        //else
+                        //{
                             //否则则冲掉前一次登录，并重新设置登录日期
                             LastLog.EntryDate = DateTime.Now;
                             LastLog.EntryIP = Ip;
@@ -115,7 +115,7 @@ namespace AuthorityDataAccess
                                 }
                             }
                             Dal.Submit(logList);
-                        }
+                        //}
 
                     }
                     else
