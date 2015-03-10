@@ -160,24 +160,36 @@ namespace ChatClient
 
         public void HandleTextChat(MsgEntity contract)
         {
+            MessageBox.Show("1");
             if (this.InvokeRequired)
             {
                 this.Invoke(new Action<MsgEntity>(this.HandleTextChat), contract);
             }
             else
             {
-                userItem[contract.SenderID].IsTwinkle = true; 
+              
                 frmchatMain form = FormManager.Instance.GetForm(contract.SenderID) as frmchatMain;
                 if (form == null)
                 {
 
                     if (Common.ContainsUserID(contract.SenderID))
                     {
+                        userItem[contract.SenderID].IsTwinkle = true; 
                         Common.AddUserMsg(contract);
                     }
                     //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
                     else
                     {
+
+                        ChatListSubItem subItem = new ChatListSubItem("网页用户","网页用户", "网页用户", ChatListSubItem.UserStatus.Online);
+                        subItem.Tag = contract.SenderID;
+                        
+                         
+                        // Image.FromFile("Resources/q1.jpg");
+                        userItem.Add(contract.SenderID, subItem);
+                        chatListBox.Items[0].SubItems.Add(subItem);
+                        userItem[contract.SenderID].IsTwinkle = true; 
+
 
                         Common.AddUserID(contract.SenderID);
                         List<MsgEntity> list = new List<MsgEntity>();
