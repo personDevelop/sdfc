@@ -67,6 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\refdll\FrameSession.dll</HintPath>
     </Reference>
+    <Reference Include="ICallTelTalkManager">
+      <HintPath>..\..\refdll\ICallTelTalkManager.dll</HintPath>
+    </Reference>
     <Reference Include="Screen_Capture">
       <HintPath>..\..\refdll\Screen_Capture.dll</HintPath>
     </Reference>

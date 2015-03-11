@@ -17,6 +17,7 @@ using System.Threading;
 using AuthorityEntity;
 using NetworkCommsDotNet;
 using AuthorityEntity.IM;
+using ICallTelTalkManager;
 
 namespace ChatClient
 {
@@ -667,6 +668,7 @@ namespace ChatClient
         {
 
             ChatListSubItem item = e.SelectSubItem;
+
             IMUserInfo chatuser = item.Tag as IMUserInfo;
             item.IsTwinkle = false;//不闪烁 
             FormManager.Instance.ActivateOrCreateFormSend(chatuser);
@@ -799,7 +801,7 @@ namespace ChatClient
 
         public Icon GetHeadIcon(string userID)
         {
-            return   Resource1.qqEdu;
+            return Resource1.qqEdu;
         }
 
         public Icon GetIcon()
@@ -840,6 +842,47 @@ namespace ChatClient
         private void notifyIcon2_DoubleClick(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void 呼叫转移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (string.IsNullOrWhiteSpace(Common.CurrentUser.AgentID))
+            {
+                MessageBox.Show("当前用户没有分机号，不能" + item.Text);
+                return;
+            }
+
+            if (chatListBox.SelectSubItem != null && chatListBox.SelectSubItem.Tag != null)
+            {
+                IMUserInfo user = chatListBox.SelectSubItem.Tag as IMUserInfo;
+                if (user != null)
+                {
+                    if (user.IsOnline)
+                    {
+                        if (string.IsNullOrEmpty(user.AgentID))
+                        {
+                            MessageBox.Show("该用户没有分机号，不能" + item.Text);
+                        }
+                        else
+                        {
+                            if (item == 呼叫转移ToolStripMenuItem1)
+                            {
+                                CallTalkFactory.GetCallInstance().Transfer(Common.CurrentUser.AgentID, user.AgentID);
+                            }
+                            else
+                            {
+                                CallTalkFactory.GetCallInstance().OutCall(user.AgentID);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("该用户不在线，不能" + item.Text);
+                    }
+                }
+            }
         }
 
     }
