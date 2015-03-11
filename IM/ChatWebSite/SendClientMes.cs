@@ -48,6 +48,7 @@ namespace SignalR
                 chatContract.MsgContent = mes;
                 chatContract.SendTime = DateTime.Now;
                 chatContract.MsgSendType = 4;
+                chatContract.IsWebMsg = true;
                 //chatContract.ImageList = imageWrapperList;
                 newTcpConnection.SendObject("ChatMessage", chatContract);
 
