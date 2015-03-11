@@ -12,6 +12,14 @@ namespace SignalR
 
 
         public static Connection newTcpConnection;
+
+        public static void InitConnection()
+        {
+             
+            
+
+        }
+
         public static void SendMess(string userid,string mes,string toid)
         {
 
@@ -35,6 +43,7 @@ namespace SignalR
 
                 chatContract.MsgContent = mes;
                 chatContract.SendTime = DateTime.Now;
+                chatContract.MsgSendType = 4;
                 //chatContract.ImageList = imageWrapperList;
                 newTcpConnection.SendObject("ChatMessage", chatContract);
 

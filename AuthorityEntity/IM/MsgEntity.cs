@@ -62,7 +62,10 @@ namespace AuthorityEntity.IM
         /// </summary>
         提示信息,
 
-
+        /// <summary>
+        /// 消息类型为网页的消息
+        /// </summary>
+        网服消息,
     }
 
     public enum MsgType
