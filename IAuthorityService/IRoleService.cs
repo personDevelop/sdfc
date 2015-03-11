@@ -28,5 +28,9 @@ namespace IAuthorityService
         string[] GetRoleClass();
         [OperationContract]
         DataTable GetUserList(string[] roleIDs);
+
+        int SaveListRolePerson(List<RoleAndUserRalation> rulist, out string error);
+
+        int DeleteRoleUser(string roleid, string userid, out string error);
     }
 }

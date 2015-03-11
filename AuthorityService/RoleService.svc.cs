@@ -50,5 +50,16 @@ namespace AuthorityService
         {
             return da.GetUserList(roleIDs);
         }
+
+
+        public int DeleteRoleUser(string roleid, string userid, out string error)
+        {
+            return da.DeleteRoleUser(roleid, userid, out error);
+        }
+
+        public int SaveListRolePerson(System.Collections.Generic.List<RoleAndUserRalation> rulist, out string error)
+        {
+            return da.SaveListRolePerson(rulist, out error);
+        }
     }
 }

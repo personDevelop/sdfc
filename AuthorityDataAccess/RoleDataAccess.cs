@@ -91,7 +91,7 @@ namespace AuthorityDataAccess
         public DataTable GetUserList(string[] roleIDs)
         {
             return Dal.From<UserInfo>().
-                    Join<RoleAndUserRalation>(RoleAndUserRalation._.ID.In(roleIDs) && RoleAndUserRalation._.UserId == UserInfo._.ID)
+                    Join<RoleAndUserRalation>(RoleAndUserRalation._.RoleId.In(roleIDs) && RoleAndUserRalation._.UserId == UserInfo._.ID)
                     .Select(UserInfo._.ID.All).ToDataTable();
         }
 
@@ -100,6 +100,31 @@ namespace AuthorityDataAccess
             return Dal.From<Role>().Where(Role._.Enable == true).OrderBy(Role._.Code)
 
                    .Select(Role._.ID, Role._.Code, Role._.Name, Role._.RoleClass).ToDataTable();
+        }
+
+        public int DeleteRoleUser(string roleid, string userid, out string error)
+        {
+            error = string.Empty;
+            return Dal.Delete<RoleAndUserRalation>(RoleAndUserRalation._.RoleId == roleid && RoleAndUserRalation._.UserId == userid);
+        }
+
+        public int SaveListRolePerson(List<RoleAndUserRalation> rulist, out string error)
+        {
+            //先将以前的默认角色删除掉
+            SessionFactory dal;
+            error = string.Empty;
+            IDbTransaction tr = Dal.BeginTransaction(out dal);
+            try
+            {
+                dal.SubmitNew(rulist, ref dal);
+                dal.CommitTransaction(tr);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                return 0;
+            }
         }
     }
 }
