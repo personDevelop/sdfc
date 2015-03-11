@@ -79,6 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chatListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.chatListBox.ContextMenuStrip = this.contextMenuStrip2;
             this.chatListBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.chatListBox.ForeColor = System.Drawing.Color.Black;
             chatListItem1.Bounds = new System.Drawing.Rectangle(0, 1, 278, 25);
@@ -546,19 +547,19 @@
             this.呼叫ToolStripMenuItem,
             this.呼叫转移ToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
             // 
             // 呼叫ToolStripMenuItem
             // 
             this.呼叫ToolStripMenuItem.Name = "呼叫ToolStripMenuItem";
-            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.呼叫ToolStripMenuItem.Text = "呼叫";
             this.呼叫ToolStripMenuItem.Click += new System.EventHandler(this.呼叫ToolStripMenuItem_Click);
             // 
             // 呼叫转移ToolStripMenuItem
             // 
             this.呼叫转移ToolStripMenuItem.Name = "呼叫转移ToolStripMenuItem";
-            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.呼叫转移ToolStripMenuItem.Text = "呼叫转移";
             // 
             // frmMain

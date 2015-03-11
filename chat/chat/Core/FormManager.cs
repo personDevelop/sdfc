@@ -86,7 +86,7 @@ namespace ChatClient
                   
 
                 }
-                f.Show();
+                (form as frmchatMain).Show();
                 (form as frmchatMain).Activate();
                 if (Common.ContainsMsg(chatuser.ID))
                 {
