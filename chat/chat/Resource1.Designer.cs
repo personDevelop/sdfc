@@ -283,6 +283,16 @@ namespace ChatClient {
         /// <summary>
         ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Icon _1475_Text_Balloon {
+            get {
+                object obj = ResourceManager.GetObject("_1475_Text_Balloon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Icon _2 {
             get {
                 object obj = ResourceManager.GetObject("_2", resourceCulture);

@@ -37,7 +37,7 @@ namespace ChatClient
                 {
 
                     //为简便，在此处使用了静态类保存用户相关信息  
-                    Common.ClientUser = loginContract.UserContract;
+                    Common.CurrentUser = loginContract.UserContract;
                     Common.ConnInfo = connInfo;
                     if (OnLoginSucced != null)
                     {

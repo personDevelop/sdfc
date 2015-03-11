@@ -79,7 +79,7 @@ namespace ChatClient
             {
                 BeginToSend("发送了一个窗口抖动", MsgType.震动);
             }
-            AppendMessage(Common.ClientUser.DisplayName, RtfRichTextBox.RtfColor.Green, DateTime.Now, "您发送了一个窗口抖动。", false);
+            AppendMessage(Common.CurrentUser.DisplayName, RtfRichTextBox.RtfColor.Green, DateTime.Now, "您发送了一个窗口抖动。", false);
             Vibration();
             toolZD.Enabled = true;
         }
@@ -179,7 +179,7 @@ namespace ChatClient
 
         internal void SendMessage()
         {
-            AppendMessage(Common.ClientUser.DisplayName, RtfRichTextBox.RtfColor.Green, null, txtSendMsg.Rtf, true);
+            AppendMessage(Common.CurrentUser.DisplayName, RtfRichTextBox.RtfColor.Green, null, txtSendMsg.Rtf, true);
             if (this.BeginToSend != null)
             {
                 //this.richTextBoxEx_send.ClearGif();

@@ -43,7 +43,7 @@ namespace ChatClient
         {
             FormManager.MainForm = this;
             InitializeComponent();
-            notifyIcon1.Initialize(this, this);
+
         }
         #endregion
         #region onload事件
@@ -61,8 +61,8 @@ namespace ChatClient
             NowGetP2PInfo();
             RegistEnvet();
             #endregion
-            labelName.Text = Common.ClientUser.DisplayName;
-            labelSignature.Text = Common.ClientUser.DisplaySignature;
+            labelName.Text = Common.CurrentUser.DisplayName;
+            labelSignature.Text = Common.CurrentUser.DisplaySignature;
 
             //this.notifyIcon1.Initialize(this, this);
             //this.notifyIcon1.ChangeMyStatus();
@@ -96,7 +96,7 @@ namespace ChatClient
             {
                 lock (syncLocker)
                 {
-                    Common.GetDicUser(userStateContract.UserID).UserState = (int)OnlineState.Online;
+                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Online;
                     userItem[userStateContract.UserID].Status = ChatListSubItem.UserStatus.Online;
                 }
             }
@@ -104,7 +104,7 @@ namespace ChatClient
             {
                 lock (syncLocker)
                 {
-                    Common.GetDicUser(userStateContract.UserID).UserState = (int)OnlineState.Offline;
+                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Offline;
                     userItem[userStateContract.UserID].Status = ChatListSubItem.UserStatus.OffLine;
                     //当某用户下线后，删除此用户相关的p2p 通道
                     Common.RemoveUserConn(userStateContract.UserID);
@@ -125,7 +125,7 @@ namespace ChatClient
         private void GetMyOfflineMessage()
         {
 
-            UserIDContract info = new UserIDContract(Common.ClientUser.ID);
+            UserIDContract info = new UserIDContract(Common.CurrentUser.ID);
 
             Common.TcpConn.SendObject("GetMyOffLineMsg", info);
         }
@@ -170,7 +170,7 @@ namespace ChatClient
             }
             else
             {
-                notifyIcon1.PushFriendMessage(contract.SenderID, null);
+                //notifyIcon1.PushFriendMessage(contract.SenderID, null);
                 if (contract.MsgSendType == (int)MsgSendType.提示信息)
                 {
                     InformationForm f = new InformationForm(contract);
@@ -182,36 +182,25 @@ namespace ChatClient
                 if (form == null)
                 {
 
-                    if (Common.ContainsUserID(contract.SenderID))
+                    if (Common.AllUserDic.ContainsKey(contract.SenderID))
                     {
-                        userItem[contract.SenderID].IsTwinkle = true;
                         Common.AddUserMsg(contract);
                     }
                     //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
                     else
                     {
-
                         ChatListSubItem subItem = new ChatListSubItem("网页用户", "网页用户", "网页用户", ChatListSubItem.UserStatus.Online);
                         subItem.Tag = contract.SenderID;
-
-
                         // Image.FromFile("Resources/q1.jpg");
                         userItem.Add(contract.SenderID, subItem);
                         chatListBox.Items[0].SubItems.Add(subItem);
-                        userItem[contract.SenderID].IsTwinkle = true;
-
-
-                        Common.AddUserID(contract.SenderID);
                         List<MsgEntity> list = new List<MsgEntity>();
                         list.Add(contract);
                         Common.AddNewUserMsg(contract.SenderID, list);
-                        //让托盘图标开始跳动
-                        //this.timeMessage.Enabled = true;
-
-                        //让好友面板开始跳动
-
-                        //Common.GetDicUser(contract.SenderID).Messages.Add(contract);
                     }
+                    userItem[contract.SenderID].IsTwinkle = true;
+                    //让托盘图标开始跳动
+                    StartTwinkle();
                 }
                 else
                 {
@@ -222,6 +211,39 @@ namespace ChatClient
                 }
 
             }
+        }
+        bool isStart = false;
+        private void StartTwinkle()
+        {
+            if (isStart)
+            {
+                return;
+            }
+            Thread x = new Thread(delegate()
+            {
+                isStart = true;
+                while (Common.UserMsgCount > 0)
+                {
+
+
+
+                    if (notifyIcon2.Icon == null)
+                    {
+
+                        notifyIcon2.Icon = Resource1._1475_Text_Balloon;
+                    }
+                    else
+                    {
+                        notifyIcon2.Icon = null;
+                    }
+                    Thread.Sleep(300);
+                }
+                notifyIcon2.Icon = Resource1.qqEdu;
+                isStart = false;
+
+            });
+            x.Start();
+
         }
 
 
@@ -238,7 +260,7 @@ namespace ChatClient
             {
                 //向服务器端发送信息并获取结果
                 UserListContract userListContract = Common.TcpConn
-                    .SendReceiveObject<UserListContract>("GetFriends", "ResGetFriends", 50000, Common.ClientUser.ID);
+                    .SendReceiveObject<UserListContract>("GetFriends", "ResGetFriends", 50000, Common.CurrentUser.ID);
 
                 //遍历加载好友
                 IEnumerable<IGrouping<string, IMUserInfo>> groupUserList = userListContract.UserList.GroupBy(p => p.IMGroupName);
@@ -269,7 +291,8 @@ namespace ChatClient
                         {
                             subItem.HeadImage = Resource1.big28;
                         }
-                        Common.AddDicUser(user.ID, user);
+
+                        Common.AddFriend(user.ID, user);
                         // Image.FromFile("Resources/q1.jpg");
                         userItem.Add(user.ID, subItem);
                         chatListItem.SubItems.Add(subItem);
@@ -290,7 +313,7 @@ namespace ChatClient
             {
                 try
                 {
-                    if (userInfo.UserID != Common.ClientUser.ID)
+                    if (userInfo.UserID != Common.CurrentUser.ID)
                     {
 
 
@@ -300,7 +323,7 @@ namespace ChatClient
 
 
                         SetUpP2PContract contract = new SetUpP2PContract();
-                        contract.UserID = Common.ClientUser.ID;
+                        contract.UserID = Common.CurrentUser.ID;
                         //P2p通道打通后，发送一个消息给对方用户，以便于对方用户收到消息后，建立P2P通道
                         newTcpConnection.SendObject("SetupP2PMessage", contract);
                     }
@@ -698,7 +721,7 @@ namespace ChatClient
         #region 任务栏图标双击事件
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.notifyIcon1.Stop(); 
+            //this.notifyIcon1.Stop();
             this.Show();
             this.Activate();
         }
@@ -771,17 +794,17 @@ namespace ChatClient
 
         public string GetFriendName(string friendID)
         {
-            return Common.GetDicUser(friendID).DisplayName;
+            return Common.GetFriend(friendID).DisplayName;
         }
 
         public Icon GetHeadIcon(string userID)
         {
-            return    Resource1.qqEdu;
+            return   Resource1.qqEdu;
         }
 
         public Icon GetIcon()
         {
-            return    Resource1.qqEdu;
+            return Resource1.qqEdu;
         }
 
         public Icon Icon64
@@ -818,9 +841,6 @@ namespace ChatClient
         {
             this.Show();
         }
-
-
-
 
     }
 }

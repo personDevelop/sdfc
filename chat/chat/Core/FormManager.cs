@@ -87,12 +87,11 @@ namespace ChatClient
 
                 }
                 (form as frmchatMain).Activate();
-                if (Common.ContainsUserID(chatuser.ID))
+                if (Common.ContainsMsg(chatuser.ID))
                 {
-                    (form as frmchatMain).ShowOtherTextChat(chatuser.ID, Common.MsgContractList(chatuser.ID));
-                    Common.RemoveID(chatuser.ID);
+                    (form as frmchatMain).ShowOtherTextChat(chatuser.ID, Common.GetMsgContractList(chatuser.ID)); 
                     Common.RemoveMsg(chatuser.ID);
-                    //this.Messages.Clear();
+                   
                 }
 
             }

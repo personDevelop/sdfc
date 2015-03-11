@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             CCWin.SkinControl.ChatListItem chatListItem1 = new CCWin.SkinControl.ChatListItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.chatListBox = new CCWin.SkinControl.ChatListBox();
@@ -59,11 +58,10 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem40 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.notifyIcon1 = new ChatClient.TwinkleNotifyIcon(this.components);
+            this.notifyIcon2 = new System.Windows.Forms.NotifyIcon();
             this.skinToolStrip3.SuspendLayout();
             this.skinToolStrip1.SuspendLayout();
             this.skinContextMenuStrip_State.SuspendLayout();
@@ -539,8 +537,7 @@
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
+              // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -629,8 +626,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem39;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem40;
-        private CCWin.SkinControl.ChatListBox chatListBox;
-        private TwinkleNotifyIcon notifyIcon1;
+        private CCWin.SkinControl.ChatListBox chatListBox; 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon2;
