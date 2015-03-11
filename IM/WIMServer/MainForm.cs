@@ -73,23 +73,66 @@ namespace WIMServer
 
                 lock (syncLocker)
                 {
-                    //如果用户在线，转发消息
-                    if (userManager.ContainsKey(chatContract.Reciver))
+                    bool isAddOffline = false;
+                    if (string.IsNullOrWhiteSpace(chatContract.Reciver))
                     {
-                        //userManager[chatContract.DestUserID].SendObject("ServerChatMessage", chatContract);
-                        //应该只有一个返回的连接，但是由于返回的是列表，遍历一下也可
-                        foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[chatContract.Reciver], ConnectionType.TCP))
+                        //转发给所有的用户
+                        List<IMUserInfo> myfriends = GetMyFriends(chatContract.SenderID);
+                        foreach (var item in myfriends)
                         {
-                            conn.SendObject("ServerChatMessage", chatContract);
+                            //如果用户在线，转发消息
+                            if (userManager.ContainsKey(item.ID))
+                            {
+                                //userManager[chatContract.DestUserID].SendObject("ServerChatMessage", chatContract);
+                                //应该只有一个返回的连接，但是由于返回的是列表，遍历一下也可
+                                foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[item.ID], ConnectionType.TCP))
+                                {
+                                    conn.SendObject("ServerChatMessage", chatContract);
+                                }
+                            }
+                            //如果用户不在线,把数据加入到数据库中
+                            //暂时不保存离线图片消息
+                            else
+                            {
+                                if (!isAddOffline)
+                                {
+                                    isAddOffline = true;
 
+                                    new MsgSendOrderClient().AddOfflineMsg(chatContract);
+                                }
+
+                            }
                         }
                     }
-                    //如果用户不在线,把数据加入到数据库中
-                    //暂时不保存离线图片消息
                     else
                     {
-                        new MsgSendOrderClient().AddOfflineMsg(chatContract);
+                        if (chatContract.Reciver.Contains(";"))
+                        {
+                            foreach (var item in chatContract.Reciver.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                //如果用户在线，转发消息
+                                if (userManager.ContainsKey(item))
+                                {
+                                    //userManager[chatContract.DestUserID].SendObject("ServerChatMessage", chatContract);
+                                    //应该只有一个返回的连接，但是由于返回的是列表，遍历一下也可
+                                    foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[item], ConnectionType.TCP))
+                                    {
+                                        conn.SendObject("ServerChatMessage", chatContract);
+                                    }
+                                }
+                                //如果用户不在线,把数据加入到数据库中
+                                //暂时不保存离线图片消息
+                                else
+                                {
+                                    if (!isAddOffline)
+                                    {
+                                        isAddOffline = true;
 
+                                        new MsgSendOrderClient().AddOfflineMsg(chatContract);
+                                    }
+                                }
+                            }
+                        }
 
                     }
                 }
@@ -110,8 +153,26 @@ namespace WIMServer
         {
             try
             {
-                string cachKey = "UserInfoDataAccess_GetIMUserList";
+                List<IMUserInfo> myfriends = GetMyFriends(userID);
+                UserListContract ulc = new UserListContract(myfriends);
+                Connection.SendObject("ResGetFriends", ulc);
+            }
+            catch (Exception ex)
+            {
+                LogTools.LogException(ex, "IncomingGetFriends");
+            }
+        }
+
+        private List<IMUserInfo> GetMyFriends(string userID)
+        {
+            List<IMUserInfo> myfriends = new List<IMUserInfo>();
+
+
+            lock (syncLocker)
+            {
                 List<IMUserInfo> list = null;
+                string cachKey = "UserInfoDataAccess_GetIMUserList";
+
                 object o = Sharp.Common.CacheContainer.GetCache(cachKey);
                 if (o == null)
                 {
@@ -121,30 +182,20 @@ namespace WIMServer
                 else
                 {
                     list = o as List<IMUserInfo>;
-                }
-                List<IMUserInfo> myfriends = new List<IMUserInfo>();
-                lock (syncLocker)
+                } 
+                foreach (IMUserInfo theuser in list)
                 {
-
-                    foreach (IMUserInfo theuser in list)
+                    if (theuser.ID == userID)
                     {
-                        if (theuser.ID == userID)
-                        {
-                            continue;
-                        }
-                        //判断其他好友是否在线 
-                        IMUserInfo myfriend = theuser.Clone();
-                        myfriend.IsOnline = userManager.ContainsKey(theuser.ID);
-                        myfriends.Add(myfriend);
+                        continue;
                     }
+                    //判断其他好友是否在线 
+                    IMUserInfo myfriend = theuser.Clone();
+                    myfriend.IsOnline = userManager.ContainsKey(theuser.ID);
+                    myfriends.Add(myfriend);
                 }
-                UserListContract ulc = new UserListContract(myfriends);
-                Connection.SendObject("ResGetFriends", ulc);
             }
-            catch (Exception ex)
-            {
-                LogTools.LogException(ex, "IncomingGetFriends");
-            }
+            return myfriends;
         }
 
         //获取所有在线用户

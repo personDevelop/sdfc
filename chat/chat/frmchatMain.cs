@@ -385,10 +385,8 @@ namespace ChatClient
         //图片包装类的列表
         IList<ImageWrapper> imageWrapperList = new List<ImageWrapper>();
 
-        private void chatControl1_BeginToSend(string content, MsgType msgType = MsgType.文字, MsgSendType sendType = MsgSendType.基本消息 )
+        private void chatControl1_BeginToSend(string content, MsgType msgType = MsgType.文字, MsgSendType sendType = MsgSendType.基本消息)
         {
-
-
             //imageDict = this.chatControl1.imageDict;
 
             ////把控件中的图片字典，添加到图片包装类列表中
@@ -398,34 +396,17 @@ namespace ChatClient
 
             //    imageWrapperList.Add(newWrapper);
 
-            //}
+            //} 
+            Common.SendMsg(content, msgType, sendType, friend.ID, friend.DisplayName);
 
-
-            MsgEntity chatContract = new MsgEntity();
-            chatContract.SenderID = Common.ClientUser.ID;
-            chatContract.SenderName = Common.ClientUser.DisplayName;
-            chatContract.Reciver = friend.ID;
-            chatContract.ReciverName = friend.DisplayName;
-            chatContract.MsgContent = content;
-            chatContract.SendTime = DateTime.Now;
-            chatContract.ImageList = imageWrapperList;
-            chatContract.MsgSendType = (int)sendType;
-            chatContract.MsgType = (int)msgType;
-
-            //从客户端 Common中获取相应连接
-            Connection p2pConnection = Common.GetUserConn(friend.ID);
-            if (p2pConnection != null)
-            {
-                p2pConnection.SendObject("ClientChatMessage", chatContract);
-            }
-            else
-            {
-
-                Common.TcpConn.SendObject("ChatMessage", chatContract);
-
-            }
             this.chatControl1.Focus();
             imageWrapperList.Clear();
+        }
+
+        private void frmchatMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
     }

@@ -160,10 +160,7 @@ namespace ChatClient
             }
             DateTime showTime = DateTime.Now;
             this.txtAllMsg.AppendTextAsRtf(string.Format("{0}  {1}\n", userName, showTime), new Font(this.Font, FontStyle.Regular), color);
-            if (originTime != null)
-            {
-                this.txtAllMsg.AppendText(string.Format("[{0}] ", originTime.Value.ToLongTimeString()));
-            }
+           
             if (isRtf)
             {
                 this.txtAllMsg.AppendRtf(msg);

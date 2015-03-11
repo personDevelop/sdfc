@@ -449,6 +449,7 @@
             this.SysBottomMouse = global::ChatClient.Properties.Resources.AIO_SetBtn_highlight;
             this.SysBottomNorml = global::ChatClient.Properties.Resources.AIO_SetBtn_normal;
             this.Text = "chat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmchatMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).EndInit();
             this.skinPanel_right.ResumeLayout(false);
             this.skinTabControl1.ResumeLayout(false);

@@ -537,6 +537,10 @@
             this.notifyIcon2.Visible = true;
             this.notifyIcon2.DoubleClick += new System.EventHandler(this.notifyIcon2_DoubleClick);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;

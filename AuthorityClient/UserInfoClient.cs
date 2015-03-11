@@ -119,5 +119,10 @@ namespace AuthorityClient
             return CurrentClient.GetIMUserList();
         }
 
+
+        public void DeleteUserRole(string p, string p_2)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

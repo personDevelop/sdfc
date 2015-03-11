@@ -53,56 +53,61 @@ namespace AuthorityDataAccess
             return Dal.SystemDateTime;
         }
 
-        public View_IMUser LoginIM(string username, string userpwd, string Ip, string port,   out string error)
+        public View_IMUser LoginIM(string username, string userpwd, string Ip, string port, out string error)
         {
-             error = string.Empty;
+            error = string.Empty;
             View_IMUser user = Dal.Find<View_IMUser>(View_IMUser._.Code == username);
-           
-            if (user.Pwd != userpwd)
+
+            if (user == null)
             {
-                error = "密码不正确";
-                user = null;
+                error = "用户名不正确";
             }
             else
-            {
-                
-                //更新sessionlog
-                List<SystemSessionLog> logList = Dal.From<SystemSessionLog>().Where(SystemSessionLog._.UserID == user.ID
-                        && SystemSessionLog._.OutDate == null).OrderBy(SystemSessionLog._.EntryDate.Desc).List<SystemSessionLog>();
-
-                if (logList == null || logList.Count == 0)
+                if (user.Pwd != userpwd)
                 {
-                    SystemSessionLog log = new SystemSessionLog();
-                    log.ID = Guid.NewGuid().ToString();
-                    log.UserID = user.ID;
-                    log.UserCode = user.Code;
-                    log.UserName = user.Name;
-                    log.CompID = user.DepartID;
-                    log.CompName = user.IMGroupName;
-                    log.DepartID = user.DepartID;
-                    log.DepartName = user.IMGroupName;
-                    log.GroupID = user.DepartID;
-                    log.GroupName = user.IMGroupName;
-                    log.EntryDate = DateTime.Now;
-                    log.EntryIP = Ip;
-                    log.PortName = port;
-                    log.EntryStats = "在线";
-                    Dal.Submit(log);
+                    error = "密码不正确";
+                    user = null;
                 }
                 else
                 {
-                    SystemSessionLog LastLog = logList[0];
-                    //检测ip是否相等
-                    if (LastLog.EntryIP != Ip)
+
+                    //更新sessionlog
+                    List<SystemSessionLog> logList = Dal.From<SystemSessionLog>().Where(SystemSessionLog._.UserID == user.ID
+                            && SystemSessionLog._.OutDate == null).OrderBy(SystemSessionLog._.EntryDate.Desc).List<SystemSessionLog>();
+
+                    if (logList == null || logList.Count == 0)
                     {
-                        //检测是否同一天，如果是同一天，则提示已经再其他地方登录，
-                        //if (LastLog.EntryDate.Date == DateTime.Now.Date)
-                        //{
-                        //    error = "该账户已在其他机器登录，不能重复登录";
-                        //    user = null;
-                        //}
-                        //else
-                        //{
+                        SystemSessionLog log = new SystemSessionLog();
+                        log.ID = Guid.NewGuid().ToString();
+                        log.UserID = user.ID;
+                        log.UserCode = user.Code;
+                        log.UserName = user.Name;
+                        log.CompID = user.DepartID;
+                        log.CompName = user.IMGroupName;
+                        log.DepartID = user.DepartID;
+                        log.DepartName = user.IMGroupName;
+                        log.GroupID = user.DepartID;
+                        log.GroupName = user.IMGroupName;
+                        log.EntryDate = DateTime.Now;
+                        log.EntryIP = Ip;
+                        log.PortName = port;
+                        log.EntryStats = "在线";
+                        Dal.Submit(log);
+                    }
+                    else
+                    {
+                        SystemSessionLog LastLog = logList[0];
+                        //检测ip是否相等
+                        if (LastLog.EntryIP != Ip)
+                        {
+                            //检测是否同一天，如果是同一天，则提示已经再其他地方登录，
+                            //if (LastLog.EntryDate.Date == DateTime.Now.Date)
+                            //{
+                            //    error = "该账户已在其他机器登录，不能重复登录";
+                            //    user = null;
+                            //}
+                            //else
+                            //{
                             //否则则冲掉前一次登录，并重新设置登录日期
                             LastLog.EntryDate = DateTime.Now;
                             LastLog.EntryIP = Ip;
@@ -115,24 +120,24 @@ namespace AuthorityDataAccess
                                 }
                             }
                             Dal.Submit(logList);
-                        //}
+                            //}
 
-                    }
-                    else
-                    {
-                        //ip相等
-                        LastLog.PortName = port;
-                        if (logList.Count > 1)
-                        {
-                            for (int i = 1; i < logList.Count; i++)
-                            {
-                                logList[i].OutDate = DateTime.Now;
-                            }
                         }
-                        Dal.Submit(logList);
+                        else
+                        {
+                            //ip相等
+                            LastLog.PortName = port;
+                            if (logList.Count > 1)
+                            {
+                                for (int i = 1; i < logList.Count; i++)
+                                {
+                                    logList[i].OutDate = DateTime.Now;
+                                }
+                            }
+                            Dal.Submit(logList);
+                        }
                     }
                 }
-            }
             return user;
         }
     }

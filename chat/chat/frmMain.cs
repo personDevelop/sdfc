@@ -43,13 +43,14 @@ namespace ChatClient
         {
             FormManager.MainForm = this;
             InitializeComponent();
+            notifyIcon1.Initialize(this, this);
         }
         #endregion
         #region onload事件
         private void main_Load(object sender, EventArgs e)
         {
-          
-           this.Location = new Point(SystemInformation.PrimaryMonitorSize.Width - this.Width -50, 50);
+
+            this.Location = new Point(SystemInformation.PrimaryMonitorSize.Width - this.Width - 50, 50);
             timerCheckOnlinState = new System.Windows.Forms.Timer();//打开一个计时器
             this.timerCheckOnlinState.Interval = 60000;//间隔为60000毫秒一分钟
             this.timerCheckOnlinState.Tick += new System.EventHandler(this.timerCheckOnlinState_Tick);//绑定监听事件
@@ -162,13 +163,20 @@ namespace ChatClient
 
         public void HandleTextChat(MsgEntity contract)
         {
-            MessageBox.Show("1");
+
             if (this.InvokeRequired)
             {
                 this.Invoke(new Action<MsgEntity>(this.HandleTextChat), contract);
             }
             else
             {
+                notifyIcon1.PushFriendMessage(contract.SenderID, null);
+                if (contract.MsgSendType == (int)MsgSendType.提示信息)
+                {
+                    InformationForm f = new InformationForm(contract);
+                    f.Show();
+                    return;
+                }
 
                 frmchatMain form = FormManager.Instance.GetForm(contract.SenderID) as frmchatMain;
                 if (form == null)
@@ -211,8 +219,6 @@ namespace ChatClient
                     list.Add(contract);
                     form.ShowOtherTextChat(contract.SenderID, list);
                     form.Activate();
-
-
                 }
 
             }
@@ -331,70 +337,7 @@ namespace ChatClient
         }
         #endregion
 
-        //打开聊天窗口  并显示消息
-        private void showAddMsg()
-        {
-            //if (chatMsgDic.Count > 0 && chatUserId.Count > 0)
 
-            if (Common.UserMsgCount() > 0 && Common.UserIDCount() > 0)
-            {
-                //string destUserID = chatUserId[0];
-                string msgUserID = Common.FirstUserID();
-
-                if (msgUserID != "")
-                {
-
-                    frmchatMain form = FormManager.Instance.GetForm(msgUserID) as frmchatMain;
-
-                    if (form == null)
-                    {
-
-                        //form = new frmchatMain(Common.ClientUser.ID, msgUserID);
-                        //FormManager.Instance.Add(form);
-                        //form.Show();
-                    }
-                    form.Focus();
-                    //显示聊天信息
-                    //this.chatFormManagerControl1.ShowChatMsg(chatMsg[destUserID],destUserID);
-
-                    //form.ShowOtherTextChat(destUserID, chatMsgDic[destUserID]);
-
-                    if (Common.ContainsUserID(msgUserID))
-                    {
-                        form.ShowOtherTextChat(msgUserID, Common.MsgContractList(msgUserID));
-                    }
-                    //从相关字典中删除相应信息.
-                    //chatUserId.Remove(destUserID);
-                    //chatMsgDic.Remove(destUserID);
-                    Common.RemoveID(msgUserID);
-                    Common.RemoveMsg(msgUserID);
-
-                    //Common.GetDicUser(msgUserID).Messages.Clear();
-
-                    //如果字典中的消息为空，停止跳动，停止timeMessage
-                    //if (chatUserId.Count == 0)
-                    if (Common.UserIDCount() == 0)
-                    {
-                        //tsmiMessage.Image = ImageSmallFace.Images[103];
-
-                        //this.timeMessage.Enabled = false;
-                    }
-                }
-
-            }
-            else
-            {
-                //tsmiMessage.Image = ImageSmallFace.Images[103];
-
-                //做了一个判断，如果chatUserID与chatMsg不能对应，则清空他们。
-                //chatUserId.Clear();
-                //chatMsgDic.Clear();
-                Common.ClearUserID();
-                Common.ClearUserMsg();
-
-                //this.timeMessage.Enabled = false;
-            }
-        }
 
 
         //#region 向用户终端发送消息
@@ -750,29 +693,16 @@ namespace ChatClient
         //}
         //#endregion
 
-        //#region 用户关闭窗体事件
-        //private void main_FormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    AppExit();
-        //}
-        //private void AppExit()//关闭Sock，退出程序
-        //{
-        //    //ClassMsg msg = new ClassMsg(2, selfInfo.ID, System.Text.Encoding.Unicode.GetBytes("0"));
-        //    //sendMsgToServer(msg);
-        //    //this.sockUDP1.CloseSock();
-        //    //Application.Exit();
-        //}
-        //#endregion
 
-        //#region 任务栏图标双击事件
-        //private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        //{
-        //    this.notifyIcon1.Stop();
-        //    //this.notifyIcon1.co
-        //    this.Show();
-        //    this.Activate();
-        //}
-        //#endregion
+
+        #region 任务栏图标双击事件
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.notifyIcon1.Stop(); 
+            this.Show();
+            this.Activate();
+        }
+        #endregion
 
 
 
@@ -846,22 +776,22 @@ namespace ChatClient
 
         public Icon GetHeadIcon(string userID)
         {
-            return null;// Image.FromFile(Common.GetDicUser(userID).Photo) as Icon;
+            return    Resource1.qqEdu;
         }
 
         public Icon GetIcon()
         {
-            throw new NotImplementedException();
+            return    Resource1.qqEdu;
         }
 
         public Icon Icon64
         {
-            get { throw new NotImplementedException(); }
+            get { return Resource1.qqEdu; }
         }
 
         public Icon NoneIcon64
         {
-            get { throw new NotImplementedException(); }
+            get { return Resource1.qqEdu; }
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -877,11 +807,11 @@ namespace ChatClient
 
         private void 退出ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要退出即时通和话务中心系统？","确定退出", MessageBoxButtons.YesNo)== System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("确定要退出即时通和话务中心系统？", "确定退出", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 Environment.Exit(0);
             }
-            
+
         }
 
         private void notifyIcon2_DoubleClick(object sender, EventArgs e)
@@ -889,7 +819,7 @@ namespace ChatClient
             this.Show();
         }
 
-         
+
 
 
     }

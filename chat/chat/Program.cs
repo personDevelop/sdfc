@@ -16,10 +16,12 @@ namespace ChatClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           
+         
             ////获取服务器IM服务器ip和端口号
             Common.SetServerIpAndPort();
             Application.Run(new frmLogin(args));
         }
+
+        
     }
 }

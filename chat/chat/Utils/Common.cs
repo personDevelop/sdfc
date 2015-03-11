@@ -294,6 +294,44 @@ namespace ChatClient
             return ConnInfo;
         }
 
+
+        public static void SendMsg(string content, MsgType msgType, MsgSendType sendType, string reciverid, string reciverName, IList<ImageWrapper> imageWrapperList = null)
+        {
+            try
+            {
+
+                MsgEntity chatContract = new MsgEntity();
+                chatContract.SenderID = Common.ClientUser.ID;
+                chatContract.SenderName = Common.ClientUser.DisplayName;
+                chatContract.Reciver = reciverid;
+                chatContract.ReciverName = reciverName;
+                chatContract.MsgContent = content;
+                chatContract.SendTime = DateTime.Now;
+                chatContract.ImageList = imageWrapperList;
+                chatContract.MsgSendType = (int)sendType;
+                chatContract.MsgType = (int)msgType;
+
+                //从客户端 Common中获取相应连接
+                Connection p2pConnection = Common.GetUserConn(reciverid);
+                if (p2pConnection != null)
+                {
+                    p2pConnection.SendObject("ClientChatMessage", chatContract);
+                }
+                else
+                {
+                    if (Common.TcpConn != null)
+                    {
+                        Common.TcpConn.SendObject("ChatMessage", chatContract);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
     }
 
     public static class IPHelper
