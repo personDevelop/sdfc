@@ -30,7 +30,7 @@ namespace AuthorityEntity.IM
         [ProtoMember(10)]
         public string ReciverName { get; set; }
         [ProtoMember(11)]
-        public string IsWebMsg { get; set; }
+        public bool IsWebMsg { get; set; }
         public MsgEntity()
         {
             ImageList = new List<ImageWrapper>();

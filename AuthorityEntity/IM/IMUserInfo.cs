@@ -63,7 +63,7 @@ namespace AuthorityEntity.IM
         [ProtoMember(22)]
         public string DepartID { get; set; }
         [ProtoMember(23)]
-        public string IsWebMsg { get; set; }
+        public bool IsWebMsg { get; set; }
         /// <summary>
         /// 获取用户状态
         /// </summary>
