@@ -37,9 +37,10 @@ namespace SignalR
                     AuthorityEntity.IM.IMUserInfo userinfo = new IMUserInfo();
                     userinfo.ID = "SB_WEB_INFO";
                     userinfo.Code = "SB_WEB_INFO";
+                    userinfo.IsWebMsg = true;
                     UserLoginContract loginContract = newTcpConnection.
                         SendReceiveObject<UserLoginContract>("UserLogin", "ResUserLogin", 80000, userinfo);
-                    NetworkComms.AppendGlobalIncomingPacketHandler<MsgEntity>("ChatMessage", IncomingChatMessage);
+                    NetworkComms.AppendGlobalIncomingPacketHandler<MsgEntity>("ServerChatMessage", IncomingChatMessage);
                 }
                 MsgEntity chatContract = new MsgEntity();
                 chatContract.SenderID = userid;
@@ -48,7 +49,7 @@ namespace SignalR
                 chatContract.MsgContent = mes;
                 chatContract.SendTime = DateTime.Now;
                 chatContract.MsgSendType = 4;
-                chatContract.IsWebMsg = true;
+                //chatContract.IsWebMsg = true;
                 //chatContract.ImageList = imageWrapperList;
                 newTcpConnection.SendObject("ChatMessage", chatContract);
 
