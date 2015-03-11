@@ -243,6 +243,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="qqEdu.ico" />
+    <None Include="Resources\None64.ico" />
     <None Include="Resources\1475_Text Balloon.ico" />
     <None Include="Resources\girl.png" />
     <None Include="Resources\托盘图标12.ico" />

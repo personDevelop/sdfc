@@ -3388,4 +3388,7 @@
   <data name="_1475_Text_Balloon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\1475_Text Balloon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="None64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\None64.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

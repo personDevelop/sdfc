@@ -225,7 +225,7 @@ namespace ChatClient
                         //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
                         else
                         {
-                           
+
                         }
                         userItem[contract.SenderID].IsTwinkle = true;
                         //让托盘图标开始跳动
@@ -264,7 +264,7 @@ namespace ChatClient
                     }
                     else
                     {
-                        notifyIcon2.Icon = null;
+                        notifyIcon2.Icon = Resource1.None64;
                     }
                     Thread.Sleep(300);
                 }
