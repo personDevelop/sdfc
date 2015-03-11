@@ -40,7 +40,6 @@
             this.btnClose = new CCWin.SkinControl.SkinButton();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.skinLabel_inputing = new CCWin.SkinControl.SkinLabel();
             this.toolStripButtonEmotion = new System.Windows.Forms.ToolStripButton();
             this.toolFont = new System.Windows.Forms.ToolStripButton();
             this.skToolMenu = new CCWin.SkinControl.SkinToolStrip();
@@ -299,21 +298,6 @@
             this.toolStripButton2.Size = new System.Drawing.Size(23, 24);
             this.toolStripButton2.Text = "屏幕截图";
             // 
-            // skinLabel_inputing
-            // 
-            this.skinLabel_inputing.ArtTextStyle = CCWin.SkinControl.ArtTextStyle.Anamorphosis;
-            this.skinLabel_inputing.AutoSize = true;
-            this.skinLabel_inputing.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel_inputing.BorderColor = System.Drawing.Color.White;
-            this.skinLabel_inputing.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel_inputing.ForeColor = System.Drawing.Color.Black;
-            this.skinLabel_inputing.Location = new System.Drawing.Point(235, 17);
-            this.skinLabel_inputing.Name = "skinLabel_inputing";
-            this.skinLabel_inputing.Size = new System.Drawing.Size(53, 12);
-            this.skinLabel_inputing.TabIndex = 147;
-            this.skinLabel_inputing.Text = "正在输入";
-            this.skinLabel_inputing.Visible = false;
-            // 
             // toolStripButtonEmotion
             // 
             this.toolStripButtonEmotion.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -417,9 +401,9 @@
             this.labelFriendName.ForeColor = System.Drawing.Color.Black;
             this.labelFriendName.Location = new System.Drawing.Point(57, 7);
             this.labelFriendName.Name = "labelFriendName";
-            this.labelFriendName.Size = new System.Drawing.Size(172, 25);
+            this.labelFriendName.Size = new System.Drawing.Size(88, 25);
             this.labelFriendName.TabIndex = 138;
-            this.labelFriendName.Text = "网页用户-山东联通";
+            this.labelFriendName.Text = "网页用户";
             // 
             // labelFriendSignature
             // 
@@ -436,7 +420,7 @@
             this.labelFriendSignature.Name = "labelFriendSignature";
             this.labelFriendSignature.Size = new System.Drawing.Size(56, 17);
             this.labelFriendSignature.TabIndex = 139;
-            this.labelFriendSignature.Text = "运营一部";
+            this.labelFriendSignature.Text = "福彩在线";
             // 
             // rtfRichTextBox_history
             // 
@@ -651,7 +635,6 @@
             this.Controls.Add(this.skinButton_send);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.skinPanel_right);
-            this.Controls.Add(this.skinLabel_inputing);
             this.Controls.Add(this.skToolMenu);
             this.Controls.Add(this.labelFriendName);
             this.Controls.Add(this.labelFriendSignature);
@@ -712,7 +695,6 @@
         private System.Windows.Forms.ToolTip toolShow;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private CCWin.SkinControl.SkinLabel skinLabel_inputing;
         private System.Windows.Forms.ToolStripButton toolStripButtonEmotion;
         private System.Windows.Forms.ToolStripButton toolFont;
         private CCWin.SkinControl.SkinToolStrip skToolMenu;

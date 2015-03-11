@@ -178,40 +178,68 @@ namespace ChatClient
                     f.Show();
                     return;
                 }
-
-                frmchatMain form = FormManager.Instance.GetForm(contract.SenderID) as frmchatMain;
-                if (form == null)
+                if (contract.MsgSendType == (int)MsgSendType.网服消息)
                 {
-
-                    if (Common.AllUserDic.ContainsKey(contract.SenderID))
+                    chatMain form = FormManager.Instance.GetForm(contract.SenderID) as chatMain;
+                    if (form == null)
                     {
-                        Common.AddUserMsg(contract);
+                        if (Common.AllUserDic.ContainsKey(contract.SenderID))
+                        {
+                            Common.AddUserMsg(contract);
+                        }
+                        //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
+                        else
+                        {
+                            ChatListSubItem subItem = new ChatListSubItem("网页用户", "网页用户", "网页用户", ChatListSubItem.UserStatus.Online);
+                            subItem.Tag = contract.SenderID;
+                            // Image.FromFile("Resources/q1.jpg");
+                            userItem.Add(contract.SenderID, subItem);
+                            chatListBox.Items[0].SubItems.Add(subItem);
+                            List<MsgEntity> list = new List<MsgEntity>();
+                            list.Add(contract);
+                            Common.AddFriend(contract.SenderID, null);
+                            Common.AddNewUserMsg(contract.SenderID, list);
+                        }
+                        userItem[contract.SenderID].IsTwinkle = true;
+                        //让托盘图标开始跳动
+                        StartTwinkle();
                     }
-                    //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
                     else
                     {
-                        ChatListSubItem subItem = new ChatListSubItem("网页用户", "网页用户", "网页用户", ChatListSubItem.UserStatus.Online);
-                        subItem.Tag = contract.SenderID;
-                        // Image.FromFile("Resources/q1.jpg");
-                        userItem.Add(contract.SenderID, subItem);
-                        chatListBox.Items[0].SubItems.Add(subItem);
                         List<MsgEntity> list = new List<MsgEntity>();
                         list.Add(contract);
-                        Common.AddFriend(contract.SenderID, null);
-                        Common.AddNewUserMsg(contract.SenderID, list);
+                        form.ShowOtherTextChat(contract.SenderID, list);
+                        form.Activate();
                     }
-                    userItem[contract.SenderID].IsTwinkle = true;
-                    //让托盘图标开始跳动
-                    StartTwinkle();
                 }
                 else
                 {
-                    List<MsgEntity> list = new List<MsgEntity>();
-                    list.Add(contract);
-                    form.ShowOtherTextChat(contract.SenderID, list);
-                    form.Activate();
-                }
+                    frmchatMain form = FormManager.Instance.GetForm(contract.SenderID) as frmchatMain;
+                    if (form == null)
+                    {
 
+                        if (Common.AllUserDic.ContainsKey(contract.SenderID))
+                        {
+                            Common.AddUserMsg(contract);
+                        }
+                        //如果chatUserId中没有此用户ID,那么添加相应的id和消息。并触发FormNotOpen事件
+                        else
+                        {
+                           
+                        }
+                        userItem[contract.SenderID].IsTwinkle = true;
+                        //让托盘图标开始跳动
+                        StartTwinkle();
+                    }
+                    else
+                    {
+                        List<MsgEntity> list = new List<MsgEntity>();
+                        list.Add(contract);
+                        form.ShowOtherTextChat(contract.SenderID, list);
+                        form.Activate();
+                    }
+
+                }
             }
         }
         bool isStart = false;
@@ -899,7 +927,7 @@ namespace ChatClient
                     }
                 }
             }
-        } 
+        }
 
     }
 }

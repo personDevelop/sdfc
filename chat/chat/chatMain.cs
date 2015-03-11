@@ -25,7 +25,7 @@ namespace ChatClient
         public chatMain(IMUserInfo friend)
             : this()
         {
-            InitializeComponent();
+
             // TODO: Complete member initialization
             this.friend = friend;
             //labelFriendName.Text = friend.DisplayName;
@@ -85,12 +85,12 @@ namespace ChatClient
                 return;
             }
             DateTime showTime = DateTime.Now;
-           // this.rtfRichTextBox_history.AppendTextAsRtf(string.Format("{0}  {1}\n", userName, showTime), new Font(this.Font, FontStyle.Regular), color);
+            this.rtfRichTextBox_history.AppendTextAsRtf(string.Format("{0}  {1}\n", "网页用户", showTime), new Font(this.Font, FontStyle.Regular), color);
 
-            this.rtfRichTextBox_history.AppendText("adsfasdf");
+            //this.rtfRichTextBox_history.AppendText("adsfasdf");
             this.rtfRichTextBox_history.AppendText(msg);
+            this.rtfRichTextBox_history.AppendText("\n");
 
-             
 
 
         }
