@@ -74,6 +74,14 @@ namespace WIMServer
                 lock (syncLocker)
                 {
                     bool isAddOffline = false;
+                    if (chatContract.IsWebMsg)
+                    {
+                        foreach (Connection conn in NetworkComms.GetExistingConnection(userManager["SB_WEB_INFO"], ConnectionType.TCP))
+                        {
+                            conn.SendObject("ServerChatMessage", chatContract);
+                        }
+                        return;
+                    }
                     if (string.IsNullOrWhiteSpace(chatContract.Reciver))
                     {
                         //转发给所有的用户
@@ -107,34 +115,40 @@ namespace WIMServer
                     else
                     {
                         List<string> recivers = new List<string>();
-
                         if (chatContract.Reciver.Contains(";"))
                         {
-                            foreach (var item in chatContract.Reciver.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
-                            {
-                                //如果用户在线，转发消息
-                                if (userManager.ContainsKey(item))
-                                {
-                                    //userManager[chatContract.DestUserID].SendObject("ServerChatMessage", chatContract);
-                                    //应该只有一个返回的连接，但是由于返回的是列表，遍历一下也可
-                                    foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[item], ConnectionType.TCP))
-                                    {
-                                        conn.SendObject("ServerChatMessage", chatContract);
-                                    }
-                                }
-                                //如果用户不在线,把数据加入到数据库中
-                                //暂时不保存离线图片消息
-                                else
-                                {
-                                    if (!isAddOffline)
-                                    {
-                                        isAddOffline = true;
+                            recivers.AddRange(chatContract.Reciver.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries));
+                        }
+                        else
+                        {
+                            recivers.Add(chatContract.Reciver);
+                        } 
 
-                                        new MsgSendOrderClient().AddOfflineMsg(chatContract);
-                                    }
+                        foreach (var item in recivers)
+                        {
+                            //如果用户在线，转发消息
+                            if (userManager.ContainsKey(item))
+                            {
+                                //userManager[chatContract.DestUserID].SendObject("ServerChatMessage", chatContract);
+                                //应该只有一个返回的连接，但是由于返回的是列表，遍历一下也可
+                                foreach (Connection conn in NetworkComms.GetExistingConnection(userManager[item], ConnectionType.TCP))
+                                {
+                                    conn.SendObject("ServerChatMessage", chatContract);
+                                }
+                            }
+                            //如果用户不在线,把数据加入到数据库中
+                            //暂时不保存离线图片消息
+                            else
+                            {
+                                if (!isAddOffline)
+                                {
+                                    isAddOffline = true;
+
+                                    new MsgSendOrderClient().AddOfflineMsg(chatContract);
                                 }
                             }
                         }
+
 
                     }
                 }
@@ -184,7 +198,7 @@ namespace WIMServer
                 else
                 {
                     list = o as List<IMUserInfo>;
-                } 
+                }
                 foreach (IMUserInfo theuser in list)
                 {
                     if (theuser.ID == userID)
@@ -234,12 +248,24 @@ namespace WIMServer
                 //从数据库中验证登录信息
                 string ip = Connection.ConnectionInfo.LocalEndPoint.ToString();
                 string port = Connection.ConnectionInfo.LocalEndPoint.Port.ToString();
-                string error;
-                View_IMUser userinfo = new AuthorityClient.LoginClient().Login(loginInfo.Code, loginInfo.Pwd, ip, port, out error);
+                string error = string.Empty;
+                View_IMUser userinfo = null;
+                if (loginInfo.IsWebMsg)
+                {
+                    userinfo = new View_IMUser();
+                    userinfo.ID = loginInfo.Code;
+                    userinfo.Code = loginInfo.Code;
+                    userinfo.Name = "网页用户";
+                }
+                else
+                {
+                    userinfo = new AuthorityClient.LoginClient().Login(loginInfo.Code, loginInfo.Pwd, ip, port, out error);
+                }
+
                 if (userinfo == null)
                 {
                     UserLoginContract resContract = new UserLoginContract(error, null);
-                    Connection.SendObject("ResUserLogin", resContract); 
+                    Connection.SendObject("ResUserLogin", resContract);
                 }
                 else
                 {
