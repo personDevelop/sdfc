@@ -125,6 +125,20 @@ namespace ChatClient
 
         }
 
+        private void skinButton_send_Click(object sender, EventArgs e)
+        {
+            //this.rtfRichTextBox_history.
+            //MsgEntity chatContract = new MsgEntity();
+            //chatContract.SenderID = "还没有取到ID";
+            //chatContract.Reciver = this.friend.ID;
+            //chatContract.MsgContent = this.textBoxSend.Text;
+            //chatContract.SendTime = DateTime.Now;
+
+            //Common.TcpConn.SendObject("ChatMessage", chatContract);
+            //this.textBoxSend.Clear();
+            //this.textBoxSend.Focus();
+        }
+
 
     }
 }

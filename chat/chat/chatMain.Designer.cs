@@ -263,6 +263,7 @@
             this.skinButton_send.TabIndex = 142;
             this.skinButton_send.Text = "发送";
             this.skinButton_send.UseVisualStyleBackColor = false;
+            this.skinButton_send.Click += new System.EventHandler(this.skinButton_send_Click);
             // 
             // btnClose
             // 
