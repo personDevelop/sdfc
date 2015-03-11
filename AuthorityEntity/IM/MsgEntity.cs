@@ -29,7 +29,7 @@ namespace AuthorityEntity.IM
         public string Reciver { get; set; }
         [ProtoMember(10)]
         public string ReciverName { get; set; }
-        [ProtoMember(11)]
+        [ProtoMember(12)]
         public bool IsWebMsg { get; set; }
         public MsgEntity()
         {
