@@ -67,6 +67,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\refdll\FrameSession.dll</HintPath>
     </Reference>
+    <Reference Include="ICallTelTalkManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\refdll\ICallTelTalkManager.dll</HintPath>
+    </Reference>
     <Reference Include="Screen_Capture">
       <HintPath>..\..\refdll\Screen_Capture.dll</HintPath>
     </Reference>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             CCWin.SkinControl.ChatListItem chatListItem1 = new CCWin.SkinControl.ChatListItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.chatListBox = new CCWin.SkinControl.ChatListBox();
@@ -58,14 +59,18 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem40 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon2 = new System.Windows.Forms.NotifyIcon();
+            this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.呼叫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.呼叫转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skinToolStrip3.SuspendLayout();
             this.skinToolStrip1.SuspendLayout();
             this.skinContextMenuStrip_State.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // chatListBox
@@ -535,9 +540,27 @@
             this.notifyIcon2.Visible = true;
             this.notifyIcon2.DoubleClick += new System.EventHandler(this.notifyIcon2_DoubleClick);
             // 
-            // notifyIcon1
+            // contextMenuStrip2
             // 
-              // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.呼叫ToolStripMenuItem,
+            this.呼叫转移ToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 70);
+            // 
+            // 呼叫ToolStripMenuItem
+            // 
+            this.呼叫ToolStripMenuItem.Name = "呼叫ToolStripMenuItem";
+            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.呼叫ToolStripMenuItem.Text = "呼叫";
+            this.呼叫ToolStripMenuItem.Click += new System.EventHandler(this.呼叫ToolStripMenuItem_Click);
+            // 
+            // 呼叫转移ToolStripMenuItem
+            // 
+            this.呼叫转移ToolStripMenuItem.Name = "呼叫转移ToolStripMenuItem";
+            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.呼叫转移ToolStripMenuItem.Text = "呼叫转移";
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -593,6 +616,7 @@
             this.skinToolStrip1.PerformLayout();
             this.skinContextMenuStrip_State.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -631,5 +655,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon2;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem 呼叫ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 呼叫转移ToolStripMenuItem;
     }
 }

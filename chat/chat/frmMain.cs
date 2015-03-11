@@ -17,6 +17,7 @@ using System.Threading;
 using AuthorityEntity;
 using NetworkCommsDotNet;
 using AuthorityEntity.IM;
+using ICallTelTalkManager;
 
 namespace ChatClient
 {
@@ -686,7 +687,7 @@ namespace ChatClient
             }
 
 
-          
+
 
         }
 
@@ -858,6 +859,47 @@ namespace ChatClient
         {
             this.Show();
         }
+
+        private void 呼叫ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (string.IsNullOrWhiteSpace(Common.CurrentUser.AgentID))
+            {
+                MessageBox.Show("当前用户没有分机号，不能" + item.Text);
+                return;
+            }
+
+            if (chatListBox.SelectSubItem != null && chatListBox.SelectSubItem.Tag != null)
+            {
+                IMUserInfo user = chatListBox.SelectSubItem.Tag as IMUserInfo;
+                if (user != null)
+                {
+                    if (user.IsOnline)
+                    {
+                        if (string.IsNullOrEmpty(user.AgentID))
+                        {
+                            MessageBox.Show("该用户没有分机号，不能" + item.Text);
+                        }
+                        else
+                        {
+                            if (item == 呼叫转移ToolStripMenuItem)
+                            {
+                                CallTalkFactory.GetCallInstance().Transfer(Common.CurrentUser.AgentID, user.AgentID);
+                            }
+                            else
+                            {
+                                CallTalkFactory.GetCallInstance().OutCall(user.AgentID);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("该用户不在线，不能" + item.Text);
+                    }
+                }
+            }
+        } 
 
     }
 }
