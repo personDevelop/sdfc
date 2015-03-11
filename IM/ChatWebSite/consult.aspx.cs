@@ -16,7 +16,7 @@ namespace SignalR
             uid.Value = System.Guid.NewGuid().ToString() + "_user";
             List<ParameterInfo> list = new FrameCommonClient.ParameterInfoClient().GetListByParentId("bdcf2650-c738-4b25-852a-79a615456441");
 
-
+ 
             string html = "";
             foreach (ParameterInfo item in list)
             {
@@ -25,6 +25,10 @@ namespace SignalR
                 
             }
 
+
+
+            AuthorityClient.UserInfoClient client = new AuthorityClient.UserInfoClient();
+            //client.GetIMUserList();
             commonQues.InnerHtml = html;
         }
     }

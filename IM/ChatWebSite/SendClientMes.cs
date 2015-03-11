@@ -12,7 +12,7 @@ namespace SignalR
 
 
         public static Connection newTcpConnection;
-        public static void SendMess()
+        public static void SendMess(string userid,string mes,string toid)
         {
 
             try
@@ -30,10 +30,10 @@ namespace SignalR
                     TCPConnection.StartListening(connInfo.LocalEndPoint);
                 }
                 MsgEntity chatContract = new MsgEntity();
-                chatContract.SenderID = "9c37d66a-083-4dbe-818d-b7c175d24975";
-                chatContract.Reciver = "9c37d66a-a083-4dbe-818d-b7c175d24975";
+                chatContract.SenderID = userid;
+                chatContract.Reciver = toid;
 
-                chatContract.MsgContent = "dsafads";
+                chatContract.MsgContent = mes;
                 chatContract.SendTime = DateTime.Now;
                 //chatContract.ImageList = imageWrapperList;
                 newTcpConnection.SendObject("ChatMessage", chatContract);

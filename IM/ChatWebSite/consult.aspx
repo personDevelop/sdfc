@@ -91,7 +91,7 @@
             $.connection.hub.start().done(function () {
                 //當連線完成後，呼叫Server端的userConnected方法，並傳送使用者姓名給Server
                 chat.server.userConnected(userID);
-                chat.server.sendMessageConnect($("#target").val(), "您好 有人要有请求是否应答？");
+                //chat.server.sendMessageConnect($("#target").val(), "您好 有人要有请求是否应答？");
             });
         });
 

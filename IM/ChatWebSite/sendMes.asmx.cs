@@ -28,7 +28,7 @@ namespace SignalR
         [WebMethod]
         public void sendClientMess(string clientid, string mes)
         {
-            SendClientMes.SendMess();
+            //SendClientMes.SendMess(clientid,mes,rec);
         }
     }
 }

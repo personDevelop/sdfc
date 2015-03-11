@@ -305,6 +305,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AuthorityClient\AuthorityClient.csproj">
+      <Project>{198D91F9-4DCE-43BF-8103-AF499D7A88DA}</Project>
+      <Name>AuthorityClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\AuthorityEntity\AuthorityEntity.csproj">
       <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
       <Name>AuthorityEntity</Name>
