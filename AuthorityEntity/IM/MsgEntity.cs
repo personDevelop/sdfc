@@ -24,18 +24,20 @@ namespace AuthorityEntity.IM
         [ProtoMember(7)]
         public int MsgSendType { get; set; }
         [ProtoMember(8)]
-        public int  MsgType { get; set; }
+        public int MsgType { get; set; }
         [ProtoMember(9)]
         public string Reciver { get; set; }
         [ProtoMember(10)]
         public string ReciverName { get; set; }
+        [ProtoMember(11)]
+        public string IsWebMsg { get; set; }
         public MsgEntity()
         {
             ImageList = new List<ImageWrapper>();
-        } 
-       /// <summary>
-       /// 离线不支持，必须在线才能发送图片
-       /// </summary>
+        }
+        /// <summary>
+        /// 离线不支持，必须在线才能发送图片
+        /// </summary>
         [ProtoMember(11)]
         public IList<ImageWrapper> ImageList { get; set; }
     }

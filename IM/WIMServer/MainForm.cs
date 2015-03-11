@@ -106,6 +106,8 @@ namespace WIMServer
                     }
                     else
                     {
+                        List<string> recivers = new List<string>();
+
                         if (chatContract.Reciver.Contains(";"))
                         {
                             foreach (var item in chatContract.Reciver.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
@@ -237,8 +239,7 @@ namespace WIMServer
                 if (userinfo == null)
                 {
                     UserLoginContract resContract = new UserLoginContract(error, null);
-                    Connection.SendObject("ResUserLogin", resContract);
-
+                    Connection.SendObject("ResUserLogin", resContract); 
                 }
                 else
                 {
@@ -623,17 +624,17 @@ namespace WIMServer
             {
                 if (port < 2000)
                 {
-                    MessageBox.Show("端口号取值范围为2000-到65535");
+                    MessageBox.Show("端口号取值范围为2000到65535");
                     return;
                 }
                 if (port > 65535)
                 {
-                    MessageBox.Show("端口号取值范围为2000-到65535");
+                    MessageBox.Show("端口号取值范围为2000到65535");
                     return;
                 }
                 if (IsUse(port))
                 {
-                    MessageBox.Show("当前端口号已别占用");
+                    MessageBox.Show("当前端口号已被占用");
                     return;
                 }
             }
