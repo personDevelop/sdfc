@@ -96,6 +96,31 @@ namespace ChatClient
 
             }
         }
+
+        internal void ActivateOrCreateFormSend(string userid, IMUserInfo chatuser)
+        {
+            lock (locker)
+            {
+                IManagedForm form = GetForm(userid);
+
+                if (form == null)
+                {
+                    chatMain f = new chatMain(chatuser);
+                    form = f;
+                    Add(f);
+                    f.Show();
+
+                }
+                (form as chatMain).Activate();
+                if (Common.ContainsMsg(userid))
+                {
+                    (form as chatMain).ShowOtherTextChat(userid, Common.GetMsgContractList(userid));
+                    Common.RemoveMsg(userid);
+
+                }
+
+            }
+        }
     }
 
 

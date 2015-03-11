@@ -9,80 +9,114 @@ using System.Windows.Forms;
 using CCWin;
 using CCWin.Win32;
 using CCWin.Win32.Const;
-
+using CCWin.SkinControl;
+using NetworkCommsDotNet;
+using AuthorityEntity.IM;
 namespace ChatClient
 {
-    public partial class chatMain : CCSkinMain
+    public partial class chatMain : CCSkinMain, IManagedForm
     {
-         
+        private IMUserInfo friend;
         public chatMain()
         {
-            
-            
+
+            InitializeComponent();
         }
- 
+        public chatMain(IMUserInfo friend)
+            : this()
+        {
+            InitializeComponent();
+            // TODO: Complete member initialization
+            this.friend = friend;
+            //labelFriendName.Text = friend.DisplayName;
+            //labelFriendSignature.Text = friend.DisplaySignature;
+            //this.Text = "正在和" + labelFriendName.Text + "对话";
+        }
+
         private void FocusCurrent(object sender, EventArgs e)
         {
 
         }
 
+        #region 关闭按钮
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+        #endregion
+
+        public string FormID
+        {
+            get { return friend.ID; }
+        }
+
+
+
+
+        public Form CurrentForm
+        {
+            get
+            {
+                return this;
+            }
+            set
+            {
+
+            }
+        }
+        public void ShowOtherTextChat(string userID, List<MsgEntity> msgList)
+        {
+            if (msgList.Count > 0)
+            {
+
+                foreach (MsgEntity msg in msgList)
+                {
+                    this.ReciveMessage(msg);
+
+                }
+
+            }
+        }
+        //追加消息
+        private void AppendMessage(string userName, RtfRichTextBox.RtfColor color, DateTime? originTime, string msg, bool isRtf)
+        {
+            if (string.IsNullOrWhiteSpace(msg))
+            {
+                return;
+            }
+            DateTime showTime = DateTime.Now;
+           // this.rtfRichTextBox_history.AppendTextAsRtf(string.Format("{0}  {1}\n", userName, showTime), new Font(this.Font, FontStyle.Regular), color);
+
+            this.rtfRichTextBox_history.AppendText("adsfasdf");
+            this.rtfRichTextBox_history.AppendText(msg);
+
+             
+
 
         }
 
-        private void toolStripMenuItem34_Click(object sender, EventArgs e)
+        //接收消息
+        public void ReciveMessage(MsgEntity msg)// string From, DateTime Time, string Content, bool Self)
         {
-
-        }
-
-        private void 发送离线文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem33_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton_fileTransfer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripDropDownButton1_ButtonClick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonCapture_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolVibration_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButtonEmotion_MouseUp(object sender, MouseEventArgs e)
-        {
+            MsgType mt = (MsgType)msg.MsgType;
+            switch (mt)
+            {
+                case MsgType.文字:
+                    this.AppendMessage("网页用户的消息", RtfRichTextBox.RtfColor.Blue, DateTime.Now, msg.MsgContent, true);
+                    break;
+                case MsgType.震动:
+                    this.AppendMessage(msg.SenderName, RtfRichTextBox.RtfColor.Blue, msg.SendTime, Environment.NewLine + msg.SenderName + "给您" + msg.MsgContent + Environment.NewLine, false);
+                    //Vibration();
+                    break;
+                case MsgType.文件:
+                    break;
+                case MsgType.语音:
+                    break;
+                case MsgType.视频:
+                    break;
+                default:
+                    break;
+            }
 
         }
 
@@ -91,61 +125,6 @@ namespace ChatClient
 
         }
 
-        private void labelFriendName_MouseEnter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void labelFriendName_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButtonEmotion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fontDialog1_Apply(object sender, EventArgs e)
-        {
-
-        }
-
-        private void imgyy2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelFriendHeadImage_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void labelFriendSignature_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void skinPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void skinPanel_right_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void toolFont_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-         
     }
 }

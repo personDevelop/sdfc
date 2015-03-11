@@ -196,6 +196,7 @@ namespace ChatClient
                         chatListBox.Items[0].SubItems.Add(subItem);
                         List<MsgEntity> list = new List<MsgEntity>();
                         list.Add(contract);
+                        Common.AddFriend(contract.SenderID, null);
                         Common.AddNewUserMsg(contract.SenderID, list);
                     }
                     userItem[contract.SenderID].IsTwinkle = true;
@@ -667,9 +668,25 @@ namespace ChatClient
         {
 
             ChatListSubItem item = e.SelectSubItem;
-            IMUserInfo chatuser = item.Tag as IMUserInfo;
-            item.IsTwinkle = false;//不闪烁 
-            FormManager.Instance.ActivateOrCreateFormSend(chatuser);
+            if (item.NicName == "网页用户")
+            {
+                IMUserInfo friend = new IMUserInfo();
+                friend.ID = item.Tag.ToString();
+                friend.NickyName = "网页用户";
+                friend.Signature = "网页用户";
+                item.IsTwinkle = false;//不闪烁 
+                FormManager.Instance.ActivateOrCreateFormSend(item.Tag.ToString(), friend);
+            }
+            else
+            {
+                IMUserInfo chatuser = item.Tag as IMUserInfo;
+                item.IsTwinkle = false;//不闪烁 
+
+                FormManager.Instance.ActivateOrCreateFormSend(chatuser);
+            }
+
+
+          
 
         }
 
@@ -799,7 +816,7 @@ namespace ChatClient
 
         public Icon GetHeadIcon(string userID)
         {
-            return   Resource1.qqEdu;
+            return Resource1.qqEdu;
         }
 
         public Icon GetIcon()
