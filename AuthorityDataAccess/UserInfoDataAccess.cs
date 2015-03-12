@@ -305,8 +305,7 @@ namespace AuthorityDataAccess
             return Dal.From<SystemSessionLog>()
                 .Join<UserInfo>(SystemSessionLog._.UserID == UserInfo._.ID)
                 .Where(
-                UserInfo._.IsWebPerson == true
-                && SystemSessionLog._.PortName != null
+                UserInfo._.IsWebPerson == true 
                 && SystemSessionLog._.OutDate == null)
                 .ToDataTable();
         }
