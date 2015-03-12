@@ -125,7 +125,7 @@
             <ul id="firstchannel">
                 <li class='sign'>
                     <dl>
-                        客服：青岛客服一号-小王
+                        客服：<span id='userinfo' runat=server></span>
                     </dl>
                 </li>
                 <li>

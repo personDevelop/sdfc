@@ -22,7 +22,7 @@ namespace SignalR
             string result = "";
             foreach (DataRow row in dt.Rows)
             {
-                result += "<a href='consult.aspx?sid=" + row["userid"].ToString() + "&code=" + row["userid"].ToString() + "' target='_blank'  style='color:red;'>在线" + row["NAME"].ToString() + "</a>";
+                result += "<a href='consult.aspx?sid=" + row["userid"].ToString() + "&code=" + row["userid"].ToString() + "&name=" + row["NAME"].ToString() + "' target='_blank'  style='color:red;'>在线" + row["NAME"].ToString() + "</a>";
             }
 
            

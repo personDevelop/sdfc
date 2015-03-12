@@ -15,7 +15,7 @@ namespace SignalR
             target.Value = Request.QueryString.Get("code");
             uid.Value = System.Guid.NewGuid().ToString() + "_user";
             List<ParameterInfo> list = new FrameCommonClient.ParameterInfoClient().GetListByParentId("bdcf2650-c738-4b25-852a-79a615456441");
-
+            userinfo.InnerHtml = Request.QueryString.Get("name");
  
             string html = "";
             foreach (ParameterInfo item in list)

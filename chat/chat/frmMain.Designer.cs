@@ -32,6 +32,9 @@
             CCWin.SkinControl.ChatListItem chatListItem1 = new CCWin.SkinControl.ChatListItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.chatListBox = new CCWin.SkinControl.ChatListBox();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.呼叫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.呼叫转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skinPanel_HeadImage = new CCWin.SkinControl.SkinPanel();
             this.labelSignature = new CCWin.SkinControl.SkinLabel();
             this.skinButton_State = new CCWin.SkinControl.SkinButton();
@@ -63,14 +66,11 @@
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.呼叫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.呼叫转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip2.SuspendLayout();
             this.skinToolStrip3.SuspendLayout();
             this.skinToolStrip1.SuspendLayout();
             this.skinContextMenuStrip_State.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // chatListBox
@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chatListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.chatListBox.ContextMenuStrip = this.contextMenuStrip2;
-            this.chatListBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chatListBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.chatListBox.ForeColor = System.Drawing.Color.Black;
             chatListItem1.Bounds = new System.Drawing.Rectangle(0, 1, 278, 25);
             chatListItem1.IsTwinkleHide = false;
@@ -100,14 +100,35 @@
             this.chatListBox.TabIndex = 135;
             this.chatListBox.DoubleClickSubItem += new CCWin.SkinControl.ChatListBox.ChatListEventHandler(this.chatListBox_DoubleClickSubItem);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.呼叫ToolStripMenuItem,
+            this.呼叫转移ToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+            // 
+            // 呼叫ToolStripMenuItem
+            // 
+            this.呼叫ToolStripMenuItem.Name = "呼叫ToolStripMenuItem";
+            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.呼叫ToolStripMenuItem.Text = "呼叫";
+            this.呼叫ToolStripMenuItem.Click += new System.EventHandler(this.呼叫ToolStripMenuItem_Click);
+            // 
+            // 呼叫转移ToolStripMenuItem
+            // 
+            this.呼叫转移ToolStripMenuItem.Name = "呼叫转移ToolStripMenuItem";
+            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.呼叫转移ToolStripMenuItem.Text = "呼叫转移";
+            // 
             // skinPanel_HeadImage
             // 
             this.skinPanel_HeadImage.BackColor = System.Drawing.Color.Transparent;
-            this.skinPanel_HeadImage.BackgroundImage = global::ChatClient.Properties.Resources.compic1335794816668_1653769;
+            this.skinPanel_HeadImage.BackgroundImage = global::ChatClient.Properties.Resources.image;
             this.skinPanel_HeadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.skinPanel_HeadImage.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel_HeadImage.DownBack = null;
-            this.skinPanel_HeadImage.Location = new System.Drawing.Point(21, 17);
+            this.skinPanel_HeadImage.Location = new System.Drawing.Point(18, 17);
             this.skinPanel_HeadImage.MouseBack = null;
             this.skinPanel_HeadImage.Name = "skinPanel_HeadImage";
             this.skinPanel_HeadImage.NormlBack = null;
@@ -123,7 +144,7 @@
             this.labelSignature.BackColor = System.Drawing.Color.Transparent;
             this.labelSignature.BorderColor = System.Drawing.Color.White;
             this.labelSignature.BorderSize = 4;
-            this.labelSignature.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelSignature.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.labelSignature.ForeColor = System.Drawing.Color.Black;
             this.labelSignature.Location = new System.Drawing.Point(96, 54);
             this.labelSignature.Name = "labelSignature";
@@ -162,7 +183,7 @@
             this.labelName.BorderColor = System.Drawing.Color.White;
             this.labelName.BorderSize = 4;
             this.labelName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.labelName.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
+            this.labelName.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold);
             this.labelName.ForeColor = System.Drawing.Color.Black;
             this.labelName.Location = new System.Drawing.Point(119, 31);
             this.labelName.Name = "labelName";
@@ -224,6 +245,7 @@
             this.skinToolStrip3.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(228)))), ((int)(((byte)(236)))));
             this.skinToolStrip3.TitleRadius = 4;
             this.skinToolStrip3.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinToolStrip3.Visible = false;
             // 
             // toolStripSplitButton4
             // 
@@ -373,6 +395,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton1.Text = "toolStripButton2";
             this.toolStripButton1.ToolTipText = "打开系统设置";
+            this.toolStripButton1.Visible = false;
             // 
             // toolStripButton4
             // 
@@ -383,6 +406,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 21);
             this.toolStripButton4.Text = "添加好友";
+            this.toolStripButton4.Visible = false;
             // 
             // toolStripButton19
             // 
@@ -396,6 +420,7 @@
             this.toolStripButton19.Text = "加群";
             this.toolStripButton19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolStripButton19.ToolTipText = "加群";
+            this.toolStripButton19.Visible = false;
             // 
             // toolStripButton2
             // 
@@ -409,6 +434,7 @@
             this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "toolStripButton3";
             this.toolStripButton2.ToolTipText = "打开消息管理器";
+            this.toolStripButton2.Visible = false;
             // 
             // skinContextMenuStrip_State
             // 
@@ -541,27 +567,6 @@
             this.notifyIcon2.Visible = true;
             this.notifyIcon2.DoubleClick += new System.EventHandler(this.notifyIcon2_DoubleClick);
             // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.呼叫ToolStripMenuItem,
-            this.呼叫转移ToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
-            // 
-            // 呼叫ToolStripMenuItem
-            // 
-            this.呼叫ToolStripMenuItem.Name = "呼叫ToolStripMenuItem";
-            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.呼叫ToolStripMenuItem.Text = "呼叫";
-            this.呼叫ToolStripMenuItem.Click += new System.EventHandler(this.呼叫ToolStripMenuItem_Click);
-            // 
-            // 呼叫转移ToolStripMenuItem
-            // 
-            this.呼叫转移ToolStripMenuItem.Name = "呼叫转移ToolStripMenuItem";
-            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.呼叫转移ToolStripMenuItem.Text = "呼叫转移";
-            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -611,13 +616,13 @@
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.main_Load);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.skinToolStrip3.ResumeLayout(false);
             this.skinToolStrip3.PerformLayout();
             this.skinToolStrip1.ResumeLayout(false);
             this.skinToolStrip1.PerformLayout();
             this.skinContextMenuStrip_State.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
