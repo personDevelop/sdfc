@@ -135,6 +135,13 @@ namespace ChatClient
             chatContract.SendTime = DateTime.Now;
             chatContract.IsWebMsg = true;
             Common.TcpConn.SendObject("ChatMessage", chatContract);
+          
+            DateTime showTime = DateTime.Now;
+            this.rtfRichTextBox_history.AppendText(string.Format("{0}  {1}\n", "我", showTime));
+
+            //this.rtfRichTextBox_history.AppendText("adsfasdf");
+            this.rtfRichTextBox_history.AppendText(textBoxSend.Text);
+            this.rtfRichTextBox_history.AppendText("\n");
             this.textBoxSend.Clear();
             this.textBoxSend.Focus();
         }
