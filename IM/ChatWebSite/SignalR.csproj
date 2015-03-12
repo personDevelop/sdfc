@@ -224,6 +224,7 @@
     <Content Include="packages.config" />
     <Content Include="sample.htm" />
     <Content Include="Scripts\jquery.nicescroll.js" />
+    <Content Include="Scripts\jquery.url.js" />
     <Content Include="sendMes.asmx" />
     <Content Include="severPage.aspx" />
     <Content Include="showAllClientConnected.aspx" />

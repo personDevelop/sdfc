@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>在线客服</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.url.js" type="text/javascript"></script>
     <script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="Scripts/jquery.signalR-1.1.1.min.js"></script>
     <script src="signalr/hubs"></script>
@@ -22,15 +22,40 @@
             append_clientMessage(textarea.val(), getClientTime());
             textarea.val("");
         }
+        // JScript source code
+        Date.prototype.format = function (format) {
+            var o = {
+                "M+": this.getMonth() + 1, //month 
+                "d+": this.getDate(), //day 
+                "h+": this.getHours(), //hour 
+                "m+": this.getMinutes(), //minute 
+                "s+": this.getSeconds(), //second 
+                "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
+                "S": this.getMilliseconds() //millisecond 
+            }
+
+            if (/(y+)/.test(format)) {
+                format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(format)) {
+                    format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+                }
+            }
+            return format;
+        }
 
         function getClientTime() {
-            return "2015-03-07 11:00:32";
+            var now = new Date();
+            var nowStr = now.format("yyyy-MM-dd hh:mm:ss");
+            return nowStr;
         }
 
         function append_serverMessage(mes, time) {
             var html = "<div class='server'>" +
-                "<h2><span class='header'><b class='nick'>在线助手</b> <b class='time'>" + time +
-                "</b></span><a class='avatar'><img src='https://i.alipayobjects.com/e/201401/1vtePUqyi7.png'></a></h2>" +
+                "<h2><span class='header'><b class='nick'>" + $("#uname").val() + "</b> <b class='time'>" + time +
+                "</b></span><a class='avatar'><img src='image/server.png'></a></h2>" +
                 "<div class='content'>" + mes + "</div></div>";
             $("#dycontent").append(html);
             $("#dycontent").getNiceScroll().resize();
@@ -67,6 +92,11 @@
 
 
             });
+
+            if ($.url.param('name') != "" && $.url.param('name') != undefined) {
+                $("#uname").val($.url.param('name'));
+                $("#userinfo").html($.url.param('name'));
+            }
             $("#dycontent").niceScroll({
                 touchbehavior: false,
                 cursorcolor: "#7C7C7C",
@@ -80,7 +110,7 @@
             }
             // $("#userName").append(userID).show();
             chat.client.sendMessage = function (message, time) {
-                time = $("#target").val() + time;
+                //time = $("#target").val() + time;
                 append_serverMessage(message, time);
 
                 //                $("#dycontent").append("<div class='item'><div class='title'>" + time + "</div><div class='info'>" + message + "</div></div>");
@@ -105,6 +135,7 @@
 <body>
     <input id='target' runat="server" type="hidden" />
     <input id='uid' runat="server" type="hidden" />
+    <input id='uname' runat="server" type="hidden" />
     <div id="dyhead">
         <span id="robotLogo" style="float: left; margin-right: 10px; margin-left: 10px; margin-top: 5px;
             display: inline;">
@@ -125,7 +156,7 @@
             <ul id="firstchannel">
                 <li class='sign'>
                     <dl>
-                        客服：<span id='userinfo' runat=server></span>
+                        客服：<span id='userinfo' runat="server"></span>
                     </dl>
                 </li>
                 <li>
@@ -141,9 +172,8 @@
                 <li>
                     <div class='wrap'>
                         <span class='bold'>常见问题：</span><br>
-
-                        <div id='commonQues' runat=server></div>
-                       
+                        <div id='commonQues' runat="server">
+                        </div>
                     </div>
                 </li>
                 <img src='image/chat_logo2.png' style='position: absolute; top: 5px; right: 5px;
@@ -158,7 +188,7 @@
             <div class="server">
                 <h2>
                     <span class="header"><b class="nick">在线助手</b> <b class="time">00:56</b></span><a
-                        class="avatar"><img src="https://i.alipayobjects.com/e/201401/1vtePUqyi7.png"></a></h2>
+                        class="avatar"><img src="image/server.png"></a></h2>
                 <div class="content">
                     <div class="J-welcome">
                         <div>
