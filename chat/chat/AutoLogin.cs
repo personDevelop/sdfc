@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NetworkCommsDotNet;
 using AuthorityEntity.IM;
+using System.Net;
 
 namespace ChatClient
 {
@@ -20,9 +21,8 @@ namespace ChatClient
                 connInfo = new ConnectionInfo(Common.ServerIP, Common.Port);
                 newTcpConnection = TCPConnection.GetConnection(connInfo);
                 Common.TcpConn = newTcpConnection;
-
-                TCPConnection.StartListening(connInfo.LocalEndPoint);
-                 
+                connInfo.LocalEndPoint.Address = IPAddress.Parse(Sharp.Common.Utils.GetMachineIP());
+                TCPConnection.StartListening(connInfo.LocalEndPoint); 
 
                 //在契约类中保存用户名和密码
                 IMUserInfo userinfo = new IMUserInfo();
@@ -42,12 +42,12 @@ namespace ChatClient
                     if (OnLoginSucced != null)
                     {
                         OnLoginSucced();
-                    } 
+                    }
                 }
                 else
                 {
                     error = loginContract.Message;
-                } 
+                }
             }
             catch (Exception ex)
             {
