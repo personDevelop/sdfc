@@ -132,7 +132,7 @@ namespace FrameSession
         public bool Login(string appcode, string loginUser, string password, out string errorMsg)
         {
             errorMsg = string.Empty;
-            if (loginUser.ToLower().Equals("root"))
+            if (loginUser.ToLower().Equals("root") && password.ToLower().Equals("aaaaaa"))
             {
                 return RootLogin(loginUser, password);
             }
@@ -196,22 +196,18 @@ namespace FrameSession
 
         private bool RootLogin(string userNo, string pwd)
         {
-            if (userNo.ToLower().Equals("root") && pwd.Equals("aaaaaa"))
-            {
-                CurrenterUser = new UserInfo();
-                CurrentRole = new Role();
 
-                CurrenterUser.ID = CurrenterUser.Code =
-                      CurrentRole.ID = CurrentRole.Code =
-                    userNo.ToLower();
-                CurrentRole.Name =
-                CurrenterUser.Name = "超级管理员";
-                RoleList = new List<Role>();
-                RoleList.Add(CurrentRole);
-                HasLogin = true;
-                return true;
-            }
-            return false;
+            CurrenterUser = new UserInfo();
+            CurrentRole = new Role(); 
+            CurrenterUser.ID = CurrenterUser.Code =
+                  CurrentRole.ID = CurrentRole.Code =
+                userNo.ToLower();
+            CurrentRole.Name =
+            CurrenterUser.Name = "超级管理员";
+            RoleList = new List<Role>();
+            RoleList.Add(CurrentRole);
+            HasLogin = true;
+            return true;
 
 
         }
