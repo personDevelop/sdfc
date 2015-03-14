@@ -58,6 +58,10 @@ namespace FrameSession
         /// <summary>
         /// 当前登录人
         /// </summary>
+        public string CurrenterUserName { get { return CurrenterUser.Name; } }
+        /// <summary>
+        /// 当前登录人
+        /// </summary>
         public UserInfo CurrenterUser { get; set; }
         /// <summary>
         /// 是否已经登录成功
@@ -198,7 +202,7 @@ namespace FrameSession
         {
 
             CurrenterUser = new UserInfo();
-            CurrentRole = new Role(); 
+            CurrentRole = new Role();
             CurrenterUser.ID = CurrenterUser.Code =
                   CurrentRole.ID = CurrentRole.Code =
                 userNo.ToLower();

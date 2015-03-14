@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 
 namespace AuthorityEntity
 {
+
     /// <summary>
     /// 菜单信息实体
     /// </summary>  
@@ -58,6 +59,7 @@ namespace AuthorityEntity
         private string _MethodParas;
         private bool _IsMustNot;
         private bool _IsMust;
+        private bool _NotShowLoading;
 
         #endregion
 
@@ -702,6 +704,26 @@ namespace AuthorityEntity
                 this._IsMust = value;
             }
         }
+        /// <summary>
+        /// 不显示加载动画,
+        /// </summary>
+
+
+        [DbProperty(MapingColumnName = "NotShowLoading", DbTypeString = "Bit", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public bool NotShowLoading
+        {
+            get
+            {
+                return this._NotShowLoading;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("NotShowLoading", this._NotShowLoading, value);
+                this._NotShowLoading = value;
+            }
+        }
 
 
         #endregion
@@ -744,6 +766,7 @@ namespace AuthorityEntity
                 MethodParas = new PropertyItem("MethodParas", tableName);
                 IsMustNot = new PropertyItem("IsMustNot", tableName);
                 IsMust = new PropertyItem("IsMust", tableName);
+                NotShowLoading = new PropertyItem("NotShowLoading", tableName);
 
             }
             /// <summary>
@@ -874,6 +897,10 @@ namespace AuthorityEntity
             /// 超出权限，不用设置权限也会使用的基本功能,
             /// </summary> 
             public PropertyItem IsMust = null;
+            /// <summary>
+            /// 不显示加载动画,
+            /// </summary> 
+            public PropertyItem NotShowLoading = null;
 
 
         }

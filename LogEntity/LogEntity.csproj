@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{41AC96C7-8381-4413-B1D7-E0F09F3F72C9}</ProjectGuid>
+    <ProjectGuid>{88FBB08D-5AE8-48AC-8E3B-E9CD75FB5325}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AuthorityDataAccess</RootNamespace>
-    <AssemblyName>AuthorityDataAccess</AssemblyName>
+    <RootNamespace>LogEntity</RootNamespace>
+    <AssemblyName>LogEntity</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,24 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FrameCommonDataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refdll\FrameCommonDataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="FrameCommonEntity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refdll\FrameCommonEntity.dll</HintPath>
-    </Reference>
-    <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Sharp.Common">
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Sharp.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refdll\Sharp.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,29 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FunctionInfoDataAccess.cs" />
-    <Compile Include="MenuInfoDataAccess.cs" />
-    <Compile Include="MsgSendOrderDataAccess.cs" />
-    <Compile Include="OrganizationInfoDataAccess.cs" />
-    <Compile Include="PersonDataAccess.cs" />
+    <Compile Include="LogOrder.cs" />
+    <Compile Include="T_Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleDataAccess.cs" />
-    <Compile Include="OrgPositionsDataAccess.cs" />
-    <Compile Include="UserInfoDataAccess.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AuthorityEntity\AuthorityEntity.csproj">
-      <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
-      <Name>AuthorityEntity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LogDataAccess\LogDataAccess.csproj">
-      <Project>{CFC1FA85-CE1D-427F-9A67-1F13ED887CEC}</Project>
-      <Name>LogDataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LogEntity\LogEntity.csproj">
-      <Project>{88FBB08D-5AE8-48AC-8E3B-E9CD75FB5325}</Project>
-      <Name>LogEntity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

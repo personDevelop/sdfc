@@ -43,11 +43,9 @@ namespace AuthorityDataAccess
             catch (Exception)
             {
                 dal.RollbackTransaction(tr);
-
                 throw;
-                return 0;
             }
-            return Dal.Delete<MenuInfo>();
+
 
         }
 
@@ -136,10 +134,10 @@ namespace AuthorityDataAccess
                 dal.CommitTransaction(tr);
                 return 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 dal.RollbackTransaction(tr);
-
+                LogDataAccess.LogDal.Write(ex);
                 return -1;
                 throw;
             }
