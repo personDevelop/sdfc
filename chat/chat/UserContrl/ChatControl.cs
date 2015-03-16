@@ -170,7 +170,7 @@ namespace ChatClient
             {
                 this.txtAllMsg.AppendText(msg);
             }
-            WriteTalkRecord.Write(msg, Common.CurrentUser.ID, (this.FindForm() as IManagedForm).FormID);
+            TalkRecordManager.Write(msg, (this.FindForm() as IManagedForm).FormID);
             this.txtAllMsg.Select(this.txtAllMsg.Text.Length, 0);
             this.txtAllMsg.ScrollToCaret();
 

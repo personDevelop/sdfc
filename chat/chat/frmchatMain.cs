@@ -22,6 +22,36 @@ namespace ChatClient
         public frmchatMain()
         {
             InitializeComponent();
+            chatControl1.OnShowHistoryForm += new ChatControl.ShowHistoryFormHandler(chatControl1_OnShowHistoryForm);
+        }
+        bool isShow = false;
+        bool hasLoad = false;
+        void chatControl1_OnShowHistoryForm()
+        {
+
+            if (isShow)
+            {
+                this.Width -= 100;
+                tabPageHis.Hide();
+            }
+            else
+            {
+
+                this.Width += 100;
+                LoadMsgHis();
+                tabPageHis.Show();
+                hasLoad = true;
+            }
+            isShow = !isShow;
+        }
+
+        private void LoadMsgHis()
+        {
+            if (!hasLoad)
+            {
+                //获取最近的聊天信息
+                
+            }
         }
         public frmchatMain(IMUserInfo friend)
             : this()

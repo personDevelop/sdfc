@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatControl));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.txtAllMsg = new CCWin.SkinControl.RtfRichTextBox();
+            this.txtSendMsg = new CCWin.SkinControl.RtfRichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolFont = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,8 +46,6 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.txtSendMsg = new CCWin.SkinControl.RtfRichTextBox();
-            this.txtAllMsg = new CCWin.SkinControl.RtfRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,10 +78,33 @@
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             // 
+            // txtAllMsg
+            // 
+            this.txtAllMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAllMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAllMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
+            this.txtAllMsg.Location = new System.Drawing.Point(0, 0);
+            this.txtAllMsg.Name = "txtAllMsg";
+            this.txtAllMsg.Size = new System.Drawing.Size(594, 317);
+            this.txtAllMsg.TabIndex = 2;
+            this.txtAllMsg.Text = "";
+            this.txtAllMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
+            // 
+            // txtSendMsg
+            // 
+            this.txtSendMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSendMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSendMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
+            this.txtSendMsg.Location = new System.Drawing.Point(0, 25);
+            this.txtSendMsg.Name = "txtSendMsg";
+            this.txtSendMsg.Size = new System.Drawing.Size(594, 169);
+            this.txtSendMsg.TabIndex = 1;
+            this.txtSendMsg.Text = "";
+            this.txtSendMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -93,10 +116,10 @@
             this.toolImage,
             this.toolCapture,
             this.toolHisMsg});
-            this.toolStrip1.Location = new System.Drawing.Point(-6, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.Size = new System.Drawing.Size(603, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(594, 25);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -171,8 +194,9 @@
             this.toolHisMsg.Image = global::ChatClient.Properties.Resources.invisible__2_;
             this.toolHisMsg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolHisMsg.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolHisMsg.Margin = new System.Windows.Forms.Padding(2, 2, 5, 2);
             this.toolHisMsg.Name = "toolHisMsg";
-            this.toolHisMsg.Size = new System.Drawing.Size(60, 22);
+            this.toolHisMsg.Size = new System.Drawing.Size(60, 21);
             this.toolHisMsg.Text = "聊天记录";
             this.toolHisMsg.ToolTipText = "显示消息记录";
             this.toolHisMsg.Click += new System.EventHandler(this.toolStripButton聊天记录_Click);
@@ -320,32 +344,6 @@
             this.imageList1.Images.SetKeyName(132, "133.gif");
             this.imageList1.Images.SetKeyName(133, "134.gif");
             this.imageList1.Images.SetKeyName(134, "135.gif");
-            // 
-            // txtSendMsg
-            // 
-            this.txtSendMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSendMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSendMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
-            this.txtSendMsg.Location = new System.Drawing.Point(2, 27);
-            this.txtSendMsg.Name = "txtSendMsg";
-            this.txtSendMsg.Size = new System.Drawing.Size(589, 164);
-            this.txtSendMsg.TabIndex = 1;
-            this.txtSendMsg.Text = "";
-            this.txtSendMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
-            // 
-            // txtAllMsg
-            // 
-            this.txtAllMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAllMsg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAllMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
-            this.txtAllMsg.Location = new System.Drawing.Point(0, 0);
-            this.txtAllMsg.Name = "txtAllMsg";
-            this.txtAllMsg.Size = new System.Drawing.Size(594, 317);
-            this.txtAllMsg.TabIndex = 2;
-            this.txtAllMsg.Text = "";
-            this.txtAllMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
             // 
             // ChatControl
             // 

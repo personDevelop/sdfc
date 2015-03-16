@@ -34,15 +34,12 @@
             this.labelFriendName = new CCWin.SkinControl.SkinLabel();
             this.labelFriendSignature = new CCWin.SkinControl.SkinLabel();
             this.imgyy2 = new System.Windows.Forms.PictureBox();
-            this.skinPanel_right = new CCWin.SkinControl.SkinPanel();
             this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.imgMeShow = new System.Windows.Forms.PictureBox();
             this.imgChatShow = new System.Windows.Forms.PictureBox();
+            this.tabPageHis = new System.Windows.Forms.TabPage();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.skinPanel_left = new CCWin.SkinControl.SkinPanel();
-            this.chatControl1 = new ChatClient.ChatControl();
-            this.splitter2 = new System.Windows.Forms.Splitter();
             this.skinPanel1 = new CCWin.SkinControl.SkinPanel();
             this.liklblgg = new System.Windows.Forms.LinkLabel();
             this.btnSend = new CCWin.SkinControl.SkinButton();
@@ -50,15 +47,27 @@
             this.btnClose = new CCWin.SkinControl.SkinButton();
             this.pnlTx = new CCWin.SkinControl.SkinPanel();
             this.miniToolStrip = new CCWin.SkinControl.SkinToolStrip();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.skinRichTextBox1 = new CCWin.SkinControl.SkinRichTextBox();
+            this.chatControl1 = new ChatClient.ChatControl();
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).BeginInit();
-            this.skinPanel_right.SuspendLayout();
             this.skinTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgMeShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgChatShow)).BeginInit();
-            this.skinPanel_left.SuspendLayout();
+            this.tabPageHis.SuspendLayout();
             this.skinPanel1.SuspendLayout();
             this.pnlTx.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelFriendHeadImage
@@ -67,14 +76,15 @@
             this.panelFriendHeadImage.BackgroundImage = global::ChatClient.Properties.Resources._1_100;
             this.panelFriendHeadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelFriendHeadImage.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.panelFriendHeadImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFriendHeadImage.DownBack = null;
-            this.panelFriendHeadImage.Location = new System.Drawing.Point(5, 5);
+            this.panelFriendHeadImage.Location = new System.Drawing.Point(0, 0);
             this.panelFriendHeadImage.Margin = new System.Windows.Forms.Padding(0);
             this.panelFriendHeadImage.MouseBack = null;
             this.panelFriendHeadImage.Name = "panelFriendHeadImage";
             this.panelFriendHeadImage.NormlBack = null;
             this.panelFriendHeadImage.Radius = 5;
-            this.panelFriendHeadImage.Size = new System.Drawing.Size(40, 40);
+            this.panelFriendHeadImage.Size = new System.Drawing.Size(49, 49);
             this.panelFriendHeadImage.TabIndex = 104;
             // 
             // labelFriendName
@@ -91,9 +101,9 @@
             this.labelFriendName.ForeColor = System.Drawing.Color.Black;
             this.labelFriendName.Location = new System.Drawing.Point(55, 7);
             this.labelFriendName.Name = "labelFriendName";
-            this.labelFriendName.Size = new System.Drawing.Size(88, 25);
+            this.labelFriendName.Size = new System.Drawing.Size(33, 25);
             this.labelFriendName.TabIndex = 105;
-            this.labelFriendName.Text = "在线咨询";
+            this.labelFriendName.Text = "ds";
             // 
             // labelFriendSignature
             // 
@@ -125,20 +135,6 @@
             this.imgyy2.TabIndex = 124;
             this.imgyy2.TabStop = false;
             // 
-            // skinPanel_right
-            // 
-            this.skinPanel_right.BackColor = System.Drawing.Color.Transparent;
-            this.skinPanel_right.Controls.Add(this.skinTabControl1);
-            this.skinPanel_right.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.skinPanel_right.Dock = System.Windows.Forms.DockStyle.Right;
-            this.skinPanel_right.DownBack = null;
-            this.skinPanel_right.Location = new System.Drawing.Point(451, 28);
-            this.skinPanel_right.MouseBack = null;
-            this.skinPanel_right.Name = "skinPanel_right";
-            this.skinPanel_right.NormlBack = null;
-            this.skinPanel_right.Size = new System.Drawing.Size(175, 458);
-            this.skinPanel_right.TabIndex = 131;
-            // 
             // skinTabControl1
             // 
             this.skinTabControl1.BaseColor = System.Drawing.Color.White;
@@ -147,6 +143,7 @@
             this.skinTabControl1.BtnArrowHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.BtnArrowHover")));
             this.skinTabControl1.BtnArrowNorml = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.BtnArrowNorml")));
             this.skinTabControl1.Controls.Add(this.tabPage1);
+            this.skinTabControl1.Controls.Add(this.tabPageHis);
             this.skinTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTabControl1.ItemSize = new System.Drawing.Size(70, 36);
             this.skinTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -156,7 +153,7 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageNorml = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageNorml")));
             this.skinTabControl1.SelectedIndex = 0;
-            this.skinTabControl1.Size = new System.Drawing.Size(175, 458);
+            this.skinTabControl1.Size = new System.Drawing.Size(208, 424);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 1;
             // 
@@ -168,7 +165,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 40);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(167, 414);
+            this.tabPage1.Size = new System.Drawing.Size(200, 380);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "对方名片";
             // 
@@ -177,7 +174,7 @@
             this.imgMeShow.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.imgMeShow.BackColor = System.Drawing.Color.Transparent;
             this.imgMeShow.Image = global::ChatClient.Properties.Resources.log;
-            this.imgMeShow.Location = new System.Drawing.Point(41, 282);
+            this.imgMeShow.Location = new System.Drawing.Point(58, 248);
             this.imgMeShow.Name = "imgMeShow";
             this.imgMeShow.Size = new System.Drawing.Size(88, 78);
             this.imgMeShow.TabIndex = 126;
@@ -188,75 +185,48 @@
             this.imgChatShow.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.imgChatShow.BackColor = System.Drawing.Color.Transparent;
             this.imgChatShow.Image = global::ChatClient.Properties.Resources.girl;
-            this.imgChatShow.Location = new System.Drawing.Point(14, 22);
+            this.imgChatShow.Location = new System.Drawing.Point(31, 22);
             this.imgChatShow.Name = "imgChatShow";
             this.imgChatShow.Size = new System.Drawing.Size(140, 201);
             this.imgChatShow.TabIndex = 125;
             this.imgChatShow.TabStop = false;
             // 
+            // tabPageHis
+            // 
+            this.tabPageHis.BackColor = System.Drawing.Color.White;
+            this.tabPageHis.Controls.Add(this.skinRichTextBox1);
+            this.tabPageHis.Controls.Add(this.dateTimePicker1);
+            this.tabPageHis.Location = new System.Drawing.Point(4, 40);
+            this.tabPageHis.Name = "tabPageHis";
+            this.tabPageHis.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHis.Size = new System.Drawing.Size(200, 380);
+            this.tabPageHis.TabIndex = 1;
+            this.tabPageHis.Text = "消息记录";
+            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter1.Location = new System.Drawing.Point(448, 28);
+            this.splitter1.Location = new System.Drawing.Point(667, 28);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 458);
             this.splitter1.TabIndex = 132;
             this.splitter1.TabStop = false;
             // 
-            // skinPanel_left
-            // 
-            this.skinPanel_left.BackColor = System.Drawing.Color.Transparent;
-            this.skinPanel_left.Controls.Add(this.chatControl1);
-            this.skinPanel_left.Controls.Add(this.splitter2);
-            this.skinPanel_left.Controls.Add(this.skinPanel1);
-            this.skinPanel_left.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.skinPanel_left.DownBack = null;
-            this.skinPanel_left.Location = new System.Drawing.Point(4, 52);
-            this.skinPanel_left.MouseBack = null;
-            this.skinPanel_left.Name = "skinPanel_left";
-            this.skinPanel_left.NormlBack = null;
-            this.skinPanel_left.Size = new System.Drawing.Size(444, 434);
-            this.skinPanel_left.TabIndex = 133;
-            // 
-            // chatControl1
-            // 
-            this.chatControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chatControl1.BackColor = System.Drawing.Color.SteelBlue;
-            this.chatControl1.Location = new System.Drawing.Point(0, -1);
-            this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(444, 400);
-            this.chatControl1.TabIndex = 137;
-            this.chatControl1.BeginToSend += new ChatClient.ChatControl.BeginToSendHandler(this.chatControl1_BeginToSend);
-            // 
-            // splitter2
-            // 
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter2.Location = new System.Drawing.Point(0, 431);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(444, 3);
-            this.splitter2.TabIndex = 136;
-            this.splitter2.TabStop = false;
-            this.splitter2.Visible = false;
-            // 
             // skinPanel1
             // 
-            this.skinPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.skinPanel1.BackColor = System.Drawing.Color.Transparent;
             this.skinPanel1.Controls.Add(this.liklblgg);
             this.skinPanel1.Controls.Add(this.btnSend);
             this.skinPanel1.Controls.Add(this.skinButtom3);
             this.skinPanel1.Controls.Add(this.btnClose);
             this.skinPanel1.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinPanel1.DownBack = null;
-            this.skinPanel1.Location = new System.Drawing.Point(0, 399);
+            this.skinPanel1.Location = new System.Drawing.Point(0, 0);
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(444, 35);
+            this.skinPanel1.Size = new System.Drawing.Size(436, 33);
             this.skinPanel1.TabIndex = 135;
             // 
             // liklblgg
@@ -270,7 +240,7 @@
             this.liklblgg.ForeColor = System.Drawing.Color.Black;
             this.liklblgg.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.liklblgg.LinkColor = System.Drawing.Color.Black;
-            this.liklblgg.Location = new System.Drawing.Point(3, 10);
+            this.liklblgg.Location = new System.Drawing.Point(3, 8);
             this.liklblgg.Name = "liklblgg";
             this.liklblgg.Size = new System.Drawing.Size(92, 17);
             this.liklblgg.TabIndex = 130;
@@ -287,7 +257,7 @@
             this.btnSend.DownBack = ((System.Drawing.Image)(resources.GetObject("btnSend.DownBack")));
             this.btnSend.DrawType = CCWin.SkinControl.DrawStyle.Img;
             this.btnSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSend.Location = new System.Drawing.Point(360, 6);
+            this.btnSend.Location = new System.Drawing.Point(352, 4);
             this.btnSend.Margin = new System.Windows.Forms.Padding(0);
             this.btnSend.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnSend.MouseBack")));
             this.btnSend.Name = "btnSend";
@@ -306,7 +276,7 @@
             this.skinButtom3.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButtom3.DownBack = ((System.Drawing.Image)(resources.GetObject("skinButtom3.DownBack")));
             this.skinButtom3.DrawType = CCWin.SkinControl.DrawStyle.Img;
-            this.skinButtom3.Location = new System.Drawing.Point(421, 6);
+            this.skinButtom3.Location = new System.Drawing.Point(413, 4);
             this.skinButtom3.Margin = new System.Windows.Forms.Padding(0);
             this.skinButtom3.MouseBack = ((System.Drawing.Image)(resources.GetObject("skinButtom3.MouseBack")));
             this.skinButtom3.Name = "skinButtom3";
@@ -326,7 +296,7 @@
             this.btnClose.DownBack = ((System.Drawing.Image)(resources.GetObject("btnClose.DownBack")));
             this.btnClose.DrawType = CCWin.SkinControl.DrawStyle.Img;
             this.btnClose.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(288, 6);
+            this.btnClose.Location = new System.Drawing.Point(280, 4);
             this.btnClose.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnClose.MouseBack")));
             this.btnClose.Name = "btnClose";
             this.btnClose.NormlBack = ((System.Drawing.Image)(resources.GetObject("btnClose.NormlBack")));
@@ -403,6 +373,78 @@
             this.miniToolStrip.TitleRadius = 4;
             this.miniToolStrip.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(7, 59);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.skinTabControl1);
+            this.splitContainer1.Size = new System.Drawing.Size(654, 424);
+            this.splitContainer1.SplitterDistance = 436;
+            this.splitContainer1.SplitterWidth = 10;
+            this.splitContainer1.TabIndex = 138;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.chatControl1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.skinPanel1);
+            this.splitContainer2.Size = new System.Drawing.Size(436, 424);
+            this.splitContainer2.SplitterDistance = 390;
+            this.splitContainer2.SplitterWidth = 1;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 356);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(126, 21);
+            this.dateTimePicker1.TabIndex = 0;
+            // 
+            // skinRichTextBox1
+            // 
+            this.skinRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.skinRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skinRichTextBox1.Location = new System.Drawing.Point(-1, 0);
+            this.skinRichTextBox1.Name = "skinRichTextBox1";
+            this.skinRichTextBox1.Size = new System.Drawing.Size(202, 350);
+            this.skinRichTextBox1.TabIndex = 1;
+            this.skinRichTextBox1.Text = "";
+            // 
+            // chatControl1
+            // 
+            this.chatControl1.BackColor = System.Drawing.Color.SteelBlue;
+            this.chatControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chatControl1.Location = new System.Drawing.Point(0, 0);
+            this.chatControl1.Name = "chatControl1";
+            this.chatControl1.Size = new System.Drawing.Size(436, 390);
+            this.chatControl1.TabIndex = 0;
+            this.chatControl1.BeginToSend += new ChatClient.ChatControl.BeginToSendHandler(this.chatControl1_BeginToSend);
+            // 
             // frmchatMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -410,16 +452,15 @@
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackLayout = false;
             this.BorderPalace = global::ChatClient.Properties.Resources.BackPalace;
-            this.ClientSize = new System.Drawing.Size(630, 490);
+            this.ClientSize = new System.Drawing.Size(674, 490);
             this.CloseBoxSize = new System.Drawing.Size(39, 20);
             this.CloseDownBack = global::ChatClient.Properties.Resources.btn_close_down;
             this.CloseMouseBack = global::ChatClient.Properties.Resources.btn_close_highlight;
             this.CloseNormlBack = global::ChatClient.Properties.Resources.btn_close_disable;
             this.ControlBoxOffset = new System.Drawing.Point(0, -1);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.pnlTx);
-            this.Controls.Add(this.skinPanel_left);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.skinPanel_right);
             this.Controls.Add(this.imgyy2);
             this.Controls.Add(this.labelFriendName);
             this.Controls.Add(this.labelFriendSignature);
@@ -451,15 +492,22 @@
             this.Text = "chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmchatMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).EndInit();
-            this.skinPanel_right.ResumeLayout(false);
             this.skinTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgMeShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgChatShow)).EndInit();
-            this.skinPanel_left.ResumeLayout(false);
+            this.tabPageHis.ResumeLayout(false);
             this.skinPanel1.ResumeLayout(false);
             this.skinPanel1.PerformLayout();
             this.pnlTx.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,14 +519,11 @@
         private CCWin.SkinControl.SkinLabel labelFriendName;
         private CCWin.SkinControl.SkinLabel labelFriendSignature;
         private System.Windows.Forms.PictureBox imgyy2;
-        private CCWin.SkinControl.SkinPanel skinPanel_right;
         private System.Windows.Forms.Splitter splitter1;
-        private CCWin.SkinControl.SkinPanel skinPanel_left;
         private CCWin.SkinControl.SkinTabControl skinTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox imgMeShow;
         private System.Windows.Forms.PictureBox imgChatShow;
-        private System.Windows.Forms.Splitter splitter2;
         private CCWin.SkinControl.SkinPanel skinPanel1;
         private System.Windows.Forms.LinkLabel liklblgg;
         private CCWin.SkinControl.SkinButton btnSend;
@@ -486,6 +531,11 @@
         private CCWin.SkinControl.SkinButton btnClose;
         private CCWin.SkinControl.SkinPanel pnlTx;
         private CCWin.SkinControl.SkinToolStrip miniToolStrip;
+        private System.Windows.Forms.TabPage tabPageHis;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private CCWin.SkinControl.SkinRichTextBox skinRichTextBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private ChatControl chatControl1;
 
 
