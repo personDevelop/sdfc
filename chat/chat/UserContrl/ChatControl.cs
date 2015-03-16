@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CCWin.SkinControl;
 using System.Threading;
 using AuthorityEntity.IM;
+using ChatClient.Core;
 namespace ChatClient
 {
     public partial class ChatControl : UserControl
@@ -124,7 +125,7 @@ namespace ChatClient
             openFileDialog1.Filter = "图片文件|*.bmp;*.ico;*.gif;*.jpeg;*.jpg;*.png;";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                txtSendMsg.InsertImage(Image.FromFile(openFileDialog1.FileName)); 
+                txtSendMsg.InsertImage(Image.FromFile(openFileDialog1.FileName));
             }
         }
 
@@ -160,7 +161,7 @@ namespace ChatClient
             }
             DateTime showTime = DateTime.Now;
             this.txtAllMsg.AppendTextAsRtf(string.Format("{0}  {1}\n", userName, showTime), new Font(this.Font, FontStyle.Regular), color);
-           
+
             if (isRtf)
             {
                 this.txtAllMsg.AppendRtf(msg);
@@ -169,6 +170,7 @@ namespace ChatClient
             {
                 this.txtAllMsg.AppendText(msg);
             }
+            WriteTalkRecord.Write(msg, Common.CurrentUser.ID, (this.FindForm() as IManagedForm).FormID);
             this.txtAllMsg.Select(this.txtAllMsg.Text.Length, 0);
             this.txtAllMsg.ScrollToCaret();
 

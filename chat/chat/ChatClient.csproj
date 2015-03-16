@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Core\EventHelper.cs" />
     <Compile Include="Core\FormManager.cs" />
+    <Compile Include="Core\WriteTalkRecord.cs" />
     <Compile Include="InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
