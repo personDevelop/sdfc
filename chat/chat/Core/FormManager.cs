@@ -10,16 +10,16 @@ namespace ChatClient
 {
     public class FormManager
     {
-        private object locker=new object();
+        private object locker = new object();
         public static readonly FormManager Instance;
         public static frmMain MainForm;
-        public event EventHandler<FormIDEventArgs> FormClosed;
+        //public event EventHandler<FormIDEventArgs> FormClosed;
         static FormManager()
         {
             Instance = new FormManager();
         }
         private FormManager() { }
-        private Dictionary<string, IManagedForm> formDictionary=new Dictionary<string,IManagedForm>();
+        private Dictionary<string, IManagedForm> formDictionary = new Dictionary<string, IManagedForm>();
         public void Add(IManagedForm form)
         {
             lock (this.locker)
@@ -28,10 +28,10 @@ namespace ChatClient
                 if (this.formDictionary.ContainsKey(form.FormID))
                 {
                     IManagedForm local = this.formDictionary[form.FormID];
-                    local.CurrentForm.FormClosed -= new FormClosedEventHandler(this.form_FormClosed);
+                    //local.CurrentForm.FormClosed -= new FormClosedEventHandler(this.form_FormClosed);
                     this.formDictionary.Remove(form.FormID);
                 }
-                form.CurrentForm.FormClosed += new FormClosedEventHandler(this.form_FormClosed);
+                //form.CurrentForm.FormClosed += new FormClosedEventHandler(this.form_FormClosed);
                 this.formDictionary.Add(form.FormID, form);
             }
         }
@@ -41,16 +41,14 @@ namespace ChatClient
             return this.formDictionary.ContainsKey(id);
         }
 
-        private void form_FormClosed(object sender, FormClosedEventArgs e)
+        public void CloseForm(IManagedForm sender)
         {
             lock (this.locker)
             {
-                IManagedForm local = (IManagedForm)sender;
-                if (this.formDictionary.ContainsKey(local.FormID) && (local == this.formDictionary[local.FormID]))
-                {
-                    this.formDictionary.Remove(local.FormID);
 
-                    this.FormClosed.Raise(this, new FormIDEventArgs(local.FormID));
+                if (this.formDictionary.ContainsKey(sender.FormID))
+                {
+                    this.formDictionary.Remove(sender.FormID);
                 }
             }
         }
@@ -83,16 +81,16 @@ namespace ChatClient
                     frmchatMain f = new frmchatMain(chatuser);
                     form = f;
                     Add(f);
-                  
+
 
                 }
                 (form as frmchatMain).Show();
                 (form as frmchatMain).Activate();
                 if (Common.ContainsMsg(chatuser.ID))
                 {
-                    (form as frmchatMain).ShowOtherTextChat(chatuser.ID, Common.GetMsgContractList(chatuser.ID)); 
+                    (form as frmchatMain).ShowOtherTextChat(chatuser.ID, Common.GetMsgContractList(chatuser.ID));
                     Common.RemoveMsg(chatuser.ID);
-                   
+
                 }
 
             }

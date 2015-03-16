@@ -18,29 +18,42 @@ namespace ChatClient.Core
         {
             string userid = Common.CurrentUser.ID;
             DateTime now = DateTime.Now;
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userid, now.ToString("YYYY"), now.ToString("MM"), now.ToString("dd"));
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MsgLog", userid, now.ToString("yyyy"), now.ToString("MM"), now.ToString("dd"));
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
             string filePath = Path.Combine(path, talerID + ".chat");
-            using (FileStream fs = new FileStream(filePath, FileMode.Append))
+            bool isFirst = true;
+
+            if (File.Exists(filePath))
             {
-                using (StreamWriter sw = new StreamWriter(fs))
+
+                isFirst = false;
+                msg = msg.Replace(@"{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 \\fnil\'cb\'ce\'cc\'e5;}{\f1\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}", null);
+                msg = msg.Replace(@"{\colortbl ;\red0\green128\blue0;\red255\green255\blue255;}", null);
+                msg = msg.Substring(4);
+            }
+            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            {
+                if (!isFirst)
                 {
-                    //开始写入
-                    sw.Write(msg);
+                    fs.Seek(fs.Length - 14, SeekOrigin.Begin);
                 }
+
+                byte[] bs = Encoding.UTF8.GetBytes(msg);
+                fs.Write(bs, 0, bs.Length);
+
             }
         }
 
 
-        public static bool ReadMsg(string talerID, DateTime now, StringBuilder sb)
+        public static bool ReadMsg(string talerID, DateTime now, ref StringBuilder sb, ref DateTime NewDate)
         {
             string userid = Common.CurrentUser.ID;
             string fileName = talerID + ".chat";
             sb = new StringBuilder();
-            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, userid);
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MsgLog", userid);
             if (!Directory.Exists(basePath))
             {
                 return false;
@@ -52,7 +65,7 @@ namespace ChatClient.Core
             {
 
 
-                string yearpath = Path.Combine(basePath, now.ToString("YYYY"));
+                string yearpath = Path.Combine(basePath, now.ToString("yyyy"));
                 if (Directory.Exists(yearpath))
                 {
                     string mothpath = Path.Combine(yearpath, now.ToString("MM"));
@@ -62,19 +75,20 @@ namespace ChatClient.Core
                         string filePath = Path.Combine(daypath, fileName);
                         if (Directory.Exists(daypath) && File.Exists(filePath))
                         {
-                            sb.Append(File.ReadAllText(filePath));
+                            sb.Append(File.ReadAllText(filePath, Encoding.UTF8));
+                            NewDate = now;
                             isLoop = false;
                         }
                         else
                         {
                             //该天的没有
-                            now.AddDays(-1);
+                            now = now.AddDays(-1);
                         }
                     }
                     else
                     {
                         //该月的没有
-                        now = new DateTime(now.Year, now.Month - 1, 20);
+                        now = now.AddMonths(-1);
                         now = new DateTime(now.Year, now.Month, GetWeekDay(now.Year, now.Month));
                     }
                 }

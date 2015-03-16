@@ -13,6 +13,8 @@ using CCWin.Win32.Const;
 
 using NetworkCommsDotNet;
 using AuthorityEntity.IM;
+using ChatClient.Core;
+using CCWin.SkinControl;
 namespace ChatClient
 {
     public partial class frmchatMain : CCSkinMain, IManagedForm
@@ -22,10 +24,13 @@ namespace ChatClient
         public frmchatMain()
         {
             InitializeComponent();
+            dateTimePicker1.Value = DateTime.Now;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+
             chatControl1.OnShowHistoryForm += new ChatControl.ShowHistoryFormHandler(chatControl1_OnShowHistoryForm);
         }
         bool isShow = false;
-        bool hasLoad = false;
+
         void chatControl1_OnShowHistoryForm()
         {
 
@@ -33,27 +38,50 @@ namespace ChatClient
             {
                 this.Width -= 200;
                 skinTabControl1.SelectedIndex = 0;
-                tabPageHis.Hide();
+                this.skinTabControl1.Controls.Remove(this.tabPageHis);
             }
             else
             {
 
                 this.Width += 200;
                 LoadMsgHis();
-                tabPageHis.Show();
+                this.skinTabControl1.Controls.Add(this.tabPageHis);
                 skinTabControl1.SelectedIndex = 1;
-                hasLoad = true;
+
             }
             isShow = !isShow;
         }
-
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            LoadMsgHis();
+        }
         private void LoadMsgHis()
         {
-            if (!hasLoad)
+
+
+            //获取最近的聊天信息
+            StringBuilder sb = new StringBuilder();
+            DateTime newdate = dateTimePicker1.Value;
+            bool isSuccss = TalkRecordManager.ReadMsg(FormID, dateTimePicker1.Value, ref sb, ref newdate);
+            txtHisMsg.Rtf = sb.ToString();
+            if (isSuccss)
             {
-                //获取最近的聊天信息
+
+
+                if (newdate.Date != dateTimePicker1.Value.Date)
+                {
+                    this.dateTimePicker1.ValueChanged -= new System.EventHandler(this.dateTimePicker1_ValueChanged);
+                    dateTimePicker1.Value = newdate;
+                    this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+                }
+            }
+            else
+            {
+
+                txtHisMsg.AppendTextAsRtf("没有消息记录", new Font(this.Font, FontStyle.Regular), RtfRichTextBox.RtfColor.Maroon);
 
             }
+
         }
         public frmchatMain(IMUserInfo friend)
             : this()
@@ -63,6 +91,7 @@ namespace ChatClient
             labelFriendName.Text = friend.DisplayName;
             labelFriendSignature.Text = friend.DisplaySignature;
             this.Text = "正在和" + labelFriendName.Text + "对话";
+
         }
 
 
@@ -158,16 +187,27 @@ namespace ChatClient
 
         private void chatControl1_BeginToSend(string content, MsgType msgType = MsgType.文字, MsgSendType sendType = MsgSendType.基本消息)
         {
+
             Common.SendMsg(content, msgType, sendType, friend.ID, friend.DisplayName);
             this.chatControl1.Focus();
             imageWrapperList.Clear();
+
         }
 
         private void frmchatMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            e.Cancel = true;
+            TalkRecordManager.Write(chatControl1.AllMsg, FormID);
+            FormManager.Instance.CloseForm(this);
+            this.dateTimePicker1.ValueChanged -= new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            chatControl1.OnShowHistoryForm -= new ChatControl.ShowHistoryFormHandler(chatControl1_OnShowHistoryForm);
         }
+
+        private void frmchatMain_Load(object sender, EventArgs e)
+        {
+            tabPageHis.Hide();
+        }
+
+
 
     }
 }

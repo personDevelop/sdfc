@@ -165,12 +165,13 @@ namespace ChatClient
             if (isRtf)
             {
                 this.txtAllMsg.AppendRtf(msg);
+              
             }
             else
             {
                 this.txtAllMsg.AppendText(msg);
             }
-            TalkRecordManager.Write(msg, (this.FindForm() as IManagedForm).FormID);
+
             this.txtAllMsg.Select(this.txtAllMsg.Text.Length, 0);
             this.txtAllMsg.ScrollToCaret();
 
@@ -193,5 +194,7 @@ namespace ChatClient
             }
 
         }
+
+        public string AllMsg { get { return txtAllMsg.Rtf; } }
     }
 }

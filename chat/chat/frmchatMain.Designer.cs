@@ -39,6 +39,8 @@
             this.imgMeShow = new System.Windows.Forms.PictureBox();
             this.imgChatShow = new System.Windows.Forms.PictureBox();
             this.tabPageHis = new System.Windows.Forms.TabPage();
+            this.txtHisMsg = new CCWin.SkinControl.RtfRichTextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.skinPanel1 = new CCWin.SkinControl.SkinPanel();
             this.liklblgg = new System.Windows.Forms.LinkLabel();
@@ -49,8 +51,6 @@
             this.miniToolStrip = new CCWin.SkinControl.SkinToolStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.skinRichTextBox1 = new CCWin.SkinControl.SkinRichTextBox();
             this.chatControl1 = new ChatClient.ChatControl();
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).BeginInit();
             this.skinTabControl1.SuspendLayout();
@@ -143,7 +143,7 @@
             this.skinTabControl1.BtnArrowHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.BtnArrowHover")));
             this.skinTabControl1.BtnArrowNorml = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.BtnArrowNorml")));
             this.skinTabControl1.Controls.Add(this.tabPage1);
-            this.skinTabControl1.Controls.Add(this.tabPageHis);
+           
             this.skinTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTabControl1.ItemSize = new System.Drawing.Size(70, 36);
             this.skinTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -194,7 +194,7 @@
             // tabPageHis
             // 
             this.tabPageHis.BackColor = System.Drawing.Color.White;
-            this.tabPageHis.Controls.Add(this.skinRichTextBox1);
+            this.tabPageHis.Controls.Add(this.txtHisMsg);
             this.tabPageHis.Controls.Add(this.dateTimePicker1);
             this.tabPageHis.Location = new System.Drawing.Point(4, 40);
             this.tabPageHis.Name = "tabPageHis";
@@ -203,6 +203,28 @@
             this.tabPageHis.TabIndex = 1;
             this.tabPageHis.Text = "消息记录";
             // 
+            // txtHisMsg
+            // 
+            this.txtHisMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHisMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHisMsg.HiglightColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.White;
+            this.txtHisMsg.Location = new System.Drawing.Point(-1, 0);
+            this.txtHisMsg.Name = "txtHisMsg";
+            this.txtHisMsg.Size = new System.Drawing.Size(201, 353);
+            this.txtHisMsg.TabIndex = 1;
+            this.txtHisMsg.Text = "";
+            this.txtHisMsg.TextColor = CCWin.SkinControl.RtfRichTextBox.RtfColor.Black;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 356);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(126, 21);
+            this.dateTimePicker1.TabIndex = 0;
+             // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -226,7 +248,7 @@
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(436, 33);
+            this.skinPanel1.Size = new System.Drawing.Size(436, 27);
             this.skinPanel1.TabIndex = 135;
             // 
             // liklblgg
@@ -240,7 +262,7 @@
             this.liklblgg.ForeColor = System.Drawing.Color.Black;
             this.liklblgg.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.liklblgg.LinkColor = System.Drawing.Color.Black;
-            this.liklblgg.Location = new System.Drawing.Point(3, 8);
+            this.liklblgg.Location = new System.Drawing.Point(3, 2);
             this.liklblgg.Name = "liklblgg";
             this.liklblgg.Size = new System.Drawing.Size(92, 17);
             this.liklblgg.TabIndex = 130;
@@ -257,7 +279,7 @@
             this.btnSend.DownBack = ((System.Drawing.Image)(resources.GetObject("btnSend.DownBack")));
             this.btnSend.DrawType = CCWin.SkinControl.DrawStyle.Img;
             this.btnSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSend.Location = new System.Drawing.Point(352, 4);
+            this.btnSend.Location = new System.Drawing.Point(352, -2);
             this.btnSend.Margin = new System.Windows.Forms.Padding(0);
             this.btnSend.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnSend.MouseBack")));
             this.btnSend.Name = "btnSend";
@@ -276,7 +298,7 @@
             this.skinButtom3.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButtom3.DownBack = ((System.Drawing.Image)(resources.GetObject("skinButtom3.DownBack")));
             this.skinButtom3.DrawType = CCWin.SkinControl.DrawStyle.Img;
-            this.skinButtom3.Location = new System.Drawing.Point(413, 4);
+            this.skinButtom3.Location = new System.Drawing.Point(413, -2);
             this.skinButtom3.Margin = new System.Windows.Forms.Padding(0);
             this.skinButtom3.MouseBack = ((System.Drawing.Image)(resources.GetObject("skinButtom3.MouseBack")));
             this.skinButtom3.Name = "skinButtom3";
@@ -296,7 +318,7 @@
             this.btnClose.DownBack = ((System.Drawing.Image)(resources.GetObject("btnClose.DownBack")));
             this.btnClose.DrawType = CCWin.SkinControl.DrawStyle.Img;
             this.btnClose.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(280, 4);
+            this.btnClose.Location = new System.Drawing.Point(280, -2);
             this.btnClose.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnClose.MouseBack")));
             this.btnClose.Name = "btnClose";
             this.btnClose.NormlBack = ((System.Drawing.Image)(resources.GetObject("btnClose.NormlBack")));
@@ -411,29 +433,9 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.skinPanel1);
             this.splitContainer2.Size = new System.Drawing.Size(436, 424);
-            this.splitContainer2.SplitterDistance = 390;
+            this.splitContainer2.SplitterDistance = 396;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 356);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(126, 21);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
-            // skinRichTextBox1
-            // 
-            this.skinRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.skinRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.skinRichTextBox1.Location = new System.Drawing.Point(-1, 0);
-            this.skinRichTextBox1.Name = "skinRichTextBox1";
-            this.skinRichTextBox1.Size = new System.Drawing.Size(202, 350);
-            this.skinRichTextBox1.TabIndex = 1;
-            this.skinRichTextBox1.Text = "";
             // 
             // chatControl1
             // 
@@ -441,7 +443,7 @@
             this.chatControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chatControl1.Location = new System.Drawing.Point(0, 0);
             this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(436, 390);
+            this.chatControl1.Size = new System.Drawing.Size(436, 396);
             this.chatControl1.TabIndex = 0;
             this.chatControl1.BeginToSend += new ChatClient.ChatControl.BeginToSendHandler(this.chatControl1_BeginToSend);
             // 
@@ -491,6 +493,7 @@
             this.SysBottomNorml = global::ChatClient.Properties.Resources.AIO_SetBtn_normal;
             this.Text = "chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmchatMain_FormClosing);
+            this.Load += new System.EventHandler(this.frmchatMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgyy2)).EndInit();
             this.skinTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -534,9 +537,9 @@
         private System.Windows.Forms.TabPage tabPageHis;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private CCWin.SkinControl.SkinRichTextBox skinRichTextBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private ChatControl chatControl1;
+        private CCWin.SkinControl.RtfRichTextBox txtHisMsg;
 
 
     }
