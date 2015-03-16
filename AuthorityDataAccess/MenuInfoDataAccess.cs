@@ -137,7 +137,7 @@ namespace AuthorityDataAccess
             catch (Exception ex)
             {
                 dal.RollbackTransaction(tr);
-                LogDataAccess.LogDal.Write(ex);
+                //LogDataAccess.LogDal.Write(ex);
                 return -1;
                 throw;
             }

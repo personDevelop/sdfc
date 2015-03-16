@@ -232,6 +232,7 @@
     <Content Include="src\Plugins\Fader.js" />
     <Content Include="src\Plugins\Math.uuid.js" />
     <Content Include="src\Plugins\TabPanel.js" />
+    <Content Include="user.aspx" />
     <Content Include="UserAvailable.aspx" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
@@ -287,6 +288,13 @@
     </Compile>
     <Compile Include="showAllClientConnected.aspx.designer.cs">
       <DependentUpon>showAllClientConnected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user.aspx.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user.aspx.designer.cs">
+      <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserAvailable.aspx.cs">
       <DependentUpon>UserAvailable.aspx</DependentUpon>
