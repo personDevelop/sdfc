@@ -31,15 +31,17 @@ namespace ChatClient
 
             if (isShow)
             {
-                this.Width -= 100;
+                this.Width -= 200;
+                skinTabControl1.SelectedIndex = 0;
                 tabPageHis.Hide();
             }
             else
             {
 
-                this.Width += 100;
+                this.Width += 200;
                 LoadMsgHis();
                 tabPageHis.Show();
+                skinTabControl1.SelectedIndex = 1;
                 hasLoad = true;
             }
             isShow = !isShow;
@@ -50,7 +52,7 @@ namespace ChatClient
             if (!hasLoad)
             {
                 //获取最近的聊天信息
-                
+
             }
         }
         public frmchatMain(IMUserInfo friend)

@@ -63,10 +63,6 @@
     <Reference Include="FrameCommonService">
       <HintPath>..\..\refdll\FrameCommonService.dll</HintPath>
     </Reference>
-    <Reference Include="FrameSession, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\refdll\FrameSession.dll</HintPath>
-    </Reference>
     <Reference Include="ICallTelTalkManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\refdll\ICallTelTalkManager.dll</HintPath>
@@ -1510,6 +1506,10 @@
     <ProjectReference Include="..\..\Core\NetworkCommsDotNet\NetworkCommsDotNet.csproj">
       <Project>{B0FD9F50-A375-44DD-AAAE-CCC2F94A99D1}</Project>
       <Name>NetworkCommsDotNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameSession\FrameSession.csproj">
+      <Project>{D0593939-2F47-4E43-89BD-22F178E86450}</Project>
+      <Name>FrameSession</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
