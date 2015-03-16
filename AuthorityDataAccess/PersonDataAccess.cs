@@ -56,8 +56,7 @@ namespace AuthorityDataAccess
         public View_IMUser LoginIM(string username, string userpwd, string Ip, string port, out string error)
         {
             error = string.Empty;
-            View_IMUser user = Dal.Find<View_IMUser>(View_IMUser._.Code == username);
-
+            View_IMUser user = Dal.Find<View_IMUser>(View_IMUser._.Code == username); 
             if (user == null)
             {
                 error = "用户名不正确";
@@ -109,7 +108,7 @@ namespace AuthorityDataAccess
                             //else
                             //{
                             //否则则冲掉前一次登录，并重新设置登录日期
-                            LastLog.EntryDate = DateTime.Now;
+                            //LastLog.EntryDate = DateTime.Now;
                             LastLog.EntryIP = Ip;
                             LastLog.PortName = port;
                             if (logList.Count > 1)
@@ -133,6 +132,7 @@ namespace AuthorityDataAccess
                                 {
                                     logList[i].OutDate = DateTime.Now;
                                 }
+                             
                             }
                             Dal.Submit(logList);
                         }

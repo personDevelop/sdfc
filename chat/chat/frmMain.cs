@@ -98,15 +98,27 @@ namespace ChatClient
                 lock (syncLocker)
                 {
                     Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Online;
-                    userItem[userStateContract.UserID].Status = ChatListSubItem.UserStatus.Online;
+                    ChatListSubItem item = userItem[userStateContract.UserID];
+                    item.Status = ChatListSubItem.UserStatus.Online;
+                   IMUserInfo user= item.Tag as IMUserInfo;
+                   if (user!=null)
+                   {
+                       user.IsOnline = true;
+                   }
                 }
             }
             else
             {
                 lock (syncLocker)
                 {
-                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Offline;
-                    userItem[userStateContract.UserID].Status = ChatListSubItem.UserStatus.OffLine;
+                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Offline; 
+                    ChatListSubItem item = userItem[userStateContract.UserID];
+                    item.Status = ChatListSubItem.UserStatus.OffLine;
+                    IMUserInfo user = item.Tag as IMUserInfo;
+                    if (user != null)
+                    {
+                        user.IsOnline = false;
+                    }
                     //当某用户下线后，删除此用户相关的p2p 通道
                     Common.RemoveUserConn(userStateContract.UserID);
                 }
