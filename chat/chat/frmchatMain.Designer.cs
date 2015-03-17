@@ -143,7 +143,6 @@
             this.skinTabControl1.BtnArrowHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.BtnArrowHover")));
             this.skinTabControl1.BtnArrowNorml = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.BtnArrowNorml")));
             this.skinTabControl1.Controls.Add(this.tabPage1);
-           
             this.skinTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTabControl1.ItemSize = new System.Drawing.Size(70, 36);
             this.skinTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -224,7 +223,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(126, 21);
             this.dateTimePicker1.TabIndex = 0;
-             // 
+            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -248,7 +247,7 @@
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(436, 27);
+            this.skinPanel1.Size = new System.Drawing.Size(436, 32);
             this.skinPanel1.TabIndex = 135;
             // 
             // liklblgg
@@ -262,7 +261,7 @@
             this.liklblgg.ForeColor = System.Drawing.Color.Black;
             this.liklblgg.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.liklblgg.LinkColor = System.Drawing.Color.Black;
-            this.liklblgg.Location = new System.Drawing.Point(3, 2);
+            this.liklblgg.Location = new System.Drawing.Point(3, 7);
             this.liklblgg.Name = "liklblgg";
             this.liklblgg.Size = new System.Drawing.Size(92, 17);
             this.liklblgg.TabIndex = 130;
@@ -279,7 +278,7 @@
             this.btnSend.DownBack = ((System.Drawing.Image)(resources.GetObject("btnSend.DownBack")));
             this.btnSend.DrawType = CCWin.SkinControl.DrawStyle.Img;
             this.btnSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSend.Location = new System.Drawing.Point(352, -2);
+            this.btnSend.Location = new System.Drawing.Point(352, 3);
             this.btnSend.Margin = new System.Windows.Forms.Padding(0);
             this.btnSend.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnSend.MouseBack")));
             this.btnSend.Name = "btnSend";
@@ -298,7 +297,7 @@
             this.skinButtom3.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButtom3.DownBack = ((System.Drawing.Image)(resources.GetObject("skinButtom3.DownBack")));
             this.skinButtom3.DrawType = CCWin.SkinControl.DrawStyle.Img;
-            this.skinButtom3.Location = new System.Drawing.Point(413, -2);
+            this.skinButtom3.Location = new System.Drawing.Point(413, 3);
             this.skinButtom3.Margin = new System.Windows.Forms.Padding(0);
             this.skinButtom3.MouseBack = ((System.Drawing.Image)(resources.GetObject("skinButtom3.MouseBack")));
             this.skinButtom3.Name = "skinButtom3";
@@ -307,6 +306,7 @@
             this.skinButtom3.TabIndex = 129;
             this.skinButtom3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.skinButtom3.UseVisualStyleBackColor = false;
+            this.skinButtom3.Visible = false;
             // 
             // btnClose
             // 
@@ -318,7 +318,7 @@
             this.btnClose.DownBack = ((System.Drawing.Image)(resources.GetObject("btnClose.DownBack")));
             this.btnClose.DrawType = CCWin.SkinControl.DrawStyle.Img;
             this.btnClose.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(280, -2);
+            this.btnClose.Location = new System.Drawing.Point(280, 3);
             this.btnClose.MouseBack = ((System.Drawing.Image)(resources.GetObject("btnClose.MouseBack")));
             this.btnClose.Name = "btnClose";
             this.btnClose.NormlBack = ((System.Drawing.Image)(resources.GetObject("btnClose.NormlBack")));
@@ -433,7 +433,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.skinPanel1);
             this.splitContainer2.Size = new System.Drawing.Size(436, 424);
-            this.splitContainer2.SplitterDistance = 396;
+            this.splitContainer2.SplitterDistance = 391;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -443,12 +443,13 @@
             this.chatControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chatControl1.Location = new System.Drawing.Point(0, 0);
             this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(436, 396);
+            this.chatControl1.Size = new System.Drawing.Size(436, 391);
             this.chatControl1.TabIndex = 0;
             this.chatControl1.BeginToSend += new ChatClient.ChatControl.BeginToSendHandler(this.chatControl1_BeginToSend);
             // 
             // frmchatMain
             // 
+            this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;

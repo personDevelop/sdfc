@@ -56,6 +56,7 @@ namespace LogClient
             log.ContextInfo = context;
             log.CrateDate = DateTime.Now;
             log.Createor = FrameSession.Session.Instance.CurrenterUserName;
+             
             int i = CurrentClient.Write(log);
             if (i < 1)
             {
@@ -78,7 +79,7 @@ namespace LogClient
             return i;
         }
 
-        public static void Write(Exception ex)
+        public   void Write(Exception ex)
         {
             string info = "发生异常:" + Environment.NewLine;
             info += ex.Message + Environment.NewLine;
@@ -86,7 +87,7 @@ namespace LogClient
             info += ex.StackTrace + Environment.NewLine;
             new LogWritToDbClient().Write(info);
         }
-        public static void Write(Exception ex, string context)
+        public   void Write(Exception ex, string context)
         {
             string info = "发生异常:" + Environment.NewLine;
             info += ex.Message + Environment.NewLine;

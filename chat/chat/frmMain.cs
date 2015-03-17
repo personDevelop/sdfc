@@ -100,18 +100,18 @@ namespace ChatClient
                     Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Online;
                     ChatListSubItem item = userItem[userStateContract.UserID];
                     item.Status = ChatListSubItem.UserStatus.Online;
-                   IMUserInfo user= item.Tag as IMUserInfo;
-                   if (user!=null)
-                   {
-                       user.IsOnline = true;
-                   }
+                    IMUserInfo user = item.Tag as IMUserInfo;
+                    if (user != null)
+                    {
+                        user.IsOnline = true;
+                    }
                 }
             }
             else
             {
                 lock (syncLocker)
                 {
-                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Offline; 
+                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Offline;
                     ChatListSubItem item = userItem[userStateContract.UserID];
                     item.Status = ChatListSubItem.UserStatus.OffLine;
                     IMUserInfo user = item.Tag as IMUserInfo;
@@ -130,7 +130,12 @@ namespace ChatClient
         private void IncomingCloseConn(PacketHeader header, Connection connection, string msg)
         {
             //服务器通知关闭程序  
-            this.Close();
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(this.Close));
+            }
+            else
+                this.Close();
         }
 
         //获取离线消息
@@ -264,21 +269,23 @@ namespace ChatClient
             Thread x = new Thread(delegate()
             {
                 isStart = true;
+                int i = 0;
                 while (Common.UserMsgCount > 0)
                 {
 
 
 
-                    if (notifyIcon2.Icon == null)
+                    if (i == 0)
                     {
-
-                        notifyIcon2.Icon = Resource1._1475_Text_Balloon;
+                        i = 1;
+                        notifyIcon2.Icon = Resource1._2;
                     }
                     else
                     {
-                        notifyIcon2.Icon = Resource1.None64;
+                        i = 0;
+                        notifyIcon2.Icon = Resource1.qqEdu;
                     }
-                    Thread.Sleep(300);
+                    Thread.Sleep(400);
                 }
                 notifyIcon2.Icon = Resource1.qqEdu;
                 isStart = false;
@@ -287,7 +294,19 @@ namespace ChatClient
             x.Start();
 
         }
+        private void notifyIcon2_DoubleClick(object sender, EventArgs e)
+        {
+            if (Common.UserMsgCount > 0)
+            {
+                string userid = Common.GetFirstMsg().SenderID;
+                FormManager.Instance.ActivateOrCreateFormSend(Common.GetFriend(userid));
+                ChatListSubItem item = userItem[userid];
+                item.IsTwinkle = false;
+            }
+            else
 
+                this.Show();
+        }
 
         #endregion
         Dictionary<string, ChatListSubItem> userItem = new Dictionary<string, ChatListSubItem>();
@@ -895,10 +914,7 @@ namespace ChatClient
 
         }
 
-        private void notifyIcon2_DoubleClick(object sender, EventArgs e)
-        {
-            this.Show();
-        }
+
 
         private void 呼叫ToolStripMenuItem_Click(object sender, EventArgs e)
         {

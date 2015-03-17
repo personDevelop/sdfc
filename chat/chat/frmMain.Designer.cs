@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chatListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.chatListBox.ContextMenuStrip = this.contextMenuStrip2;
-            this.chatListBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.chatListBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.chatListBox.ForeColor = System.Drawing.Color.Black;
             chatListItem1.Bounds = new System.Drawing.Rectangle(0, 1, 278, 25);
             chatListItem1.IsTwinkleHide = false;
@@ -106,20 +106,21 @@
             this.呼叫ToolStripMenuItem,
             this.呼叫转移ToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 70);
             // 
             // 呼叫ToolStripMenuItem
             // 
             this.呼叫ToolStripMenuItem.Name = "呼叫ToolStripMenuItem";
-            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.呼叫ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.呼叫ToolStripMenuItem.Text = "呼叫";
             this.呼叫ToolStripMenuItem.Click += new System.EventHandler(this.呼叫ToolStripMenuItem_Click);
             // 
             // 呼叫转移ToolStripMenuItem
             // 
             this.呼叫转移ToolStripMenuItem.Name = "呼叫转移ToolStripMenuItem";
-            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.呼叫转移ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.呼叫转移ToolStripMenuItem.Text = "呼叫转移";
+            this.呼叫转移ToolStripMenuItem.Click += new System.EventHandler(this.呼叫ToolStripMenuItem_Click);
             // 
             // skinPanel_HeadImage
             // 
@@ -144,7 +145,7 @@
             this.labelSignature.BackColor = System.Drawing.Color.Transparent;
             this.labelSignature.BorderColor = System.Drawing.Color.White;
             this.labelSignature.BorderSize = 4;
-            this.labelSignature.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.labelSignature.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelSignature.ForeColor = System.Drawing.Color.Black;
             this.labelSignature.Location = new System.Drawing.Point(96, 54);
             this.labelSignature.Name = "labelSignature";
@@ -183,7 +184,7 @@
             this.labelName.BorderColor = System.Drawing.Color.White;
             this.labelName.BorderSize = 4;
             this.labelName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.labelName.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold);
+            this.labelName.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Bold);
             this.labelName.ForeColor = System.Drawing.Color.Black;
             this.labelName.Location = new System.Drawing.Point(119, 31);
             this.labelName.Name = "labelName";
@@ -582,11 +583,11 @@
             this.ControlBoxOffset = new System.Drawing.Point(0, -1);
             this.Controls.Add(this.skinToolStrip1);
             this.Controls.Add(this.chatListBox);
-            this.Controls.Add(this.skinToolStrip3);
             this.Controls.Add(this.labelSignature);
             this.Controls.Add(this.skinButton_State);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.skinPanel_HeadImage);
+            this.Controls.Add(this.skinToolStrip3);
             this.EffectCaption = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaxDownBack = global::ChatClient.Properties.Resources.btn_max_down;
