@@ -6,6 +6,7 @@
     <title>在线客服</title>
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/json2.js" type="text/javascript"></script>
     <script src="Scripts/jquery.url.js" type="text/javascript"></script>
     <script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="Scripts/jquery.signalR-1.1.1.min.js"></script>
@@ -199,12 +200,7 @@
                         为了更好地解决您的问题，建议您<a href="javascript:void(0)" class="J-login-trigger" seed="PCportal_self_login">登录</a></div>
                 </div>
             </div>
-            <div class="client J-client-chat" style="padding-bottom: 12px">
-                <h2>
-                    <span class="header">01:18 我</span><a class="avatar"><img src="http://tfsimg.alipay.com/images/partner/T1IVXXXb0bXXXXXXXX"></a></h2>
-                <div class="content J-chat-content">
-                    124124</div>
-            </div>
+             
         </div>
         <div class="menubar">
         </div>
