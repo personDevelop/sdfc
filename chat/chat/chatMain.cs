@@ -127,7 +127,11 @@ namespace ChatClient
 
         private void skinButton_send_Click(object sender, EventArgs e)
         {
-            
+
+            if (this.textBoxSend.Text.Trim() == "")
+            {
+                return;
+            }
             MsgEntity chatContract = new MsgEntity();
             chatContract.SenderID = Common.CurrentUser.ID;
             chatContract.Reciver = this.friend.ID;
@@ -137,15 +141,25 @@ namespace ChatClient
             Common.TcpConn.SendObject("ChatMessage", chatContract);
           
             DateTime showTime = DateTime.Now;
-            this.rtfRichTextBox_history.AppendText(string.Format("{0}  {1}\n", "我", showTime));
+
+            this.rtfRichTextBox_history.AppendTextAsRtf(string.Format("{0}  {1}\n", "我", showTime), new Font(this.Font, FontStyle.Regular), RtfRichTextBox.RtfColor.Blue);
+
+            //this.rtfRichTextBox_history.AppendText(string.Format("{0}  {1}\n", "我", showTime));
 
             //this.rtfRichTextBox_history.AppendText("adsfasdf");
             this.rtfRichTextBox_history.AppendText(textBoxSend.Text);
             this.rtfRichTextBox_history.AppendText("\n");
+            this.rtfRichTextBox_history.ScrollToCaret();
             this.textBoxSend.Clear();
             this.textBoxSend.Focus();
         }
 
+        private void frmchatMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            FormManager.Instance.CloseForm(this);
+            
+        }
 
     }
 }

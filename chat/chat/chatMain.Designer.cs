@@ -662,6 +662,7 @@
             this.Special = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "chatMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmchatMain_FormClosing);
             this.skinToolStrip2.ResumeLayout(false);
             this.skinToolStrip2.PerformLayout();
             this.skToolMenu.ResumeLayout(false);
