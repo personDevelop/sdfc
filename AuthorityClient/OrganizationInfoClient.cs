@@ -2,12 +2,12 @@
 using System.Data;
 using AuthorityEntity;
 using AuthorityService;
-using FrameBaseClient;
+using Sharp.Common;
 using IAuthorityService;
 
 namespace AuthorityClient
 {
-    public class OrganizationInfoClient : FrameBaseClient.BaseClient
+    public class OrganizationInfoClient :  BaseClient
     {
         IOrganizationInfoService currentClient;
         IOrganizationInfoService CurrentClient

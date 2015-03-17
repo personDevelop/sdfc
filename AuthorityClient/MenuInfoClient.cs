@@ -3,12 +3,11 @@ using System.Data;
 using AuthorityService;
 using AuthorityEntity;
 using Sharp.Common;
-using FrameBaseClient;
 using IAuthorityService;
 
 namespace AuthorityClient
 {
-    public class MenuInfoClient:FrameBaseClient.BaseClient
+    public class MenuInfoClient: BaseClient
     {
         IMenuInfoService currentClient;
         IMenuInfoService CurrentClient

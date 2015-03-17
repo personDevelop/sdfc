@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using AuthorityService;
 using System.Data;
-using FrameBaseClient;
+using Sharp.Common;
 using IAuthorityService;
 using AuthorityEntity.IM;
-using AuthorityEntity;
-using Sharp.Common;
+using AuthorityEntity; 
 namespace AuthorityClient
 {
-    public class MsgSendOrderClient : FrameBaseClient.BaseClient
+    public class MsgSendOrderClient :  BaseClient
     {
         IMsgSendOrderService currentClient;
         IMsgSendOrderService CurrentClient

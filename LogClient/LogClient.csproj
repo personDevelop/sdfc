@@ -31,15 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FrameBaseClient">
-      <HintPath>..\refdll\FrameBaseClient.dll</HintPath>
-    </Reference>
-    <Reference Include="FrameCommonService">
-      <HintPath>..\refdll\FrameCommonService.dll</HintPath>
-    </Reference>
-    <Reference Include="IFrameCommonService">
-      <HintPath>..\refdll\IFrameCommonService.dll</HintPath>
-    </Reference>
     <Reference Include="Sharp.Common">
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
@@ -56,17 +47,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogDataAccess\LogDataAccess.csproj">
-      <Project>{CFC1FA85-CE1D-427F-9A67-1F13ED887CEC}</Project>
-      <Name>LogDataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LogEntity\LogEntity.csproj">
-      <Project>{88FBB08D-5AE8-48AC-8E3B-E9CD75FB5325}</Project>
-      <Name>LogEntity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FrameSession\FrameSession.csproj">
       <Project>{D0593939-2F47-4E43-89BD-22F178E86450}</Project>
       <Name>FrameSession</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogService\LogService.csproj">
+      <Project>{A7312F50-6898-4971-B532-1BDA76CA639A}</Project>
+      <Name>LogService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

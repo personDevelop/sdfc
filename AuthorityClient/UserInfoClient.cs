@@ -2,13 +2,12 @@
 using AuthorityService;
 using AuthorityEntity;
 using System.Data;
-using FrameBaseClient;
-using IAuthorityService;
 using Sharp.Common;
+using IAuthorityService; 
 namespace AuthorityClient
 {
 
-    public class UserInfoClient : FrameBaseClient.BaseClient
+    public class UserInfoClient : BaseClient
     {
         IUserInfoService currentClient;
         IUserInfoService CurrentClient

@@ -1,12 +1,12 @@
 ﻿using System;
 using AuthorityEntity;
 using AuthorityService;
-using FrameBaseClient;
+using Sharp.Common;
 using IAuthorityService;
 
 namespace AuthorityClient
 {
-    public class LoginClient : FrameBaseClient.BaseClient
+    public class LoginClient :  BaseClient
     {
         ILoginService currentClient;
         ILoginService CurrentClient

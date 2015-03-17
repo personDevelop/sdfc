@@ -3,7 +3,7 @@ using AuthorityEntity;
 using System.Data;
 using AuthorityService;
 using Sharp.Common;
-using FrameBaseClient;
+using Sharp.Common;
 using IAuthorityService;
 
 

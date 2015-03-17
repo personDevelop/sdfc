@@ -1,6 +1,6 @@
 ﻿using AuthorityEntity;
 using AuthorityService;
-using FrameBaseClient;
+using Sharp.Common;
 using System.Data;
 using IAuthorityService;
 

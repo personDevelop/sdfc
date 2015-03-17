@@ -71,10 +71,6 @@
       <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
       <Name>AuthorityEntity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LogEntity\LogEntity.csproj">
-      <Project>{88FBB08D-5AE8-48AC-8E3B-E9CD75FB5325}</Project>
-      <Name>LogEntity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

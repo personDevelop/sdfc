@@ -1,13 +1,13 @@
 ﻿using AuthorityEntity;
 using System.Data;
 using AuthorityService;
-using FrameBaseClient;
+using Sharp.Common;
 using IAuthorityService;
 
 namespace AuthorityClient
 {
 
-    public class OrgPositionsClient : FrameBaseClient.BaseClient
+    public class OrgPositionsClient : BaseClient
     {
         IOrgPositionsService currentClient;
         IOrgPositionsService CurrentClient

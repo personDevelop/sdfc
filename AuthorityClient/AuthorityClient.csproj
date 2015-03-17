@@ -31,16 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FrameBaseClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refdll\FrameBaseClient.dll</HintPath>
-    </Reference>
     <Reference Include="FrameCommonEntity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\refdll\FrameCommonEntity.dll</HintPath>
     </Reference>
-    <Reference Include="Sharp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Sharp.Common">
       <HintPath>..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />

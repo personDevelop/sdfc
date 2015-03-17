@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using IFrameCommonService;
-using FrameBaseClient;
-using FrameCommonService;
-using System.IO;
-using LogEntity;
+using Sharp.Common;
+using System.IO; 
+using LogService;
 
 namespace LogClient
 {
-    public class LogWritToDbClient : BaseClient
+    public class LogWritToDbClient : BaseClient 
     {
-        IlogWritToDb currentClient;
-        IlogWritToDb CurrentClient
+        ILog currentClient;
+        ILog CurrentClient
         {
             get
             {
@@ -25,7 +21,7 @@ namespace LogClient
                     }
                     else
                     {
-                        currentClient = WcfInvokeContext.CreateWCFService<IlogWritToDb>("LogWriteToDbService");
+                        currentClient = WcfInvokeContext.CreateWCFService<ILog>("LogWriteToDbService");
                     }
                 }
                 return currentClient;
