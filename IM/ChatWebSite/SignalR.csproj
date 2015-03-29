@@ -222,7 +222,6 @@
     <Content Include="logo.gif" />
     <Content Include="logo.png" />
     <Content Include="packages.config" />
-    <Content Include="sample.htm" />
     <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="Scripts\jquery.url.js" />
     <Content Include="Scripts\json2.js" />
