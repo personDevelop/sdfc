@@ -34,9 +34,9 @@ namespace AuthorityDataAccess
         public int Delete(string classcode, ref string error)
         {
             string[] orgids = Dal.From<OrganizationInfo>().Where(OrganizationInfo._.ClassCode.StartsWith(classcode)).Select(OrganizationInfo._.ID).ToSinglePropertyArray();
-            if (Dal.Exists < OrgUserRalation>(OrgUserRalation._.DepartID.In(orgids) || OrgUserRalation._.CompID.In(orgids)))
+            if (Dal.Exists<OrgUserRalation>(OrgUserRalation._.DepartID.In(orgids) || OrgUserRalation._.CompID.In(orgids)))
             {
-                error="当前部门或其下属部门已被员工使用，不能删除";
+                error = "当前部门或其下属部门已被员工使用，不能删除";
                 return -1;
             }
             return Dal.Delete<OrganizationInfo>(OrganizationInfo._.ClassCode.StartsWith(classcode));
@@ -188,5 +188,13 @@ Order  by  OrganizationInfo.Code";
         }
 
 
+
+        public DataTable GetDepartNameList()
+        {
+            return Dal.From<OrganizationInfo>().Where(OrganizationInfo._.OrgType == "b54f2c75-5e2c-4aaa-a204-557aa83aad79")
+                .Select(OrganizationInfo._.ID, OrganizationInfo._.Name)
+                .OrderBy(OrganizationInfo._.Code)
+                .ToDataTable();
+        }
     }
 }

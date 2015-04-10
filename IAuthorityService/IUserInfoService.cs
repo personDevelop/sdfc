@@ -18,7 +18,7 @@ namespace IAuthorityService
         [OperationContract]
         int Save(UserInfo DataObject, List<OrganizationInfo> Departlist, List<Role> Rolelist, ref string error);
         [OperationContract]
-        bool Exists(string code, string email, string iD, ref string error);
+        bool Exists(string code, string email, string agentid, string iD, ref string error);
         [OperationContract]
         int ResetPwd(string userid, string newpwd, string oldPwd);
         [OperationContract]

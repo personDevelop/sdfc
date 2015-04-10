@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AuthorityEntity\AuthorityEntity.csproj">
+      <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>
+      <Name>AuthorityEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FrameSession\FrameSession.csproj">
       <Project>{D0593939-2F47-4E43-89BD-22F178E86450}</Project>
       <Name>FrameSession</Name>

@@ -43,5 +43,7 @@ namespace IAuthorityService
         int RemoveUser(string departID, string[] userids);
         [OperationContract]
           UserInfo GetUserInfo(string UserID);
+         [OperationContract]
+        DataTable GetDepartNameList();
     }
 }

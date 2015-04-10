@@ -585,7 +585,7 @@ namespace AuthorityEntity
             }
         }
         /// <summary>
-        /// 是否记录,ServiceManager.BarItemService.dockPanelView[key]方式获得该菜单项，key为该节点的ID，一般为BarLinkContainerItem的用到
+        /// 是否记录,ServiceManager.BarItemService.RecordBarItem[key]方式获得该菜单项，key为该节点的ID，一般为BarLinkContainerItem的用到
         /// </summary>
 
 

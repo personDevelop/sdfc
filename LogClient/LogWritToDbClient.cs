@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sharp.Common;
-using System.IO; 
+using System.IO;
 using LogService;
 
 namespace LogClient
 {
-    public class LogWritToDbClient : BaseClient 
+    public class LogWritToDbClient : BaseClient
     {
         ILog currentClient;
         ILog CurrentClient
@@ -55,8 +55,13 @@ namespace LogClient
             log.ModleNameSource = modleName;
             log.ContextInfo = context;
             log.CrateDate = DateTime.Now;
-            log.Createor = FrameSession.Session.Instance.CurrenterUserName;
-             
+            if (FrameSession.Session.Instance.CurrenterUser == null)
+            {
+                log.Createor = "TTS";
+            }
+            else
+                log.Createor = FrameSession.Session.Instance.CurrenterUserName;
+
             int i = CurrentClient.Write(log);
             if (i < 1)
             {
@@ -79,7 +84,7 @@ namespace LogClient
             return i;
         }
 
-        public   void Write(Exception ex)
+        public void Write(Exception ex)
         {
             string info = "发生异常:" + Environment.NewLine;
             info += ex.Message + Environment.NewLine;
@@ -87,7 +92,7 @@ namespace LogClient
             info += ex.StackTrace + Environment.NewLine;
             new LogWritToDbClient().Write(info);
         }
-        public   void Write(Exception ex, string context)
+        public void Write(Exception ex, string context)
         {
             string info = "发生异常:" + Environment.NewLine;
             info += ex.Message + Environment.NewLine;

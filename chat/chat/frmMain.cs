@@ -93,36 +93,37 @@ namespace ChatClient
         //用户状态改变通知<5>
         private void IncomingUserStateNotify(PacketHeader header, Connection connection, UserStateContract userStateContract)
         {
-            if (userStateContract.OnLine == OnlineState.Online)
+            lock (syncLocker)
             {
-                lock (syncLocker)
+                IMUserInfo u = Common.GetFriend(userStateContract.UserID);
+                if (u != null)
                 {
-                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Online;
                     ChatListSubItem item = userItem[userStateContract.UserID];
-                    item.Status = ChatListSubItem.UserStatus.Online;
-                    IMUserInfo user = item.Tag as IMUserInfo;
-                    if (user != null)
-                    {
-                        user.IsOnline = true;
+                    if (item != null)
+                    { 
+                        IMUserInfo user = item.Tag as IMUserInfo;
+                        if (user != null)
+                        {
+                            if (userStateContract.OnLine == OnlineState.Online)
+                            {
+                                u.UserState = (int)OnlineState.Online;
+                                item.Status = ChatListSubItem.UserStatus.Online;
+                                user.IsOnline = true;
+                            }
+                            else
+                            {
+                                u.UserState = (int)OnlineState.Offline;
+                                item.Status = ChatListSubItem.UserStatus.OffLine;
+                                user.IsOnline = false;
+                                //当某用户下线后，删除此用户相关的p2p 通道
+                                Common.RemoveUserConn(userStateContract.UserID);
+                            }
+
+                        }
                     }
                 }
             }
-            else
-            {
-                lock (syncLocker)
-                {
-                    Common.GetFriend(userStateContract.UserID).UserState = (int)OnlineState.Offline;
-                    ChatListSubItem item = userItem[userStateContract.UserID];
-                    item.Status = ChatListSubItem.UserStatus.OffLine;
-                    IMUserInfo user = item.Tag as IMUserInfo;
-                    if (user != null)
-                    {
-                        user.IsOnline = false;
-                    }
-                    //当某用户下线后，删除此用户相关的p2p 通道
-                    Common.RemoveUserConn(userStateContract.UserID);
-                }
-            }
+
         }
 
         //服务器通知连接断开 <6>
@@ -896,8 +897,12 @@ namespace ChatClient
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            e.Cancel = true;
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.Hide();
+                e.Cancel = true;
+            }
+
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace AuthorityDataAccess
     {
 
 
-        public bool Exists(string code, string email, string id, ref string error)
+        public bool Exists(string code, string email, string agentid, string id, ref string error)
         {
             bool exist = Dal.Exists<UserInfo>(
               UserInfo._.ID != id && UserInfo._.Code == code);
@@ -23,14 +23,40 @@ namespace AuthorityDataAccess
             }
             else
             {
-                exist = Dal.Exists<UserInfo>(
-                    UserInfo._.ID != id && UserInfo._.Email == email);
-                if (exist)
+                if (!string.IsNullOrWhiteSpace(email))
                 {
-                    error = "已存在相同邮箱";
+                    exist = Dal.Exists<UserInfo>(
+                               UserInfo._.ID != id && UserInfo._.Email == email);
+                    if (exist)
+                    {
+                        error = "已存在相同邮箱";
+                    }
+                }
+                if (!exist)
+                {
+                    if (!string.IsNullOrWhiteSpace(agentid))
+                    {
+                        exist = Dal.Exists<UserInfo>(
+                                   UserInfo._.ID != id && UserInfo._.AgentID == agentid);
+                        if (exist)
+                        {
+                            error = "当前坐席工号已被使用";
+                        }
+                        else
+                        {
+
+                            object o = Dal.FromCustomSql("SELECT count(1) FROM TTSUser  where code=@code").AddInputParameter("code", agentid).ToScalar();
+                            if (!o.Equals(0))
+                            {
+                                exist = true;
+                                error = "当前坐席工号已被TTS使用";
+                            }
+                        }
+                    }
                 }
 
             }
+
             return exist;
         }
 
@@ -86,9 +112,12 @@ namespace AuthorityDataAccess
 
         public DataTable GetAllUser()
         {
-            DataTable dt = Dal.From<UserInfo>().Join<OrgUserRalation>(UserInfo._.ID == OrgUserRalation._.UserID, Sharp.Common.JoinType.leftJoin)
+            DataTable dt = Dal.From<UserInfo>().Join<OrgUserRalation>(UserInfo._.ID == OrgUserRalation._.UserID && OrgUserRalation._.IsDefault == true, Sharp.Common.JoinType.leftJoin)
                 .Join<OrganizationInfo>(OrgUserRalation._.DepartID == OrganizationInfo._.ID, Sharp.Common.JoinType.leftJoin)
-                .Select(UserInfo._.ID.All, OrganizationInfo._.ClassCode, OrganizationInfo._.Name.Alias("DeoartName"))
+                .Join<RoleAndUserRalation>(UserInfo._.ID == RoleAndUserRalation._.UserId && RoleAndUserRalation._.IsDefault == true, Sharp.Common.JoinType.leftJoin)
+                .Join<Role>(RoleAndUserRalation._.RoleId == Role._.ID, Sharp.Common.JoinType.leftJoin)
+
+                .Select(UserInfo._.ID.All, OrganizationInfo._.ClassCode, OrganizationInfo._.Name.Alias("DeoartName"), Role._.Name.Alias("RoleName"))
                 .OrderBy(UserInfo._.Code).ToDataTable();
             DataColumn dc = new DataColumn("IsSelected", typeof(bool));
             dc.DefaultValue = false;
@@ -305,7 +334,7 @@ namespace AuthorityDataAccess
             return Dal.From<SystemSessionLog>()
                 .Join<UserInfo>(SystemSessionLog._.UserID == UserInfo._.ID)
                 .Where(
-                UserInfo._.IsWebPerson == true 
+                UserInfo._.IsWebPerson == true
                 && SystemSessionLog._.OutDate == null)
                 .ToDataTable();
         }

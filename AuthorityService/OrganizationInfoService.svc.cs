@@ -97,5 +97,11 @@ namespace AuthorityService
         }
 
 
+
+
+        public DataTable GetDepartNameList()
+        {
+            return da.GetDepartNameList();
+        }
     }
 }

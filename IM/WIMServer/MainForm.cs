@@ -122,7 +122,7 @@ namespace WIMServer
                         else
                         {
                             recivers.Add(chatContract.Reciver);
-                        } 
+                        }
 
                         foreach (var item in recivers)
                         {
@@ -286,7 +286,7 @@ namespace WIMServer
                                     conn.SendObject("CloseConnection", "msg");
                                 }
 
-                                userManager.Remove(loginInfo.ID);
+                                userManager.Remove(userinfo.ID);
                             }
                             //注册新的用户
                             if (!userManager.ContainsKey(userinfo.ID))

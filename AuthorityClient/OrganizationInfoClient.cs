@@ -7,7 +7,7 @@ using IAuthorityService;
 
 namespace AuthorityClient
 {
-    public class OrganizationInfoClient :  BaseClient
+    public class OrganizationInfoClient : BaseClient
     {
         IOrganizationInfoService currentClient;
         IOrganizationInfoService CurrentClient
@@ -140,5 +140,10 @@ namespace AuthorityClient
         }
 
 
+
+        public List<OrganizationInfo> GetDepartNameList()
+        {
+            return CurrentClient.GetDepartNameList().ToList<OrganizationInfo>();
+        }
     }
 }

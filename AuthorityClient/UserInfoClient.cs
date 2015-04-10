@@ -30,10 +30,10 @@ namespace AuthorityClient
         }
 
 
-        public bool Exists(string code, string email, string iD, ref string error)
+        public bool Exists(string code, string email, string agentid, string iD, ref string error)
         {
 
-            return CurrentClient.Exists(code, email, iD, ref   error);
+            return CurrentClient.Exists(code, email, agentid, iD, ref   error);
 
         }
 

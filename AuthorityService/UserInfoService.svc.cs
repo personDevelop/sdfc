@@ -20,9 +20,9 @@ namespace AuthorityService
 
 
 
-        public bool Exists(string code, string email, string iD, ref string error)
+        public bool Exists(string code, string email, string agentid, string iD, ref string error)
         {
-            return da.Exists(code, email, iD, ref   error);
+            return da.Exists(code, email, agentid, iD, ref   error);
         }
 
         public int Save(UserInfo DataObject, List<OrganizationInfo> Departlist, List<Role> Rolelist, ref string error)

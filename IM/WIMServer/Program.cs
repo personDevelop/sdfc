@@ -21,7 +21,7 @@ namespace WIMServer
 
         static void Application_ApplicationExit(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            //Environment.Exit(0);
         }
     }
 }
