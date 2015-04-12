@@ -63,8 +63,10 @@
     <Compile Include="IM\UserLoginContract.cs" />
     <Compile Include="IM\UserPswEntity.cs" />
     <Compile Include="IM\UserStateContract.cs" />
+    <Compile Include="leavemsg.cs" />
     <Compile Include="MenuInfo.cs" />
     <Compile Include="MsgInfo.cs" />
+    <Compile Include="MsgLog.cs" />
     <Compile Include="MsgSendOrder.cs" />
     <Compile Include="OrganizationInfo.cs" />
     <Compile Include="OrgPositions.cs" />

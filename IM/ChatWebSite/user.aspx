@@ -259,13 +259,13 @@
                         4、交流完毕后，点击“结束”按钮，结束本次服务，并在弹出的满意度调查窗口中，选择相应的等级，点击“提交”按钮提交。</p>
                 </div>
             </div>
-            <div class='tabcontent'  id='consultation_wrap'>
+            <div class='tabcontent' id='consultation_wrap'>
                 <div class="free_explain" style='line-height: 32px; background: #eee; height: 32px;
                     cursor: pointer; z-index: 200; text-align: center; font-size: 14px; border-bottom: 1px solid #ddd;'>
                     在线客服列表
                 </div>
                 <div style='margin: 10px; margin: 10px; background: #FCFCFC; border: 1px solid #eee;
-                    padding: 10px;' id='userinfo' runat=server>
+                    padding: 10px;' id='userinfo' runat="server">
                     <table class='onlinelist' width="100%">
                         <tr>
                             <td width="55">
@@ -302,7 +302,8 @@
                         width="100%;">
                         <tr>
                             <td colspan='6'>
-                                <textarea rows="10" style='padding: 4px; width: 100%; border: 1px solid #BBB; outline: none;'></textarea>
+                                <textarea rows="10" id='txtmes' style='padding: 4px; width: 100%; border: 1px solid #BBB;
+                                    outline: none;'></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -333,13 +334,42 @@
                                 <input type='text' style='padding: 4px; width: 100%; border: 1px solid #BBB; outline: none;' /></textarea>
                             </td>
                             <td>
-                                <input type="button" value='提交留言' style='padding: 5px;' />
+                                <input type="button" value='提交留言' onclick='subly();' style='padding: 5px;' />
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
+        <script>
+            function subly() {
+                if ($("#txtmes").val() == "") {
+                    alert("请输入留言内容！");
+                    return;
+                }
+                var vsJsonData = { "mes": $("#txtmes").val() };
+                var reobj;
+                $.ajax({
+                    url: "submitMsg.ashx",
+                    type: "post",
+                    data: vsJsonData,
+                    dataType: "json",
+                    async: false,
+                    success: function (reval) {
+                        if (reval["res"]) {
+                            alert(reval["mes"]);
+                        } else {
+                            alert(reval["mes"]);
+                        }
+                    },
+                    error: function (err) {
+                        throw err.responseText;
+                        return false;
+                    }
+                });
+                
+            }
+        </script>
         <div class="main_right" id="main_right" style="">
             <div class='cardwrap'>
                 公司名片</div>

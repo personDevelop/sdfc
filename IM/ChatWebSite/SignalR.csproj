@@ -85,6 +85,10 @@
     <Reference Include="Sharp.Common">
       <HintPath>..\..\refdll\Sharp.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Sharp.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\refdll\Sharp.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -289,6 +293,9 @@
     <Compile Include="showAllClientConnected.aspx.designer.cs">
       <DependentUpon>showAllClientConnected.aspx</DependentUpon>
     </Compile>
+    <Compile Include="submitMsg.ashx.cs">
+      <DependentUpon>submitMsg.ashx</DependentUpon>
+    </Compile>
     <Compile Include="user.aspx.cs">
       <DependentUpon>user.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +313,7 @@
     <Compile Include="UserList.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="submitMsg.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -317,6 +325,10 @@
     <ProjectReference Include="..\..\AuthorityClient\AuthorityClient.csproj">
       <Project>{198D91F9-4DCE-43BF-8103-AF499D7A88DA}</Project>
       <Name>AuthorityClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AuthorityDataAccess\AuthorityDataAccess.csproj">
+      <Project>{41AC96C7-8381-4413-B1D7-E0F09F3F72C9}</Project>
+      <Name>AuthorityDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\AuthorityEntity\AuthorityEntity.csproj">
       <Project>{F42AAAF6-7D0D-4B4C-945B-75FE7754B500}</Project>

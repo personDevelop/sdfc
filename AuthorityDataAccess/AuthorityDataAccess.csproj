@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FunctionInfoDataAccess.cs" />
+    <Compile Include="leavemsgDataAccess.cs" />
     <Compile Include="MenuInfoDataAccess.cs" />
+    <Compile Include="MsgLogDataAccess.cs" />
     <Compile Include="MsgSendOrderDataAccess.cs" />
     <Compile Include="OrganizationInfoDataAccess.cs" />
     <Compile Include="PersonDataAccess.cs" />
