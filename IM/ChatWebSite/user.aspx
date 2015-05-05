@@ -311,19 +311,22 @@
                                 姓名
                             </td>
                             <td>
-                                <input type='text' style='padding: 4px; width: 100%; border: 1px solid #BBB; outline: none;' />
+                                <input type='text' id='txtname' style='padding: 4px; width: 100%; border: 1px solid #BBB;
+                                    outline: none;' />
                             </td>
                             <td width="35" align="right">
                                 电话
                             </td>
                             <td>
-                                <input type='text' style='padding: 4px; width: 100%; border: 1px solid #BBB; outline: none;' />
+                                <input type='text' id='txttel' style='padding: 4px; width: 100%; border: 1px solid #BBB;
+                                    outline: none;' />
                             </td>
                             <td width="35" align="right">
                                 邮箱
                             </td>
                             <td>
-                                <input type='text' style='padding: 4px; width: 100%; border: 1px solid #BBB; outline: none;' />
+                                <input type='text' id='txtmail' style='padding: 4px; width: 100%; border: 1px solid #BBB;
+                                    outline: none;' />
                             </td>
                         </tr>
                         <tr>
@@ -331,7 +334,8 @@
                                 地址
                             </td>
                             <td colspan="4">
-                                <input type='text' style='padding: 4px; width: 100%; border: 1px solid #BBB; outline: none;' /></textarea>
+                                <input type='text' id='txtadd' style='padding: 4px; width: 100%; border: 1px solid #BBB;
+                                    outline: none;' /></textarea>
                             </td>
                             <td>
                                 <input type="button" value='提交留言' onclick='subly();' style='padding: 5px;' />
@@ -347,7 +351,7 @@
                     alert("请输入留言内容！");
                     return;
                 }
-                var vsJsonData = { "mes": $("#txtmes").val() };
+                var vsJsonData = { "mes": $("#txtmes").val(), "add": $("#txtadd").val(), "name": $("#txtname").val(), "tel": $("#txttel").val(), "mail": $("#txtmail").val() };
                 var reobj;
                 $.ajax({
                     url: "submitMsg.ashx",
@@ -367,7 +371,7 @@
                         return false;
                     }
                 });
-                
+
             }
         </script>
         <div class="main_right" id="main_right" style="">
