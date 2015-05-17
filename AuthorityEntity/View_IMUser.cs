@@ -49,6 +49,7 @@ namespace AuthorityEntity
         private string _IMGroupName;
         private string _DepartID;
         private bool _IsOnLine;
+        private string _DepartCode;
 
         #endregion
 
@@ -491,6 +492,25 @@ namespace AuthorityEntity
             }
         }
 
+        /// <summary>
+        ///  部门编号,
+        /// </summary>
+        [DbProperty(MapingColumnName = "DepartCode", DbTypeString = "nvarchar", ColumnIsNull = false, IsUnique = false, ColumnLength = 50, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public string DepartCode
+        {
+            get
+            {
+                return this._DepartCode;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("DepartCode", this._DepartCode, value);
+                this._DepartCode = value;
+            }
+        }
+
 
         #endregion
 
@@ -545,6 +565,8 @@ namespace AuthorityEntity
                 DepartID = new PropertyItem("DepartID", tableName);
 
                 IsOnLine = new PropertyItem("IsOnLine", tableName);
+
+                DepartCode = new PropertyItem("DepartCode", tableName);
 
 
             }
@@ -640,6 +662,10 @@ namespace AuthorityEntity
             /// 是否在线,
             /// </summary> 
             public PropertyItem IsOnLine = null;
+            /// <summary>
+            /// 部门编号,
+            /// </summary> 
+            public PropertyItem DepartCode = null;
         }
         #endregion
     }

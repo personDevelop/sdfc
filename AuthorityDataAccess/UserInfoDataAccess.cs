@@ -342,6 +342,7 @@ namespace AuthorityDataAccess
         public DataTable GetIMUserList()
         {
             return Dal.From<View_IMUser>()
+                .OrderBy(View_IMUser._.DepartCode, View_IMUser._.Code)
                 .ToDataTable();
         }
     }

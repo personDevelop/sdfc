@@ -187,6 +187,7 @@
             margin-left: 254px;
             font-size: 12px;
         }
+        
     </style>
     <script>
         $(function () {
@@ -289,25 +290,19 @@
                     padding: 10px; overflow: auto;' id='userinfo' runat="server">
                     <table class='onlinelist' width="100%">
                         <tr>
-                            <td width="55">
-                                【德州】
+                            <td align="left" valign=middle class="style1" width="50%">
+                                <a href='#'>  <img src='image/chatlist_head_01.png' /></a><a href='#'> 【德州】8765</a>
                             </td>
-                            <td width="35">
-                                <img src='image/chatlist_head_01.png' />
-                            </td>
-                            <td>
-                                <a href='#'>【德州】8765</a>
+                            <td align="left" valign=middle class="style1" width="50%">
+                                <a href='#'>  <img src='image/chatlist_head_01.png' /></a><a href='#'> 【德州】8765</a>
                             </td>
                         </tr>
                         <tr>
-                            <td width="55">
-                                【德州】
+                              <td align="left" valign=middle class="style1" width="50%">
+                                <a href='#'>  <img src='image/chatlist_head_01.png' /></a><a href='#'> 【德州】8765</a>
                             </td>
-                            <td width="35">
-                                <img src='image/chatlist_head_01.png' />
-                            </td>
-                            <td>
-                                <a href='#'>【德州】8765</a>
+                            <td align="left" valign=middle class="style1" width="50%">
+                                <a href='#'>  <img src='image/chatlist_head_01.png' /></a><a href='#'> 【德州】8765</a>
                             </td>
                         </tr>
                     </table>

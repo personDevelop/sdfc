@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using AuthorityEntity.IM;
 using NetworkCommsDotNet;
 using System.Data;
+using Sharp.Common;
+using AuthorityEntity;
 
 namespace SignalR
 {
@@ -16,70 +18,67 @@ namespace SignalR
         {
             if (!IsPostBack)
             {
-                string tmpl = @"<tr>
-                            <td width='100'>
-                                {1}
-                            </td>
-                            <td width='35'>
-                                <img src='image/chatlist_head_01.png' />
-                            </td>
-                            <td>
-                                <a target='_blank' href='consult.aspx?sid={0}&code={0}&name={1}'>{1}</a>
-                            </td>
-                        </tr>";
+                string linkurl = "consult.aspx?sid={0}&code={0}&name={1}";
+                string offlinkurl = "javascript:void(0)";
+                string tmpl = @" <td  align='right'  valign=middle   width='{3}%'>
+                                <a href='{0}'>  <img src='image/chatlist_head_0{1}.png' /></a> </td><td   valign=middle   width='{3}%'><a href='{0}'>{2}</a>
+                            </td>";
                 string grouptmpl = @"<tr  style='background:#eee;font-weight:bold;'>
-                            <td colspan=3>
+                            <td colspan={1}>
                                 {0}
                             </td>
  
                         </tr>";
-                string tmploffline = @"<tr>
-                            <td width='100'>
-                                {1}
-                            </td>
-                            <td width='35'>
-                                <img src='image/chatlist_head_02.png' />
-                            </td>
-                            <td>
-                                <a href='javascript:void(0)'>{1}</a>
-                            </td>
-                        </tr>";
+
                 Dictionary<string, string> data = new Dictionary<string, string>();
                 data = codingChatHub.UserHandler.SeverIds;
                 AuthorityClient.UserInfoClient client = new AuthorityClient.UserInfoClient();
-                DataTable dt = client.GetIMUserList();
-                DataRow[] rowcol = dt.Select("", "imgroupname asc");
-                string result = "";
-                string group = "";
-                int i = 0;
-                foreach (DataRow row in rowcol)
-                {//IsOnLine
+                List<View_IMUser> list = client.GetIMUserList().ToList<View_IMUser>();
 
-                    if (i == 0 || group != row["imgroupname"].ToString())
+                int oneRowCount = 2;
+                string group = "";
+                string result = "";
+                int groupCount = 0;
+                int tdWidth = 100 /( oneRowCount * 2);
+                for (int k = 0; k < list.Count; k++)
+                {
+                    View_IMUser item = list[k];
+                    if (group != item.DepartCode)
                     {
-                        group = row["imgroupname"].ToString();
-                        if (row["imgroupname"].ToString() == "")
+                        group = item.DepartCode;
+                        groupCount = 0;
+                        if (string.IsNullOrWhiteSpace(item.DepartName))
                         {
-                            result += string.Format(grouptmpl, "未分组");
+                            item.DepartName = "未分组";
                         }
                         else
                         {
-                            result += string.Format(grouptmpl, row["imgroupname"].ToString());
+                            result += string.Format(grouptmpl, item.DepartName,oneRowCount*2);
                         }
                     }
-                    i++;
-
-
-                    if (row["isonline"].ToString() == "0" || row["isonline"].ToString() == "")
+                    else
+                    { groupCount++; }
+                    int currentBL = groupCount % oneRowCount;
+                    if (currentBL == 0)
                     {
-                        result += string.Format(tmploffline, row["ID"].ToString(), row["Name"].ToString());
+                        result += "<tr>";
+                    }
+
+                    if (item.IsOnLine)
+                    {
+                        result += string.Format(tmpl, string.Format(linkurl, item.ID, item.Name), 1, item.Name, tdWidth);
                     }
                     else
                     {
-                        result += string.Format(tmpl, row["ID"].ToString(), row["Name"].ToString());
+                        result += string.Format(tmpl, offlinkurl, 2, item.Name, tdWidth);
                     }
-                    //result += "<a href='consult.aspx?sid=" + row["userid"].ToString() + "&code=" + row["userid"].ToString() + "&name=" + row["NAME"].ToString() + "' target='_blank'  style='color:red;'>在线" + row["NAME"].ToString() + "</a>";
+                    if (currentBL == oneRowCount - 1)
+                    {
+                        result += "</tr>";
+                    }
                 }
+
+
                 result = "<table class='onlinelist' width='100%'>" + result + "</table>";
                 userinfo.InnerHtml = result;
             }
