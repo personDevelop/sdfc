@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Net.NetworkInformation;
 using AuthorityEntity;
 using AuthorityEntity.IM;
+using FrameCommonClient;
 
 namespace WIMServer
 {
@@ -48,7 +49,7 @@ namespace WIMServer
         {
             InitializeComponent();
             //获取服务器IM服务器ip和端口号
-            string[] ipAndPort = new FrameCommonClient.ParameterInfoClient().GetTwoValue("ecda7fbe-cf9d-4d89-b478-d31da5d0a7f8");
+            string[] ipAndPort = new FrameCommonClient.ParameterInfoClient().GetTwoValue(ParameterInfoClient.IMServer);
             if (ipAndPort != null && ipAndPort.Length == 2)
             {
                 txtIP.Text = ipAndPort[0];

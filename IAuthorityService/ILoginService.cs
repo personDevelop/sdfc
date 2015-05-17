@@ -22,5 +22,7 @@ namespace IAuthorityService
         DateTime GetDateTime();
         [OperationContract]
         View_IMUser LoginIM(string username, string userpwd, string Ip, string port,   out string error);
+
+        string UpdateLoginStatus(string userid, bool isOnLine);
     }
 }

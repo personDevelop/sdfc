@@ -187,6 +187,8 @@ namespace FrameSession
                         EntryStats = "在线";
                         CreateLoginLog();
                         client.Save(log);
+                        client.UpdateLoginStatus(CurrenterUser.ID,true);
+
                     }
                 }
                 else

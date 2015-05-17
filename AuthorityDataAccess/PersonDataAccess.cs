@@ -56,7 +56,7 @@ namespace AuthorityDataAccess
         public View_IMUser LoginIM(string username, string userpwd, string Ip, string port, out string error)
         {
             error = string.Empty;
-            View_IMUser user = Dal.Find<View_IMUser>(View_IMUser._.Code == username); 
+            View_IMUser user = Dal.Find<View_IMUser>(View_IMUser._.Code == username);
             if (user == null)
             {
                 error = "用户名不正确";
@@ -132,13 +132,24 @@ namespace AuthorityDataAccess
                                 {
                                     logList[i].OutDate = DateTime.Now;
                                 }
-                             
+
                             }
                             Dal.Submit(logList);
                         }
                     }
                 }
             return user;
+        }
+
+        public string UpdateLoginStatus(string userid, bool isOnLine)
+        {
+            string result = string.Empty;
+            UserInfo u = new UserInfo();
+            u.ID = userid;
+            u.RecordStatus = Sharp.Common.StatusType.update;
+            u.IsOnLine = isOnLine;
+            Dal.Submit(u);
+            return result;
         }
     }
 }

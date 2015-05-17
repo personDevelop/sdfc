@@ -175,7 +175,7 @@ namespace AuthorityEntity.IM
             /// <summary>
             /// 是否在线
             /// </summary>
-            tem.IsOnline = imuser.IsOnline;
+            tem.IsOnline = imuser.IsOnLine;
             return tem;
 
         }
@@ -303,10 +303,10 @@ namespace AuthorityEntity.IM
                 ///// 登录结果
                 ///// </summary>
                 //tem.Response = item["Response"] as string;
-                ///// <summary>
-                ///// 是否在线
-                ///// </summary>
-                //tem.IsOnline = Convert.ToBoolean(item["IsOnline"]);
+                /// <summary>
+                /// 是否在线
+                /// </summary>
+                tem.IsOnline = Convert.ToBoolean(item["IsOnline"]);
                 list.Add(tem);
             }
 

@@ -5,6 +5,7 @@ using System.Text;
 using AuthorityEntity;
 using NetworkCommsDotNet;
 using AuthorityEntity.IM;
+using FrameCommonClient;
 
 
 namespace ChatClient
@@ -30,7 +31,7 @@ namespace ChatClient
         public static int Port;
         public static void SetServerIpAndPort()
         {
-            string[] ipAndPort = new FrameCommonClient.ParameterInfoClient().GetTwoValue("ecda7fbe-cf9d-4d89-b478-d31da5d0a7f8");
+            string[] ipAndPort = new FrameCommonClient.ParameterInfoClient().GetTwoValue(ParameterInfoClient.IMServer);
             if (ipAndPort != null && ipAndPort.Length == 2)
             {
                 serverIP = ipAndPort[0];

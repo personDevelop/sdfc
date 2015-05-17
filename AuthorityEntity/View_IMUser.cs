@@ -8,9 +8,8 @@ using System.Runtime.Serialization;
 namespace AuthorityEntity
 {
     /// <summary>
-    ///  即时通讯专用用户表
-    /// </summary>  
-
+    /// 即时通讯专用用户表
+    /// </summary> 
     [DataContract]
     public partial class View_IMUser : BaseEntity
     {
@@ -49,6 +48,7 @@ namespace AuthorityEntity
         private string _DepartName;
         private string _IMGroupName;
         private string _DepartID;
+        private bool _IsOnLine;
 
         #endregion
 
@@ -472,6 +472,25 @@ namespace AuthorityEntity
             }
         }
 
+        /// <summary>
+        ///  是否在线,
+        /// </summary>
+        [DbProperty(MapingColumnName = "IsOnLine", DbTypeString = "bit", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public bool IsOnLine
+        {
+            get
+            {
+                return this._IsOnLine;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("IsOnLine", this._IsOnLine, value);
+                this._IsOnLine = value;
+            }
+        }
+
 
         #endregion
 
@@ -524,6 +543,8 @@ namespace AuthorityEntity
                 IMGroupName = new PropertyItem("IMGroupName", tableName);
 
                 DepartID = new PropertyItem("DepartID", tableName);
+
+                IsOnLine = new PropertyItem("IsOnLine", tableName);
 
 
             }
@@ -615,9 +636,12 @@ namespace AuthorityEntity
             /// 部门ID,
             /// </summary> 
             public PropertyItem DepartID = null;
+            /// <summary>
+            /// 是否在线,
+            /// </summary> 
+            public PropertyItem IsOnLine = null;
         }
         #endregion
-
     }
 
 
@@ -635,15 +659,7 @@ namespace AuthorityEntity
         /// </summary>
         [NotDbCol]
         public string Response { get; set; }
-
-
-        /// <summary>
-        /// 是否在线
-        /// </summary>
-        [NotDbCol]
-        public bool IsOnline { get; set; }
-
-
+         
          
     }
 }

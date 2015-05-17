@@ -45,5 +45,11 @@ namespace AuthorityService
         {
             return da.LoginIM(username, userpwd, Ip, port,   out   error);
         }
+
+
+        public string UpdateLoginStatus(string userid,bool isOnLine)
+        {
+            return da.UpdateLoginStatus(userid, isOnLine);
+        }
     }
 }

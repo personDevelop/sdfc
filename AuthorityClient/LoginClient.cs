@@ -74,5 +74,10 @@ namespace AuthorityClient
         {
             return CurrentClient.LoginIM(username, userpwd, Ip, port, out   error);
         }
+
+        public string  UpdateLoginStatus(string userid, bool isOnLine)
+        {
+            return CurrentClient.UpdateLoginStatus(userid, isOnLine);
+        }
     }
 }

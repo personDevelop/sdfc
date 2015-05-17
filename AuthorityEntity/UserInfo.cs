@@ -59,6 +59,7 @@ namespace AuthorityEntity
         private string _Email;
         private string _QQ;
         private bool _IsWebPerson;
+        private bool _IsOnLine;
 
         #endregion
 
@@ -691,6 +692,25 @@ namespace AuthorityEntity
             }
         }
 
+        /// <summary>
+        ///  是否在线,
+        /// </summary>
+        [DbProperty(MapingColumnName = "IsOnLine", DbTypeString = "bit", ColumnIsNull = false, IsUnique = false, ColumnLength = 0, ColumnJingDu = 0, IsGenarator = false, StepSize = 0, ColumnDefaultValue = "")]
+        [DataMember]
+        public bool IsOnLine
+        {
+            get
+            {
+                return this._IsOnLine;
+            }
+            set
+            {
+
+                this.OnPropertyChanged("IsOnLine", this._IsOnLine, value);
+                this._IsOnLine = value;
+            }
+        }
+
 
         #endregion
 
@@ -765,6 +785,8 @@ namespace AuthorityEntity
                 QQ = new PropertyItem("QQ", tableName);
 
                 IsWebPerson = new PropertyItem("IsWebPerson", tableName);
+
+                IsOnLine = new PropertyItem("IsOnLine", tableName);
 
 
             }
@@ -900,6 +922,10 @@ namespace AuthorityEntity
             /// 是网服,
             /// </summary> 
             public PropertyItem IsWebPerson = null;
+            /// <summary>
+            /// 是否在线,
+            /// </summary> 
+            public PropertyItem IsOnLine = null;
         }
         #endregion
     }
