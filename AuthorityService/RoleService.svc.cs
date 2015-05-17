@@ -33,6 +33,9 @@ namespace AuthorityService
 
         public int Delete(string id, ref string error)
         {
+           
+             
+
             return da.Delete(id, ref   error);
         }
 
