@@ -5,6 +5,7 @@
 <head>
     <title></title>
     <script src="Scripts/jquery-1.6.4.min.js"></script>
+    <script src="Scripts/jquery.nicescroll.js" type="text/javascript"></script>
     <style>
         *
         {
@@ -203,7 +204,27 @@
                     $("#" + id + "_wrap").show();
                 }
             });
+            $(window).bind("resize", setheight);
+            setheight();
+
+            $("#userinfo").niceScroll({
+                touchbehavior: false,
+                cursorcolor: "#7C7C7C",
+                cursoropacitymax: 0.6,
+                cursoropacitymin: 0.3,
+                cursorwidth: 5
+            });
         });
+
+        function setheight() {
+            var height = $(window).height();
+
+
+            $("#main_right").height(height - 73);
+            $("#main_left").height(height - 70);
+            $("#userinfo").height(height - 138);
+            //main_left
+        }
     </script>
 </head>
 <body>
@@ -265,7 +286,7 @@
                     在线客服列表
                 </div>
                 <div style='margin: 10px; margin: 10px; background: #FCFCFC; border: 1px solid #eee;
-                    padding: 10px;' id='userinfo' runat="server">
+                    padding: 10px; overflow: auto;' id='userinfo' runat="server">
                     <table class='onlinelist' width="100%">
                         <tr>
                             <td width="55">
